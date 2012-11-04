@@ -9,7 +9,8 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Tristan Hume
+
+title : thume.net
 tagline: High school app developer and Ruby enthusiast.
 author :
   name : Tristan Hume
@@ -71,6 +72,7 @@ JB :
   archive_path: /archive.html
   categories_path : /categories.html
   tags_path : /tags.html
+  pages_path: /pages.html
 
   # Settings for comments helper
   # Set 'provider' to the comment provider you want to use.

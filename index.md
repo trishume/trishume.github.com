@@ -1,46 +1,52 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Main
 ---
 {% include JB/setup %}
+{% capture GITHUB %}http://github.com/{{site.author.github}}{% endcapture %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+> I am a student at Bell High School in Ottawa, Canada interested in programming, electronics and science.
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
+# About Me
+## Things I Do
 
-## Update Author Attributes
+- I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)
+- I write programming contests in *Ruby*
+- I program random things and push them To-Do [Github]({{GITHUB}})
+- I develop [Open Turing](http://tristan.hume.ca/openturing), an open source fork of the Turing language.
 
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
+# Projects
 
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
+A selection of projects I have worked on:
 
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
+[Improsent]({{BASE_PATH}}/improsent)
+: A web app that allows you to improvise presentation slides while you present.
 
-    $ rm -rf _posts/core-samples
+[The New Open Turing Editor](https://github.com/Open-Turing-Project/turing-editor-qt)
+: A new editor for Open Turing written in Qt.
 
-Here's a sample "posts list".
+[DoubleVision]({{GITHUB}}/doubleVision)
+: A ruby gem that that manipulates PNG files to create magic thumbnails.
+
+[SquareGame]({{GITHUB}}/SquareGame)
+: A simple, addictive cocos2d iPhone game.
+
+[UTTT]({{GITHUB}}/Ultimate-Tic-Tac-Toe)
+: A java applet for 9-board tic-tac-toe with a simple A.I.
+
+[eyeLike]({{GITHUB}}/doubleVision)
+: A work-in-progress eye tracker that requires only a normal webcam.
+
+#Blog
 
 <ul class="posts">
-  {% for post in site.posts %}
+  {% for post in site.posts limit:10 %}
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
 
-## To-Do
+# Projects
 
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/plusjade/jekyll-bootstrap)!
-We need to clean up the themes, make theme usage guides with theme-specific markup examples.
+{% include projects.md %}
 
 
