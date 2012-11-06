@@ -3,7 +3,9 @@ layout: post
 title: "Simple, accurate eye center tracking in OpenCV"
 description: ""
 category: projects
-tags: [compsci,eyeLike]
+tags:
+- compsci
+- eyeLike
 ---
 {% include JB/setup %}
 
