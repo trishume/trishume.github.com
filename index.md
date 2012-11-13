@@ -45,7 +45,7 @@ A selection of projects I have worked on:
   {% endfor %}
 </ul>
 
-# Projects
+# Stuff I've Done
 
 {% include projects.md %}
 
