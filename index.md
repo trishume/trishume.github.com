@@ -8,7 +8,6 @@ title: Main
 > I am a student at Bell High School in Ottawa, Canada interested in programming, electronics and science.
 
 # About Me
-## Things I Do
 
 - I am currently working as a coop student for [The Eclipse Foundation](http://eclipse.org/)
 - I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)

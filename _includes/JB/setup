@@ -19,4 +19,9 @@
       {% capture ASSET_PATH %}{{ BASE_PATH }}/assets/themes/{{ page.theme.name }}{% endcapture %}
     {% endif %}  
   {% endif %}
+  {% if page.assetid %}
+    {% capture PAGE_ASSETS %}{{ BASE_PATH }}/assets/postassets/{{ page.assetid }}{% endcapture %}
+  {% else %}
+    {% capture PAGE_ASSETS %}{{ BASE_PATH }}/assets/postassets{% endcapture %}
+  {% endif %}
 {% endcapture %}{% assign jbcache = nil %}

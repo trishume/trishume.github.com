@@ -23,14 +23,17 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-size: 100%;
+  font-size: 110%;
   margin-top: 0.50em;
 }
 
 h1:before {
   content: "#";
 }
-h1:before, blockquote:before, dt:before, ul li:before {
+h2:before {
+  content: "+";
+}
+h1:before, h2:before, blockquote:before, dt:before, ul li:before {
   color: #cccccc;
   position: absolute;
   width: 50px;
@@ -40,6 +43,9 @@ h1:before, blockquote:before, dt:before, ul li:before {
 h1 {
   margin-bottom: 0.5em;
   font-size: 14pt;
+}
+h3 {
+  font-size: 100%;
 }
 
 p {
@@ -89,6 +95,10 @@ ul li:before {
 
 ul {
   list-style-type: none;
+}
+
+img {
+  max-width: 40em;
 }
 
 /*****************************************************************************/
