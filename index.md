@@ -10,6 +10,7 @@ title: Main
 # About Me
 ## Things I Do
 
+- I am currently working as a coop student for [The Eclipse Foundation](http://eclipse.org/)
 - I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)
 - I write programming contests in *Ruby*
 - I program random things and push them To-Do [Github]({{GITHUB}})

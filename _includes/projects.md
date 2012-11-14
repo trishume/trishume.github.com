@@ -2,6 +2,9 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2012
 
+- Developed new website based on Jekyll and Github Pages.
+- Started work on the [eyeLike](//github.com/trishume/eyeLike) eye tracker.
+- Wrote the [Improsent](/improsent) presentation tool.
 - Went to the [Shad Valley](http://shad.ca/) summer program at Waterloo University.
 - Worked on the new editor for Open Turing
 - Wrote a web service that makes cool word gardens: [http://treeeees.herokuapp.com](http://treeeees.herokuapp.com)
