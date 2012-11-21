@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Using Slate to do Everything"
+title: "Using Slate: A Hacker's Window Manager for Macs"
 description: "How to configure and use the Slate window manager."
 category: howto
 assetid: slate
-tags: [slate,configuration,mac]
+tags: [slate,configuration,mac,tutorial]
 ---
 {% include JB/setup %}
 
