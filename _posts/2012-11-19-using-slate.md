@@ -61,7 +61,7 @@ letter over a window your focus is transfered to that window. For windows that
 are hidden behind others the application icon is displayed in the overlay.
 
 ### As usual, a picture is worth a thousand words:
-![Window Hints]({{PAGE_ASSETS}}/windowhints.jpg)
+[![Window Hints]({{PAGE_ASSETS}}/windowhints.jpg)]({{PAGE_ASSETS}}/windowhints.jpg)
 Notes: There is an option to overlay the icons with a dark background so that it
 is easier to read the letters. Also note the fancy Slate managed window layout.
 
@@ -163,6 +163,8 @@ that too. To bind the window grid to a key use a command like:
 
 This particular command binds `command+g` to show a 6x2 grid on the first
 monitor (monitor `0`) and a 8x3 grid on the second monitor (monitor `1`).
+
+[![Window Grid]({{PAGE_ASSETS}}/grid.png)]({{PAGE_ASSETS}}/grid.png)
 
 ### Normal Window Management
 
