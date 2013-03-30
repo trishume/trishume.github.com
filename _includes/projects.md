@@ -2,6 +2,7 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2012
 
+- Gave a [lightning talk at Ottawa Ruby](/2013/02/06/ottawa-ruby-lightning-talks/) about scripting.
 - Developed new website based on Jekyll and Github Pages.
 - Started work on the [eyeLike](//github.com/trishume/eyeLike) eye tracker.
 - Wrote the [Improsent](/improsent) presentation tool.

@@ -36,3 +36,11 @@ language to automate repetetive tasks.
 
 <script async="1" class="speakerdeck-embed" data-id="926bb4f052d60130870722000a1c41cd" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js">
 </script>
+
+## Edit: Improv lighting Talk
+
+I recently gave an improvised lightning talk prompted by the lack of other
+lighting talks called "How to do a lightning talk." I talked about choosing a
+topic that you feel you have unique knowledge of to give you more confidence and
+how all that was really important was the confidence to go up there. Everything
+else would work itself out.

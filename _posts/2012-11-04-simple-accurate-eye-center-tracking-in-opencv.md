@@ -9,7 +9,7 @@ tags:
 ---
 {% include JB/setup %}
 
-I am currently working on writing an open source gaze tracker in OpenCV that requires only a webcam.
+I am currently working on writing [an open source gaze tracker](http://github.com/trishume/eyeLike) in OpenCV that requires only a webcam.
 One of the things necessary for any gaze tracker[^1] is accurate tracking of the eye center.
 
 For my gaze tracker I had the following constraints:
@@ -99,6 +99,10 @@ After adding this line of code my implementation tracked my eyes excellently and
 #Conclusion
 
 Dr. Timm's eye center location algorithm is an excellent simple way to track the pupil, but only if you add a few extra things that he does not talk about in his paper.
+
+In terms of my eye tracker at the moment this is all I have implemented. I am
+still looking into methods of tracking a reference point like eye corner to
+accurately judge where the user is looking.
 
 [^1]: An eye tracker gives the pixel position of the center of the pupil in an image whereas a gaze tracker determines where the person is looking on the screen.
 [^2]: Timm and Barth. Accurate eye centre localisation by means of gradients. In Proceedings of the Int. Conference on Computer Theory and Applications (VISAPP), volume 1, pages 125-130, Algarve, Portugal, 2011. INSTICC.

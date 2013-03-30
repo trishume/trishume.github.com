@@ -9,7 +9,7 @@ title: Main
 
 # About Me
 
-- I am currently working as a coop student for [The Eclipse Foundation](http://eclipse.org/)
+- I am currently working on an open source [eye Tracker.]({{GITHUB}}/eyeLike)
 - I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)
 - I write programming contests in *Ruby*
 - I program random things and push them to [Github]({{GITHUB}})
