@@ -25,6 +25,9 @@ projects including one that had been around for 11 years and likely affected
 thousands of developers. In this article I hope to share some of the knowledge I
 gathered about contributing to Eclipse projects.
 
+**Edit:** To clarify, I am not ranting about how bad my job was. I thoroughly
+enjoyed my time at The Eclipse Foundation.
+
 ## One Does Not Simply Compile Eclipse
 
 For my first week my supervisor had the idea of using me to figure out how difficult
