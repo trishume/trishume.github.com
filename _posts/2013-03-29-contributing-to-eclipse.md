@@ -26,7 +26,9 @@ thousands of developers. In this article I hope to share some of the knowledge I
 gathered about contributing to Eclipse projects.
 
 **Edit:** To clarify, I am not ranting about how bad my job was. I thoroughly
-enjoyed my time at The Eclipse Foundation.
+enjoyed my time at The Eclipse Foundation. I also enjoy using Eclipse as an IDE.
+Yes it is slow and RAM-intensive but it's amazing auto complete and content
+assist make it invaluable for Java programming. I use VIM for every other language.
 
 ## One Does Not Simply Compile Eclipse
 
