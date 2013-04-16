@@ -1,15 +1,14 @@
 ---
-layout: page
+layout: default
 title: Main
 ---
-{% include JB/setup %}
-{% capture GITHUB %}http://github.com/{{site.author.github}}{% endcapture %}
+{% capture GITHUB %}http://github.com/trishume{% endcapture %}
 
 > I am a student at Bell High School in Ottawa, Canada interested in programming, electronics and science.
 
 # About Me
 
-- I am currently working on an open source [eye Tracker.]({{GITHUB}}/eyeLike)
+- I am currently working as a coop student for [The Eclipse Foundation](http://eclipse.org/)
 - I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)
 - I write programming contests in *Ruby*
 - I program random things and push them to [Github]({{GITHUB}})
@@ -34,19 +33,7 @@ A selection of projects I have worked on:
 [UTTT]({{GITHUB}}/Ultimate-Tic-Tac-Toe)
 : A java applet for 9-board tic-tac-toe with a simple A.I.
 
-[eyeLike]({{GITHUB}}/eyeLike)
+[eyeLike]({{GITHUB}}/doubleVision)
 : A work-in-progress eye tracker that requires only a normal webcam.
-
-#Blog
-
-<ul class="posts">
-  {% for post in site.posts limit:10 %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
-
-# Stuff I've Done
-
-{% include projects.md %}
 
 

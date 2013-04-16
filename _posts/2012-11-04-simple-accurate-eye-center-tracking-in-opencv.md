@@ -43,8 +43,7 @@ Below are some problems that I resolved with Dr. Timm's help.
 
 The first thing I fixed was the eye region fractions as portions of the face. From Dr. Timm:
 > Let (x, y) be the upper left corner and W, H the width and height of the detected face. 
-> Then, the mean of the right eye centre is located at (x + 0.3 ∗ W, y + 0.4 ∗ H) and the mean of the left centre is at position (x + 0.7 ∗ W, y + 0.4 ∗ H). 
-> Based on these estimated positions we extract rough regions for each eye with a size of (0.35 ∗ W) × (0.3 ∗ H) .
+> Then, the mean of the right eye centre is located at (x + 0.3, y + 0) and the mean of the left centre is at position (x + 0.7, y + 0.4). 
 
 On his recommendation I also applied a gaussian blur to the face before processing it to smooth noise. I use the sigma of `0.005 * sideLengthOfFace`.
 
