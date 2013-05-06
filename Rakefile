@@ -2,6 +2,7 @@ require "rubygems"
 require 'rake'
 require 'yaml'
 require 'time'
+require 'fileutils'
 
 SOURCE = "."
 CONFIG = {
@@ -12,6 +13,10 @@ CONFIG = {
   'post_ext' => "md",
   'theme_package_version' => "0.1.0"
 }
+
+SITE_ROOT = "/home/tristan/Site"
+PROJECTS_DIR = File.expand_path("~/Box/Dev/Projects/")
+SITE_PROJECTS = ["resume","improsent"]
 
 # Path configuration helper
 module JB
@@ -99,6 +104,15 @@ desc "Launch preview environment"
 task :preview do
   system "jekyll --auto --server"
 end # task :preview
+
+desc "Deploy working copy of site"
+task :deploy do
+  system  "jekyll #{SITE_ROOT}"
+  # copy projects
+  SITE_PROJECTS.each do |proj|
+    FileUtils.cp_r PROJECTS_DIR + '/' + proj, SITE_ROOT
+  end
+end
 
 # Public: Alias - Maintains backwards compatability for theme switching.
 task :switch_theme => "theme:switch"

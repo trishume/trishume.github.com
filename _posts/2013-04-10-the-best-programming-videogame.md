@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Best Programming Video Game"
+title: "The Best Programming Game"
 description: ""
 category: 
 tags: []
@@ -8,7 +8,7 @@ tags: []
 {% include JB/setup %}
 
 Ever since I was in grade 4 I have been playing the world's best programming
-video game. The game is highly rewarding, an excellent way to learn programming
+game. The game is highly rewarding, an excellent way to learn programming
 and it's even free!
 
 This game has many advantages over other programming video games:
