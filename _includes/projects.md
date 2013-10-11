@@ -1,5 +1,11 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by. I am also more productive nowadays so the list will look a little top-heavy.
 
+## 2013
+
+- Worked at [Shopify](http://shopify.com/) over the summer.
+- Wrote [Pro](//github.com/trishume/pro), a tool for managing Git repos.
+- Went to the ECOO programming contest finals and came 5th.
+
 ## 2012
 
 - Gave a [lightning talk at Ottawa Ruby](/2013/02/06/ottawa-ruby-lightning-talks/) about scripting.

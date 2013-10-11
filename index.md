@@ -5,7 +5,7 @@ title: Main
 {% include JB/setup %}
 {% capture GITHUB %}http://github.com/{{site.author.github}}{% endcapture %}
 
-> I am a student at Bell High School in Ottawa, Canada interested in programming, electronics and science.
+> I am a student at Bell High School in Ottawa, Canada interested in programming, finance and electronics.
 
 # About Me
 
@@ -21,20 +21,18 @@ title: Main
 
 A selection of projects I have worked on:
 
+[Pro](http://github.com/trishume/pro)
+:A Ruby command line tool for managing Git repositories.
+
 [Improsent]({{BASE_PATH}}/improsent)
 : A web app that allows you to improvise presentation slides while you present.
 
-[The New Open Turing Editor](https://github.com/Open-Turing-Project/turing-editor-qt)
-: A new editor for Open Turing written in Qt.
+[The New Open Turing Editor](http://tristan.hume.ca/openturing)
+: An improved implementation of the Turing language, including a new editor written in Qt.
+  I also wrote a [compiler](https://github.com/Open-Turing-Project/OpenTuringCompiler).
 
 [DoubleVision]({{GITHUB}}/doubleVision)
 : A ruby gem that that manipulates PNG files to create magic thumbnails.
-
-[SquareGame]({{GITHUB}}/SquareGame)
-: A simple, addictive cocos2d iPhone game.
-
-[UTTT]({{GITHUB}}/Ultimate-Tic-Tac-Toe)
-: A java applet for 9-board tic-tac-toe with a simple A.I.
 
 [eyeLike]({{GITHUB}}/eyeLike)
 : A work-in-progress eye tracker that requires only a normal webcam.
