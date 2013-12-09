@@ -9,7 +9,7 @@ title: Main
 
 # About Me
 
-- I am currently working on an open source [eye Tracker.]({{GITHUB}}/eyeLike)
+- I am currently working on an open source [eye tracker.]({{GITHUB}}/eyeLike)
 - I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)
 - I use Ruby to write programming contests like the Google Code Jam.
 - I am a member of the Ottawa Group of Ruby Enthusiasts and occassionally give [lightning talks](/2013/02/06/ottawa-ruby-lightning-talks)
