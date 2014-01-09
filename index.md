@@ -1,13 +1,14 @@
 ---
 layout: page
-title: Main
+title: Tristan's Site
 ---
 {% include JB/setup %}
 {% capture GITHUB %}http://github.com/{{site.author.github}}{% endcapture %}
 
-> I am a student at Bell High School in Ottawa, Canada interested in programming, finance and electronics.
+> I am a student at Bell High School in Ottawa, Canada interested in programming, economics and electronics.
+> I write iPad, Ruby, Qt and Rails apps for fun, work and homework.
 
-# About Me
+# About Tristan
 
 - I am currently working on an open source [eye tracker.]({{GITHUB}}/eyeLike)
 - I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)
@@ -17,12 +18,12 @@ title: Main
 - I program random things and put them on [Github]({{GITHUB}})
 - I develop [Open Turing](http://tristan.hume.ca/openturing), an open source fork of the Turing language.
 
-# Projects
+# Personal Projects
 
-A selection of projects I have worked on:
+These are some of my personal Open Source projects.
 
 [Pro](http://github.com/trishume/pro)
-:A Ruby command line tool for managing Git repositories.
+: A Ruby command line tool for managing Git repositories.
 
 [Improsent]({{BASE_PATH}}/improsent)
 : A web app that allows you to improvise presentation slides while you present.
@@ -37,7 +38,7 @@ A selection of projects I have worked on:
 [eyeLike]({{GITHUB}}/eyeLike)
 : A work-in-progress eye tracker that requires only a normal webcam.
 
-#Blog
+# Tristan's Blog
 
 <ul class="posts">
   {% for post in site.posts limit:10 %}

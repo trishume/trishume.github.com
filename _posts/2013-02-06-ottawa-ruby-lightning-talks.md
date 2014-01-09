@@ -2,7 +2,7 @@
 layout: post
 title: "Ottawa Ruby Lightning Talks"
 description: "Slides from presentations I have given at the Ottawa Ruby Group."
-category: 
+category:
 tags: [ruby,compsci]
 ---
 {% include JB/setup %}
@@ -37,7 +37,12 @@ language to automate repetetive tasks.
 <script async="1" class="speakerdeck-embed" data-id="926bb4f052d60130870722000a1c41cd" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js">
 </script>
 
-## Edit: Improv lighting Talk
+## Developing a Gem in 20 Minutes
+
+I live coded a simple Ruby gem using Bundler in 20 minutes and explained
+some tricks and how easy it was to write Ruby Gems.
+
+## Improv lighting Talk
 
 I recently gave an improvised lightning talk prompted by the lack of other
 lighting talks called "How to do a lightning talk." I talked about choosing a

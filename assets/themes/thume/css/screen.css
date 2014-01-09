@@ -27,13 +27,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0.50em;
 }
 
-h1:before {
+h1:not(.nostyle):before {
   content: "#";
 }
 h2:before {
   content: "+";
 }
-h1:before, h2:before, blockquote:before, dt:before, ul li:before {
+h1:not(.nostyle):before, h2:before, blockquote:before, dt:before, ul li:before {
   color: #cccccc;
   position: absolute;
   width: 50px;
@@ -46,6 +46,12 @@ h1 {
 }
 h3 {
   font-size: 100%;
+}
+
+h1.nostyle {
+  display: inline;
+  margin:0px;
+  padding:0px;
 }
 
 p {
@@ -98,7 +104,7 @@ ul {
 }
 
 img {
-  max-width: 40em;
+  max-width: 45em;
 }
 
 /*****************************************************************************/
@@ -109,7 +115,7 @@ img {
 
 ul.posts {
   list-style-type: none;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
   ul.posts li {
@@ -131,7 +137,7 @@ ul.posts {
 .site {
   font-size: 110%;
   text-align: left;
-  width: 40em;
+  width: 45em;
   margin: 3em auto 2em auto;
   line-height: 1.5em;
 }

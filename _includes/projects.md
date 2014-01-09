@@ -2,8 +2,13 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2013
 
+- Made a program to generate function art for my math summative.
+- Started work on a personal finance iPad app.
+- Gave a lightning talk at Ottawa Ruby about writing Ruby Gems.
 - Worked at [Shopify](http://shopify.com/) over the summer.
+- Integrated Pro into the Sublime Text editor via a plugin.
 - Wrote [Pro](//github.com/trishume/pro), a tool for managing Git repos.
+- Won the Ottawa AppJam for my Turing Compiler and IDE, which I polished and linked together.
 - Went to the ECOO programming contest finals and came 5th.
 
 ## 2012
@@ -18,7 +23,7 @@ This is a list of the things I have worked on and am currently working on. It is
 - Wrote a ruby gem that creates magic PNG images called doubleVision
 - Participated in the 2012 ECOO Programming contest finals
 - [Released the PathSpan iPad app.](http://hume.ca/ix)
-- Wrote a compiler for Turing using the LLVM framework. Currently on hold while the editor is being finished.
+- Wrote a compiler for Turing using the LLVM framework.
 - [Wrote a new editor for Open Turing in Qt](/openturing/index.html#neweditor)
 - [Wrote a Sublime Text plugin that inserts snippets from Rosetta Code](https://github.com/trishume/Sublime-Rosetta-Get)
 
@@ -59,10 +64,7 @@ This is a list of the things I have worked on and am currently working on. It is
 - Science fair project on Galvanic Skin Response. Won gold medal in regional science fair.
 - Random platformer. Flash platformer with generated levels.
 - Redesign of tristan.hume.ca
-
-## 2009
-
 - Bob escape platformer.
 - Taught course on creating web pages to kids at my school.
 
-ERROR: My memory does not go back further than 2009.
+ERROR: Tristan's memory does not go back further than 2009. Tristan's exploits before this mostly included websites, science fair projects and Lego Mindstorms.
