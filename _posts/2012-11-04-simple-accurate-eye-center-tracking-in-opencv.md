@@ -22,6 +22,7 @@ I came across a paper[^2] by Fabian Timm that details an algorithm that fit all 
 It uses image gradients and dot products to create a function that theoretically is at a maximum at the center of the image's most prominent circle.
 
 Here is a video he made of his algorithm in action:
+
 <iframe width="560" height="315" src="http://www.youtube.com/embed/aGmGyFLQAFM" frameborder="0" allowfullscreen="">
 </iframe>
 
@@ -42,8 +43,8 @@ Below are some problems that I resolved with Dr. Timm's help.
 ## Things That Are Not in the Paper
 
 The first thing I fixed was the eye region fractions as portions of the face. From Dr. Timm:
-> Let (x, y) be the upper left corner and W, H the width and height of the detected face. 
-> Then, the mean of the right eye centre is located at (x + 0.3, y + 0) and the mean of the left centre is at position (x + 0.7, y + 0.4). 
+> Let (x, y) be the upper left corner and W, H the width and height of the detected face.
+> Then, the mean of the right eye centre is located at (x + 0.3, y + 0) and the mean of the left centre is at position (x + 0.7, y + 0.4).
 
 On his recommendation I also applied a gaussian blur to the face before processing it to smooth noise. I use the sigma of `0.005 * sideLengthOfFace`.
 
@@ -56,18 +57,18 @@ The way MatLab's gradient algorithm works (in Matlab code) is `[x(2)-x(1) (x(3:e
 {% highlight c++ %}
 cv::Mat computeMatXGradient(const cv::Mat &mat) {
   cv::Mat out(mat.rows,mat.cols,CV_64F);
-  
+
   for (int y = 0; y < mat.rows; ++y) {
     const uchar *Mr = mat.ptr<uchar>(y);
     double *Or = out.ptr<double>(y);
-    
+
     Or[0] = Mr[1] - Mr[0];
     for (int x = 1; x < mat.cols - 1; ++x) {
       Or[x] = (Mr[x+1] - Mr[x-1])/2.0;
     }
     Or[mat.cols-1] = Mr[mat.cols-1] - Mr[mat.cols-2];
   }
-  
+
   return out;
 }
 {% endhighlight %}
@@ -77,9 +78,9 @@ to get the Y gradient I simply take the X gradient of the transpose matrix and t
 By replicating his gradient algorithm I was also able to use the same gradient threshold as him. From Dr. Timm:
 
 > I remove all gradients that are below this threshold:
-> 
+>
 > `0.3 * stdMagnGrad + meanMagnGrad`
-> 
+>
 > where "stdMagnGrad" and "meanMagnGrad" are the standard deviation and the mean of all gradient magnitudes, i.e. the length of the gradients.;
 
 ### The "Little Thing" that he didn't mention
