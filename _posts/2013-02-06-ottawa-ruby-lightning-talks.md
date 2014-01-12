@@ -15,7 +15,7 @@ The group normally has a main speaker who gives a long talk and one or two 10 mi
 lightning talks punctuated by breaks to eat pizza and talk. The main talk is
 normally over Skype and the lightning talks are done by volunteers from the group.
 
-I have given two lighning talks on topics which I believed I might know more
+I have given two lightning talks on topics which I believed I might know more
 than other members. Both talks went well and I've decided to post the slides.
 Be aware that I did do a significant amount of talking so you can't get the
 whole message from just the slides, but they are better than nothing.
