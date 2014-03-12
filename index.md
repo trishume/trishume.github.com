@@ -10,6 +10,7 @@ title: Tristan's Site
 
 # About Tristan
 
+- I write iPad apps [like this one for personal finance planning.](http://thume.net/stashline)
 - I am currently working on an open source [eye tracker.]({{GITHUB}}/eyeLike)
 - I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)
 - I use Ruby to write programming contests like the Google Code Jam.
@@ -20,7 +21,10 @@ title: Tristan's Site
 
 # Personal Projects
 
-These are some of my personal Open Source projects.
+These are some of my personal software projects.
+
+[StashLine](http://thume.net/stashline)
+: An iPad app for personal finance planning.
 
 [Pro](http://github.com/trishume/pro)
 : A Ruby command line tool for managing Git repositories.
@@ -49,5 +53,3 @@ These are some of my personal Open Source projects.
 # Stuff I've Done
 
 {% include projects.md %}
-
-
