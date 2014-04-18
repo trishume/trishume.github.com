@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Drawing With Functions"
+title: "Hacking Math Homework"
 description: "Writing Programs For Math Class"
 assetid: mathSummative
 category:
@@ -8,8 +8,15 @@ tags: [english, scripting]
 ---
 {% include JB/setup %}
 
+Many high school students complain about boring and repetitive homework, but I've found a fun way of dealing with this that I find actually helps me understand concepts even better.
+When faced with large rote assignments I write programs to complete the homework like no human can: instantly, perfectly and on a large scale.
+In the past I have written written [Literary Analysis Visualizations](/2013/01/24/hacking-english-class/), Punnet Square generators and [Graphing Programs](http://github.com/trishume/handyGraph).
+
+Most of the time it takes way more time to write the program than it would take to do the homework but I end up learning a lot more and having more fun.
+Recently I wrote my wrote my most outrageous program yet, it took 10 times longer than it should have and blew away my teacher and class.
+
 Part of my Advanced Functions class summative this year was to create a series of piecewise functions that when graphed produce
-a picture. I had an idea that would go beyond the intended simple line drawings so I spent my weekend implementing it.
+a picture. Some examples given were line drawings of a smiley face and the Batman symbol. But I had an idea that would go beyond the intended simple line drawings so I spent my weekend implementing it.
 
 I wrote a program that takes an image and composes equations of varying densities into hundreds of massive piecewise functions
 so that when you graph them on a very large canvas and zoom out they replicate the image in greyscale. The output looks like this:
