@@ -42,6 +42,8 @@ language to automate repetetive tasks.
 I live coded a simple Ruby gem using Bundler in 20 minutes and explained
 some tricks and how easy it was to write Ruby Gems.
 
+[Here's a Transcript](https://gist.github.com/trishume/5d1ea89862e031a48434)
+
 ## Improv lighting Talk
 
 I recently gave an improvised lightning talk prompted by the lack of other
