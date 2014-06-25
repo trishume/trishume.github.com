@@ -20,6 +20,11 @@ than other members. Both talks went well and I've decided to post the slides.
 Be aware that I did do a significant amount of talking so you can't get the
 whole message from just the slides, but they are better than nothing.
 
+## Edit: The Ruby Standard Library
+
+I recently did a full length talk on the Ruby standard library.
+You can find the slides at <http://thume.ca/rubytour>.
+
 ## Ruby + Programming Contests
 
 The first talk I did was on writing programming contests in Ruby. I write lots
