@@ -1,6 +1,9 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by. I am also more productive nowadays so the list will look a little top-heavy.
 
 ## 2014
+- Gave [a talk](/2014/06/25/a-tour-of-the-ruby-standard-library/) at Ottawa Ruby on the Ruby Standard Library
+- Used 3D printing to prototype a concept for magnetic levitation hall effect keyboard switches.
+- Forked the ranger file manager to work better with OSX, creating [MacRanger](//github.com/trishume/MacRanger).
 - Wrote [a widget](/indexView) for graphing and analyzing long term market returns.
 - [Extended ranger](https://github.com/trishume/dotfiles/tree/master/ranger/ranger.config) file manager to support images and file icons on OSX.
 - Went to the ECOO programming contest finals and came 4th (1st in region).

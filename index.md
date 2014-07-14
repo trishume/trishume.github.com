@@ -5,7 +5,7 @@ title: Tristan's Site
 {% include JB/setup %}
 {% capture GITHUB %}http://github.com/{{site.author.github}}{% endcapture %}
 
-> I am a student at Bell High School in Ottawa, Canada interested in programming, economics and electronics.
+> I am a Canadian student developer interested in programming, economics and electronics.
 > I write iPad, Ruby, Qt and Rails apps for fun, work and homework.
 
 # About Tristan
