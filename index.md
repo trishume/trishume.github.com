@@ -29,8 +29,8 @@ These are some of my personal software projects.
 [Pro](http://github.com/trishume/pro)
 : A Ruby command line tool for managing Git repositories.
 
-[Improsent]({{BASE_PATH}}/improsent/)
-: A web app that allows you to improvise presentation slides while you present.
+[IndexView](/indexView)
+: A web app for visualizing long term stock market data
 
 [The New Open Turing Editor](http://tristan.hume.ca/openturing)
 : An improved implementation of the Turing language, including a new editor written in Qt.
