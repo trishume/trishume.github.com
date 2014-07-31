@@ -1,6 +1,7 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by. I am also more productive nowadays so the list will look a little top-heavy.
 
 ## 2014
+- [Designed](https://github.com/trishume/KeyboardCAD) and built a custom keyboard case out of layered acrylic.
 - Wrote [a tool](/indexView) for graphing and analyzing long term market returns.
 - Gave [a talk](/2014/06/25/a-tour-of-the-ruby-standard-library/) at Ottawa Ruby on the Ruby Standard Library
 - Used 3D printing to prototype a concept for magnetic levitation hall effect keyboard switches.
