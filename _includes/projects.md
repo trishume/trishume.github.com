@@ -1,6 +1,9 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by. I am also more productive nowadays so the list will look a little top-heavy.
 
 ## 2014
+- Wrote [a command line tool](https://github.com/trishume/watcard-cli) for Waterloo Watcard info.
+- Started attending the University of Waterloo
+- Released [IndexView](/indexView) on [Mr. Money Mustache](http://www.mrmoneymustache.com/2014/08/25/indexview/)
 - [Designed](https://github.com/trishume/KeyboardCAD) and built a custom keyboard case out of layered acrylic.
 - Wrote [a tool](/indexView) for graphing and analyzing long term market returns.
 - Gave [a talk](/2014/06/25/a-tour-of-the-ruby-standard-library/) at Ottawa Ruby on the Ruby Standard Library
