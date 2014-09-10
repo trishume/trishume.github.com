@@ -8,7 +8,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-This summer I set myself the task of designing and building a chording keyboard from scratch. Chording keyboards use a different system of typing where you type entire syllables or words in a single stroke by pressing multiple keys at a time. My keyboard is designed to use a system similar to [Velotype](http://velotype.com/).
+This summer I set myself the task of designing and building a chording keyboard from scratch. Chording keyboards use a different system of typing where you type entire syllables or words in a single stroke by pressing multiple keys at a time. My keyboard is designed to use a system similar to [Velotype](http://velotype.com/en/). This should theoretically let my type at up to 200WPM.
 
 To spoil the ending I managed to build a pretty sweet keyboard that I am using to type this very article. However, I haven't written the chording software yet so I'm currently using it as a Dvorak keyboard.
 
