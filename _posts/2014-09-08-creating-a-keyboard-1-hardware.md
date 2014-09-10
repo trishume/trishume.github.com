@@ -19,6 +19,8 @@ When I started the project I thought it might take 2 weeks to finish the hardwar
 
 This post will be mostly about the case and key switches, next I'll write about the electronics, then the layout (once I design it), and then the software (once I write it).
 
+![Case]({{PAGE_ASSETS}}/finished-4.jpg)
+
 # Overview
 
 ## The Keys
@@ -162,6 +164,8 @@ After a while I had a look and feel complete version of my keyboard, now I just 
 For the second month of the summer I worked at Shopify and every day when I got home I worked on designing the electronics and soldering up the key matrix and controller. There's a lot more to tell about this process but this post is already 2,500 words.
 
 _**Coming eventually**, Part 2 "Designing and Building a Keyboard: The Mind", in which I will detail the wiring, controller and basic firmware that make bring it to the functional state it is in now._
+
+![Case]({{PAGE_ASSETS}}/electronics.jpg)
 
 ## Conclusion
 
