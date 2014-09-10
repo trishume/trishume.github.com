@@ -11,13 +11,12 @@ title: Tristan's Site
 
 # About Tristan
 
-- I write iPad apps [like this one for personal finance planning.](/stashline/)
-- I've done research on eye tracking and wrote [webcam eye tracking code.]({{GITHUB}}/eyeLike)
-- I develop iPad apps for psychological research at [iPad Experiments](http://hume.ca/ix)
-- I use Ruby to write programming contests like the Google Code Jam.
+- I write iPad apps [like this one for personal finance planning](/stashline/).
+- I've done research on eye tracking and wrote [webcam eye tracking code]({{GITHUB}}/eyeLike).
+- I design and build things like [my custom keyboard](/2014/09/08/creating-a-keyboard-1-hardware/).
 - I am a member of the Ottawa Group of Ruby Enthusiasts and occassionally give [talks](/2013/02/06/ottawa-ruby-lightning-talks/)
   there.
-- I program things and put them on [Github]({{GITHUB}})
+- I program things and put them on [Github]({{GITHUB}}).
 - I develop [Open Turing](http://tristan.hume.ca/openturing), an open source fork of the Turing language.
 
 # Personal Projects

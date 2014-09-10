@@ -3,8 +3,9 @@ This is a list of the things I have worked on and am currently working on. It is
 ## 2014
 - Wrote [a command line tool](https://github.com/trishume/watcard-cli) for Waterloo Watcard info.
 - Started attending the University of Waterloo
-- Released [IndexView](/indexView) on [Mr. Money Mustache](http://www.mrmoneymustache.com/2014/08/25/indexview/)
-- [Designed](https://github.com/trishume/KeyboardCAD) and built a custom keyboard case out of layered acrylic.
+- Built the electronics and firmware for [my DIY keyboard](/2014/09/08/creating-a-keyboard-1-hardware/).
+- Released [IndexView](/indexView) on [Mr. Money Mustache](http://www.mrmoneymustache.com/2014/08/25/indexview/).
+- [Designed](https://github.com/trishume/KeyboardCAD) and [built](/2014/09/08/creating-a-keyboard-1-hardware/) a custom keyboard case out of layered acrylic.
 - Wrote [a tool](/indexView) for graphing and analyzing long term market returns.
 - Gave [a talk](/2014/06/25/a-tour-of-the-ruby-standard-library/) at Ottawa Ruby on the Ruby Standard Library
 - Used 3D printing to prototype a concept for magnetic levitation hall effect keyboard switches.
