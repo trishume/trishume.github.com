@@ -43,6 +43,7 @@ Below are some problems that I resolved with Dr. Timm's help.
 ## Things That Are Not in the Paper
 
 The first thing I fixed was the eye region fractions as portions of the face. From Dr. Timm:
+
 > Let (x, y) be the upper left corner and W, H the width and height of the detected face.
 > Then, the mean of the right eye centre is located at (x + 0.3, y + 0) and the mean of the left centre is at position (x + 0.7, y + 0.4).
 
