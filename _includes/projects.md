@@ -1,6 +1,7 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by. I am also more productive nowadays so the list will look a little top-heavy.
 
 ## 2014
+- Participated in [Hack The North](http://hackthenorth.com/) and developed [Handquake](http://handquake.me/).
 - Wrote [a command line tool](https://github.com/trishume/watcard-cli) for Waterloo Watcard info.
 - Started attending the University of Waterloo
 - Built the electronics and firmware for [my DIY keyboard](/2014/09/08/creating-a-keyboard-1-hardware/).
