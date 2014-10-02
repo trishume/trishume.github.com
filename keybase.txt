@@ -1,0 +1,70 @@
+==================================================================
+https://keybase.io/thume
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://thume.ca
+  * I am thume (https://keybase.io/thume) on keybase.
+  * I have a public key with fingerprint FF73 AF0E EB29 A514 0316  3DFE BE54 21FC B054 2047
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "ff73af0eeb29a51403163dfebe5421fcb0542047",
+            "host": "keybase.io",
+            "key_id": "be5421fcb0542047",
+            "uid": "3d0bf021a5f07f21a857138e7429bd00",
+            "username": "thume"
+        },
+        "service": {
+            "hostname": "thume.ca",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1412281800,
+    "expire_in": 157680000,
+    "prev": "28c1bc83451d84b76230c4fc0f390b88bcb90b6d99ffe38876b07413d4bc2bbb",
+    "seqno": 3,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v1.1.0
+Comment: https://keybase.io/crypto
+
+yMLrAnicO8LLzMDFuC9E8c+GEAV3xtMHXpUyhOhuPVGtlJSfUqlkVa2UnQqm0jLz
+0lOLCooy80qUrJTS0syNE9MMUlOTjCwTTQ1NDIwNzYxT0lKTUk1NjAzTkpMMgLSB
+ibmSjlJGfjFIB9CYpMTiVL3MfKAYkBOfmQIUxaK+FCxhnGKQlGZgZJhommZgngak
+LUzNDY0tUs1NjCyTUgwMQAqLU4vyEnNTgapLMkqBdK2OElCoLDM5FeRgkL3I0nrJ
+iUBNBUX5JfnJ+TlA0YySkgIrkKaSygKQqvLUpHio/vikzLwUoIeBGspSi4oz8/OU
+rAyBKpNLMkEGGpoYGhlZGFoYGOgopVYUZBalxmeCVJiamwHFQKIFRallQCONLJIN
+k5ItjE1MDVMsTJLMzYyMDZJN0pIN0owtDZIsLJKSk4C0WYqlZVpaqrGFhblZkoG5
+iaFxiklSslFSUpISyEeFeflKVsZAZyamA40szkzPSywpLQJ699DBGBYGRi4GNlYm
+UJQxcHEKwCJyYpcAw6L0nDnnZedy/zrfVfQn/vP58JOxCnvvN82c3fVNZ0qE4vHF
+AZM5f3J82//VxsFHJOGmz93cP33/IrPFa3+0HFslYjJB0+SqZtzycIf2y5INvEf/
+/uqbeXSrxP1d3+tWPTu1psHllVjbJotE7tws25zvHB9ZNb1VrOo/Sq1JKTj78qrK
+Fe2SyScPxOxwkNMxuym1c+H7J9E9vHW7Juzhq0jo382QqRc2eeG5P1obVDZLVNd6
+3fT6Nf+ROv+2xux/EadzvRU4+1Yfjwqc7VJyWLH9+vTMY/ruJtkcEWvFpq0NPuwp
+u+uWZNEZ/6xj7EeXHzoofevM7JL3kizxak98ipMWbl37UefgFNPL7YmWfwIl5wp4
+5Gez1zTd//pZTWz2m51++7ZzWzebi5Y6FZ0Ujyi9c+HRW587yT17mGbPXXm5adJG
+LXlG4397k+//9d+2J5k9R2PJxdqFneIbT0cu+tkenaTrbBE+j/ngMW9xM4PIG7wT
+jrHPUTm/brMSM1/jn/5ZHsmtvQ47g7+k9rWq29ca3D56Sc4yunSG1PKvt2vFtu9h
+3r1k70r/zq+adYdzzxrH229ZFay65em+r2379S50RKTs03+q+cXw0OYqK3On6OfV
+lkVhFiE/nt+9pPh0Z8mfs7+uLJWrORUmvjXhys/m0xnL35StabpsLN8lx/uPX6RD
+8aB2xY5la87WGbnGmQpn2BfIVQt8OH+6CADfApJe
+=ixfK
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/thume
+
+==================================================================
