@@ -1,9 +1,11 @@
-This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by. I am also more productive nowadays so the list will look a little top-heavy.
+This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2014
+- Finished the VeloType implementation for [my keyboard](/2014/09/08/creating-a-keyboard-1-hardware/), started practicing.
+- Started learning Emacs and contributing daily to open source Emacs projects like [Spacemacs](https://github.com/syl20bnr/spacemacs).
 - Participated in [Hack The North](http://hackthenorth.com/) and developed [Handquake](http://handquake.me/).
 - Wrote [a command line tool](https://github.com/trishume/watcard-cli) for Waterloo Watcard info.
-- Started attending the University of Waterloo
+- Started attending the University of Waterloo.
 - Built the electronics and firmware for [my DIY keyboard](/2014/09/08/creating-a-keyboard-1-hardware/).
 - Released [IndexView](/indexView) on [Mr. Money Mustache](http://www.mrmoneymustache.com/2014/08/25/indexview/).
 - [Designed](https://github.com/trishume/KeyboardCAD) and [built](/2014/09/08/creating-a-keyboard-1-hardware/) a custom keyboard case out of layered acrylic.
@@ -49,38 +51,39 @@ This is a list of the things I have worked on and am currently working on. It is
 - Wrote a second iPad app for psychological research. Based on the number line task.
 - Competed in the DWITE programming contest.
 - [Wrote a question answering machine for the programming club at Bell.](http://www.bellhs.net/programmingclub/)
-- Wrote a tron AI
+- Wrote a [tron AI](https://github.com/trishume/AITron) to compete against my friend Tony's tron AI.
 - [Ported SquareGame to use data URLs to render to a favicon.](http://tristan.hume.ca/favicon/squaregame.html)
 - Made a AJAX app that uses html5 drag and drop and the ideone API to run programs dropped on it.
 - Put a bunch of my code on [github](https://github.com/trishume).
 - [Made an iPhone game](http://github.com/trishume/SquareGame). A port of [Kiran Rao's square game](http://camp.virtualventures.ca/~krao/forTony/test4/test4.html) to IOS.
+
+## 2010
 - Porting the linux program to interface with my watch (Timex DataLink) to the mac.
 - Object tracking using the webcam in haxe
 - Ruby data analysis framework for use in programming contests.
 - Turing browser for programming class assignement.
 - Google Code Jam 2011 Qualification Round.
-- Basic Bell HS Iphone web app.
-- WebGL 3d game demo.
-- 3D engine in turing for programming class.
+- 3D engine in Turing for programming class.
 - [Bell HS map](http://bellhs.net/map)
 - Base for a neural network based AI for ultimate tic-tac-toe
 - [Psychological research iPad app for a professor at Carleton University](http://hume.ca/ix)
 - Partial data-analysis program for my EEG
 
-## 2010
+## 2009 (Grade 8)
 
-- iPhone app for my xml data storage system.
-- Ruby framework for my xml data storage system.
-- Ultimate tic-tac-toe java applet.
+- iPhone app for my XML-based personal data sync and organization system.
+- Ruby framework for my XML-based personal data sync and organization system.
+- Ultimate tic-tac-toe Java applet.
 - My science fair project on building an EEG. Won gold medal and a trip to the national science fair. <http://tristan.hume.ca/distribute/Brainwaves%20(Tristan%20Hume).pdf>
-- Ajax and php web app for my xml data storage system.
+- Ajax and php web app for my XML-based personal data sync and organization system.
 
-## 2009
+## 2008
 
 - Science fair project on Galvanic Skin Response. Won gold medal in regional science fair.
-- Random platformer. Flash platformer with generated levels.
+- Flash platformer with procedurally generated levels.
 - Redesign of tristan.hume.ca
-- Bob escape platformer.
-- Taught course on creating web pages to kids at my school.
+- Bob escape platformer, a tiling platformer written based on a flash tutorial on tiling game engines.
+- Taught small course on creating web pages to Grade 4-6 kids at my school.
 
-ERROR: Tristan's memory does not go back further than 2009. Tristan's exploits before this mostly included websites, science fair projects and Lego Mindstorms.
+## 2005
+- Started learning to program by writing crappy websites with HTML and JS.
