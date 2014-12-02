@@ -1,6 +1,9 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2014
+- Developed [an algorithm for detecting the noise of lips](https://github.com/trishume/PopClick) popping fairly accurately, intended for UI control uses.
+- Wrote a [window hints module](https://github.com/trishume/mjolnir.th.hints) for [Mjolnir](http://mjolnir.io) for SE hack day.
+- Started using [Spacemacs](https://github.com/syl20bnr/spacemacs) and contributing many PRs, making me the #2 contributor.
 - Finished the VeloType implementation for [my keyboard](/2014/09/08/creating-a-keyboard-1-hardware/), started practicing.
 - Started learning Emacs and contributing daily to open source Emacs projects like [Spacemacs](https://github.com/syl20bnr/spacemacs).
 - Participated in [Hack The North](http://hackthenorth.com/) and developed [Handquake](http://handquake.me/).
