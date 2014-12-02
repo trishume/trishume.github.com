@@ -8,8 +8,7 @@ tags: [slate,configuration,mac,tutorial]
 ---
 {% include JB/setup %}
 
-**Note: if you already know what Slate is and what it can do you can skip
-to [Configuration](#configuration).**
+**Edit: I've recently switched to using [Mjolnir](http://mjolnir.io) and have posted [a new tutorial](/howto/2014/12/02/using-mjolnir-an-extensible-osx-window-manager/) on that.**
 
 Switching windows with the keyboard on Mac OSX is hilariously inefficient: it
 involves repeatedly pressing command+tab through millions of programs until you
@@ -70,7 +69,7 @@ is easier to read the letters. Also note the fancy Slate managed window layout.
 Even though window hints are super fast there are some applications I switch to
 and from so often that I wanted to be able to do it in one shortcut. Luckily,
 Slate had my back. Using Slate's focus command I was able to give my most commonly used programs
-their own switching shortcuts. 
+their own switching shortcuts.
 
 Inspired by [this article](http://stevelosh.com/blog/2012/10/a-modern-space-cadet/), I use a
 program called "PCKeyboard Hack" (ironically mac only) to bind my caps lock key
@@ -241,4 +240,3 @@ keys are the Dvorak home row rather than qwerty.
 
 <script src="https://gist.github.com/4121655.js?file=.slate">
 </script>
-
