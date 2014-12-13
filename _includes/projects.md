@@ -1,6 +1,10 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2014
+- Processed a Wikipedia dump into a Neo4j database using [graphipedia](https://github.com/mirkonasato/graphipedia) on a DigitalOcean
+droplet. Getting the data ready for use at a hackathon someday.
+- Wrote [a DBus service] for finding the locations of interactive objects on the screen, part of a bigger eye tracking project.
+- Wrote [a program](https://github.com/trishume/transience) that allows overlaying dots anywhere on the screen, intended to be used to provide hints for use with an eye tracker.
 - Developed [an algorithm for detecting the noise of lips](https://github.com/trishume/PopClick) popping fairly accurately, intended for UI control uses.
 - Wrote a [window hints module](https://github.com/trishume/mjolnir.th.hints) for [Mjolnir](http://mjolnir.io) for SE hack day.
 - Started using [Spacemacs](https://github.com/syl20bnr/spacemacs) and contributing many PRs, making me the #2 contributor.
