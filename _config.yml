@@ -12,7 +12,7 @@ markdown: kramdown
 #
 
 title : Tristan Hume
-tagline: High school app developer and Ruby enthusiast.
+tagline: University of Waterloo CS Student.
 author :
   name : Tristan Hume
   email : tristan@thume.ca
@@ -123,4 +123,3 @@ JB :
   # and include your custom code. Your custom file must be defined at:
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
-
