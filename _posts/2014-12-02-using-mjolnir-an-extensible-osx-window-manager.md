@@ -8,6 +8,8 @@ tags: [mjolnir,tutorial,configuration]
 ---
 {% include JB/setup %}
 
+**Edit: I am now using [Hammerspoon](http://www.hammerspoon.org/) which is a fork of Mjolnir that is basically the same except it comes with the modules (no luarocks), it's under active development and the naming is slightly different and more consistent. Most of this article still applies.**
+
 Recently I started using the amazing and highly configurable window manager called [Mjolnir](http://mjolnir.io/).
 But really it isn't a window manager, it's an OSX wrapper around a Lua configuration file and event loop that
 has a constellation of modules that allow you to configure all sorts of computer control tasks. The most common use
@@ -121,12 +123,15 @@ hotkey.bind({"ctrl","cmd"},"k",function() hints.appHints(appfinder.app_from_name
 # My Config
 
 My personal config is a bit fancier and more specific to me than you might want to start off with, but you might want to get
-some ideas from it. You can find the latest version [in my dotfiles repo](https://github.com/trishume/dotfiles/blob/master/mjolnir/mjolnir.symlink/init.lua),
+some ideas from it. You can find the latest version [in my dotfiles repo](https://github.com/trishume/dotfiles/blob/master/hammerspoon/hammerspoon.symlink/init.lua),
 but I've included my config at the time of writing later on the page because it will probably be simpler than my
 config at the time you read this.
 
 It has fancy features like rebinding the keys on keyboard layout change (which doesn't always work).
 Probably the best feature is a crappy implementation of something that mimics Slate's support for layouts.
+
+
+**Edit: see [my dotfiles repo](https://github.com/trishume/dotfiles/blob/master/hammerspoon/hammerspoon.symlink/init.lua) for the Hammerspoon version.**
 
 {% highlight lua %}
 -- Load Extensions
