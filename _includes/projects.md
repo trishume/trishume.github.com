@@ -1,9 +1,10 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2014
+- Wrote [a series of scripts](https://github.com/trishume/wikicrush) to transform Wikipedia dumps into a compact binary link graph format that allows efficient graph searches.
 - Wrote a [JS Canvas app](http://github.com/trishume/screentunes) that makes some LCD monitors emit a tone. This made the front page of Reddit from /r/InternetIsBeautiful.
 - Designed and built a series of one key keyboards with RGB leds that emulate blink(1) USB devices.
-- Processed a Wikipedia dump into a Neo4j database using [graphipedia](https://github.com/mirkonasato/graphipedia) on a DigitalOcean
+- Processed a Wikipedia dump into a Neo4j database using [graphipedia](https://github.com/mirkonasato/graphipedia) on a DigitalOcean VPS
 droplet. Getting the data ready for use at a hackathon someday.
 - Wrote [a DBus service] for finding the locations of interactive objects on the screen, part of a bigger eye tracking project.
 - Wrote [a program](https://github.com/trishume/transience) that allows overlaying dots anywhere on the screen, intended to be used to provide hints for use with an eye tracker.
