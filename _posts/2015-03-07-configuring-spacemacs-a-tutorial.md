@@ -13,7 +13,7 @@ You can get started using Spacemacs by following the installation instructions i
 
 # The .spacemacs File
 
-The `~/.spacemacs` file is your main starting point for configuring Spacemacs. If you don't have this file you can install a template pressing `<SPC> : dotspacemacs/install RET` in Spacemacs, where `<SPC>` is space and `RET` is the enter key. At any time you can press `SPC f e d` to edit this file.
+The `~/.spacemacs` file is your main starting point for configuring Spacemacs. If you don't have this file you can install a template pressing `SPC : dotspacemacs/install RET` in Spacemacs, where `SPC` is space and `RET` is the enter key. At any time you can press `SPC f e d` to edit this file.
 
 The template comes with many variables that you can customize and use to set things like font sizes and window preferences. Once you are done editing, save the file and either press `C-c C-c` in the file to reload it or just restart Spacemacs.
 
@@ -35,7 +35,7 @@ Most of these toggles actually enable and disable "minor modes", if you want som
 
 ## dotspacemacs-configuration-layers
 
-This brings us to **configuration layers** the most core concept of Spacemacs. Not all parts of Spacemacs are enabled by default, there are a large number of user contributed "layers" that add packages and configs for things like programming languages, external tools and extra functionality.
+This brings us to **configuration layers** the most core concept of Spacemacs. Not all parts of Spacemacs are enabled by default, there are a large number of user contributed "layers" that add packages and configs for things like programming languages, external tools and extra functionality. Layers specify which packages they want Spacemacs to install for them, how to load the package and often include some default configs to make the package integrate well with the rest of Spacemacs.
 
 The `dotspacemacs-configuration-layers` variable, set in the `dotspacemacs/layers` function near the top of the template is where you specify which layers you want to include. When you find yourself wondering "does Spacemacs come with support for X?" you can simply type `SPC f e h` and search through the built in layers. Once you find one you want to include simply include it in the list in the variable set statement. This is what mine looks like:
 {% highlight lisp %}
@@ -43,11 +43,11 @@ dotspacemacs-configuration-layers '(extra-langs auctex
   company-mode git c-c++ haskell html javascript ruby ycmd
   smex dash colors lua trishume markdown finance)
 {% endhighlight %}
-Yah, I use a lot of layers. And you should too, they're pretty important! You can see staples like "html" and "ruby" as well as fancier functionality ones like "company-mode". Try looking through [the "contrib" directory](https://github.com/syl20bnr/spacemacs/tree/master/contrib) to see all the available contributed layers and their Readme's and source code.
+Yah, I use a lot of layers; you should too, they're pretty important! You can see staples like "html" and "ruby" as well as fancier functionality ones like "company-mode". Try looking through [the "contrib" directory](https://github.com/syl20bnr/spacemacs/tree/master/contrib) to see all the available contributed layers and their Readme's and source code.
 
 # Your Own Layers!
 
-You too could be the author of your very own layer! In fact, you'll likely find you want to after you have used Spacemacs for a while. The most important purpose of layers is adding [MELPA](http://melpa.org/) packages and the configuration and keybindings for them. Don't try and just install packages with the default Emacs package manager like the internet might tell you to do!
+You too could be the author of your very own layer! In fact, you'll likely find you want to after you have used Spacemacs for a while. The most important purpose of layers is adding [MELPA](http://melpa.org/) packages and the configuration and keybindings for them. **Don't** try and just install packages with the default Emacs package manager like the internet might tell you to do!
 
 If you want to install a package you found online, like [2048-game](http://melpa.org/#/2048-game), you'll want to create a layer that includes the package and sets it up. There are a couple of places you can put this layer, which is really just a folder with some emacs lisp files:
 
