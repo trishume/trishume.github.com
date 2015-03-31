@@ -1,6 +1,7 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2014
+- Made [Rate With Science](http://ratewith.science) for the UWaterloo Terrible Hacks hackathon.
 - Wrote [a series of scripts](https://github.com/trishume/wikicrush) to transform Wikipedia dumps into a compact binary link graph format that allows efficient graph searches.
 - Wrote a [JS Canvas app](http://github.com/trishume/screentunes) that makes some LCD monitors emit a tone. This made the front page of Reddit from /r/InternetIsBeautiful.
 - Designed and built a series of one key keyboards with RGB leds that emulate blink(1) USB devices.
