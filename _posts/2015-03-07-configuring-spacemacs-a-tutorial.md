@@ -56,9 +56,9 @@ If you want to install a package you found online, like [2048-game](http://melpa
 This is a folder in the main Spacemacs directory where you can put configuration layers for your own personal use.
 You can create a template layer in this directory using `<SPC> : configuration-layer/create-layer RET`.
 
-The descriptive comments in the template `packages.el` do a pretty good job of explaining what to do. Basically you add the package you want to include to the `yourlayernamehere-packages` list and then create `yourlayernamehere-init-yourpackagenamehere` functions where you use [use-package](https://github.com/jwiegley/use-package) to load the package and set it up. Take a look at [existing layers](https://github.com/syl20bnr/spacemacs/blob/master/contrib%2Ffinance%2Fpackages.el) for examples of how to set up packages and keybindings.
+The descriptive comments in the template `packages.el` do a pretty good job of explaining what to do. Basically you add the package you want to include to the `yourlayernamehere-packages` list and then create `yourlayernamehere/init-yourpackagenamehere` functions where you use [use-package](https://github.com/jwiegley/use-package) to load the package and set it up. Take a look at [existing layers](https://github.com/syl20bnr/spacemacs/blob/master/contrib%2Ffinance%2Fpackages.el) for examples of how to set up packages and keybindings.
 
-Once you have written a layer **you have to load it in .spacemacs** just like any other layer. Add your layer's name to `dotspacemacs-configuration-layers`.
+Once you have written a layer **you have to load it in .spacemacs** just like any other layer. Add your layer's name to `dotspacemacs-configuration-layers` and press `C-c C-c`.
 
 ## dotspacemacs-configuration-layer-path
 
@@ -105,7 +105,7 @@ file in the layer. In here you can just put Emacs Lisp code and functions that w
 
 ### Dependencies
 
-Sometimes you want to hook something in your layer into another package. This is most common for making sure your alayer works well with default packages like smartparens. To do this you'll want to use `eval-after-load`. [Here's an example](https://github.com/syl20bnr/spacemacs/blob/064a598bff56f7cef1ac2ddf1c43684357dde56a/contrib/ansible/packages.el#L24) of a package adding extra functionality to `yaml-mode`.
+Sometimes you want to load something in your layer after another package. This is most common for making sure your layer works well with default packages like smartparens. To do this you'll want to use `eval-after-load`. [Here's an example](https://github.com/syl20bnr/spacemacs/blob/064a598bff56f7cef1ac2ddf1c43684357dde56a/contrib/ansible/packages.el#L24) of a package adding extra functionality to `yaml-mode`.
 
 # Other Information
 
@@ -121,7 +121,7 @@ Most of these layer concepts and mechanics are explained in depth in the massive
 
 ## The Source Code!
 
-If you want deep insight into the workings of Spacemacs you should really take a look at the [source code](https://github.com/syl20bnr/spacemacs) on Github. The main difference between me and the average Spacemacs user is that I have read lots of the source and thus I know a lot about how Spacemacs works. I swear it's really not that complicated, you'll discover that most of Spacemacs is actually just the `spacemacs` layer which is just like any other configuration layer except it is included by default. You can also read the code for the contrib layers for ideas, although the techniques these use might be less consistent since they were written by lots of differnt people, many of them newbies. For a good start I recommend skimming through the [spacemacs/packages.el](https://github.com/syl20bnr/spacemacs/blob/master/spacemacs%2Fpackages.el) file. You can also use `SPC f e h` to search for layers and hit enter to visit their source.
+If you want deep insight into the workings of Spacemacs you should really take a look at the [source code](https://github.com/syl20bnr/spacemacs) on Github. The main difference between me and the average Spacemacs user is that I have read lots of the source and thus I know a lot about how Spacemacs works. I swear it's really not that complicated, you'll discover that most of Spacemacs is actually just the `spacemacs` layer which is just like any other configuration layer except it is included by default. You can also read the code for the contrib layers for ideas, although the techniques these use might be less consistent since they were written by lots of differnt people, many of them newbies. For a good start I recommend skimming through the [spacemacs/packages.el](https://github.com/syl20bnr/spacemacs/blob/master/spacemacs%2Fpackages.el) file. You can also use `SPC f e h` to search for layers and packages and hit enter to visit their readme or source.
 
 # Conclusion
 
