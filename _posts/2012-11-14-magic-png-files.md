@@ -9,7 +9,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-I was shown trick by a friend where an image was posted on a website 
+I was shown trick by a friend where an image was posted on a website
 that displayed one thing in the thumbnail and another in the lightbox.
 <http://funnyjunk.com/channel/ponytime/rainbow+dash/llhuDyy/15#15>
 
@@ -23,7 +23,7 @@ would display a completely different one. One image is always dark and one is
 light.
 
 ### Example:
-![Difference example](https://img.skitch.com/20120427-tjwy5f1gf2xhr9jkfkqi3wxxku.png)
+![Difference example]({{PAGE_ASSETS}}/difference.png)
 
 ### Things that display the dark image:
 
@@ -36,7 +36,7 @@ light.
 - Firefox (and by extension anything that uses libpng)
 - Google Chrome
 
-### This can lead to interesting combos: 
+### This can lead to interesting combos:
 
 - linking the image on facebook can show one image as a thumbnail but a completely different one when the link is clicked.
 - A picture that detects the user's browser. (Chrome/Firefox or Safari)
@@ -58,13 +58,13 @@ and as an executable Ruby gem.
 
 The output images look like this:
 
-![Sample Image](http://f.cl.ly/items/2u1W1J0m2z3N0T0B3K0y/out.png)
+![Sample Image]({{PAGE_ASSETS}}/out.png)
 
 Try downloading it to your computer and then viewing it. Cool eh?
 
 ## How it works
 
-The PNG specification contains a metadata attribute that allows you 
+The PNG specification contains a metadata attribute that allows you
 to specify the gamma to render the image with. This attribute is intended to
 be used to ensure that images look identical on all computers. This is a very
 normal image processing process called [Gamma Correction](http://en.wikipedia.org/wiki/Gamma_correction)
@@ -72,11 +72,11 @@ normal image processing process called [Gamma Correction](http://en.wikipedia.or
 The PNG specification defines the gAMA chunk (the chunk that stores the gamma
 value) to change the image output like so:
 
-  light\_out = image\_sample^(1 / gamma) 
+  light\_out = image\_sample^(1 / gamma)
 
 This scales the image values exponentially based on the reciprocal of the
 gamma value. If the gamma value is around 1 like it normally is this function
-has little noticeable effect. During this process, the lowest brightness value 
+has little noticeable effect. During this process, the lowest brightness value
 for a pixel is 0 and the highest is 1.
 
 If we set the PNG gamma attribute to a very low value, making the exponent
@@ -107,8 +107,8 @@ saved as a PNG file with a gAMA of 0.023.
 ![Grid Pattern]({{PAGE_ASSETS}}/pixelgrid.png)
 
 When the image is displayed in a renderer that supports gamma (Like Firefox/Chrome) the light pixels
-become fairly dark but visible colors and the normal pixels become a grid of dark pixels. 
-When the image is displayed in a renderer that does not support gamma (like Apple/Microsoft rendering) 
+become fairly dark but visible colors and the normal pixels become a grid of dark pixels.
+When the image is displayed in a renderer that does not support gamma (like Apple/Microsoft rendering)
 The untransformed image is shown surrounded by a grid of seemingly white pixels.
 
 ## Installation and Usage
@@ -124,7 +124,7 @@ Next, run the program like this:
 obviously replacing the filenames with your own.
 
 It will combine the images into one image (`out.png`) that will display
-`withgamma.png` when viewed with gamma support (e.g. in Firefox) 
+`withgamma.png` when viewed with gamma support (e.g. in Firefox)
 and `withoutgamma.png` when displayed without gamma support (e.g. As a thumbnail)
 
 ### For more detailed instructions read the [README on Github](http://github.com/trishume/doubleVision)
