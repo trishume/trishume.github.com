@@ -14,10 +14,8 @@ title: Tristan's Site
 - I write iPad apps [like this one for personal finance planning](/stashline/).
 - I've done research on eye tracking and wrote [webcam eye tracking code]({{GITHUB}}/eyeLike).
 - I design and build things like [my custom keyboard](/2014/09/08/creating-a-keyboard-1-hardware/).
-- I am a member of the Ottawa Group of Ruby Enthusiasts and occassionally give [talks](/2013/02/06/ottawa-ruby-lightning-talks/)
-  there.
+- I occassionally give [talks](/2013/02/06/ottawa-ruby-lightning-talks/).
 - I program things and put them on [Github]({{GITHUB}}).
-- I develop [Open Turing](http://tristan.hume.ca/openturing), an open source fork of the Turing language.
 
 # Personal Projects
 
@@ -26,21 +24,20 @@ These are some of my personal software projects.
 [StashLine](/stashline/)
 : An iPad app for personal finance planning.
 
-[Pro](http://github.com/trishume/pro)
-: A Ruby command line tool for managing Git repositories.
-
 [IndexView](/indexView)
 : A web app for visualizing long term stock market data
 
-[The New Open Turing Editor](http://tristan.hume.ca/openturing)
-: An improved implementation of the Turing language, including a new editor written in Qt.
-  I also wrote a [compiler](https://github.com/Open-Turing-Project/OpenTuringCompiler).
+[Rate With Science](http://ratewith.science/)
+: A fun web app for path finding the Wikipedia link graph.
+
+[The Open Turing Compiler](https://github.com/Open-Turing-Project/OpenTuringCompiler)
+: An LLVM-based compiler for [Turing](https://en.wikipedia.org/wiki/Turing_(programming_language)) and an associated Qt-based editor.
+
+[Pro](http://github.com/trishume/pro)
+: A Ruby command line tool for managing Git repositories.
 
 [DoubleVision]({{GITHUB}}/doubleVision)
 : A ruby gem that that manipulates PNG files to create magic thumbnails.
-
-[eyeLike]({{GITHUB}}/eyeLike)
-: A work-in-progress eye tracker that requires only a normal webcam.
 
 # Tristan's Blog
 

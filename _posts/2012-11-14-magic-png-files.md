@@ -25,13 +25,13 @@ light.
 ### Example:
 ![Difference example]({{PAGE_ASSETS}}/difference.png)
 
-### Things that display the dark image:
+### Things that display the light image:
 
 - Thumbnail renderers (Facebook, etc...)
 - Apple png rendering
 - Windows png rendering
 
-### Things that display the light image:
+### Things that display the dark image:
 
 - Firefox (and by extension anything that uses libpng)
 - Google Chrome
