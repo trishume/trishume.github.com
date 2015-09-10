@@ -131,10 +131,10 @@ and `withoutgamma.png` when displayed without gamma support (e.g. As a thumbnail
 
 ## Other Example
 
-![Day and Night](http://f.cl.ly/items/1I291E1a1t2O3S2x2i12/DayNight.png)
+![Day and Night]({{PAGE_ASSETS}}/DayNight.png)
 
 Was generated from:
-![Night](http://f.cl.ly/items/031k170c3k1i1Q0m0A3X/Night.png)
+![Night]({{PAGE_ASSETS}}/Night.png)
 and
-![Day](http://f.cl.ly/items/031k170c3k1i1Q0m0A3X/Day.png)
+![Day]({{PAGE_ASSETS}}/Day.png)
 
