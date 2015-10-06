@@ -1,6 +1,9 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2015
+- Wrote a facial key point tracking based program that [overlays different faces on videos](https://github.com/trishume/faceHack) with OpenCV for [TerribleHack](http://terriblehack.website/).
+- Built a [head tracking mouse](https://github.com/trishume/LookMouse) using a microcontroller and a headset-mounted IMU.
+- Contributed OSX support and [velocity control](https://github.com/uglyDwarf/mickey/pull/5) for the [Mickey](https://github.com/uglyDwarf/mickey) head tracking mouse project.
 - Set up a VPS using [NixOS](http://nixos.org/) for deterministic deployment
 - Wrote a [D library for DBus called ddbus](https://github.com/trishume/ddbus)
 - Made [Rate With Science](http://ratewith.science) for the UWaterloo Terrible Hacks hackathon.
