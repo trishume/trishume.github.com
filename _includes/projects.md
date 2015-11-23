@@ -1,7 +1,10 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2015
+- Started developing a [prototype editor control scheme](https://github.com/trishume/SublimeTect) based around palm keys on fancy keyboards.
+- Deployed [Rate With Science](http://ratewith.science) deterministically [using NixOS](https://github.com/trishume/nixfiles/blob/master/rate-with-science.nix) to a VPS using a Nix-based Heroku-like workflow.
 - Wrote a facial key point tracking based program that [overlays different faces on videos](https://github.com/trishume/faceHack) with OpenCV for [TerribleHack](http://terriblehack.website/).
+- Wrote [an election simulator game](http://devpost.com/software/electioneering-the-game) for [Hack The North 2015](http://hackthenorth.com/).
 - Built a [head tracking mouse](https://github.com/trishume/LookMouse) using a microcontroller and a headset-mounted IMU.
 - Contributed OSX support and [velocity control](https://github.com/uglyDwarf/mickey/pull/5) for the [Mickey](https://github.com/uglyDwarf/mickey) head tracking mouse project.
 - Set up a VPS using [NixOS](http://nixos.org/) for deterministic deployment
@@ -23,7 +26,7 @@ droplet. Getting the data ready for use at a hackathon someday.
 - Started using [Spacemacs](https://github.com/syl20bnr/spacemacs) and contributing many PRs, making me the #2 contributor.
 - Finished the VeloType implementation for [my keyboard](/2014/09/08/creating-a-keyboard-1-hardware/), started practicing.
 - Started learning Emacs and contributing daily to open source Emacs projects like [Spacemacs](https://github.com/syl20bnr/spacemacs).
-- Participated in [Hack The North](http://hackthenorth.com/) and developed [Handquake](http://handquake.me/).
+- Participated in [Hack The North](http://hackthenorth.com/) and developed [Handquake](http://devpost.com/software/handquake).
 - Wrote [a command line tool](https://github.com/trishume/watcard-cli) for Waterloo Watcard info.
 - Started attending the University of Waterloo.
 - Built the electronics and firmware for [my DIY keyboard](/2014/09/08/creating-a-keyboard-1-hardware/).
