@@ -1,5 +1,11 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
+## 2016
+- Wrote a simple bond trading and arbitrage bot in a day with a team for [a competition](http://eth1-waterloo.janestreet.com/), in [D](http://dlang.org), a language which my team members didn't know and I had very little practice in.
+- Scraped and generated [a Dash docset](https://github.com/trishume/d-vibed-docset) for [Vibe.d](http://vibed.org/).
+- Rewrote [Rate With Science](http://ratewith.science) in the [D](http://dlang.org) language. See the [Github release](https://github.com/trishume/ratewithscience/releases/tag/v3.0).
+- Prototyped a pointing method fusing eye tracking and head pose tracking in order to compete with both the speed and accuracy of a standard mouse while not requiring a user's hands. Done as part of a research term in the [UWaterloo HCI lab](http://hci.cs.uwaterloo.ca/).
+
 ## 2015
 - Started developing a [prototype editor control scheme](https://github.com/trishume/SublimeTect) based around palm keys on fancy keyboards.
 - Deployed [Rate With Science](http://ratewith.science) deterministically [using NixOS](https://github.com/trishume/nixfiles/blob/master/rate-with-science.nix) to a VPS using a Nix-based Heroku-like workflow.
@@ -8,7 +14,9 @@ This is a list of the things I have worked on and am currently working on. It is
 - Built a [head tracking mouse](https://github.com/trishume/LookMouse) using a microcontroller and a headset-mounted IMU.
 - Contributed OSX support and [velocity control](https://github.com/uglyDwarf/mickey/pull/5) for the [Mickey](https://github.com/uglyDwarf/mickey) head tracking mouse project.
 - Set up a VPS using [NixOS](http://nixos.org/) for deterministic deployment
+- Generated a [Dash docset for D](https://github.com/trishume/d-phobos-docset) and contributed it to Dash.
 - Wrote a [D library for DBus called ddbus](https://github.com/trishume/ddbus)
+- Rewrote [Rate With Science](http://ratewith.science) in the [Nim](http://nim-lang.org/) language. See the [Github release](https://github.com/trishume/ratewithscience/releases/tag/v2.0).
 - Made [Rate With Science](http://ratewith.science) for the UWaterloo Terrible Hacks hackathon.
 - Wrote [a series of scripts](https://github.com/trishume/wikicrush) to transform Wikipedia dumps into a compact binary link graph format that allows efficient graph searches.
 - Wrote a [JS Canvas app](http://github.com/trishume/screentunes) that makes some LCD monitors emit a tone. This made the front page of Reddit from /r/InternetIsBeautiful.
