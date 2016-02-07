@@ -160,7 +160,7 @@ Then I tried sending selector `3` with a value of `15` to turn the lights on, an
 
 That picture is captured with a gain level of around `0` but I noticed in the logs that the tracking server was setting the gain level around `51`. But when I adjusted the gain that high,
 the 8 bit green values used to hold the image started wrapping around leading to a messed up image. This might be the cause of the tracking quality issues I've been having, but the real server
-might do something to mitigate this.
+might do something to mitigate this. **Edit:** I've since discovered that lowering the exposure to compensate negates this issue, so I assume the real server uses a higher frame rate and lower exposure so they need the high gain setting. Another neat thing about the exposure is if you set it really long it can effectively take still pictures without the LEDs on.
 
 Next I used the feature of the demo app to save a video to my drive, which interestingly started replacing some frames with pure green, which didn't happen at all in the live preview.
 I later discovered that the 1 minute movie it saved was *10 gigabytes* because it wasn't using any compression. It is possible the dropped frames were my SSD bottlenecking the video capture.
@@ -170,3 +170,14 @@ In the video below you can see me looking at the four corners of my screen, and 
 point I wave my arms around to mark the time. Then I continue adjusting the gain up to maximum.
 
 <iframe width="660" height="495" src="https://www.youtube.com/embed/8CguH2EJqUo" frameborder="0" allowfullscreen></iframe>
+
+## Update
+
+After I first published this post I emailed The Eye Tribe with my info and story, and I got some help and info from them.
+It turns out that the eye tracker isn't working in as large of an area as it should (not sure why) so I can only use a 12" diagonal area of my screen instead of the full 24".
+If I use the small area I get much better accuracy, closer to +/- 1cm of jitter and a 0-4cm offset from my true gaze location. This is still not as good accuracy as advertized
+and it works on a much smaller area than advertized, but it is better than before. It is still entirely useless to me though, the accuracy is good enough for my project, but the area is too small.
+Note that I have seen videos of other people achieving the claimed accuracy, it is likely that there is still some special complicating factor with my unit or setup, most customers probably have no issues.
+
+This is post is also not ment to bash The Eye Tribe. They're my second favourite eye tracking company after [Pupil Labs](https://pupil-labs.com/pupil/). Despite their closed source software they are
+still significantly more open than most other eye tracking companies with orders of magnitude lower cost.
