@@ -1,6 +1,9 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2016
+- Made a new [resume](http://thume.ca/resume) using Jekyll to generate multiple different versions from YAML, with a nice design using CSS flexbox.
+- Reverse engineered the USB commands of my [Eye Tribe](http://theeyetribe.com/) eye tracker and used it to make part of a [prototype eye tracking system](https://github.com/trishume/SmartGaze).
+- Wrote low latency high accuracy [audio recognition algorithms](https://github.com/trishume/PopClick) for various mouth noises. Done as part of a research term in the [UWaterloo HCI lab](http://hci.cs.uwaterloo.ca/).
 - Wrote a simple bond trading and arbitrage bot in a day with a team for [a competition](http://eth1-waterloo.janestreet.com/), in [D](http://dlang.org), a language which my team members didn't know and I had very little practice in.
 - Scraped and generated [a Dash docset](https://github.com/trishume/d-vibed-docset) for [Vibe.d](http://vibed.org/).
 - Rewrote [Rate With Science](http://ratewith.science) in the [D](http://dlang.org) language. See the [Github release](https://github.com/trishume/ratewithscience/releases/tag/v3.0).
