@@ -7,6 +7,8 @@ tags: ["reversing", "eye tracking", "UVC", "hardware"]
 ---
 {% include JB/setup %}
 
+**Update:** See bottom of the article for recent progress. I've managed to get a full 10-bit high def video feed and have released example code.
+
 In 2014 I bought an [Eye Tribe eye tracker](http://theeyetribe.com/) hoping to work on some neat eye tracking projects.
 Unfortunately I've never been able to reach the fingertip level accuracy they claim and that I have seen in videos.
 I always get around +/- 5cm (2 inches) or more of jitter. Recently I've been working on eye tracking research again
@@ -181,3 +183,21 @@ Note that I have seen videos of other people achieving the claimed accuracy, it 
 
 This is post is also not ment to bash The Eye Tribe. They're my second favourite eye tracking company after [Pupil Labs](https://pupil-labs.com/pupil/). Despite their closed source software they are
 still significantly more open than most other eye tracking companies with orders of magnitude lower cost.
+
+## Update 2
+
+I've now figured out how to properly retrieve high resolution 60fps video at the full 10 bit depth.
+The tracker has a variety of resolutions available, higher resolutions only work with lower frame rates.
+The highest resolution is 2304x1536 which is available at 27FPS. Some of the resolutions offered are scaled down versions of the full image, whereas others are cropped areas of it.
+In order to get the full 60FPS you have to lower the exposure time, which significantly increases the noiseness of the image.
+
+The pixels are encoded in YUY2 format where the lowest 8 bits of brightness are in the Y component and the highest 2 are in the UV component.
+
+I've created a [project on Github called SmartGaze](https://github.com/trishume/SmartGaze) where I've done a little bit of work on implementing eye tracking algorithms for the Eye Tribe.
+So far I've retrieved the raw feed using [libuvc](https://github.com/ktossell/libuvc), found the eye regions using glints, and then used an implementation of the [Starburst algorithm](http://thirtysixthspan.com/openEyes/software.html)
+to locate the iris ellipse. The repo is released under the GPLv2 but [an earlier commit](https://github.com/trishume/SmartGaze/tree/d8cc7a767f6a451d69905a9d67a95e16d14f401a) containing just the code to read the raw 10 bit feed is released under the MIT license. I may or may not decide to finish this given that I recently got a [Steelseries Sentry](https://steelseries.com/gaming-controllers/sentry-gaming-eye-tracker) that works well for me when I run it in a Windows VM and [pipe the data over UDP](https://gist.github.com/trishume/b25492f25fc8ebe01dd9) to my mac.
+
+Here's a video of the raw feed. The fact that you can hardly see the pupils in this video is a product of how I reduced the 10 bit image down to 8 bits, as well as not setting the PU_GAIN UVC control.
+More recent commits of SmartGaze use a much brighter video, but one that washes out details of the face.
+
+<iframe width="660" height="495" src="https://www.youtube.com/embed/nfCrLg9DnGc" frameborder="0" allowfullscreen></iframe>
