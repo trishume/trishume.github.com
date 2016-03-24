@@ -6,6 +6,7 @@ category: projects
 tags:
 - compsci
 - eyeLike
+- eye tracking
 ---
 {% include JB/setup %}
 
