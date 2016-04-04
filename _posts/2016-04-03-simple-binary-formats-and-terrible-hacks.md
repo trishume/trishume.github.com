@@ -12,7 +12,7 @@ Last weekend me and my friend [Marc](http://mlht.ca/) went to [TerribleHack III]
 
 ![Dayder]({{PAGE_ASSETS}}/dayder.png)
 
-The coolest part of Dayder is how fast it is. All the DOM and JS Canvas rendering code is custom built for rendering hundreds of graphs in milliseconds. Marc and I also designed a custom simple binary format for storing time series data in a compact way. We called the format [btsf™](https://github.com/trishume/dayder/blob/master/format.md) and it is a key reason why our app can quickly send tons of time series data sets to the client as well as store them on the server in a compact way. All 6591 time series fit in less than 1 megabyte of data, allowing them all to be sent to the client for instantaneous filtering.
+The coolest part of Dayder is how fast it is. All the DOM and JS Canvas rendering code is custom built for rendering hundreds of graphs in milliseconds. Marc and I also designed a custom simple binary format for storing time series data in a compact way. We called the format [btsf](https://github.com/trishume/dayder/blob/master/format.md) and it is a key reason why our app can quickly send tons of time series data sets to the client as well as store them on the server in a compact way. All 6591 time series fit in less than 1 megabyte of data, allowing them all to be sent to the client for instantaneous filtering.
 
 The following week I gave a short talk at a UWaterloo CS Club event about simple binary formats and how they can make your project faster, easier and cooler:
 
