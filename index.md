@@ -25,7 +25,7 @@ These are some of my personal software projects.
 : An iPad app for personal finance planning.
 
 [IndexView](/indexView)
-: A web app for visualizing long term stock market data
+: A web app for visualizing long term stock market data.
 
 [Rate With Science](http://ratewith.science/)
 : A fun web app for path finding the Wikipedia link graph.
@@ -38,6 +38,9 @@ These are some of my personal software projects.
 
 [DoubleVision]({{GITHUB}}/doubleVision)
 : A ruby gem that that manipulates PNG files to create magic thumbnails.
+
+[Dayder](http://dayder.thume.ca/)
+: A fun web app for finding spurious correlations in mortality data.
 
 # Tristan's Blog
 
