@@ -1,6 +1,7 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2016
+- Participated in the [Google Code Jam](https://code.google.com/codejam) qualification round and the 2016 Waterloo Google Games.
 - Wrote a high speed & accuracy [webcam marker tracker](https://github.com/trishume/SmartHeadTracker) with OpenCV and [Halide](http://halide-lang.org/). Done as part of a research term in the [UWaterloo HCI lab](http://hci.cs.uwaterloo.ca/).
 - Gave a talk at a UWaterloo CS Club event on [simple binary formats](/2016/04/03/simple-binary-formats-and-terrible-hacks/).
 - Made [Dayder](http://dayder.thume.ca/), a spurious correlation finding web app, at [TerribleHack III](https://medium.com/@tau/terriblehack3-1164c2541c3f) with [Marc Mailhot](http://mlht.ca/).
