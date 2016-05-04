@@ -6,7 +6,7 @@ title: Tristan's Site
 {% capture GITHUB %}http://github.com/{{site.author.github}}{% endcapture %}
 
 > I am a Canadian student developer interested in programming, finance and electronics.
-> I write iPad, Ruby, Qt and Rails apps for fun, work and homework.
+> I write iPad, Ruby, Qt, Rust and JS apps for fun, work and homework.
 > I'm currently studying CS at the University of Waterloo.
 
 # About Tristan
@@ -40,7 +40,7 @@ These are some of my personal software projects.
 : A ruby gem that that manipulates PNG files to create magic thumbnails.
 
 [Dayder](http://dayder.thume.ca/)
-: A fun web app for finding spurious correlations in mortality data.
+: A fun web app for quickly finding spurious correlations in 390,000+ data sets.
 
 # Tristan's Blog
 

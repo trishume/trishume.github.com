@@ -1,6 +1,7 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2016
+- Optimized [Dayder](http://dayder.thume.ca/) to quickly handle the full 380,000+ data sets of [FRED](https://research.stlouisfed.org/fred2/) by using caching and optimized server side filtering. Also deployed it with [NixOS](https://github.com/trishume/nixfiles/blob/master/pkgs/dayder.nix).
 - Participated in the [Google Code Jam](https://code.google.com/codejam) qualification round and the 2016 Waterloo Google Games.
 - Wrote a high speed & accuracy [webcam marker tracker](https://github.com/trishume/SmartHeadTracker) with OpenCV and [Halide](http://halide-lang.org/). Done as part of a research term in the [UWaterloo HCI lab](http://hci.cs.uwaterloo.ca/).
 - Gave a talk at a UWaterloo CS Club event on [simple binary formats](/2016/04/03/simple-binary-formats-and-terrible-hacks/).
