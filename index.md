@@ -33,14 +33,17 @@ These are some of my personal software projects.
 [The Open Turing Compiler](https://github.com/Open-Turing-Project/OpenTuringCompiler)
 : An LLVM-based compiler for [Turing](https://en.wikipedia.org/wiki/Turing_(programming_language)) and an associated Qt-based editor.
 
-[Pro](http://github.com/trishume/pro)
-: A Ruby command line tool for managing Git repositories.
+[Dayder](http://dayder.thume.ca/)
+: A fun web app for quickly finding spurious correlations in 390,000+ data sets.
+
+[Syntect](https://github.com/trishume/syntect)
+: A Rust library for fast high quality syntax highlighting using Sublime Text's grammar format.
 
 [DoubleVision]({{GITHUB}}/doubleVision)
 : A ruby gem that that manipulates PNG files to create magic thumbnails.
 
-[Dayder](http://dayder.thume.ca/)
-: A fun web app for quickly finding spurious correlations in 390,000+ data sets.
+[Pro](http://github.com/trishume/pro)
+: A Ruby command line tool for managing Git repositories.
 
 # Tristan's Blog
 
