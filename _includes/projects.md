@@ -1,6 +1,7 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2016
+- Packaged a [Hammerspoon Module](https://github.com/trishume/thume.popclick) that uses my custom low-latency audio recognizer to let me scroll down hands-free by saying "ssss".
 - Wrote [a Rust library for high quality syntax highlighting](https://github.com/trishume/syntect) using Sublime Text's grammar format.
 - Wrote a [project source code visualizer](https://github.com/trishume/faiyels) that renders all the code in a project using Rust and gfx-rs.
 - Optimized [Dayder](http://dayder.thume.ca/) to quickly handle the full 380,000+ data sets of [FRED](https://research.stlouisfed.org/fred2/) by using caching and optimized server side filtering. Also deployed it with [NixOS](https://github.com/trishume/nixfiles/blob/master/pkgs/dayder.nix).

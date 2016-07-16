@@ -5,8 +5,8 @@ title: Tristan's Site
 {% include JB/setup %}
 {% capture GITHUB %}http://github.com/{{site.author.github}}{% endcapture %}
 
-> I am a Canadian student developer interested in programming, finance and electronics.
-> I write iPad, Ruby, Qt, Rust and JS apps for fun, work and homework.
+> I am a student developer interested in programming, finance and electronics.
+> I write Ruby, iPad, Rust, Qt and JS apps for fun, work and homework.
 > I'm currently studying CS at the University of Waterloo.
 
 # About Tristan
