@@ -29,7 +29,7 @@ Here is a video he made of his algorithm in action:
 
 **Before continuing I recommend that you read [his paper](http://www.inb.uni-luebeck.de/publikationen/pdfs/TiBa11b.pdf).**
 
-#Implementing the algorithm
+# Implementing the algorithm
 
 After implementing the algorithm detailed in the paper using OpenCV functions my implementation had horrendous accuracy and many problems. These were partially caused by the paper not specifying some important numbers.
 
