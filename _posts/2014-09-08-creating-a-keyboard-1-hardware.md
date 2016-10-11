@@ -12,6 +12,8 @@ This summer I set myself the task of designing and building a chording keyboard 
 
 To spoil the ending I managed to build a pretty sweet keyboard that I am using to type this very article. However, I haven't written the chording software yet so I'm currently using it as a Dvorak keyboard.
 
+**Update 10/10/2016:** I've been using the keyboard for 2 years now. I wrote the [chording firmware](https://github.com/trishume/PolyType) and tried learning it but after a month I was still typing at 3wpm. But I did end up really liking the keyboard layout used normally so it's still my primary keyboard. I've also upgraded the hardware with [cool RGB LEDs](https://twitter.com/trishume/status/774977727342444544). I use the palm keys with a [set of Sublime Text shortcuts](https://github.com/trishume/SublimeTect) that is like VIM but the mode is set by the physical state of my palms. This integrates better with the mouse, I never type in the wrong mode, and it's better for quickly doing something in another mode.
+
 ![Finished Keyboard]({{PAGE_ASSETS}}/finished-3.jpg)
 
 
@@ -164,6 +166,8 @@ After a while I had a look and feel complete version of my keyboard, now I just 
 For the second month of the summer I worked at Shopify and every day when I got home I worked on designing the electronics and soldering up the key matrix and controller. There's a lot more to tell about this process but this post is already 2,500 words.
 
 _**Coming eventually**, Part 2 "Designing and Building a Keyboard: The Mind", in which I will detail the wiring, controller and basic firmware that make bring it to the functional state it is in now._
+
+**Update 10/10/2016:** Sorry I still haven't written the other parts. The firmware is [on Github](https://github.com/trishume/PolyType) though. The electronics is a key matrix connected to a Teensy 3.1 and a MCP23017 multiplexer for more outputs.
 
 ![Case]({{PAGE_ASSETS}}/electronics.jpg)
 
