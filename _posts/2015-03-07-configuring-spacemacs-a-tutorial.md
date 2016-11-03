@@ -58,7 +58,7 @@ If you want to install a package you found online, like [2048-game](http://melpa
 This is a folder in the main Spacemacs directory where you can put configuration layers for your own personal use.
 You can create a template layer in this directory using `<SPC> : configuration-layer/create-layer RET`.
 
-The descriptive comments in the template `packages.el` do a pretty good job of explaining what to do. Basically you add the package you want to include to the `yourlayernamehere-packages` list and then create `yourlayernamehere-init-yourpackagenamehere` functions where you use [use-package](https://github.com/jwiegley/use-package) to load the package and set it up. Take a look at [existing layers](https://github.com/syl20bnr/spacemacs/blob/master/layers%2Ffinance%2Fpackages.el) for examples of how to set up packages and keybindings.
+The descriptive comments in the template `packages.el` do a pretty good job of explaining what to do. Basically you add the package you want to include to the `yourlayernamehere-packages` list and then create `yourlayernamehere-init-yourpackagenamehere` functions where you use [use-package](https://github.com/jwiegley/use-package) to load the package and set it up. Take a look at [existing layers](https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/finance) for examples of how to set up packages and keybindings.
 
 Once you have written a layer **you have to load it in .spacemacs** just like any other layer. Add your layer's name to `dotspacemacs-configuration-layers`.
 
