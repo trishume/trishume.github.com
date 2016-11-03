@@ -11,7 +11,7 @@ tags: [spacemacs, tutorial, emacs]
 
 A few months ago I switched to using [Spacemacs](https://github.com/syl20bnr/spacemacs) as my text editor of choice. It has great vim keybindings and extensive default configs for a variety of packages. I've become one of the top contributors to Spacemacs and I've learned a few things about configuring it in the process. This post will function as a tutorial to get you started with configuring Spacemacs to your liking.
 
-You can get started using Spacemacs by following the installation instructions in the [readme](https://github.com/syl20bnr/spacemacs) and perusing the in-depth [documentation](https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.md).
+You can get started using Spacemacs by following the installation instructions in the [readme](https://github.com/syl20bnr/spacemacs) and perusing the in-depth [documentation](https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org).
 
 # The .spacemacs File
 
@@ -119,7 +119,7 @@ Please visit the [Gitter chat room](https://gitter.im/syl20bnr/spacemacs) if you
 
 ## The Documentation
 
-Most of these layer concepts and mechanics are explained in depth in the massive [Documentation](https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.md). It also has information on lots of the functionality available in Spacemacs.
+Most of these layer concepts and mechanics are explained in depth in the massive [Documentation](https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org). It also has information on lots of the functionality available in Spacemacs.
 
 ## The Source Code!
 
