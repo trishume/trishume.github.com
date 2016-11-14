@@ -1,6 +1,8 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
 ## 2016
+- Completed the [Shenzhen I/O](http://www.zachtronics.com/shenzhen-io/) programming game. Okay, it's a stretch to say I "worked" on this, but it was super fun and I highly reccomend it.
+- Contributed some UI upgrades to the [hledger-iadd](https://github.com/hpdeifel/hledger-iadd) entry system for Ledger accounting files.
 - Packaged a [Hammerspoon Module](https://github.com/trishume/thume.popclick) that uses my custom low-latency audio recognizer to let me scroll down hands-free by saying "ssss".
 - Wrote [a Rust library for high quality syntax highlighting](https://github.com/trishume/syntect) using Sublime Text's grammar format.
 - Wrote a [project source code visualizer](https://github.com/trishume/faiyels) that renders all the code in a project using Rust and gfx-rs.
