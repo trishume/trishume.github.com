@@ -11,7 +11,7 @@ tags: [spacemacs, tutorial, emacs]
 
 A few months ago I switched to using [Spacemacs](https://github.com/syl20bnr/spacemacs) as my text editor of choice. It has great vim keybindings and extensive default configs for a variety of packages. I've become one of the top contributors to Spacemacs and I've learned a few things about configuring it in the process. This post will function as a tutorial to get you started with configuring Spacemacs to your liking.
 
-You can get started using Spacemacs by following the installation instructions in the [readme](https://github.com/syl20bnr/spacemacs) and perusing the in-depth [documentation](https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.md).
+You can get started using Spacemacs by following the installation instructions in the [readme](https://github.com/syl20bnr/spacemacs) and perusing the in-depth [documentation](https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org).
 
 # The .spacemacs File
 
@@ -58,7 +58,7 @@ If you want to install a package you found online, like [2048-game](http://melpa
 This is a folder in the main Spacemacs directory where you can put configuration layers for your own personal use.
 You can create a template layer in this directory using `<SPC> : configuration-layer/create-layer RET`.
 
-The descriptive comments in the template `packages.el` do a pretty good job of explaining what to do. Basically you add the package you want to include to the `yourlayernamehere-packages` list and then create `yourlayernamehere-init-yourpackagenamehere` functions where you use [use-package](https://github.com/jwiegley/use-package) to load the package and set it up. Take a look at [existing layers](https://github.com/syl20bnr/spacemacs/blob/master/layers%2Ffinance%2Fpackages.el) for examples of how to set up packages and keybindings.
+The descriptive comments in the template `packages.el` do a pretty good job of explaining what to do. Basically you add the package you want to include to the `yourlayernamehere-packages` list and then create `yourlayernamehere-init-yourpackagenamehere` functions where you use [use-package](https://github.com/jwiegley/use-package) to load the package and set it up. Take a look at [existing layers](https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/finance) for examples of how to set up packages and keybindings.
 
 Once you have written a layer **you have to load it in .spacemacs** just like any other layer. Add your layer's name to `dotspacemacs-configuration-layers`.
 
@@ -119,11 +119,11 @@ Please visit the [Gitter chat room](https://gitter.im/syl20bnr/spacemacs) if you
 
 ## The Documentation
 
-Most of these layer concepts and mechanics are explained in depth in the massive [Documentation](https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.md). It also has information on lots of the functionality available in Spacemacs.
+Most of these layer concepts and mechanics are explained in depth in the massive [Documentation](https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org). It also has information on lots of the functionality available in Spacemacs.
 
 ## The Source Code!
 
-If you want deep insight into the workings of Spacemacs you should really take a look at the [source code](https://github.com/syl20bnr/spacemacs) on Github. The main difference between me and the average Spacemacs user is that I have read lots of the source and thus I know a lot about how Spacemacs works. I swear it's really not that complicated, you'll discover that most of Spacemacs is actually just the `spacemacs` layer which is just like any other configuration layer except it is included by default. You can also read the code for the contrib layers for ideas, although the techniques these use might be less consistent since they were written by lots of differnt people, many of them newbies. For a good start I recommend skimming through the [spacemacs/packages.el](https://github.com/syl20bnr/spacemacs/blob/master/spacemacs%2Fpackages.el) file. You can also use `SPC f e h` to search for layers and hit enter to visit their source.
+If you want deep insight into the workings of Spacemacs you should really take a look at the [source code](https://github.com/syl20bnr/spacemacs) on Github. The main difference between me and the average Spacemacs user is that I have read lots of the source and thus I know a lot about how Spacemacs works. I swear it's really not that complicated, you'll discover that most of Spacemacs is actually just the `spacemacs` layer which is just like any other configuration layer except it is included by default. You can also read the code for the contrib layers for ideas, although the techniques these use might be less consistent since they were written by lots of differnt people, many of them newbies. For a good start I recommend skimming through this [packages.el](https://github.com/syl20bnr/spacemacs/blob/master/layers/%2Bdistributions/spacemacs-base/packages.el) file. You can also use `SPC h SPC` to search for layers and hit enter to visit their source.
 
 # Conclusion
 
