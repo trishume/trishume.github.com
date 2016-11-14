@@ -52,8 +52,10 @@ It's well suited for a variety of research, and is the only eye tracker with ama
 
 The [Tobii EyeX](http://www.tobii.com/xperience/) (or the identical Steelseries Sentry) is an incredible consumer eye tracker. One downside is it only works on Windows, but I've gotten around this by running
 the EyeX software in a VMWare Fusion VM and [piping the data to my mac over UDP](https://gist.github.com/trishume/b25492f25fc8ebe01dd9). Two caveats are that in order to switch to the mac and have tracking continue you have to [lock the
-VM's screen resolution](http://dannyman.toldme.com/2014/05/15/vmware-retina-thunderbolt-constant-resolution/). Also if the load gets two high on the VM sometimes the tracker will stop
+VM's screen resolution](http://dannyman.toldme.com/2014/05/15/vmware-retina-thunderbolt-constant-resolution/). Also if the load gets too high on the VM sometimes the tracker will stop
 and take a couple seconds before it automatically restarts, this is only an issue in VMs and can be mostly avoided by running no other programs on the Windows VM.
+
+**Edit 2016/11/14:** Tobii has now announced the [Eye Tracker 4C](https://tobiigaming.com/eye-tracker-4c/) which is their new consumer eye tracker. It includes an ASIC for on-device processing which lowers CPU load and only needs USB 2.0 bandwidth. This probably solves the USB 3.0 VM crashing issues I experienced. It also has head tracking, but I have no idea how accurate it is. I may get one when it comes out, if so I'll write about it here.
 
 #### Pros:
 - Extremely robust to head motion: your calibration will last practically forever. You can move your head around as much as you want and still maintain decent (2-3 degrees accuracy) tracking.
@@ -90,7 +92,7 @@ As such, I've restricted my Pros and cons to discussing other issues than accura
 # Tobii X2-30: Great but overpriced
 
 My lab has a [Tobii Pro X2-30](http://www.tobiipro.com/product-listing/tobii-pro-x2-30/) which in many ways is similar to the Tobii EyeX. The main hardware difference is that it uses two cameras instead of one, but I assume they are
-lower resolution since it only needs USB 2.0 bandwidths instead of USB 3.0. The main legal difference is that you are allowed to record the gaze data with the pro models. The main practical difference is that the X2-30 costs over **50 TIMES** as much. The price is not public and I imagine they quote different prices to different people. I'm not sure if my lab signed any agreements with regards to giving away the price so I'll just say it is somewhere over 50x the price of an EyeX.
+lower resolution since it only needs USB 2.0 bandwidths instead of USB 3.0. The main legal difference is that you are allowed to record the gaze data with the pro models. The main practical difference is that the X2-30 costs over **50 TIMES** as much. The price is not public and I imagine they quote different prices to different people. I'm not sure if my lab signed any agreements with regards to giving away the price so I'll just say we paid somewhere over 50x the price of an EyeX.
 
 The pros/cons and tracking performance are very similar to the Tobii EyeX. Unless you are doing a study where you need to record gaze data, the 50x increase in price is not worth it in my opinion.
 
@@ -99,9 +101,10 @@ The pros/cons and tracking performance are very similar to the Tobii EyeX. Unles
   This means you don't have to calibrate every time you sit down, just keep your one calibration for an arbitrarily long time. The magnetic mount is extremely repeatable so it doesn't need to be recalibrated.
 - Good accuracy: Although the accuracy degrades near corners, in general the tracker gives ~2.0 degrees of accuracy when not using a chin rest, which is quite good and slightly better than the EyeX.
 - Comes with very nice software. The SDK is nice and the software gives you a nice calibration test screen, a very pretty gaze trace, and some handy eye tracking desktop enhancements like warping your mouse cursor.
+- The new Analytics SDK 3.0 allows use with OSX and Linux.
 
 #### Cons:
-- Windows only.
+- The nice EyeX software it works with is Windows-only.
 - Only specified to work on relatively small monitors by modern standards (22" diagonal).
 - I found that sometimes the tracked gaze would jump for half a second or so to a wildly inaccurate position ~15cm away from where I was looking. This is bad because it is harder to filter out and distinguish from a saccade.
 - Crazy expensive. This is not unique to Tobii. Basically every eye tracker intended for research (except the Pupil) is absurdly overpriced. Many research eye trackers cost in the range of $50,000.
