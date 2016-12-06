@@ -59,11 +59,11 @@ Here's a partial list:
 - Oniguruma: Fallback for fancy regexes the custom engine can't handle
 - Boost
 - Google breakpad
-- CryptoPP/Crypto++
+- CryptoPP/Crypto++ (in old versions, now replaced with libtomcrypt)
 - leveldb: Used to store symbol indexes I think
 - snappy: Fast compression, not sure what it is used for
 - Hunspell
-- YAML
+- YAML (apparently actually yaml-cpp)
 - lzma
 - Hunzip: Probably what is used to unzip the zipped up package format
 - libtomcrypt
@@ -97,3 +97,10 @@ If there's anything you're interested in about Sublime Text's internals, leave a
 comment and I might take a look. Especially if it's a tiny behaviour improvement that
 isn't accessible to the plugin API but might be possible to patch in the binary,
 with a debugger, or with something like [Frida](http://www.frida.re/).
+
+## Edit: Updates
+
+After this article was posted on [Hacker News](https://news.ycombinator.com/item?id=13100560)
+and cross-posted to [the Sublime forum](https://forum.sublimetext.com/t/disassembling-sublime-text/24824),
+@wbond, the Package Control maintainer and new Sublime developer replied with some corrections and new info.
+I've updated the library listing above with the new info.
