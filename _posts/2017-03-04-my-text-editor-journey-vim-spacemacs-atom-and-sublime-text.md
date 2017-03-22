@@ -110,7 +110,7 @@ For a month I also tried out Atom. I pretty much replicated my Sublime Text
 setup with the equivalent Atom plugins, plus some extras that only Atom offered.
 However, I preferred Sublime's speed. It wasn't just that some editing operations
 had a bit of latency, but that Sublime could offer features that Atom couldn't
-because of it's speed. For example Sublime's "open in project" panel instantly
+because of its speed. For example Sublime's "open in project" panel instantly
 previews the files as you type because it can load files in milliseconds, and search
 is incremental by default.
 
@@ -203,7 +203,6 @@ characters that you don't want to escape), case insensitively.
 - Narrow it down to a glob of certain files without re-typing my query.
 - Edit my query slightly to refine the results, again without re-typing it.
 - Replace the content of all those occurences once satisfied.
-- Find "Save All" in the "File" menu to save all edits, I don't remember the shortcut.
 
 I tried to do this in Emacs once, and had to spend a ton of Googling and investigating `M-x` listings:
 
@@ -212,7 +211,6 @@ I tried to do this in Emacs once, and had to spend a ton of Googling and investi
 - Hope that the command is Helm-based so I can edit my query, otherwise re-type everything to narrow it down.
 - Look up how to replace in project without regex, oops it's an entirely different command from searching.
 - Re-enter everything into the new command and run it.
-- Look up how to save all modified buffers, I don't remember the shortcut.
 
 ![Sublime's fancy find dialog]({{PAGE_ASSETS}}/sublime_find.png)
 
