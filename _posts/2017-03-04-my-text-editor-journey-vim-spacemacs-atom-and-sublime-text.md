@@ -400,8 +400,41 @@ Visual Studio Code looks pretty awesome though, if I was writing Javascript I'd 
 excellent tooling integration, but for less common languages it doesn't look any better than Sublime.
 
 I wrote this post because I often find myself justifying my use of Sublime Text to
-Vim and Emacs users. They often look down on Sublime users as people who haven't put
+Vim and Emacs users. They often look at Sublime users as people who just haven't put
 in the effort to learn a *real power user's text editor*. They're confused when they learn
 that I have tried Vim and Emacs extensively and still choose to use what they see as
 a basic newbie editor. I hope this post explains why Sublime is an excellent choice
 for a highly customizable power user's text editor.
+
+## Edit: FAQ
+
+Some responses to questions I've seen raised after posting this:
+
+### You just haven't learned Vim. A real Vim user could do long distance text selection faster.
+
+I think I know vim quite well, I've been using vim bindings for 5 years now across varying editors. I know almost all Vim bindings.
+
+How about a test? Suppose my cursor is on line 198 of [this file](https://github.com/trishume/syntect/blob/ef3b99b06b72e89b7a0036969897751034422f5a/src/parsing/parser.rs) I want to copy `match_pat.has_captures && cur_level.captures.is_some()` on line 172. If you give me an efficient sequence of vim bindings for that movement I can tell you if I know what everything does without looking it up.
+
+I think a more apt criticism would be that I think too slowly to use Vim. I can figure out that "26j4wy10e" does what I want, and at my normal english characters/second typing speed that is faster than doing the selection with my mouse. However, when I actually try and do that without figuring it out ahead of time I take longer to read, count and figure out the right numbers and actions, then type the individual characters (which due to muscle memory for english I'm slower at than typing english). I end up being slower than the mouse, and with a higher mental load.
+
+You could say I just need to "git gud" and practice, but if practicing for hours a day for 5 years doesn't get me to the point that I'm better than the mouse, I think it's time to say that maybe it isn't a lack of practice. More likely it's an innate skill difference, processing speed, counting, typing coordination, or a combination of the above. I do actually use Vim bindings a lot of the time, I know them well, and I know when it is faster for me to use the mouse.
+
+That all presumes that there exists a substantial number of people who are faster in practice at long distance text selection with vim shortcuts than I am with the mouse. I have yet to see someone where I can confidently say that is the case, and I've watched a reasonable number of vim users. Some are within the margin of error where I would have to do a timed race with a stopwatch, but I haven't seen any that are clearly meaningfully faster. I guess everyone I've seen using vim (including many 5+ year users) could be a "vim n00b", but that sounds a bit "no true scotsman"-like.
+
+### If you used stock Emacs without all the bloat it would be faster and stable.
+
+Yes it would have been faster and more stable, however then I would just complain about the lack of a bunch of features from Sublime that I like, and the terrible keybindings.
+
+I also have minor RSI issues, I'm not keen to turn them into major RSI issues by using Emacs bindings.
+
+### You can only switch directly to a few tabs, buffer switching is logarithmic time for many buffers.
+
+Yes, but tabs are more like a cache. Like I mention, when it isn't easy to hit the numbered shortcut to
+jump directly to a tab I use "Goto Anything" to narrow directly to the file, which takes the same amount
+of time buffer switching would.
+
+Tabs are just an additional speedup in the case that I'm switching to one of my ~6 most recently/frequently
+used files. I'd say it's the case that over 95% of my switches are to one of my tabs, but only at most 50%
+of my switches are to my most recently used other file, there's gains to be had over Emacs in that extra 45%
+of switches that become fast.
