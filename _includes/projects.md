@@ -1,5 +1,16 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
+## 2017
+
+- Started working on [Vizwl](https://github.com/trishume/vizwl) a simple program for easily creating debug visualizations from any language.
+- Helped start [NeoVintageous](https://github.com/NeoVintageous/NeoVintageous), a fork of the abandoned Sublime Vim emulation package, and contributed some fixes and updates.
+- Fixed a whole bunch of parsing bugs in [syntect](https://github.com/trishume/syntect) found by running the Sublime Text syntax tests with it.
+- Gave a talk on advanced Unix commands, programs and scripting for a CS Club "Unix 201" event I ran.
+- Gave a talk on how text editors do syntax highlighting for "Alt+Tab", a short talks event I ran for the CS Club.
+- Volunteered as the Vice President of the [Waterloo Computer Science Club](csclub.uwaterloo.ca). Organized and ran a number of events for them.
+- Experimentally [ported syntect to fancy-regex](https://github.com/trishume/syntect/pull/34), a pure Rust regex library that avoids catastrophic backtracking.
+- Implemented a bunch of operating system features like pids, forking, exec, allocation and paging for the UWaterloo CS350 class
+
 ## 2016
 - Completed the [Shenzhen I/O](http://www.zachtronics.com/shenzhen-io/) programming game. Okay, it's a stretch to say I "worked" on this, but it was super fun and I highly recommend it.
 - Contributed some UI upgrades to the [hledger-iadd](https://github.com/hpdeifel/hledger-iadd) entry system for Ledger accounting files.

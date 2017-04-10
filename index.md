@@ -9,7 +9,7 @@ title: Tristan's Site
 > I write Ruby, iPad, Rust, Qt and JS apps for fun, work and homework.
 > I'm currently studying CS at the University of Waterloo.
 
-# About Tristan
+# About Me
 
 - I write iPad apps [like this one for personal finance planning](/stashline/).
 - I've done research on eye tracking and wrote [webcam eye tracking code]({{GITHUB}}/eyeLike).
@@ -45,7 +45,7 @@ These are some of my personal software projects.
 [Pro](http://github.com/trishume/pro)
 : A Ruby command line tool for managing Git repositories.
 
-# Tristan's Blog
+# Recent Blog Posts
 
 <ul class="posts">
   {% for post in site.posts limit:10 %}
