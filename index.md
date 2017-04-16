@@ -11,10 +11,11 @@ title: Tristan's Site
 
 # About Me
 
-- I write iPad apps [like this one for personal finance planning](/stashline/).
-- I've done research on eye tracking and wrote [webcam eye tracking code]({{GITHUB}}/eyeLike).
+- I write open source [web](/indexView) [apps](http://ratewith.science/), [libraries](https://github.com/trishume/syntect) and [iPad apps](/stashline/).
+- I frequently do [internships](/resume) at a variety of companies.
+- I've done [research on eye tracking]({{GITHUB}}/PolyMouse) and wrote [webcam eye tracking code]({{GITHUB}}/eyeLike).
 - I design and build things like [my custom keyboard](/2014/09/08/creating-a-keyboard-1-hardware/).
-- I occassionally give [talks](/2013/02/06/ottawa-ruby-lightning-talks/).
+- I occassionally give [talks](/talks/).
 - I program things and put them on [Github]({{GITHUB}}).
 
 # Personal Projects
