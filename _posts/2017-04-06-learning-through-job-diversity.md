@@ -3,7 +3,7 @@ layout: post
 title: "Things I've Learned Doing Internships"
 description: "What I've learned by working at many different companies"
 category:
-tags: []
+tags: [experience,internships]
 ---
 {% include JB/setup %}
 
