@@ -2,6 +2,8 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2017
 
+- Made [a small web app](http://thume.ca/normal) for doing common normal distribution related calculations.
+- Started working on [the Xi text editor](https://github.com/google/xi-editor/commits?author=trishume) for my internship at Google.
 - Started working on [Vizwl](https://github.com/trishume/vizwl) a simple program for easily creating debug visualizations from any language.
 - Helped start [NeoVintageous](https://github.com/NeoVintageous/NeoVintageous), a fork of the abandoned Sublime Vim emulation package, and contributed some fixes and updates.
 - Fixed a whole bunch of parsing bugs in [syntect](https://github.com/trishume/syntect) found by running the Sublime Text syntax tests with it.
