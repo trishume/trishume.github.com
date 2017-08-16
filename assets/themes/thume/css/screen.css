@@ -264,3 +264,9 @@ ul.posts {
   #related h2 {
     margin-bottom: 1em;
   }
+
+@media only print {
+    .title, #related, #disqus_thread {
+      display: none;
+    }
+}
