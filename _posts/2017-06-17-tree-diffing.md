@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optimizing a Tree Diff Algorithm Using Dynamic Programming and A*"
+title: "Designing a Tree Diff Algorithm Using Dynamic Programming and A*"
 description: ""
 category:
 tags: [internships, compsci]
