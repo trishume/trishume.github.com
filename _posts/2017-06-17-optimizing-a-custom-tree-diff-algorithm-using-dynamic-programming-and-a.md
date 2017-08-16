@@ -38,25 +38,25 @@ Jane Street has a lot of config files for their trade handling systems which use
     (power 9))))
 {% endhighlight %}
 
-The semantics are that any `:date-switch` block has its branches checked against the current date and the children of the correct branch used in place of the `:date-switch` in the config structure. Note that each branch can contain multiple sub-trees.
+The semantics are that any `:date-switch` block has its branches checked against the current date and the children of the correct branch are used in place of the `:date-switch` in the config structure. Note that each branch can contain multiple sub-trees.
 
 Now, just that small example took a while for me to type and get the indentation correct. People at Jane Street are frequently making edits where they just want to quickly change some numbers but have to make sure they get the syntax and indentation right and have everything still look nice. This is begging for automation!
 
-So they asked me to write a tool that would allow people to just edit the file and run a command, and it would automatically scope their changes to the current day, or a date they specify, by detecting the differences between the current contents and the committed contents in version control.
+So they asked me to write a tool that would allow people to just edit the file and run a command, and it would automatically scope their changes to the current day, or a date they specify, by detecting the differences between the current contents on disk and the committed contents in version control.
 
 When I first heard the problem, it sounded pretty easy and I thought I'd be done within a few days, but I discovered a number of catches after starting and it ended up taking 5 weeks. This sounds like we maybe should have abandoned it when we discovered how complex it was, but given how much time expensive people were spending doing these edits, sometimes under time pressure when every extra minute had a high cost, it was worth it to get it right.
 
 The first thing I discovered is that they had a library for parsing and serializing s-expressions while preserving indentation and comments, but it didn't cleanly handle making structural modifications to the parse tree. Before even starting the rest of the project I had to write a library that provided a better data model for doing this and having the result be nicely indented.
 
-Next, the real syntax for these date switch blocks is more complicated than my description and has a static constraint where the branches must cover every date in the current context and no more, including when nested inside other switches. I also didn't want edits to `:date-switch` blocks to themselves be scoped to a date, since that would create invalid syntax. This required I parse my earlier style-preserving representation into one that computed date context and represented `:date-switch` blocks specially in the [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) as well as transform back from my representation to the one I could output.
+Next, the real syntax for these date switch blocks is more complicated than my description and has a static constraint where the branches must cover every date in the current context and no more, including when nested inside other switches. I also didn't want edits to `:date-switch` blocks to themselves be scoped to a date, since that would create invalid syntax. This required I parse my earlier style-preserving representation into one that computed date context and represented `:date-switch` blocks specially in an [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) as well as transform back from my representation to the one I could output.
 
-Now finally I was ready to start on the actual algorithm. The basics of what I had to do was take two trees and wrap differing sub-trees in a `:date-switch` block with the old contents in one branch and the new contents in the other branch. The thing is, there are many ways to do this. The switch can be placed at many different levels and there may be multiple edits and it's not specified how to group them. Technically it could just add a `:date-switch` at the top level, but that wouldn't be very satisfying, just like how technically the `diff` command could just output the entire old file prefixed with `-` and then the new file prefixed with `+` but then nobody would use it. I needed an algorithm that gave reasonable-looking and compact changes for real-world edits. It shouldn't double the file size in an enormous `:date-switch` just because I changed a single number.
+Now finally I was ready to start on the actual algorithm. The basic task my script had to do was take two trees and wrap differing sub-trees in a `:date-switch` block with the old contents in one branch and the new contents in the other branch. The thing is, there are many ways to do this. The switch can be placed at many different levels and there may be multiple edits and it's not specified how to group them. Technically it could just add a `:date-switch` at the top level with the old file in one branch and the new file in another, but that wouldn't be very satisfying, just like how technically the `diff` command could just output the entire old file prefixed with `-` and then the new file prefixed with `+`, but then nobody would use it. I needed an algorithm that gave reasonable-looking and compact changes for real-world edits. It shouldn't double the file size in an enormous `:date-switch` when only a single number changed.
 
 ## The Heuristic Approach
 
 If you just want to read about the optimal algorithm and not why one was necessary you can [skip this section](#a-tree-diff-optimizer).
 
-First I came up with a simple algorithm that I thought would work in almost all real-world cases. I simply recursively walked down the tree until I got to either a leaf that was different or a node that had a different number of children, and then it would put a `:date-switch` at that level.
+First, I came up with a simple algorithm that I thought would work in almost all real-world cases. I simply recursively walked down the tree until I got to either a leaf that was different or a node that had a different number of children, and then it would put a `:date-switch` at that level.
 
 This didn't produce the most satisfying results, it was okay for changes to leaves, but as soon as you added or removed a child from a list, it would duplicate most of the list when it could have taken advantage of the ability to have a different number of children in each branch.
 
@@ -86,7 +86,7 @@ When we really would have preferred:
  baz)
 {% endhighlight %}
 
-Luckily, this was easy enough to solve since Jane Street already had an [OCaml library implementing the Patience Diff algorithm](https://github.com/janestreet/patience_diff) for arbitrary lists of comparable OCaml types. When I had two lists of differing length, I simply applied the Patience Diff algorithm and placed `:date-switch` blocks based on the result.
+Luckily, this was easy enough to solve since Jane Street already had an [OCaml library implementing the Patience Diff algorithm](https://github.com/janestreet/patience_diff) for arbitrary lists of comparable OCaml types. When I had two lists of differing length, I simply applied the Patience Diff algorithm and placed `:date-switch` blocks based on the diff.
 
 This algorithm worked okay for cases of a single edit, but we wanted the tool to work with multiple edits, and for those it still often produced terrible results.
 
@@ -109,7 +109,7 @@ For example, because it stopped recursing and applied a diff as soon as it reach
   (else)))
 {% endhighlight %}
 
-It duplicates the long sub-tree instead of placing the `:date-switch` lower down in it, just because we made another edit at a higher level of a list it was in.
+It duplicates the long sub-tree instead of placing the `:date-switch` lower down in it, just because we made another edit at a higher level of the tree.
 
 There were a number of other cases where it didn't produce output as nice as a human would, but earlier on my mentor and I had sighed and accepted it. This though was the last straw, we needed a new approach...
 
@@ -118,9 +118,9 @@ There were a number of other cases where it didn't produce output as nice as a h
 At this point I was fed up with constantly discovering failure modes of algorithms I thought should work on real-world cases, so I decided to design an algorithm that found the *optimal*
 solution.
 
-I started by searching the internet for tree diff algorithms, but everything I found was either a different kind of diff than what I needed, or was complex enough that I wasn't willing to spend the time understanding that it computed a different kind of diff than I needed.
+I started by searching the Internet for tree diff algorithms, but every algorithm I found was either a different kind of diff than what I needed, or was complex enough that I wasn't willing to spend the time understanding it (probably only to later find out it computed a different kind of diff than I needed).
 
-Specifically, what I needed was mostly like a tree diff but I wasn't optimizing for the same thing as other algorithms, what I wanted to optimize for was resulting file size, including indentation. This I thought represented what I wanted fairly well, and captured why previous results which duplicated large parts of the file were bad. As well as the character cost of the branches, there was an overhead associated with each switch construct. Additionally, each switch construct could also contain multiple sub-trees in each branch, which I needed to model to account for overhead correctly.
+Specifically, what I needed was mostly like a tree diff but I wasn't optimizing for the same thing as other algorithms, what I wanted to optimize for was resulting file size, including indentation. This I thought represented what I wanted fairly well, and captured why previous results which duplicated large parts of the file were bad. As well as the character cost of the branches, each additional `:date-switch` block added more characters. Additionally, each switch construct could also contain multiple sub-trees in each branch, which I needed to model to account for overhead correctly.
 
 Consider the case of `(a b c)` becoming `(A b C)`. A human would write:
 
@@ -138,19 +138,19 @@ Despite the fact that the `b` is duplicated, this is the smallest number of char
  (:date-switch (case 2017-04-07 C) (else c)))
 {% endhighlight %}
 
-A very common real-world example of why it is important for it to be able to batch together differences is when changing multiple values of a data structure. Config files often have lots of key-value pairs and edits often touch many nearby values:
+A very common real-world example of why it is important for it to be able to batch together differences is when changing multiple values of a data structure. The config files often have lots of key-value pairs and edits often touch many nearby values:
 
 {% highlight scheme %}
 (thing-processor-config
   (:date-switch
    (case 2017-04-07
     (speed 5)
-    (size 900)
-    (power 7))
+    (size 80)
+    (power 9001))
    (else
     (speed 3)
-    (size 900)
-    (power 9))))
+    (size 80)
+    (power 7))))
 {% endhighlight %}
 
 Even though `size` didn't change, we duplicate it because it's cleaner than having two `:date-switch` blocks.
@@ -180,9 +180,9 @@ And then we have a separate set of decisions we can make on lists
 
 ## Dynamic Programming
 
-After 2+ days of research, discussing ideas with my mentor, and sitting down in a chair staring out at the nice view of London thinking and sketching out cases of the algorithm in a notebook, I had something. It was a recursive dynamic programming algorithm that checked every possible way of placing the `:by-date` blocks and chose the best, but used memoization (that's the dynamic programming part) so that it re-used sub-problems and had polynomial instead of exponential complexity.
+After 2+ days of research, discussing ideas with my mentor, and sitting down in a chair staring out at the nice view of London while thinking and sketching out cases of the algorithm in a notebook, I had something. It was a recursive dynamic programming algorithm that checked every possible way of placing the `:by-date` blocks and chose the best, but used memoization (that's the dynamic programming part) so that it re-used sub-problems and had polynomial instead of exponential complexity.
 
-The core of the problem is similar to the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) problem, you have two lists that have some number of insertions and deletions between them, and you want to find the best way to match them up. You can do this with a number of different cases based on the first elements of the lists with different costs, calculating those costs involves some constant plus recursively computing the cost for the rest of the lists. Then you compute the cost for each possible decision and take the minimum one.
+The core of the tree diffing problem is similar to the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) problem, you have two lists that have some number of insertions and deletions between them, and you want to find the best way to match them up. You can do this with a number of different cases based on the first elements of the lists with different costs, calculating those costs involves some constant plus recursively computing the cost for the rest of the lists. Then you compute the cost for each possible decision and take the minimum one.
 
 For example if you have a function `best_cost(old,new)` to solve the Levenshtein distance problem, there's three cases for the start of the lists: insert, delete and same. The simplest case is if the first two elements are the same, and characters that are the same cost `0`, then the cost is just `best_cost(old[1..], new[1..])`. If a delete costs `1`, then if the start of the list is a delete that means the character is in `old` but not `new` so the total cost is `1 + best_cost(old[1..], new)`. Insert is similar but the opposite direction. This recursion terminates with the base case of `best_cost([],[]) = 0`. The problem is that this leads to an exponential number of recursive calls.
 
@@ -208,15 +208,15 @@ Now we know that if we can restate our tree diffing problem as a problem of path
 
 ## The Algorithm
 
-The key differences between my problem and Levenshtein distances were the fact that it was a tree and not a list, and the fact that consecutive sequences of inserts/deletes were cheaper than separate ones (because they could be combined in one `:date-switch` block). My cost function is also different in that I'm measuring the size of the resulting tree including `:date-switch` blocks, so my moves will need costs based on that.
+The key differences between my problem and Levenshtein distances were the fact that it was a tree and not a list, and the fact that consecutive sequences of inserts/deletes were cheaper than separate ones (because consecutive edits could be combined in one `:date-switch` block). My cost function is also different in that I'm measuring the size of the resulting tree including `:date-switch` blocks, so my moves will need costs based on that.
 
-I can extend the list algorithm to trees by adding a move I'll call "recurse" that goes down and right and can be done on any square where both items are sub-trees (not leaves), where the cost is the cost of the resulting diff from running the entire tree-diff algorithm recursively on those two sub-trees. I don't bother recursing if the two sub-trees are the same, since the "same" move is identical and faster in that case.
+I can extend the list algorithm to trees by adding a move I'll call "recurse" that goes down and right and can be done on any square where both items are sub-trees (not leaves). The cost of the move is the cost of the resulting diff from running the entire tree-diff algorithm recursively on those two sub-trees. I don't bother recursing if the two sub-trees are the same, since the "same" move has identical cost in that case, and is faster to compute.
 
 We can handle the cheaper consecutive inserts and deletes by modeling entering and leaving a `:date-switch` block as moves. However now we have different move sets based on if we are in or out of a `:date-switch` block and different costs to get to the end from a given point. We can rectify this by splitting our problem into path-finding over *two* grids of the same size. One is our "outside" grid, where we can do the "same", "recurse" and now also a "in" move which moves us to the same position on the other grid.
 
-On the "inside" grid we can do "insert", "delete" and "out" moves. But that won't quite work because if "in" and "out" both don't make forward progress, we have a loop and our algorithm will endlessly loop over paths going "in" and "out" at the same point. We can solve this by splitting "out" into "insert out" and "delete out". The first two are the same as insert and delete except they also move to the "outside" grid, we also have to make sure that we don't use the "insert" and "delete" moves to go to the bottom right of the "inside" grid, because then we'd be stuck.
+On the "inside" grid we can do "insert", "delete" and "out" moves. But that won't quite work because if "in" and "out" both don't make forward progress, the graph has a cycle and our search algorithm will endlessly recurse over paths going "in" and "out" at the same point. We can solve this by splitting "out" into "insert out" and "delete out". The first two are the same as insert and delete except they also move to the "outside" grid, we also have to make sure that we don't use the "insert" and "delete" moves to go to the bottom right of the "inside" grid, because then we'd be stuck.
 
-This gives us a set of moves that always make forward progress and share as much as possible, with this we can find the best path and that gives us an optimal diff. See diagram below which also includes the cost of each move and an example path, although not necessarily the optimal one:
+This gives us a set of moves that always make forward progress and share as much as possible, with this we can find the best path and that gives us an optimal diff. See the diagram below which also includes the cost of each move and an example path, although not necessarily the optimal one:
 
 <a href="{{PAGE_ASSETS}}/treediffgrid.pdf" target="_blank">
 ![Tree diff diagram]({{PAGE_ASSETS}}/treediffgrid.png)
@@ -224,19 +224,21 @@ This gives us a set of moves that always make forward progress and share as much
 
 Even this model is simplified, because in reality I had to handle input lists that both might have `:date-switch` blocks already in them, so there were a bunch more cases and contingencies for handling existing `:date-switch` blocks properly. But those aren't very interesting and the core of the algorithm is the same.
 
-So I implemented this algorithm on top of the AST manipulation framework I'd built by translating it to a memoized recursive algorithm operating on linked lists. Since the outer algorithm also involved recursion, this meant I had two kinds of recursion, which I structured using OCaml's ability to define functions inside of other functions. So I had an outer `scope_diffs` function that took two lists of s-expressions and produced a list of s-expressions with differences scoped by `:date-switch` blocks. Inside I allocated two tables to memoize the results in, and defined `scope_suffix_diffs_inside` and `scope_suffix_diffs_outside` functions that took indices of the start of the suffixes and mutually recursed and memoized into the tables based on the moves above.
+So I implemented this algorithm on top of the AST manipulation framework I'd built by translating it to a memoized recursive algorithm operating on linked lists. Since the outer algorithm also involved recursion, this meant I had two kinds of recursion, which I structured using OCaml's ability to define functions inside of other functions. I had an outer `scope_diffs` function that took two lists of s-expressions and produced a list of s-expressions with differences scoped by `:date-switch` blocks. Inside it, I allocated two tables to memoize the results in, and defined `scope_suffix_diffs_inside` and `scope_suffix_diffs_outside` functions that took indices of the start of the suffixes and mutually recursed and memoized into the tables based on the moves above.
 
 Unlike the Levenshtein difference algorithm I wanted more than just the cost, so I stored the actual scoped s-expressions up to each point in the table directly, because I was using immutable linked lists in OCaml this was memory-efficient since each entry would share structure with the entries it was built from. This way I avoided the back-tracing path reconstruction step that is frequently used with dynamic programming. In order to make the lists share structure I did have to add to the front instead of the back, but I just reversed the best resulting list before I returned it.
 
-Once I finished programming it and got it to compile, I think I only had to fix one place where I'd copy-pasted a `+1` where I shouldn't have and then it worked beautifully. Unlike all my heuristic attempts I couldn't find a case where this produced a result significantly worse than what a human would do.
+Once I finished programming it and got it to compile, I think I only had to fix one place where I'd copy-pasted a `+1` where I shouldn't have and then it worked beautifully. Finally, unlike all my heuristic attempts, I couldn't find a case where this produced a result significantly worse than what a human would do.
 
-Unfortunately, while it worked quite well for small files, it was very slow on large files. My mentor timed it on a few example files and fit a polynomial and discovered that it was empirically `O(n^3)` (or it might have been `O(n^4)` I forget) in the file size. This was unfortunate since some of the files were tens of thousands of lines long. I had to make it faster, luckily while I'd been thinking about and implementing the algorithm I'd accumulated quite a list of optimization ideas to try. But first, I decided to profile to see what the biggest costs were.
+*Side note:* I used to expect lots of debugging time whenever I finished a bunch of complex algorithmic code, but to my surprise I've found that's rarely the case when using languages with good type systems. The compiler catches almost all small implementation errors, and since I've usually spent a long time thinking about all the edge cases carefully while designing the algorithm, there's usually no serious bugs left by the time it compiles. My tests usually fail a few times, but that's normally because I wrote the tests wrong.
+
+Unfortunately, while my new algorithm worked quite well for small files, it was very slow on large files. My mentor timed it on a few example files and fit a polynomial and discovered that it was empirically `O(n^3)` (or it might have been `O(n^4)` I forget) in the file size. This was unfortunate since some of the files were tens of thousands of lines long. I had to make it faster, luckily while I'd been thinking about and implementing the algorithm I'd accumulated quite a list of optimization ideas to try. But first, I decided to profile to see what the biggest costs were.
 
 ## Profiling and Optimizing
 
 ### Incremental cost computation
 
-The first order of business was to discover why the empirical complexity was higher than we thought it should be. My mentor and I tried to come up with a proper analysis of what it should be, but given all the cases and the nested nature of trees there were just too many parameters and we couldn't come up with anything that actually informed us about real world files. But, as far as we could tell the complexity of the underlying algorithm should have been about `O(n^2*log(n))` in the length of real files.
+The first order of business was to discover why the empirical complexity was higher than we thought it should be. My mentor and I tried to come up with a proper analysis of what it should be, but given all the cases and the nested nature of trees there were just too many parameters and we couldn't come up with anything precise. But, as far as we could tell the complexity of the underlying algorithm should have been about `O(n^2*log(n))` in the length of real files.
 
 I could have looked over the implementation carefully to find all the extra unnecessary work, but an easier method was just to use the [Linux `perf` tool](https://perf.wiki.kernel.org/index.php/Main_Page) to profile it. I knew the work that caused it to be `O(n^3)` wasn't at the outer levels of the algorithm, or I would have noticed easily, so it had to be an operation within that would show up in the profiles.
 
@@ -246,7 +248,7 @@ In order to fix this, I made sure every cost computation was constant time, whic
 
 I solved this in three steps:
 
-1. Create a "costed list" type which was a linked list except each item included the cost of the suffix from that point. This had a constant-time prepend operation that took just added the cost of the item being prepended to the cost field of the rest of the list.
+1. Create a "costed list" type which was a linked list except each item included the cost of the suffix from that point. This had a constant-time prepend operation that just added the cost of the item being prepended to the cost field of the rest of the list.
 1. Modify the Abstract Syntax Tree (AST) data structure to include a cost field on every node, and to use a costed list for children. I also made all the AST builder functions compute the cost of their components by just adding the cost of their overhead with the costs of their child nodes or costed lists. Now both getting the cost of an AST subtree and constructing a node were constant time.
 1. When building the path/diff/result of my algorithm I used a costed list and constructed new `:date-switch` nodes using the constant-time builder API.
 
@@ -303,7 +305,7 @@ I learned that I needed a heuristic that never overestimated the remaining cost,
 
 With a heuristic and an understanding of A* in hand, I refactored the implementation of my algorithm to work by putting successor states in a priority queue based on their cost plus the heuristic remaining cost. This required changing each instance of recursion on my table into the creation of a `State` structure that encompassed if I was inside or outside of a `:date-switch`, and the current position.
 
-I also had to do make two changes to my data structures. First, since I was no longer using recursion to destructure my linked lists but was now indexing them, which is `O(n)`, I created arrays of the tails of my input costed lists so that random access was fast. Next, my solution still used `O(n^2)` memory in all cases due to the 2D array memoization table, so I switched that to a hash table from position tuples.
+I also had to make two changes to my data structures. First, since I was no longer using recursion to destructure my linked lists but was now indexing them, which is `O(n)`, I created arrays of the tails of my input costed lists so that random access was fast. Next, my solution still used `O(n^2)` memory in all cases due to the 2D array memoization table, so I switched that to a hash table from position tuples.
 
 Profiling now showed a lot of time was then spent in hash table lookups, so I experimented with dynamically using a 2D array for small input lists (like were often found on the lower levels of the tree) and a hash table for larger input lists, but further profiling showed it didn't increase performance much, probably because most of the lookups were in the larger lists, so I stuck with plain hash tables.
 
