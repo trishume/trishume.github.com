@@ -25,7 +25,7 @@ During my internship at [Jane Street](https://www.janestreet.com/)[^1], one of m
 
 ## Background
 
-Jane Street has a lot of config files for their trade handling systems which use [S-expressinons](https://en.wikipedia.org/wiki/S-expression) (basically a tree with strings as leaves). They often want to make changes that will only apply on certain days, for example days when markets will act differently than normal like elections and option expiry dates. To do this their config processor knows a special construct that is like a switch statement for dates, it looks something like this:
+Jane Street has a lot of config files for their trade handling systems which use [S-expressions](https://en.wikipedia.org/wiki/S-expression) (basically a tree with strings as leaves). They often want to make changes that will only apply on certain days, for example days when markets will act differently than normal like elections and option expiry dates. To do this their config processor knows a special construct that is like a switch statement for dates, it looks something like this:
 
 {% highlight scheme %}
 (thing-processor-config
