@@ -2,6 +2,12 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2017
 
+- Fixed some bugs and reviewed PRs for [syntect](https://github.com/trishume/syntect).
+- Made an example of [integrating WebRender with the new glutin](https://github.com/trishume/webrender_playground) with live resizing windows on macOS.
+- [Fixed some bugs in nvAlt](https://github.com/trishume/nv) involving indented lists.
+- [Added an API to Hammerspoon](https://github.com/Hammerspoon/hammerspoon/pull/1513) for counting and switching macOS tabs.
+- Wrote [an example program](https://github.com/trishume/seqalign_pathing) of using [my A*-based approach to diffing](http://thume.ca/2017/06/17/tree-diffing/).
+- Developed [a Sublime Text command](https://github.com/trishume/SublimeTect/commit/7c9a06f449bd862a406b453d4ac4d7c93ec49289) for folding all function bodies in a file so that you can read the type signatures and doc comments like generated documentation or a header file.
 - Made [a small web app](http://thume.ca/normal) for doing common normal distribution related calculations.
 - Started working on [the Xi text editor](https://github.com/google/xi-editor/commits?author=trishume) for my internship at Google.
 - Started working on [Vizwl](https://github.com/trishume/vizwl) a simple program for easily creating debug visualizations from any language.
