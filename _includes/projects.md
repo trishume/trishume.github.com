@@ -2,6 +2,7 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2017
 
+- Made [a web app](http://hnblogs.thume.ca/) that creates an RSS feed of interesting Hacker News comments.
 - Fixed some bugs and reviewed PRs for [syntect](https://github.com/trishume/syntect).
 - Made an example of [integrating WebRender with the new glutin](https://github.com/trishume/webrender_playground) with live resizing windows on macOS.
 - [Fixed some bugs in nvAlt](https://github.com/trishume/nv) involving indented lists.
