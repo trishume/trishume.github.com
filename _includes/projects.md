@@ -2,6 +2,9 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2017
 
+- Wrote [Enfasten](https://github.com/trishume/enfasten), a tool that transforms a static site into one that uses optimized responsive images.
+- Helped reverse engineer the protocol of a commercial eye tracker, wrote a Wireshark dissector for their custom data format to aid understanding USB pcaps.
+- Attended Hack The North 2017, where I made [Quickdown](https://github.com/trishume/quickdown), a fast lightweight markdown renderer from scratch using Rust and Webrender.
 - Made [a web app](http://hnblogs.thume.ca/) that creates an RSS feed of interesting Hacker News comments.
 - Fixed some bugs and reviewed PRs for [syntect](https://github.com/trishume/syntect).
 - Made an example of [integrating WebRender with the new glutin](https://github.com/trishume/webrender_playground) with live resizing windows on macOS.
