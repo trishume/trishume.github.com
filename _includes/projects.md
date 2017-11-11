@@ -2,6 +2,7 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2017
 
+- Organized a short talks event for the [Waterloo CS Club](csclub.uwaterloo.ca) and gave a talk version of my [article on dynamic programming as path finding](/2017/06/17/tree-diffing/).
 - Wrote [Enfasten](https://github.com/trishume/enfasten), a tool that transforms a static site into one that uses optimized responsive images.
 - Helped reverse engineer the protocol of a commercial eye tracker, wrote a Wireshark dissector for their custom data format to aid understanding USB pcaps.
 - Attended Hack The North 2017, where I made [Quickdown](https://github.com/trishume/quickdown), a fast lightweight markdown renderer from scratch using Rust and Webrender.
