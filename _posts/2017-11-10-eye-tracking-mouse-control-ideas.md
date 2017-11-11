@@ -23,6 +23,8 @@ I'm writing this list for two reasons:
 1. So that I can get the WaybackMachine to archive it to have evidence of prior art in case anybody tries to patent these. I try to explore as much of the space of possible ideas people could try patenting as possible. Of course, it's possible one or more of these already falls under some patent, because there's patents on a lot of obvious ideas, but I don't know of any.
 1. As a survey of the possibilities, to look at what's possible and possibly inspire someone to try something out. Eye tracking has such potential, but is sadly rarely used outside of research.
 
+Before proceeding I'd like to emphasize that **not all these ideas are good**, many wouldn't be that nice to use or would have other issues, I aimed much more for breadth in creating this list than depth.
+
 There's three broad categories to these ideas:
 
 ## Combining with another input method
