@@ -20,7 +20,9 @@ The first thing I found was that with my improved firmware the end to end latenc
   </video>
 </center>
 
-I also tested my Macbook keyboard, as well as a few older low speed USB Apple keyboards, and found that they had around 67ms[^fps] of end-to-end latency, measuring from when the switch was fully depressed while hitting the key as fast as I could. I suspect part of the reason for this is that these keyboards only poll at 8ms or 10ms intervals, whereas the [Teensy](https://www.pjrc.com/store/teensy32.html) in my custom keyboard polls every millisecond. According to Dan's post newer Apple external keyboards also poll at 1000hz.
+I also tested my Macbook keyboard, as well as a few older low speed USB Apple keyboards, and found that they had around 67ms[^fps] of end-to-end latency, measuring from when the switch was fully depressed while hitting the key as fast as I could. I suspect part of the reason for this is that these keyboards only poll at 8ms and 10ms intervals according to USB Prober (an old Apple dev tool), whereas the [Teensy](https://www.pjrc.com/store/teensy32.html) in my custom keyboard polls every millisecond. According to Dan's post newer Apple external keyboards also poll at 1000hz.
+
+Note that the 700us main loop doesn't translate into 700us switch-to-USB latency, since the USB transfer is done asynchronously via DMA by the [Teensy](https://www.pjrc.com/store/teensy32.html)'s USB controller when it is polled, which happens at 1000hz.
 
 It's interesting that I used my keyboard for 3 years without noticing that it added 30ms of latency. I have a few guesses why:
 
