@@ -3,7 +3,7 @@ layout: post
 title: "CVDisplayLink Doesn't Link To Your Display"
 description: ""
 category:
-tags: ["reversing","graphics","macos"]
+tags: ["reversing","graphics","macos","latency"]
 assetid: displaylink
 ---
 {% include JB/setup %}
