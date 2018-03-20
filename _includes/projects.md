@@ -1,7 +1,14 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
+## 2018
+
+- Gave a talk at the Bay Area Rust Meetup about [tips and tools for writing algorithms in Rust](https://speakerdeck.com/trishume/algorithms-in-rust).
+- Watched through the full [fast.ai deep learning course](http://www.fast.ai/), it's really excellent, I recommend it for the great up-to-date tips even if you're already familiar with deep learning.
+
 ## 2017
 
+- Implemented a combined head tracking and eye tracking [mouse replacement in Rust](https://github.com/trishume/FusionMouse) using a TrackIR 5 and a Tobii 4C.
+- Attended TerribleHack X and made [a super-fast emoji rendering engine](https://github.com/trishume/EmojiEngine) with WebGL.
 - Organized a short talks event for the [Waterloo CS Club](csclub.uwaterloo.ca) and gave a talk version of my [article on dynamic programming as path finding](/2017/06/17/tree-diffing/).
 - Wrote [Enfasten](https://github.com/trishume/enfasten), a tool that transforms a static site into one that uses optimized responsive images.
 - Helped reverse engineer the protocol of a commercial eye tracker, wrote a Wireshark dissector for their custom data format to aid understanding USB pcaps.
@@ -14,8 +21,7 @@ This is a list of the things I have worked on and am currently working on. It is
 - Wrote [an example program](https://github.com/trishume/seqalign_pathing) of using [my A*-based approach to diffing](http://thume.ca/2017/06/17/tree-diffing/).
 - Developed [a Sublime Text command](https://github.com/trishume/SublimeTect/commit/7c9a06f449bd862a406b453d4ac4d7c93ec49289) for folding all function bodies in a file so that you can read the type signatures and doc comments like generated documentation or a header file.
 - Made [a small web app](http://thume.ca/normal) for doing common normal distribution related calculations.
-- Started working on [the Xi text editor](https://github.com/google/xi-editor/commits?author=trishume) for my internship at Google.
-- Started working on [Vizwl](https://github.com/trishume/vizwl) a simple program for easily creating debug visualizations from any language.
+- Worked on the [the Xi text editor](https://github.com/google/xi-editor/commits?author=trishume) for my internship at Google.
 - Helped start [NeoVintageous](https://github.com/NeoVintageous/NeoVintageous), a fork of the abandoned Sublime Vim emulation package, and contributed some fixes and updates.
 - Fixed a whole bunch of parsing bugs in [syntect](https://github.com/trishume/syntect) found by running the Sublime Text syntax tests with it.
 - Gave a talk on advanced Unix commands, programs and scripting for a CS Club "Unix 201" event I ran.
