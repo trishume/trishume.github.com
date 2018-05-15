@@ -2,6 +2,9 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2018
 
+- Played with Samurai when we won the DEF CON CTF Quals, I solved a few problems which I [wrote up here](/2018/05/13/winning-def-con-quals-writeups/).
+- Played with Samurai in the Plaid CTF and helped with a few problems including reverse engineering a long APL program.
+- Wrote scripts for auto-converting my bank and Splitwise CSVs into Ledger accounting files, with smart guessing of expense categories.
 - Gave a talk at the Bay Area Rust Meetup about [tips and tools for writing algorithms in Rust](https://speakerdeck.com/trishume/algorithms-in-rust).
 - Watched through the full [fast.ai deep learning course](http://www.fast.ai/), it's really excellent, I recommend it for the great up-to-date tips even if you're already familiar with deep learning.
 
