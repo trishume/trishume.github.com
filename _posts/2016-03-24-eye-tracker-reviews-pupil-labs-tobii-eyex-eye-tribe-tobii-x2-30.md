@@ -55,8 +55,6 @@ the EyeX software in a VMWare Fusion VM and [piping the data to my mac over UDP]
 VM's screen resolution](http://dannyman.toldme.com/2014/05/15/vmware-retina-thunderbolt-constant-resolution/). Also if the load gets too high on the VM sometimes the tracker will stop
 and take a couple seconds before it automatically restarts, this is only an issue in VMs and can be mostly avoided by running no other programs on the Windows VM.
 
-**Edit 2016/11/14:** Tobii has now announced the [Eye Tracker 4C](https://tobiigaming.com/eye-tracker-4c/) which is their new consumer eye tracker. It includes an ASIC for on-device processing which lowers CPU load and only needs USB 2.0 bandwidth. This probably solves the USB 3.0 VM crashing issues I experienced. It also has head tracking, but I have no idea how accurate it is. I may get one when it comes out, if so I'll write about it here.
-
 #### Pros:
 - Extremely robust to head motion: your calibration will last practically forever. You can move your head around as much as you want and still maintain decent (2-3 degrees accuracy) tracking.
   This means you don't have to calibrate every time you sit down, just keep your one calibration for an arbitrarily long time. The magnetic mount is extremely repeatable so it doesn't need to be recalibrated.
@@ -69,6 +67,19 @@ and take a couple seconds before it automatically restarts, this is only an issu
 - You may not record gaze data. This is a developer SDK term meant to make you buy Tobii's more expensive trackers, it is not an issue if you're developing interaction techniques or just using the tracker.
 - Your head needs to be relatively low with respect to the monitor. I prefer my head to be near the top of my monitor but this is outside the non-adjustable view of the tracker from the monitor's bottom edge.
   You can fix this by tilting your monitor upwards, I was lucky that my monitor had an adjustable stand.
+
+# [Edit] Tobii 4C: New best consumer eye tracker
+
+I've now had a chance to use the [Tobii 4C](https://tobiigaming.com/eye-tracker-4c/) for a while and it's fantastic. Everything I said about the EyeX above applies, with the following new notes:
+
+- All the processing is now done on the device, this means very low CPU and USB loads. It now works flawlessly in VMWare Fusion.
+- Accuracy is similar or maybe somewhat better. It's the most accurate eye tracker I've used personally.
+- Tobii is now working on a macOS implementation of the Stream Engine SDK (the low level C API). I've tried out an alpha and it works quite well. I used it to implement [FusionMouse](https://github.com/trishume/FusionMouse).
+- I tried it out in combination with a TrackIR 5 and it didn't interfere with the tracking much, which let me combine eye tracking and head tracking that is higher accuracy than the tracking Tobii provides on Windows. I remember having problems when I tried the TrackIR with the EyeX, so either they fixed something or my setup changed enough that it works now.
+
+The restrictions on recording data still apply though, so it's still difficult to legally use for research, other than research on interactive eye tracking systems.
+
+Another tip I picked up: The adhesive on the magnetic strips for attaching the 4C/EyeX to a monitor have very strong permanent adhesive that's difficult to remove without breaking or bending anything. If you use double-sided foam tape you can attach the strip to a monitor in a way that's much easier to remove. The extra distance also enables it to be mounted on some laptops.
 
 # The Eye Tribe Tracker: Good but doesn't work well for me
 
