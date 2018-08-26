@@ -22,6 +22,7 @@ I occasionally give talks for the UWaterloo CS club, mostly at the Alt+Tab short
 - [How your text editor does syntax highlighting](https://speakerdeck.com/trishume/how-your-text-editor-does-syntax-highlighting)
 - [Simple binary formats](https://speakerdeck.com/trishume/simple-binary-formats)
 - [Dynamic Programming as Path Finding](https://speakerdeck.com/trishume/dynamic-programming-as-path-finding)
+- [Signed Distance Fields](https://speakerdeck.com/trishume/signed-distance-fields)
 
 ## Ottawa Ruby
 

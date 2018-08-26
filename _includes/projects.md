@@ -2,12 +2,17 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2018
 
+- I competed in the DEF CON CTF Finals at DC26 with team Samurai, I worked on a number of problems which I [wrote up here](/2018/08/16/def-con-26-ctf-writeups/).
+- Attended TerribleHack XI and made [a "game" that renders directly from UDP packet buffers to the screen](https://devpost.com/software/maximallydirect2d).
+- Gave a short talk for the [Waterloo CS Club](csclub.uwaterloo.ca) on [rendering with signed distance fields](https://speakerdeck.com/trishume/signed-distance-fields).
 - [Rigged up my Sublime Text](https://twitter.com/trishume/status/997905583482093568) to automatically maximize the current pane when I make its window small.
 - Played with Samurai when we won the DEF CON CTF Quals, I solved a few problems which I [wrote up here](/2018/05/13/winning-def-con-quals-writeups/).
+- Volunteered as the Treasurer for the [Waterloo CS Club](csclub.uwaterloo.ca), also helped organize events like a CTF and TerribleHack.
 - Played with Samurai in the Plaid CTF and helped with a few problems including reverse engineering a long APL program.
 - Wrote scripts for auto-converting my bank and Splitwise CSVs into Ledger accounting files, with smart guessing of expense categories.
 - Gave a talk at the Bay Area Rust Meetup about [tips and tools for writing algorithms in Rust](https://speakerdeck.com/trishume/algorithms-in-rust).
 - Watched through the full [fast.ai deep learning course](http://www.fast.ai/), it's really excellent, I recommend it for the great up-to-date tips even if you're already familiar with deep learning.
+- I [built and programmed a box](https://twitter.com/trishume/status/950585012700684288) that uses a Teensy LC to allow me to connect $5 tattoo machine foot pedals to my computer to scroll and perform shortcuts.
 
 ## 2017
 
