@@ -3,6 +3,7 @@ This is a list of the things I have worked on and am currently working on. It is
 ## 2018
 
 - I competed in the DEF CON CTF Finals at DC26 with team Samurai, I worked on a number of problems which I [wrote up here](/2018/08/16/def-con-26-ctf-writeups/).
+- I took Waterloo's [CS488 graphics course](https://www.student.cs.uwaterloo.ca/~cs488/Fall2018/index.html) and spent a full time month of effort on making [a fancy photorealistic path tracing rendering engine](/ray-tracer-site/) for my final project.
 - Attended TerribleHack XI and made [a "game" that renders directly from UDP packet buffers to the screen](https://devpost.com/software/maximallydirect2d).
 - Gave a short talk for the [Waterloo CS Club](csclub.uwaterloo.ca) on [rendering with signed distance fields](https://speakerdeck.com/trishume/signed-distance-fields).
 - [Rigged up my Sublime Text](https://twitter.com/trishume/status/997905583482093568) to automatically maximize the current pane when I make its window small.

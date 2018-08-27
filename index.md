@@ -22,6 +22,12 @@ title: Tristan's Site
 
 These are some of my personal software projects.
 
+[Yūbinkyoku 🏣](/ray-tracer-site/)
+: A photorealistic path tracing renderer with portals!
+
+[Syntect](https://github.com/trishume/syntect)
+: A Rust library for fast high quality syntax highlighting using Sublime Text's grammar format.
+
 [StashLine](/stashline/)
 : An iPad app for personal finance planning.
 
@@ -36,15 +42,6 @@ These are some of my personal software projects.
 
 [Dayder](http://dayder.thume.ca/)
 : A fun web app for quickly finding spurious correlations in 390,000+ data sets.
-
-[Syntect](https://github.com/trishume/syntect)
-: A Rust library for fast high quality syntax highlighting using Sublime Text's grammar format.
-
-[DoubleVision]({{GITHUB}}/doubleVision)
-: A ruby gem that that manipulates PNG files to create magic thumbnails.
-
-[Pro](http://github.com/trishume/pro)
-: A Ruby command line tool for managing Git repositories.
 
 # Recent Blog Posts
 
