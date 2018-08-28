@@ -1,0 +1,47 @@
+---
+layout: page
+title: Tristan's Site
+---
+{% include JB/setup %}
+
+<blockquote>
+I am a student developer interested in programming, finance and electronics.
+I write Rust, Ruby, iPad, Qt and JS apps for fun, work and homework.
+I'm currently studying CS at the University of Waterloo.
+</blockquote>
+
+<h1>About Me</h1>
+{% for section in site.data.homepage %}
+<div class="home-section">
+  <h2>{{ section.title }}</h2>
+  <span class="section-subtitle">{{ section.casual-title }}.</span>
+  {% for item in section.items %}
+  <div class="item">
+    {% if item.image %}
+    <div class="side-image">
+      <a {% unless item.image-no-pop %}class="image-pop"{% endunless %} href="{{ item.link }}"><img src="http://localhost:4001/images/fullsize/{{ item.image }}" /></a>
+    </div>
+    {% endif %}
+    <div class="item-desc">
+      <h3 class="item-name"><a href="{{ item.link }}">{{ item.name }}</a></h3>
+      <div class="item-body">
+        {{ item.desc | markdownify }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+<h1>Recent Blog Posts</h1>
+
+<ul class="posts">
+  {% for post in site.posts limit:10 %}
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<h1>Stuff I've Done</h1>
+
+{% capture projects_md %}{% include projects.md %}{% endcapture %}
+{{ projects_md | markdownify }}

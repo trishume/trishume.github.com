@@ -1,0 +1,79 @@
+- casual-title: Sometimes I learn about a topic by putting a lot of effort into a related project
+  title: Big projects
+  items:
+  - name: Yūbinkyoku
+    link: http://thume.ca/ray-tracer-site/
+    title: Path Tracer
+    image: raytracer.jpg
+    image-height: 60
+    desc: |
+      A path tracing renderer capable of rendering photorealistic images. Supports a physically based BRDF, textures, area lights, glossy reflection, DOF, CSG, fractals, portals and more.
+  - name: Syntect
+    link: https://github.com/trishume/syntect
+    title: Syntax highlighting Library
+    image: syntect.png
+    image-height: 60
+    desc: |
+      A fast high quality syntax highlighting library in Rust based on ST3's grammars. Well documented and tested, with active contributors. Powers two commercial products parsing terabytes of code per day.
+  - name: PolyType
+    link: http://thume.ca/2014/09/08/creating-a-keyboard-1-hardware/
+    title: Designed & built a keyboard
+    image: polytype.jpg
+    image-height: 60
+    desc: |
+      I built a working keyboard I created with AutoCAD, laser cut acrylic, [custom firmware](https://github.com/trishume/PolyType), and hand-soldered electronics.
+  - name: StashLine
+    link: http://thume.ca/stashline/
+    title: Personal finance app
+    image: stashline.png
+    image-height: 70
+    desc: |
+      An IOS app for long term personal finance simulation with 7000 users. Has a custom built UI that instantly updates a visualization of your entire life's financial future while you manipulate inputs.
+  - name: The Open Turing Compiler
+    title: LLVM front-end, IDE and library
+    link: https://github.com/trishume/OpenTuringCompiler
+    # image: openturing.png
+    image-height: 70
+    desc: |
+      An LLVM based compiler for [Turing](https://en.wikipedia.org/wiki/Turing_(programming_language)) as well as a Qt-based IDE and a simple drawing library.
+- casual-title: I do research on eye tracking and using it as a mouse replacement
+  title: Eye tracking
+  items:
+  - name: SmartGaze
+    link: https://github.com/trishume/SmartGaze
+    title: Eye tracking algorithms
+    image: smartgaze.png
+    image-height: 60
+    desc: |
+      I [reverse engineered](http://thume.ca/2016/02/02/a-reverse-engineering-adventure-eye-tribes-usb-protocol/) my [Eye Tribe](http://theeyetribe.com/) tracker's USB protocol using LLDB to capture their USB messages and implemented a glint and iris tracker on the image feed suitable for gaze tracking.
+  - name: EyeLike
+    link: https://github.com/trishume/eyeLike
+    title: OpenCV pupil tracking implementation
+    image: eyelike.png
+    image-height: 60
+    desc: |
+      An implementation of a webcam pupil tracking algorithm in OpenCV that garners weekly emails from researchers and 30,000 views per year. It is the first hit on Google for "OpenCV eye tracking".
+- casual-title: I make small fun web apps for exploring data
+  title: Data exploration apps
+  items:
+  - name: Dayder
+    link: http://dayder.thume.ca/
+    title: Spurious correlation finding web app
+    image: dayder.png
+    image-height: 60
+    desc: |
+      A Rust web app for finding spurious correlations in 390,000 time series data sets. Uses custom optimized DOM, rendering, correlation and [binary serialization](https://github.com/trishume/dayder/blob/master/format.md) code for instant responses.
+  - name: Rate With Science
+    link: http://thume.ca/2015/03/30/wikipedia-link-graphs-and-terrible-hacks/
+    title: Wikipedia data processing
+    image: rws.png
+    image-height: 70
+    desc: |
+      I [extracted the link graph](https://github.com/trishume/wikicrush) of Wikipedia into a 600MB binary file with a custom format designed for [fast path finding in memory](https://github.com/trishume/ratewithscience). I've rewritten the path-finding server in Rust, Nim and D for fun.
+  - name: IndexView
+    link: http://thume.ca/indexView/
+    title: JS canvas visualization
+    image: indexview.png
+    image-height: 60
+    desc: |
+      An exploration tool for long term financial market data written in JavaScript with a custom canvas graph widget allowing for fluid zooming and navigation of hundreds of years of data with live stats.
