@@ -1,5 +1,5 @@
 - casual-title: Sometimes I learn about a topic by putting a lot of effort into a related project
-  title: Big projects
+  title: Major projects
   items:
   - name: Yūbinkyoku
     link: http://thume.ca/ray-tracer-site/
@@ -7,14 +7,14 @@
     image: raytracer.jpg
     image-height: 60
     desc: |
-      A path tracing renderer capable of rendering photorealistic images. Supports a physically based BRDF, textures, area lights, glossy reflection, DOF, CSG, fractals, portals and more.
+      A path tracer capable of rendering photorealistic images. Supports a physically based BRDF, textures, area lights, glossy reflection, DOF, CSG, fractals and more.
   - name: Syntect
     link: https://github.com/trishume/syntect
     title: Syntax highlighting Library
     image: syntect.png
     image-height: 60
     desc: |
-      A fast high quality syntax highlighting library in Rust based on ST3's grammars. Well documented and tested, with active contributors. Powers two commercial products parsing terabytes of code per day.
+      A fast high quality syntax highlighting library in Rust. I continue to review PRs and maintain it. Powers two commercial products parsing terabytes of code per day.
   - name: PolyType
     link: http://thume.ca/2014/09/08/creating-a-keyboard-1-hardware/
     title: Designed & built a keyboard
@@ -28,33 +28,51 @@
     image: stashline.png
     image-height: 70
     desc: |
-      An IOS app for long term personal finance simulation with 7000 users. Has a custom built UI that instantly updates a visualization of your entire life's financial future while you manipulate inputs.
+      An IOS app for long term personal finance simulation. Instantly updates a visualization of your entire life's financial future while you manipulate inputs.
   - name: The Open Turing Compiler
     title: LLVM front-end, IDE and library
     link: https://github.com/trishume/OpenTuringCompiler
-    # image: openturing.png
+    image: openturing.png
     image-height: 70
     desc: |
       An LLVM based compiler for [Turing](https://en.wikipedia.org/wiki/Turing_(programming_language)) as well as a Qt-based IDE and a simple drawing library.
-- casual-title: I do research on eye tracking and using it as a mouse replacement
-  title: Eye tracking
+- title: Algorithm Design
+  casual-title: I like working on algorithms and then documenting them in long articles with diagrams
   items:
-  - name: SmartGaze
-    link: https://github.com/trishume/SmartGaze
-    title: Eye tracking algorithms
-    image: smartgaze.png
-    image-height: 60
+  - name: Tree diffing as path finding
+    link: /2017/06/17/tree-diffing/
+    image: treediff.png
     desc: |
-      I [reverse engineered](http://thume.ca/2016/02/02/a-reverse-engineering-adventure-eye-tribes-usb-protocol/) my [Eye Tribe](http://theeyetribe.com/) tracker's USB protocol using LLDB to capture their USB messages and implemented a glint and iris tracker on the image feed suitable for gaze tracking.
-  - name: EyeLike
-    link: https://github.com/trishume/eyeLike
-    title: OpenCV pupil tracking implementation
-    image: eyelike.png
-    image-height: 60
+      I wrote a detailed article about a tree diff algorithm I designed based on viewing the dynamic programming problem as path finding and applying A*.
+  - name: The Xi CRDT
+    link: https://github.com/google/xi-editor/blob/e8065a3993b80af0aadbca0e50602125d60e4e38/doc/crdt-details.md
+    image: xicrdt.png
     desc: |
-      An implementation of a webcam pupil tracking algorithm in OpenCV that garners weekly emails from researchers and 30,000 views per year. It is the first hit on Google for "OpenCV eye tracking".
+      At Google I worked on a novel Conflict-Free Replicated Data Type for synchronizing text editing across devices, and wrote a detailed document about my work.
+# - casual-title: I do research on eye tracking and using it as a mouse replacement
+#   title: Eye tracking
+#   items:
+#   - name: SmartGaze
+#     link: https://github.com/trishume/SmartGaze
+#     title: Eye tracking algorithms
+#     image: smartgaze.png
+#     image-height: 60
+#     desc: |
+#       I [reverse engineered](http://thume.ca/2016/02/02/a-reverse-engineering-adventure-eye-tribes-usb-protocol/) my [Eye Tribe](http://theeyetribe.com/) tracker's USB protocol using LLDB to capture their USB messages and implemented a glint and iris tracker on the image feed suitable for gaze tracking.
+#   - name: EyeLike
+#     link: https://github.com/trishume/eyeLike
+#     title: OpenCV pupil tracking implementation
+#     image: eyelike.png
+#     image-height: 60
+#     desc: |
+#       An implementation of a webcam pupil tracking algorithm in OpenCV.
+  # - name: PolyMouse
+  #   link: https://github.com/trishume/PolyMouse
+  #   title: Hands-free mouse
+  #   desc: |
+  #     A hands-free mouse replacement that combines eye tracking and head tracking.
 - casual-title: I make small fun web apps for exploring data
-  title: Data exploration apps
+  title: Data exploration web apps
   items:
   - name: Dayder
     link: http://dayder.thume.ca/
@@ -62,18 +80,37 @@
     image: dayder.png
     image-height: 60
     desc: |
-      A Rust web app for finding spurious correlations in 390,000 time series data sets. Uses custom optimized DOM, rendering, correlation and [binary serialization](https://github.com/trishume/dayder/blob/master/format.md) code for instant responses.
+      A Rust web app for finding spurious correlations in 390k time series data sets. Uses custom optimized rendering, correlation and [serialization](https://github.com/trishume/dayder/blob/master/format.md) code for instant responses.
   - name: Rate With Science
     link: http://thume.ca/2015/03/30/wikipedia-link-graphs-and-terrible-hacks/
     title: Wikipedia data processing
     image: rws.png
     image-height: 70
     desc: |
-      I [extracted the link graph](https://github.com/trishume/wikicrush) of Wikipedia into a 600MB binary file with a custom format designed for [fast path finding in memory](https://github.com/trishume/ratewithscience). I've rewritten the path-finding server in Rust, Nim and D for fun.
+      I [extracted the link graph](https://github.com/trishume/wikicrush) of Wikipedia into a 600MB binary file with a custom format designed for [fast path finding in memory](https://github.com/trishume/ratewithscience).
   - name: IndexView
     link: http://thume.ca/indexView/
     title: JS canvas visualization
     image: indexview.png
     image-height: 60
     desc: |
-      An exploration tool for long term financial market data written in JavaScript with a custom canvas graph widget allowing for fluid zooming and navigation of hundreds of years of data with live stats.
+      An exploration tool for long term financial market data written in JavaScript with a custom canvas graph widget allowing for navigation of hundreds of years of data.
+- title: Writing
+  casual-title: I like writing articles about things I've learned and done
+  items:
+  - name: DEF CON Qualifiers CTF Writeups
+    link: /2018/05/13/winning-def-con-quals-writeups/
+    desc: |
+      Explanations of my solutions to all the fun challenges I worked on in my first major CTF contest. I also wrote one about [the DEF CON 26 Finals](/2018/08/16/def-con-26-ctf-writeups/).
+  - name: Things I've Learned Doing Internships
+    link: /2017/04/06/learning-through-job-diversity/
+    desc: |
+      I wrote about how the way I think about what makes for a good job has changed over the course of several internships.
+  - name: My Text Editor Journey
+    link: /2017/03/04/my-text-editor-journey-vim-spacemacs-atom-and-sublime-text/
+    desc: |
+      I wrote about my journey using TextMate, Sublime, Vim, Spacemacs (Emacs), Atom and eventually being happy with Sublime and what I learned along the way.
+  # - name: Hammerspoon Window Manager Scripting
+  #   link: /2016/07/16/advanced-hackery-with-the-hammerspoon-window-manager/
+  #   desc: |
+  #     I've written a bunch of little modules for the Hammerspoon window manager to make my computering more efficient, and I wrote about them and what they do.
