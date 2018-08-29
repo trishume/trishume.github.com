@@ -2,6 +2,7 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2018
 
+- Redesigned the home page of my website to include more and better information.
 - I competed in the DEF CON CTF Finals at DC26 with team Samurai, I worked on a number of problems which I [wrote up here](/2018/08/16/def-con-26-ctf-writeups/).
 - I took Waterloo's [CS488 graphics course](https://www.student.cs.uwaterloo.ca/~cs488/Fall2018/index.html) and spent a full time month of effort on making [a fancy photorealistic path tracing rendering engine](/ray-tracer-site/) for my final project.
 - Attended TerribleHack XI and made [a "game" that renders directly from UDP packet buffers to the screen](https://devpost.com/software/maximallydirect2d).
