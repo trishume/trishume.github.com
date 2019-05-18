@@ -4,7 +4,8 @@ title: "Designing and Building a Keyboard: The Body"
 description: "Part 1 of a series on designing and building a chording keyboard."
 category:
 assetid: keyboardhw
-tags: [hardware]
+tags: [hardware, engineering]
+good: true
 ---
 {% include JB/setup %}
 

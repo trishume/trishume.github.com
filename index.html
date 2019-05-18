@@ -5,31 +5,14 @@ title: Tristan's Site
 {% include JB/setup %}
 
 <blockquote>
-I am a CS student and frequent intern interested in programming, finance and electronics.
-I like working on open source projects, writing blog articles, and reading on the internet.
-For fun I hike, bike, play dodgeball, and do hackathons and CTFs.
+I am a programmer interested in all sorts of technology.
+I like working on open source projects, writing blog articles, and reading on the internet. I've done a lot of internships.
+I also like hiking, biking and playing dodgeball.
 </blockquote>
 
 <h1>About Me</h1>
-{% for section in site.data.homepage %}
-<div class="home-section">
-  <h2>{{ section.title }}</h2>
-  <span class="section-subtitle">{{ section.casual-title }}.</span>
-  {% for item in section.items %}
-  <div class="item">
-    {% if item.image %}
-    <a class="side-image" href="{{ item.link }}"><img src="/assets/itempics/thumbs/{{ item.image }}" width="100"/></a>
-    {% endif %}
-    <div class="item-desc">
-      <h3 class="item-name"><a href="{{ item.link }}">{{ item.name }}</a></h3>
-      <div class="item-body">
-        {{ item.desc | markdownify }}
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
-{% endfor %}
+{% assign sections = site.data.homepage %}
+{% include highlights.html %}
 
 <h1>Recent Blog Posts</h1>
 

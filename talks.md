@@ -11,6 +11,7 @@ This is a list of programming-related talks I've given.
 
 When I'm travelling I'll often go to meetups in other cities, sometimes I give talks.
 
+- [My favourite Rust Crates](http://thume.ca/crates/): Presented at the Bay Area Rust Meetup. A list of interesting Rust crates in many categories, which I went over and gave my thoughts on.
 - [Algorithms in Rust](https://speakerdeck.com/trishume/algorithms-in-rust): Presented at the Bay Area Rust Meetup. Contains tips and tools about writing compute-heavy code in Rust.
 - Heresy: at NYC Emacs I gave a short talk about why Sublime Text can be better than Emacs. Content was similar to [this post](/2017/03/04/my-text-editor-journey-vim-spacemacs-atom-and-sublime-text/).
 

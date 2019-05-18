@@ -1,7 +1,19 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
+## 2019
+
+- Finished my CS degree at the University of Waterloo!
+- Made a [portmanteau generator](https://github.com/trishume/portmanteau) in Rust for [TerribleHack XIII](//terriblehack.website/).
+- Wrote [a Sublime Text plugin](https://github.com/trishume/SublimeRustAutoImport) for automatically importing modules in Rust.
+- Volunteered as the Treasurer for the Waterloo CS Club again, also helped organize events like TerribleHack.
+- [Wrote a compiler](/2019/04/18/writing-a-compiler-in-rust/) for a substantial subset of Java in Rust along with 2 teammates for UWaterloo's compilers course.
+
 ## 2018
 
+- Gave a talk at the Bay Area Rust Meetup about [100 interesting Rust crates](/crates)
+- [Added support for Haskell GHC profiles](https://github.com/jlfwong/speedscope/pull/183) to the [speedscope profiler](https://www.speedscope.app/).
+- Went through the tutorials for the [Lean theorem prover](https://leanprover.github.io/) and proved some things with it.
+- [Released `v3.0`](https://github.com/trishume/syntect/releases/tag/v3.0.0) of my `syntect` syntax highlighting library.
 - Redesigned the home page of my website to include more and better information.
 - I competed in the DEF CON CTF Finals at DC26 with team Samurai, I worked on a number of problems which I [wrote up here](/2018/08/16/def-con-26-ctf-writeups/).
 - I took Waterloo's [CS488 graphics course](https://www.student.cs.uwaterloo.ca/~cs488/Fall2018/index.html) and spent a full time month of effort on making [a fancy photorealistic path tracing rendering engine](/ray-tracer-site/) for my final project.

@@ -5,6 +5,7 @@ description: ""
 category:
 tags: ["reversing", "ctf"]
 assetid: dcquals18
+good: true
 ---
 {% include JB/setup %}
 

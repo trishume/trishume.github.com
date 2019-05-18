@@ -1,0 +1,11 @@
+{% for section in sections %}
+<div class="home-section">
+  <h2>{{ section.title }}</h2>
+  <span class="section-subtitle">{{ section.casual-title }}.</span>
+  <ul class="posts">
+  {% for post in site.tags[section.tag] %}
+  <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{%if post.good %}<strong>{%endif%}{{ post.title }}</a>{%if post.good %}</strong>{%endif%}</li>
+  {% endfor %}
+  </ul>
+</div>
+{% endfor %}

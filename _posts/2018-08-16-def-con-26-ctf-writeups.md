@@ -4,6 +4,7 @@ title: "DEF CON 26 CTF Writeups: reverse, doublethink, bew, reeducation"
 description: ""
 category:
 tags: ["reversing", "ctf"]
+good: true
 ---
 {% include JB/setup %}
 

@@ -10,8 +10,16 @@ permalink: /:path/:basename
 <h1>Tristan's Blog</h1>
 
 <p>
-I post interesting things I'm thinking or working on.
-Mostly I talk about programming but I also digress into power user computer tricks. I would like to blog more about economics and philosophy but I haven't got around to that much.
+I write about interesting things I'm thinking or working on.
+Mostly I talk about programming but I also digress into power user computer tricks, hardware and random things I'm interested in.
+</p>
+
+{% assign sections = site.data.writing %}
+{% include bloghighlights.html %}
+
+<h1>All Posts</h1>
+<p>
+  Posts in <strong>bold</strong> are ones I put significant effort into and endorse as still interesting and high quality.
 </p>
 
 {% assign posts_collate = site.posts %}

@@ -4,7 +4,8 @@ title: "My Text Editor Journey: Vim, Spacemacs, Atom and Sublime Text"
 description: "Which editors I have used, and why I moved on"
 assetid: editors
 category:
-tags: [sublime,vim,emacs,spacemacs]
+tags: [sublime,vim,emacs,spacemacs,experience]
+good: true
 ---
 {% include JB/setup %}
 

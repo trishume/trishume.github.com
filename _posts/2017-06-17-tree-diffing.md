@@ -3,8 +3,9 @@ layout: post
 title: "Designing a Tree Diff Algorithm Using Dynamic Programming and A*"
 description: ""
 category:
-tags: [internships, compsci]
+tags: [internships, compsci, engineering]
 assetid: treediff
+good: true
 ---
 {% include JB/setup %}
 

@@ -4,6 +4,7 @@ title: "A Reverse Engineering Adventure: Eye Tribe's USB Protocol"
 description: ""
 category:
 tags: ["reversing", "eye tracking", "UVC", "hardware"]
+good: true
 ---
 {% include JB/setup %}
 

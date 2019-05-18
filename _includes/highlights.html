@@ -1,0 +1,19 @@
+{% for section in sections %}
+<div class="home-section">
+  <h2>{{ section.title }}</h2>
+  <span class="section-subtitle">{{ section.casual-title }}.</span>
+  {% for item in section.items %}
+  <div class="item">
+    {% if item.image %}
+    <a class="side-image" href="{{ item.link }}"><img src="/assets/itempics/thumbs/{{ item.image }}" width="100"/></a>
+    {% endif %}
+    <div class="item-desc">
+      <h3 class="item-name"><a href="{{ item.link }}">{{ item.name }}</a></h3>
+      <div class="item-body">
+        {{ item.desc | markdownify }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}

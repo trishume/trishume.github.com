@@ -1,0 +1,9 @@
+- title: Engineering experiences
+  casual-title: High-effort posts detailing interesting engineering experiences I've had
+  tag: engineering
+- title: My journey as a programmer
+  casual-title: Articles describing journies I've had as a programmer and what I've learned
+  tag: experience
+- title: CTF problem write-ups
+  casual-title: Write-ups of interesting problems I've solved in security CTF contests I played in
+  tag: ctf

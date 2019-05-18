@@ -4,6 +4,7 @@ title: "Things I've Learned Doing Internships"
 description: "What I've learned by working at many different companies"
 category:
 tags: [experience,internships]
+good: true
 ---
 {% include JB/setup %}
 
