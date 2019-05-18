@@ -6,7 +6,7 @@ This is a list of the things I have worked on and am currently working on. It is
 - Made a [portmanteau generator](https://github.com/trishume/portmanteau) in Rust for [TerribleHack XIII](//terriblehack.website/).
 - Wrote [a Sublime Text plugin](https://github.com/trishume/SublimeRustAutoImport) for automatically importing modules in Rust.
 - Volunteered as the Treasurer for the Waterloo CS Club again, also helped organize events like TerribleHack.
-- [Wrote a compiler](/2019/04/18/writing-a-compiler-in-rust/) for a substantial subset of Java in Rust along with 2 teammates for UWaterloo's compilers course.
+- Wrote a compiler for a substantial subset of Java in Rust along with 2 teammates for UWaterloo's compilers course.
 
 ## 2018
 
