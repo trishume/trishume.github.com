@@ -27,6 +27,8 @@ I started [a test project](https://github.com/trishume/MetalTest) to try out dif
 
 Then I tried the accepted answer by Max on [the Stack Overflow post](https://stackoverflow.com/questions/45375548/resizing-mtkview-scales-old-content-before-redraw) which uses `CAMetalLayer` and some resizing-related properties. This reduced the frequency of glitches quite a bit, but didn't eliminate them. So I added in `presentsWithTransaction = true`, which wasn't enough on its own, but combining that with  `commandBuffer.waitUntilScheduled()` then presenting as suggested in the Apple `CAMetalLayer` docs fixed all the glitches! I also needed to do some size conversion to make the accepted answer's recipe draw crisply on high DPI displays.
 
+**Edit:** [@CoreyDotCom on Twitter](https://twitter.com/CoreyDotCom/status/1141653060843950081) reminded me I forgot to mention something. If you follow the recipe from the Stack Overflow post, it will _appear to be_ glitch-free, but it actually isn't. The `layerContentsPlacement = .topLeft` makes the glitches manifest as small broken slices near the moving window edge, which are very difficult to notice since the edge is moving quickly. When you change the placement policy to `layerContentsPlacement = .scaleAxesIndependently` to match the behavior of `MTKView` you see that there are still occasional glitches. Corey reports frame rate issues with `presentsWithTransaction`, and if this is the case for you as well it may be preferable to just mask the occasional remaining glitches with the top left placement policy.
+
 ## Working Code
 
 I now have a Metal triangle test program that resizes smoothly and without judder.
