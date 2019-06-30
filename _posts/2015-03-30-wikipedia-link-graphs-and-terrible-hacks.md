@@ -8,7 +8,7 @@ tags: [wikipedia,graph,big data,hackathon,ruby]
 ---
 {% include JB/setup %}
 
-A couple months ago [Dave Pagurek](http://davepagurek.com/) and I decided on making an [arbitrary scale finder](http://ratewith.science) for the upcoming UWaterloo ["stupid shit no one needs" hackathon](http://terriblehack.website). I decided that I would do this by finding paths in the links between Wikipedia pages. The thing is to do this I needed a good data set in the right format.
+A couple months ago [Dave Pagurek](http://davepagurek.com/) and I decided on making an [arbitrary scale finder](http://ratewithscience.thume.net) for the upcoming UWaterloo ["stupid shit no one needs" hackathon](http://terriblehack.website). I decided that I would do this by finding paths in the links between Wikipedia pages. The thing is to do this I needed a good data set in the right format.
 
 I did some research and found [Six Degrees of Wikipedia](http://mu.netsoc.ie/wiki/) which had some information but no data or source files. I then found [Graphipedia](https://github.com/mirkonasato/graphipedia) but discovered that Neo4j was not fast enough to do what I wanted. Thus I embarked on the adventure of creating my own Wikipedia link graph data set designed for efficient execution of common graph algorithms. The premise was compressing the whole graph into a small(ish) file that would fit entirely in memory, so I called it [Wikicrush](https://github.com/trishume/wikicrush).
 
@@ -36,4 +36,4 @@ Once we did that we had a product, and it ended up working great. The paths it g
 
 A week later I decided to kill two birds with one experimental statically-typed stone and learned the [Nim](http://nim-lang.org/) language by rewriting the project in it. I ran into a couple similar problems with the Jester web framework and loading the file into an int32 array but unlike the similar problems in Rust these had easy workarounds. In the end everything worked reasonably well with Nim especially after I got some help on IRC from its creator.
 
-You can now visit and try out [Rate With Science](http://ratewith.science/) powered purely by Nim and backed by Wikicrush.
+You can now visit and try out [Rate With Science](http://ratewithscience.thume.net/) powered purely by Nim and backed by Wikicrush.
