@@ -1,16 +1,23 @@
 ---
 layout: post
-title: "A Tour of Metaprogramming Models for Generics"
+title: "Models of Generics and Metaprogramming: Go, Rust, Swift, D and More"
 description: ""
 category:
 tags: [compilers]
 good: true
+assetid: generics
 ---
 {% include JB/setup %}
 
 In some domains of programming it's common to want to write a data structure or algorithm that can work with elements of many different types, such as a generic list or a sorting algorithm that only needs a comparison function. Different programming languages have come up with all sorts of solutions to this problem: From just pointing people to existing general features that can be useful for the purpose (e.g C, Go) to generics systems so powerful they become Turing-complete (e.g. [Rust](https://sdleffler.github.io/RustTypeSystemTuringComplete/), [C++](http://matt.might.net/articles/c++-template-meta-programming-with-lambda-calculus/)). In this post I'm going to take you on a tour of the generics systems in many different languages and how they are implemented. I'll start from how languages without a special generics system like C solve the problem and then I'll show how gradually adding extensions in different directions leads to the systems found in other languages.
 
 One reason I think generics are an interesting case is that they're a simple case of the general problem of metaprogramming: writing programs that can generate classes of other programs. As evidence I'll describe how three different fully general metaprogramming methods can be seen as extensions from different directions in the space of generics systems: dynamic languages like Python, procedural macro systems like [Template Haskell](https://wiki.haskell.org/A_practical_Template_Haskell_Tutorial), and staged compilation like [Zig](https://ziglang.org/#Generic-data-structures-and-functions) and [Terra](http://terralang.org/).
+
+## Overview
+
+I made a flow chart of all the systems I discuss to give you an overview of what this post will contain and how everything fits together:
+
+[![Timing]({{PAGE_ASSETS}}/flowchart-2x.png)]({{PAGE_ASSETS}}/flowchart.pdf)
 
 ## The basic ideas
 
@@ -21,6 +28,8 @@ Two ideas for how to get around this are to find a way to make all data types ac
 Boxing is where we put everything in uniform "boxes" so that they all act the same way. This is usually done by allocating things on the heap and just putting pointers in the data structure. We can make pointers to all different types act the same way so that the same code can deal with all data types! However this can come at the cost of extra memory allocation, dynamic lookups and cache misses. In C this corresponds to making your data structure store `void*` pointers and just casting your data to and from `void*` (allocating on the heap if the data isn't already on the heap).
 
 Monomorphization is where we copy the code multiple times for the different types of data we want to store. This way each instance of the code can directly use the size and methods of the data it is working with, without any dynamic lookups. This produces the fastest possible code, but comes at the cost of bloat in code size and compile times as the same code with minor tweaks is compiled many times. In C this corresponds to [defining your entire data structure in a macro](https://www.cs.grinnell.edu/~rebelsky/musings/cnix-macros-generics) and calling it for each type you want to use it with.
+
+Overall the tradeoff is basically that boxing leads to better compile times but can hurt runtime performance, whereas monomorphization will generate the fastest code but takes extra time to compile and optimize all the different generated instances. They also differ in how they can be extended: Extensions to boxing allow more dynamic behavior at runtime, while monomorphization is more flexible with how different instances of generic code can differ. It's also worth noting that in some larger programs the performance advantage of monomorphization might be canceled out by the additional instruction cache misses from all the extra generated code.
 
 Each of these schools of generics has many directions it can be extended in to add additional power or safety, and different languages have taken them in very interesting directions. Some languages like Rust and C# even provide both options!
 
@@ -112,7 +121,7 @@ Reflection is very powerful and can do a lot of different metaprogramming tasks,
 
 Another way of implementing dynamic interfaces than associating vtables with objects is to pass a table of the required function pointers along to generic functions that need them. This approach is in a way similar to constructing Go-style interface objects at the call site, just that the table is passed as a hidden argument instead of packaged into a bundle as one of the existing arguments.
 
-This approach is used by [some Haskell implementations](http://okmij.org/ftp/Computation/typeclass.html) although I can't figure out to what extent GHC uses it. It looks like GHC might use a hybrid of this and monomorphization. It's also used by OCaml with an explicit argument in the form of [first class modules](https://v1.realworldocaml.org/v1/en/html/first-class-modules.html), but there's proposals to [add a mechanism to make the parameter implicit](https://tycon.github.io/modular-implicits.html).
+This approach is used by [Haskell type classes](http://okmij.org/ftp/Computation/typeclass.html) although GHC has the ability to do a kind of monomorphization as an optimization through inlining and specialization. Dictionary passing is also used by OCaml with an explicit argument in the form of [first class modules](https://v1.realworldocaml.org/v1/en/html/first-class-modules.html), but there's proposals to [add a mechanism to make the parameter implicit](https://tycon.github.io/modular-implicits.html).
 
 ### Swift Witness Tables
 
@@ -146,7 +155,7 @@ Some languages that implement generics in some other way also include a clean wa
 
 ### Rust procedural macros
 
-A similar example but with a representation only one step into the compiler is [Rust's procedural macros](https://blog.rust-lang.org/2018/12/21/Procedural-Macros-in-Rust-2018.html), which take token streams as input and output token streams, while providing utilities to convert token streams to and from strings. The advantage of this approach is that token streams can preserve source code span information. For example a macro that takes in some code the user wrote and wraps it can directly paste the code the user wrote from input to output as tokens, then if the user's code causes a compiler error in the macro output the error message the compiler prints will correctly point to the file, line and columns of the broken part of the user's code, but if the macro generates broken code the error message will point to the macro invocation.
+A similar example but with a representation only one step into the compiler is [Rust's procedural macros](https://blog.rust-lang.org/2018/12/21/Procedural-Macros-in-Rust-2018.html), which take token streams as input and output token streams, while providing utilities to convert token streams to and from strings. The advantage of this approach is that token streams can preserve source code location information. A macro can directly paste code the user wrote from input to output as tokens, then if the user's code causes a compiler error in the macro output the error message the compiler prints will correctly point to the file, line and columns of the broken part of the user's code, but if the macro generates broken code the error message will point to the macro invocation. For example if you use [a macro that wraps a function in logging calls](https://docs.rs/log-derive/) and make a mistake in the implementation of the wrapped function, the compiler error will point directly to the mistake in your file, rather than saying the error occurred in code generated by the macro.
 
 ### Syntax tree macros
 
@@ -251,6 +260,8 @@ function MakeStack(T)
     return Stack
 end
 ```
+
+Terra's crazy level of metaprogramming power allows it to do things [like implement optimizing compilers for domain specific languages as simple functions](http://terralang.org/#compiling-a-language), or implement the interface and object systems of [Java](https://github.com/zdevito/terra/blob/master/tests/lib/javalike.t) and [Go](https://github.com/zdevito/terra/blob/master/tests/lib/golike.t) in a library with a small amount of code. Then it can save out generated runtime-level code as dependency-free object files.
 
 ### Rust generics
 
