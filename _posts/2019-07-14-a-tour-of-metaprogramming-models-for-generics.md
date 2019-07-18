@@ -159,9 +159,9 @@ A similar example but with a representation only one step into the compiler is [
 
 ### Syntax tree macros
 
-Some languages do take the step further and offer facilities for consuming and producing Abstract Syntax Tree (AST) types in macros written in the language. Examples of this include [Template Haskell](https://wiki.haskell.org/A_practical_Template_Haskell_Tutorial), [Nim macros](https://nim-lang.org/docs/tut3.html) and [OCaml PPX](http://ocamllabs.io/doc/ppx.html).
+Some languages do take the step further and offer facilities for consuming and producing Abstract Syntax Tree (AST) types in macros written in the language. Examples of this include [Template Haskell](https://wiki.haskell.org/A_practical_Template_Haskell_Tutorial), [Nim macros](https://nim-lang.org/docs/tut3.html), [OCaml PPX](http://ocamllabs.io/doc/ppx.html) and nearly all [Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language))s.
 
-One problem with AST macros is that you don't want to require users to learn a bunch of functions for constructing AST types as well as the base languages. All three languages I mention solve this by having some form of "quote" primitive where you provide a fragment of code in the language and it returns the syntax tree. These quote primitives also have a way to splice syntax tree values in like string interpolation. Here's an example in Template Haskell:
+One problem with AST macros is that you don't want to require users to learn a bunch of functions for constructing AST types as well as the base languages. The Lisp family of languages address this by making the syntax and the AST structure very simple with a very direct correspondence, but constructing the structures can still be tedious. Thus, all the languages I mention have some form of "quote" primitive where you provide a fragment of code in the language and it returns the syntax tree. These quote primitives also have a way to splice syntax tree values in like string interpolation. Here's an example in Template Haskell:
 
 ```haskell
 -- using AST construction functions
