@@ -121,7 +121,7 @@ Reflection is very powerful and can do a lot of different metaprogramming tasks,
 
 Another way of implementing dynamic interfaces than associating vtables with objects is to pass a table of the required function pointers along to generic functions that need them. This approach is in a way similar to constructing Go-style interface objects at the call site, just that the table is passed as a hidden argument instead of packaged into a bundle as one of the existing arguments.
 
-This approach is used by [Haskell type classes](http://okmij.org/ftp/Computation/typeclass.html) although GHC has the ability to do a kind of monomorphization as an optimization through inlining and specialization. Dictionary passing is also used by OCaml with an explicit argument in the form of [first class modules](https://v1.realworldocaml.org/v1/en/html/first-class-modules.html), but there's proposals to [add a mechanism to make the parameter implicit](https://tycon.github.io/modular-implicits.html).
+This approach is used by [Haskell type classes](http://okmij.org/ftp/Computation/typeclass.html) although GHC has the ability to do a kind of monomorphization as an optimization through inlining and specialization. Dictionary passing is also used by OCaml with an explicit argument in the form of [first class modules](https://v1.realworldocaml.org/v1/en/html/first-class-modules.html), but there's a proposal to [add a mechanism to make the parameter implicit](https://tycon.github.io/modular-implicits.html).
 
 ### Swift Witness Tables
 
