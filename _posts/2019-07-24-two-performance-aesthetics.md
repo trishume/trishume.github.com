@@ -1,0 +1,70 @@
+---
+layout: post
+title: "Two Performance Aesthetics"
+description: ""
+category:
+tags: []
+---
+{% include JB/setup %}
+
+I've noticed when I think about performance nowadays that I think in terms of two different aesthetics. One aesthetic, which I'll call _Never Miss a Frame_, comes from the world of game development and is focused on writing code that has good worst case performance by making good use of the hardware. The other aesthetic, which I'll call _Do Almost Nothing_ comes from a more academic world and is focused on algorithmically minimizing the work that needs to be done to the extent that there's barely any work left, paying attention to the performance at all scales. In this post I'll describe the two aesthetics, look at some case studies of pairs of programs in different domains that follow different aesthetics, and talk about the trade-offs involved and how to choose which direction to lean for a project.
+
+## Never Miss a Frame
+
+In game development the most important performance criteria is that your game doesn't miss frame deadlines. You have a target frame rate and if you miss the deadline for the screen to draw a new frame your users will notice the jank. This leads to focusing on the worst case scenario and often having fixed maximum limits for various quantities. This property can also be important in areas other than game development, like other graphical applications, safety-critical systems and many embedded systems. A similar dynamic occurs in distributed systems where one server needs to query 100 others and combine the results, you'll wait for the slowest of the 100 every time so speeding up some of them doesn't make the query faster, and queries occasionally taking longer (e.g because of garbage collection) will impact almost every request!
+
+A consequence of deadlines is that it's not worth saving time unless you can save it in all cases. Things like caching often don't help because if the item isn't in the cache then you'll miss your deadline. The easiest way to achieve this is to just do all the work every single frame and don't keep anything between frames except for persistent state.
+
+In this kind of domain you'll often run into situations where in the worst case you can't avoid processing a huge number of things. This means you need to focus your effort on making the best use of the hardware by writing code at a low level and paying attention to properties like cache size and memory bandwidth.
+
+Projects with inviolable deadlines need to adjust different factors than speed if the code runs too slow. For example a game might decrease the size of a level or use a more efficient but less pretty rendering technique.
+
+Aesthetically: Data should be tightly packed, fixed size, and linear. Transcoding data to and from different formats is wasteful. Strings and their variable lengths and inefficient operations must be avoided. Only use tools that allow you to work at a low level, even if they're annoying, because that's the only way you can avoid piles of fixed costs making everything slow. Understand the machine and what your code does to it.
+
+Personally I identify this aesthetic most with [Jonathan Blow](https://www.youtube.com/user/jblow888). He has a very strong personality and I've watched enough of videos of him that I find imagining "What would Jonathan Blow say?" as a good way to tap into this aesthetic. My favourite articles about designs following this aesthetic are on the [Our Machinery Blog](https://ourmachinery.com/post/).
+
+## Do Almost Nothing
+
+Sometimes, it's important to be as fast as you can in all cases and not just orient around one deadline. The most common case is when you simply have to do something that's going to take an amount of time noticeable to a human, and if you can make that time shorter in some situations that's great. Alternatively each operation could be fast but you may run a server that runs tons of them and you'll save on server costs if you can decrease the load of some requests. Another important case is when you care about power use, for example your text editor not rapidly draining a laptop's battery, in this case you want to do the least work you possibly can.
+
+A key technique for this approach is to never recompute something from scratch when it's possible to re-use or patch an old result. This often involves caching: keeping a store of recent results in case the same computation is requested again.
+
+The ultimate realization of this aesthetic is for the entire system to deal only in differences between the new state and the previous state, updating data structures with only the newly needed data and discarding data that's no longer needed. This way each part of the system does almost no work because ideally the difference from the previous state is very small.
+
+Aesthetically: Data must be in whatever structure scales best for the way it is accessed, lots of trees and hash maps. Computations are graphs of inputs and results so we can use all our favourite graph algorithms to optimize them! Designing optimal systems is hard so you should use whatever tools you can to make it easier, any fixed cost they incur will be made negligible when you optimize away all the work they need to do.
+
+Personally I identify this aesthetic most with my friend [Raph Levien](https://www.patreon.com/raphlinus) and his [articles about the design of the Xi text editor](https://xi-editor.io/docs.html), although Raph also appreciates the other aesthetic and [taps into it himself sometimes](https://raphlinus.github.io/rust/graphics/gpu/2019/05/08/modern-2d.html).
+
+## The Tradeoff
+
+Ideally it would be possible to follow both of these ideals simultaneously, writing code that does the minimal amount of work as fast as the machine can possibly perform it. In some cases this is possible but in most cases developers have more important things to do, or there's a trade-off like caching slowing down the wost case. I'm conflating the axes of deadline-oriented vs time-oriented and low-level vs algorithmic optimization, but part of my point is that while they are different, I think these axes are highly correlated.
+
+In practice when I see people set out to make a fast piece of software, depending on the project's goals and their background, they tend to lean towards one aesthetic or the other. If every operation in your software never lags, then there's often no reason to save additional work. If you've made everything in your system incremental to the point where everything is doing minimal work, there's little reason to optimize the operations at a low level since they take negligible time.
+
+## Case Studies
+
+### GUI Toolkits
+
+In the olden days, GUIs were rendered with slow CPUs that couldn't quite render an entire screen's UI in one frame. This necessitated a _Do Almost Nothing_ approach to GUI toolkits, where they kept track of the current state of the UI along with all sorts of saved computations like layout. Events would try to plumb minimal updates through the whole pipeline, touching as little as possible and then redrawing only the rectangle on the screen that actually needed to be updated, like the single new character you typed. But some updates like opening a new window wouldn't be able to take advantage of this and might take multiple frames. This design is called "retained mode GUI" and is still around today in most GUI toolkits (with some extensions to use the GPU for scrolling and drawing). It's still around because it works, it's what people know, and it ended up good for battery life once laptops and smartphones arrived.
+
+However, at some point computers and GPUs became powerful enough that it was possible to render an entire screen full of UI from scratch ever frame. This spawned an alternative approach called "immediate mode GUI" or "[imgui](https://github.com/ocornut/imgui)" where instead of creating persistent widgets that stick around and can cache computations, you just call functions that figure out how a widget should look and then write data to buffers for the GPU. This is super fast and will always render in one frame provided you don't render an absurd amount of UI. However, since it's harder for an imgui to cache things they can't easily do some things that retained mode UI's can do, like render a long document of internationalized text scrolled to the bottom. All existing internationalized text shaping libraries are too slow to shape a long document in one frame, so immediate mode GUI libraries usually just don't support internationalized text.
+
+### Text Editors
+
+[Sublime Text](https://www.sublimetext.com/) is a text editor that mostly follows the _Never Miss a Frame_ approach. Basically every operation is instant because all the operations have been implemented very efficiently. However, some things like syntax highlighting don't quite run fast enough to be instant at large file sizes so Sublime does have infrastructure for caching highlighting, and sometimes throws up progress bars when opening large files. Sublime makes trade-offs to use simple but efficient data structures by sacrificing performance in rare cases like editing extremely long lines. This architecture doesn't always deal well with external code that isn't designed to be instant though, plugins that communicate with slow compilers can sometimes temporarily hang the editor.
+
+The [Xi Editor](https://github.com/xi-editor/xi-editor) is designed to solve this problem by being designed from the ground up to grapple with the fact that some operations, especially those interacting with slow compilers written by other people, can't be made instantaneous. It does this using a fancy asynchronous plugin model and lots of fancy data structures. It tries to allow a native frontend for each platform despite the slowness of cross-language communication over JSON by only ever plumbing minimal deltas over the pipe, so the slowness doesn't matter. It uses a fancy tree-based rope data structure to make even editing very long lines efficient. Many parts of this worked great, and Xi is extremely fast in many ways. The issue facing the Xi project today is that designing complex data structures and protocols to make every single operation incremental and asynchronous makes progress very slow.
+
+An editor that leans into the _Never Miss a Frame_ aesthetic even harder than Sublime Text is [Makepad](https://github.com/makepad/makepad). It's a work-in-progress editor that uses an imgui-esque custom UI toolkit to render everything, making heavy use of the GPU. Layout and highlighting for the entire file is calculated every single frame by highly optimized code. This will drop frames on rare 10k line files, but for all other files allows fancy things other editors couldn't easily do like pressing `alt` to smoothly animate into an overlay of the functions in the whole file.
+
+### Compilers
+
+Jonathan Blow's [Jai](https://github.com/BSVino/JaiPrimer/blob/master/JaiPrimer.md) compiler is clearly designed with the _Never Miss a Frame_ aesthetic. It's written to be extremely fast at every level, and the language doesn't have any features that necessarily lead to slow compiles. The LLVM backend wasn't fast enough to hit his performance goals so he wrote an alternative backend that directly writes x86 code to a buffer without doing any optimizations. Jai compiles something like 100,000 lines of code per second. Designing both the language and compiler to not do anything slow lead to clean build performance 10-100x faster than other commonly-used compilers. Jai is so fast that its clean builds are faster than most compilers incremental builds on common project sizes, due to limitations in how incremental the other compilers are.
+
+However, Jai's compiler is still O(n) in the codebase size where incremental compilers can be O(n) in the size of the change. Some compilers like the work-in-progress [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) and I think also [Roslyn for C#](https://github.com/dotnet/roslyn) take a different approach and focus incredibly hard on making everything fully incremental. For small changes (the common case) this can let them beat Jai and respond in milliseconds on arbitrarily large projects, even if they're slower on clean builds.
+
+## Conclusion
+
+I find both of these aesthetics appealing, but I also think there's real trade-offs that incentivize leaning one way or the other for a given project. I think people having different performance aesthetics, often because one aesthetic really is better suited for their domain, is the source of a lot of online arguments about making fast systems. The different aesthetics also require different bases of knowledge to pursue, like knowledge of data-oriented programming in C++ vs knowledge of abstractions for incrementality like [Adapton](http://adapton.org/), so different people may find that one approach seems way easier and better for them than the other.
+
+I try to choose how to dedicate my effort to pursuing each aesthetics on a per project basis by trying to predict how effort in each direction would help. Some projects I know if I code it efficiently it will always hit the performance deadline, others I know a way to drastically cut down on work by investing time in algorithmic design, some projects need a mix of both. Personally I find it helpful to think of different programmers where I have a good sense of their aesthetic and ask myself how they'd solve the problem. In the end the best approach to follow depends not only on the project, but your skills or the skills of the team working on it, as well as how much time you have to work towards an ambitious design that may take longer for a better result.
