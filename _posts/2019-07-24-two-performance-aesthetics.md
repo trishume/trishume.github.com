@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Two Performance Aesthetics"
+title: "Two Performance Aesthetics: Never Miss a Frame and Do Almost Nothing"
 description: ""
 category:
-tags: []
+tags: [latency]
 ---
 {% include JB/setup %}
 
@@ -11,7 +11,7 @@ I've noticed when I think about performance nowadays that I think in terms of tw
 
 ## Never Miss a Frame
 
-In game development the most important performance criteria is that your game doesn't miss frame deadlines. You have a target frame rate and if you miss the deadline for the screen to draw a new frame your users will notice the jank. This leads to focusing on the worst case scenario and often having fixed maximum limits for various quantities. This property can also be important in areas other than game development, like other graphical applications, safety-critical systems and many embedded systems. A similar dynamic occurs in distributed systems where one server needs to query 100 others and combine the results, you'll wait for the slowest of the 100 every time so speeding up some of them doesn't make the query faster, and queries occasionally taking longer (e.g because of garbage collection) will impact almost every request!
+In game development the most important performance criteria is that your game doesn't miss frame deadlines. You have a target frame rate and if you miss the deadline for the screen to draw a new frame your users will notice the jank. This leads to focusing on the worst case scenario and often having fixed maximum limits for various quantities. This property can also be important in areas other than game development, like other graphical applications, [real-time audio](http://www.rossbencina.com/code/real-time-audio-programming-101-time-waits-for-nothing), safety-critical systems and many embedded systems. A similar dynamic occurs in distributed systems where one server needs to query 100 others and combine the results, you'll wait for the slowest of the 100 every time so speeding up some of them doesn't make the query faster, and queries occasionally taking longer (e.g because of garbage collection) will impact almost every request!
 
 A consequence of deadlines is that it's not worth saving time unless you can save it in all cases. Things like caching often don't help because if the item isn't in the cache then you'll miss your deadline. The easiest way to achieve this is to just do all the work every single frame and don't keep anything between frames except for persistent state.
 
@@ -67,4 +67,4 @@ However, Jai's compiler is still O(n) in the codebase size where incremental com
 
 I find both of these aesthetics appealing, but I also think there's real trade-offs that incentivize leaning one way or the other for a given project. I think people having different performance aesthetics, often because one aesthetic really is better suited for their domain, is the source of a lot of online arguments about making fast systems. The different aesthetics also require different bases of knowledge to pursue, like knowledge of data-oriented programming in C++ vs knowledge of abstractions for incrementality like [Adapton](http://adapton.org/), so different people may find that one approach seems way easier and better for them than the other.
 
-I try to choose how to dedicate my effort to pursuing each aesthetics on a per project basis by trying to predict how effort in each direction would help. Some projects I know if I code it efficiently it will always hit the performance deadline, others I know a way to drastically cut down on work by investing time in algorithmic design, some projects need a mix of both. Personally I find it helpful to think of different programmers where I have a good sense of their aesthetic and ask myself how they'd solve the problem. In the end the best approach to follow depends not only on the project, but your skills or the skills of the team working on it, as well as how much time you have to work towards an ambitious design that may take longer for a better result.
+I try to choose how to dedicate my effort to pursuing each aesthetics on a per project basis by trying to predict how effort in each direction would help. Some projects I know if I code it efficiently it will always hit the performance deadline, others I know a way to drastically cut down on work by investing time in algorithmic design, some projects need a mix of both. Personally I find it helpful to think of different programmers where I have a good sense of their aesthetic and ask myself how they'd solve the problem. One reason I like [Rust](http://rust-lang.org/) is that it can do both [low-level optimization](https://doc.rust-lang.org/1.29.1/std/arch/index.html) and also has a good [ecosystem](https://crates.io/keywords/data-structures) and [type system](https://doc.rust-lang.org/beta/rust-by-example/custom_types/enum.html) for algorithmic optimization, so I can more easily mix approaches in one project. In the end the best approach to follow depends not only on the task, but your skills or the skills of the team working on it, as well as how much time you have to work towards an ambitious design that may take longer for a better result.
