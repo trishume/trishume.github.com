@@ -41,6 +41,8 @@ Ideally it would be possible to follow both of these ideals simultaneously, writ
 
 In practice when I see people set out to make a fast piece of software, depending on the project's goals and their background, they tend to lean towards one aesthetic or the other. If every operation in your software never lags, then there's often no reason to save additional work. If you've made everything in your system incremental to the point where everything is doing minimal work, there's little reason to optimize the operations at a low level since they take negligible time.
 
+That isn't to say that people trying to make fast software shouldn't understand both approaches. You don't want to ignore either constant factors and the size of N in practice, or ignore the overall scaling and the quality of the algorithms you're using. For each task you may use mostly one approach or the other, but choosing the approach based on the task rather than always using only one or the other is a valuable skill.
+
 ## Case Studies
 
 ### GUI Toolkits
