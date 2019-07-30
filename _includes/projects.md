@@ -2,6 +2,10 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2019
 
+- Decided to dedicate much more effort than usual to writing blog articles in the summer and then did.
+- Experimented with and researched the best way to run [OpenAI's GPT-2 language model](https://openai.com/blog/better-language-models/) on a laptop CPU or GPU, with possible applications in my friend Jacob's [Deep TabNine](https://tabnine.com/blog/deep) autocompleter.
+- Did a bunch of experimenting to figure out how to do [glitchless Metal window resizing](/2019/06/19/glitchless-metal-window-resizing/).
+- [Wrote a patcher](/2019/07/26/writing-a-beat-saber-patcher/) for adding custom songs to Beat Saber on the Oculus Quest VR headset.
 - Finished my CS degree at the University of Waterloo!
 - Made a [portmanteau generator](https://github.com/trishume/portmanteau) in Rust for [TerribleHack XIII](//terriblehack.website/).
 - Wrote [a Sublime Text plugin](https://github.com/trishume/SublimeRustAutoImport) for automatically importing modules in Rust.
