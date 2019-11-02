@@ -2,6 +2,10 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2019
 
+- Made [a font patcher](https://github.com/trishume/numderline) that uses arcane OpenType shaping trickery to do things like underline alternating groups of 3 digits from the right.
+- Rewrote [Rate With Science](https://github.com/trishume/ratewithscience) in Rust for easier deployment and less breakage.
+- Built an extremely bright LED lighting setup for my apartment using socket strands, 20 cool LED bulbs, 20 warm bulbs, and smart dimmers for scheduling brightness and color temperature.
+- Moved to NYC
 - Decided to dedicate much more effort than usual to writing blog articles in the summer and then did.
 - Experimented with and researched the best way to run [OpenAI's GPT-2 language model](https://openai.com/blog/better-language-models/) on a laptop CPU or GPU, with possible applications in my friend Jacob's [Deep TabNine](https://tabnine.com/blog/deep) autocompleter.
 - Did a bunch of experimenting to figure out how to do [glitchless Metal window resizing](/2019/06/19/glitchless-metal-window-resizing/).
