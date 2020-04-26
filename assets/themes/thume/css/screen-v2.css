@@ -46,6 +46,7 @@ h1 {
 }
 h3 {
   font-size: 100%;
+  margin-bottom: 0.25em;
 }
 
 h1.nostyle {
