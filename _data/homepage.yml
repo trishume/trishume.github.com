@@ -35,7 +35,7 @@
     image: openturing.png
     image-height: 70
     desc: |
-      An LLVM based compiler for [Turing](https://en.wikipedia.org/wiki/Turing_(programming_language)) as well as a Qt-based IDE and a simple drawing library.
+      An LLVM based compiler for [Turing](https://en.wikipedia.org/wiki/Turing_(programming_language)) as well as a Qt-based IDE and a simple drawing library. Written when I was in grade 10.
 - title: Algorithm Design
   casual-title: I like working on algorithms and then documenting them in long articles with diagrams
   items:
