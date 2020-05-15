@@ -1,5 +1,11 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
+## 2020
+
+- Made [a Sublime Text plugin](https://github.com/trishume/stopfmt) that collapses 3-line short if statements in Go programs (`if err != nil { return }` frequently) onto one by folding the whitespace.
+- Wrote a fun library that can [telefork](https://github.com/trishume/telefork) a program to a different computer, and a blog post about it.
+- Built [a light-sensor-based hardware latency tester](https://twitter.com/trishume/status/1241529995891290112?s=20) for testing keyboard-to-screen UI latency
+
 ## 2019
 
 - Made [a font patcher](https://github.com/trishume/numderline) that uses arcane OpenType shaping trickery to do things like underline alternating groups of 3 digits from the right.

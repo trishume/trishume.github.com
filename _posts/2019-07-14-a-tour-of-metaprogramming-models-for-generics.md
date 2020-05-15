@@ -3,7 +3,7 @@ layout: post
 title: "Models of Generics and Metaprogramming: Go, Rust, Swift, D and More"
 description: ""
 category:
-tags: [compilers]
+tags: [compilers, models]
 good: true
 assetid: generics
 ---

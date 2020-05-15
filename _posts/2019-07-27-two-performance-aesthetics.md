@@ -3,7 +3,7 @@ layout: post
 title: "Two Performance Aesthetics: Never Miss a Frame and Do Almost Nothing"
 description: ""
 category:
-tags: [latency]
+tags: [latency, models]
 ---
 {% include JB/setup %}
 
