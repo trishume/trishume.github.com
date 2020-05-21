@@ -4,6 +4,7 @@ title: "Fragile narrow laggy asynchronous mismatched pipes kill productivity"
 description: ""
 category: 
 tags: [models]
+good: true
 ---
 {% include JB/setup %}
 
