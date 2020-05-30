@@ -2,9 +2,11 @@ This is a list of the things I have worked on and am currently working on. It is
 
 ## 2020
 
+- Played with Samurai in the [Hackasat](https://www.hackasat.com/) CTF. I helped with some Rust binary reverse engineering and signal processing.
+- Played with Samurai in the DEF CON CTF Quals, we came 2nd. I solved floood and helped with bytecoooding, whooo and some others.
 - Made [a Sublime Text plugin](https://github.com/trishume/stopfmt) that collapses 3-line short if statements in Go programs (`if err != nil { return }` frequently) onto one by folding the whitespace.
-- Wrote a fun library that can [telefork](https://github.com/trishume/telefork) a program to a different computer, and a blog post about it.
 - Built [a light-sensor-based hardware latency tester](https://twitter.com/trishume/status/1241529995891290112?s=20) for testing keyboard-to-screen UI latency
+- Wrote a fun library that can [telefork](https://github.com/trishume/telefork) a program to a different computer, and a blog post about it.
 
 ## 2019
 
