@@ -27,7 +27,7 @@ Here is a video he made of his algorithm in action:
 <iframe width="560" height="315" src="http://www.youtube.com/embed/aGmGyFLQAFM" frameborder="0" allowfullscreen="">
 </iframe>
 
-**Before continuing I recommend that you read [his paper](http://www.inb.uni-luebeck.de/publikationen/pdfs/TiBa11b.pdf).**
+**Before continuing I recommend that you read [his paper](https://www.inb.uni-luebeck.de/fileadmin/files/PUBPDFS/TiBa11b.pdf).**
 
 # Implementing the algorithm
 
