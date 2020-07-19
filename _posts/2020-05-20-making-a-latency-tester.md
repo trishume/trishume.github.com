@@ -5,6 +5,7 @@ description: ""
 category: 
 tags: [hardware]
 assetid: latencytester
+good: true
 ---
 {% include JB/setup %}
 
