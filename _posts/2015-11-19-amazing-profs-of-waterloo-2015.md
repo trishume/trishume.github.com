@@ -3,7 +3,7 @@ layout: post
 title: "Amazing Profs of Waterloo 2015"
 description: "The best professors I have had so far and why."
 category:
-tags: [university, review]
+tags: [university,review,nontech]
 ---
 {% include JB/setup %}
 

@@ -3,7 +3,7 @@ layout: post
 title: "My Tungsten Cube"
 description: ""
 category:
-tags: []
+tags: [nontech]
 ---
 {% include JB/setup %}
 
