@@ -12,7 +12,7 @@ I recently played with [Samurai]([Samurai](https://ctftime.org/team/1937)) in th
 
 Here's what it looked like near the end of the contest, I cherry-picked a round where our final bot (labeled 'X' in light grey) won:
 <video controls width="660" autoplay muted loop>
-    <source src="{{PAGE_ASSETS}}/v313-trim.mp4"
+    <source src="{{PAGE_ASSETS}}/v313-trim2.mp4"
             type="video/mp4">
     Sorry, your browser doesn't support embedded videos.
 </video>
