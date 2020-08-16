@@ -29,7 +29,7 @@ That left the big function with lots of math and loops, which we assumed was the
 
 I reverse-engineered all the pointer arithmetic and simplified things to write out a pseudo-C version of the network evaluation function. It seemed to evaluate a number of lineary layers with biases, each followed by either a sigmoid or ReLU activation function (chosen by the input file). The input parsing code hard-coding the number of hidden layers between the input and output layer equal to 1, which was weird and fishy.
 
-Once we had collectively figured out how everything fit together, we wanted to get a bot out there and earning points as fast as possible. So [aegis](https://twitter.com/lunixbochs) wrote a Python script and hand-designed weights in the matrices to rotate the ship unless it was ready to fire in which case it shot. We got this working and deployed it and weren't quite first but were pretty early.
+Once we had collectively figured out how everything fit together, we wanted to get a bot out there and earning points as fast as possible. First [aegis](https://twitter.com/lunixbochs) wrote a Python network serializer script and deployed a bot that just set the bias on going forward to run us into the wall so we were a smaller target and not in the expected position for anyone managing to shoot. The next bot had hand-designed weights in the matrices to rotate the ship unless it was ready to fire in which case it shot. We weren't quite the first to upload a non-empty network (an empty file just shot the wall) but we were something like 2nd.
 
 ## Part 2. Training a better network
 
