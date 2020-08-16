@@ -5,6 +5,7 @@ description: ""
 category: 
 tags: [nontech]
 assetid: youtube
+good: true
 ---
 {% include JB/setup %}
 
