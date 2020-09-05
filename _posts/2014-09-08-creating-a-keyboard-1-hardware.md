@@ -66,7 +66,7 @@ I ended up abandoning the project because after further testing I discovered tha
 
 After giving up on mag-lev I tried cutting the springs on a cherry brown switch and ended up with a decent low force key switch. Thus started the quest to build a custom chording keyboard. Goals included low force, low cost, ergonomic design, full programmability, and the ability to use it as a normal keyboard.
 
-I started out by doing a bunch of research on other people's custom keyboards and reading Geekhack threads and blog posts. I used some ideas from the [Ergodox](http://ergodox.org/), [the Atreus](https://github.com/technomancy/atreus), and of course the Velotype Pro.
+I started out by doing a bunch of research on other people's custom keyboards and reading Geekhack threads and blog posts. I used some ideas from the [Ergodox](https://www.ergodox.io/), [the Atreus](https://github.com/technomancy/atreus), and of course the Velotype Pro.
 
 ## Drawing up the CAD File
 
