@@ -34,7 +34,7 @@ h2:before {
   content: "+";
 }
 h1:not(.nostyle):before, h2:before, blockquote:before, dt:before, ul li:before {
-  color: #cccccc;
+  color: #bbb;
   position: absolute;
   width: 50px;
   text-align: right;
