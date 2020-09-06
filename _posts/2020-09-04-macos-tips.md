@@ -27,6 +27,7 @@ Inspired by a few different conversations with friends who've switched to macOS 
 - The `open` command lets you use the normal macOS file opening mechanism from the command line, I most frequently use `open .` to navigate to my current directory in my file browser.
 - Display "scales" other than 1x or 2x the physical resolution work by rendering at 2x the resolution then down-scaling. This causes apps to need to render a bunch of pixels that are mostly scaled away, consuming power and sometimes causing lag. It can also lead to weird aliasing issues in some contexts like shimmering of thin fonts when scrolling, as well as rendering in general not being pixel-perfect. I recommend trying to stick to either 1x or 2x scaling if you don't lose much from it, then just adjusting your default web page scale and font sizes.
 - Text fields [support a bunch of powerful movement and editing shortcuts based on Emacs](https://jblevins.org/log/kbd).
+- `option+2` types the `™` symbol, for use with sarcasm™. I probably use this more than the `^` symbol. You can open the keyboard viewer (you may have to enable "Show keyboard and emoji viewers in menu bar" in Keyboard Preferences) and hold down option to see all the other symbols you can type like this. The "Emoji & Symbols" pallete is also a great UI for finding handy Unicode characters, especially if you use the gear menu to add more symbol category pages.
 
 
 ## Apps
