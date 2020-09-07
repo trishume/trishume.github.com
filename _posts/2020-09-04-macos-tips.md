@@ -14,7 +14,7 @@ Inspired by a few different conversations with friends who've switched to macOS 
 - Dragging a file or folder onto a file open dialog selects it in the dialog. Similarly dragging onto a "Choose file" button.
 - Dragging onto a terminal window pastes the full path of that file/folder
 - You can drag the little file/folder icons at the top of many windows, useful in combo with previous tips.
-- If you hold down `option` while clicking the "Scaled" radio button in the Display preferences it'll give you many more resolution options on external displays. If you want native resolution with no scaling on the built in display you'll still need an external tool like [SwitchResX](https://www.madrau.com/) or [QuickRes](https://www.thnkdev.com/QuickRes/).
+- If you hold down `option` while clicking the "Scaled" radio button in the Display preferences it'll give you many more resolution options on external displays. If you want native resolution with no scaling on the built in display you'll still need an external tool like [SwitchResX](https://www.madrau.com/), [retina](https://github.com/lunixbochs/meta/tree/master/utils/retina) or [QuickRes](https://www.thnkdev.com/QuickRes/).
 - In Finder, `return` is the shortcut for rename, `option`+drag copies, and `space` is quicklook preview
 - In Preview if you open the Sidebar in a PDF you can drag pages around including between documents, hold option to copy, delete pages with backspace. This plus the edit toolbar solves 90% of my PDF munging needs.
 - You can select multiple images in Finder and drag them onto the Preview dock icon to open them in one window with a Sidebar where you can quickly flip between them with arrow keys.
