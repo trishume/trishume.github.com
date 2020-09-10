@@ -19,10 +19,11 @@ Inspired by a few different conversations with friends who've switched to macOS 
 - In Preview if you open the Sidebar in a PDF you can drag pages around including between documents, hold option to copy, delete pages with backspace. This plus the edit toolbar solves 90% of my PDF munging needs.
 - You can select multiple images in Finder and drag them onto the Preview dock icon to open them in one window with a Sidebar where you can quickly flip between them with arrow keys.
 - In the Dock preferences there's a "Prefer tabs when opening documents" setting which automatically groups your windows with window tabs. I find this especially useful for Sublime Text.
-- `cmd+backtick` is like `cmd+tab` but between windows of the same app.
+- `cmd+backtick` is like `cmd+tab` but between windows of the same app. Adding `shift` (i.e., `cmd+shift+backtick`) reverses the order. You can add `shift` to `cmd+tab` to go backwards too.
 - Drag your most frequently used folders into the Finder sidebar for easy access including in file select dialogs.
+- Select multiple similarly named files in Finder, right-click, and choose "Rename <X> Items..." for a reasonably powerful batch file renamer.
 - In the Finder preferences you can add your computer and drives to the sidebar.
-- `cmd+shift+4` pops up a crosshair to take a screenshot of a region.
+- `cmd+shift+4` pops up a crosshair to take a screenshot of a region. Hit `spacebar` to switch to a mode that takes a screenshot of an entire window.
 - You can [disable the popup for accented characters when you hold a key](https://www.defaults-write.com/disable-press-and-hold-option-in-mac-os-x-10-7/) and  [increase key repeat rate beyond the normal maximum](https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x).
 - The `open` command lets you use the normal macOS file opening mechanism from the command line, I most frequently use `open .` to navigate to my current directory in my file browser.
 - Display "scales" other than 1x or 2x the physical resolution work by rendering at 2x the resolution then down-scaling. This causes apps to need to render a bunch of pixels that are mostly scaled away, consuming power and sometimes causing lag. It can also lead to weird aliasing issues in some contexts like shimmering of thin fonts when scrolling, as well as rendering in general not being pixel-perfect. I recommend trying to stick to either 1x or 2x scaling if you don't lose much from it, then just adjusting your default web page scale and font sizes.
