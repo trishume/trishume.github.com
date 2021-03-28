@@ -29,6 +29,11 @@
    {{ page.headContent }}
    {% endif %}
 
+   {% if page.preview %}
+   <meta property="og:image" content="{{ site.production_url }}{{ page.preview }}">
+   <meta property="twitter:image" content="{{ site.production_url }}{{ page.preview }}">
+   {% endif %}
+
    <!-- Homepage CSS -->
    <link rel="stylesheet" href="{{ ASSET_PATH }}/css/screen-v2.css" type="text/css"/>
 </head>
@@ -69,16 +74,6 @@
     </div>
   </div>
 
-  {% if page.layout == "post" %}
-  <script>
-    (function(d, t) {
-        var g = d.createElement(t),
-            s = d.getElementsByTagName(t)[0];
-        g.src = '//hnbutton.appspot.com/static/hn.js';
-        s.parentNode.insertBefore(g, s);
-    }(document, 'script'));
-  </script>
-  {% endif %}
   {% include JB/analytics %}
 </body>
 </html>
