@@ -8,7 +8,7 @@ assetid: displaylink
 ---
 {% include JB/setup %}
 
-**Edit 2017/12/10:** So I screwed up, I thought I was safe confirming it in two different ways but I was using an external monitor and all of the below is accurate only for the multi-monitor case. Skip to the bottom to read about my new results.
+**Edit 2017/12/10:** So I screwed up, I thought I was safe confirming it in two different ways but I was using an external monitor and all of the below is accurate only for a specific multi-monitor case. Skip to the bottom to read about my new results.
 
 `CVDisplayLink` is the recommended way to synchronize your drawing/animation with the refresh of the display on macOS. Many people assume it calls your app just after each display vsync event, unfortunately this isn't the case at all. `CVDisplayLink` just fetches the refresh rate of your display, and sets a high resolution timer to call you every 16.6ms (for a 60hz display).
 
@@ -58,4 +58,4 @@ Interestingly, [@ametis_](https://twitter.com/ametis_/status/939739328397295617)
 Thanks to other commenters on Hacker News and Twitter have pointed out a few things that I should add here:
 
 - Someone on HN notes that the Apple docs don't promise that `CVDisplayLink` gives you refresh times. I had noticed this but didn't include it in my article, but I treated it as further evidence for my results though. Ooops, turns out it does sometimes, just not always.
-- [@jordwalke](https://twitter.com/jordwalke) linked me to [this article](http://www.ananseproductions.com/game-loops-on-ios/) that explains how `CADisplayLink` works on IOS.
+- [@jordwalke](https://twitter.com/jordwalke) linked me to [this article](https://www.gamasutra.com/blogs/KwasiMensah/20110211/88949/Game_Loops_on_IOS.php) that explains how `CADisplayLink` works on IOS.
