@@ -15,7 +15,7 @@ You can get started using Spacemacs by following the installation instructions i
 
 # The .spacemacs File
 
-The `~/.spacemacs` file is your main starting point for configuring Spacemacs. If you don't have this file you can install a template pressing `SPC : dotspacemacs/install RET` in Spacemacs, where `SPC` is space and `RET` is the enter key. At any time you can press `SPC f e d` to edit this file.
+The `~/.spacemacs` file is your main starting point for configuring Spacemacs. If you don't have this file you can install a template pressing `SPC SPC dotspacemacs/install RET` in Spacemacs, where `SPC` is space and `RET` is the enter key. At any time you can press `SPC f e d` to edit this file.
 
 The template comes with many variables that you can customize and use to set things like font sizes and window preferences. Once you are done editing, save the file and either press `SPC f e R` in the file to reload it or just restart Spacemacs.
 
@@ -56,7 +56,7 @@ If you want to install a package you found online, like [2048-game](http://melpa
 ## The "private" Directory
 
 This is a folder in the main Spacemacs directory where you can put configuration layers for your own personal use.
-You can create a template layer in this directory using `<SPC> : configuration-layer/create-layer RET`.
+You can create a template layer in this directory using `SPC SPC configuration-layer/create-layer RET`.
 
 The descriptive comments in the template `packages.el` do a pretty good job of explaining what to do. Basically you add the package you want to include to the `yourlayernamehere-packages` list and then create `yourlayernamehere-init-yourpackagenamehere` functions where you use [use-package](https://github.com/jwiegley/use-package) to load the package and set it up. Take a look at [existing layers](https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/finance) for examples of how to set up packages and keybindings.
 
