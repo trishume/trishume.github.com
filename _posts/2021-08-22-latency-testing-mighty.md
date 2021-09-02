@@ -123,19 +123,3 @@ Compared to my local Chrome though, Mighty isn't for me. I have a fairly powerfu
 Mighty is an interesting case study of how the new style of display streaming using hardware video compression can provide nicer experiences than older technologies while making it hard to implement further optimizations. Other systems like VNC, Citrix and Microsoft RDP which use custom CPU image patch compression make it really easy to implement all sorts of specialized tricks, but struggle on modern high resolutions, and fall off a cliff on hard cases like games and YouTube videos unless they adaptively switch to video compression.
 
 I expect that higher bandwidth connections, new streaming technologies, and trends like increased working from home and potentially VR meeting rooms/offices, will make display streaming a field that remains interesting over the next few years. I find this area pretty interesting and hope to follow progress and maybe do some more tinkering. I would pitch myself as a consultant with this post as a work sample, but I have a full time job and my US visa status means I can't earn income any other way, so instead you can feel free to email me and maybe I'll be interested enough to chat about it.
-
-# Deleted Scenes
-
-### Tail latency issues with high resolutions
-
-Another issue that wasn't present in the tests above, but showed up in other test runs and in Mighty's own keyboard latency graph, is bad tail latency. Often my first key press after not typing for a while would have a latency of 1-5s, especially on the textarea on <base64decode.org>, which also has higher base latency of around 200ms for some reason. Mighty is in beta, and this is probably debuggable, but tail latency issues like this are one of the hardest parts of desktop streaming:
-
-![Latency Spike]({{PAGE_ASSETS}}/mightystats2.png)
-
-Typing is just where they have a latency graph to show the spikes though. When using a maximized 4k window I often notice large latencies, for example switching tabs typically takes 1s and occasionally more like 7s. These issues only show up on large window resolutions though, when I make my window small things are snappy.
-
-## Old and new style remote display systems
-
-A new breed of display streaming systems has been cropping up in the past few years, based on using GPU-accelerated encoding/decoding for common video compression formats to stream the entire screen as a video. Examples include all the major game streaming services like [GeForce Now](https://www.nvidia.com/en-us/geforce-now/) and [Google's Stadia](https://stadia.google.com/). [Parsec](https://parsec.app/) seems to be doing a good job applying this to normal desktop apps, although I haven't tested it.
-
-Older remote desktop systems like VNC, Citrix and Microsoft's RDP work differently. They tend to use custom encoders specialized to desktop content which run on the CPU. However these CPU-based encoders tend to struggle with modern high resolution displays, and certain types of content like games, videos and CAD apps. Some, like [Citrix](https://docs.citrix.com/en-us/tech-zone/design/design-decisions/hdx-graphics.html) and [RDP](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/remotei-desktop-protocol-rdp-10-avc-h-264-improvements-in-windows/ba-p/249588) have added hardware video encoding support, although in my experience they haven't done a good job and the experience is better with it disabled on normal desktop apps.
