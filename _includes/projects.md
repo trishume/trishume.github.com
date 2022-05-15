@@ -1,5 +1,17 @@
 This is a list of the things I have worked on and am currently working on. It is in kind of chronological order. I will try and write down all the things I have worked on. Unfortunately I don't remember many of the things I worked on in years gone by.
 
+## 2022
+
+- Designed a laser-cut aluminum keyboard case that uses magnets to double as a lap board.
+- Started at [Anthropic](https://www.anthropic.com/) doing mechanistic interpretability research for large language models on Chris Olah's team. Moved to SF.
+
+## 2021
+
+- Started having a more vibrant social life and spent less time on blogging and personal projects.
+- Started designing a super-bright modular LED light bar for apartment lighting.
+- Implemented magic-trace for Jane Street.
+- Played with Samurai in the DEF CON CTF qualifiers and finals.
+
 ## 2020
 
 - Played with Samurai in the [Hackasat](https://www.hackasat.com/) CTF. I helped with some Rust binary reverse engineering and signal processing.

@@ -8,6 +8,13 @@
     image-height: 60
     desc: |
       A path tracer capable of rendering photorealistic images. Supports a physically based BRDF, textures, area lights, glossy reflection, DOF, CSG, fractals and more.
+  - name: Magic-trace
+    link: https://github.com/janestreet/magic-trace
+    title: Intel PT tracing
+    image: magic-trace-logo.svg
+    image-height: 40
+    desc: |
+      Performance analysis tool which makes it easy to use Intel Processor Trace to visualize *every* function call made leading up to an event of interest with nanosecond precision. I designed and implemented this for Jane Street, where it's been incredibly successful internally, and [wrote a blog post for the open source release](https://blog.janestreet.com/magic-trace/).
   - name: Syntect
     link: https://github.com/trishume/syntect
     title: Syntax highlighting Library
@@ -29,13 +36,13 @@
     image-height: 70
     desc: |
       An IOS app for long term personal finance simulation. Instantly updates a visualization of your entire life's financial future while you manipulate inputs.
-  - name: The Open Turing Compiler
-    title: LLVM front-end, IDE and library
-    link: https://github.com/trishume/OpenTuringCompiler
-    image: openturing.png
-    image-height: 70
-    desc: |
-      An LLVM based compiler for [Turing](https://en.wikipedia.org/wiki/Turing_(programming_language)) as well as a Qt-based IDE and a simple drawing library. Written when I was in grade 10.
+  # - name: The Open Turing Compiler
+  #   title: LLVM front-end, IDE and library
+  #   link: https://github.com/trishume/OpenTuringCompiler
+  #   image: openturing.png
+  #   image-height: 70
+  #   desc: |
+  #     An LLVM based compiler for [Turing](https://en.wikipedia.org/wiki/Turing_(programming_language)) as well as a Qt-based IDE and a simple drawing library. Written when I was in grade 10.
 - title: Algorithm Design
   casual-title: I like working on algorithms and then documenting them in long articles with diagrams
   items:
@@ -95,6 +102,17 @@
     image-height: 60
     desc: |
       An exploration tool for long term financial market data written in JavaScript with a custom canvas graph widget allowing for navigation of hundreds of years of data.
+- title: Non-programming stuff
+  casual-title: Sometimes I write about random other interesting things
+  items:
+  - name: YouTube Tier List
+    link: /2020/07/19/my-youtube-tier-list/
+    desc: |
+      I wrote about my favorite interesting YouTube channels, with amazing content on engineering, machining, chemistry, visual effects and making knives out of weird materials.
+  - name: My Tungsten Cube
+    link: /2019/03/03/my-tungsten-cube/
+    desc: |
+      I wrote a somewhat-poetic post about how cool tungsten cubes are, which went viral in 2020 and made them a meme in certain parts of Twitter.
 - title: Writing
   casual-title: I like writing articles about things I've learned and done
   items:
