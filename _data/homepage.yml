@@ -1,6 +1,13 @@
 - casual-title: Sometimes I learn about a topic by putting a lot of effort into a related project
   title: Major projects
   items:
+  - name: Magic-trace
+    link: https://github.com/janestreet/magic-trace
+    title: Intel PT tracing
+    image: magic-trace-logo.svg
+    image-height: 40
+    desc: |
+      Performance analysis tool which makes it easy to use Intel Processor Trace to visualize *every* function call made leading up to an event of interest with nanosecond precision. I designed and implemented this (along with an intern I mentored) for Jane Street, where it's been incredibly successful internally, and [wrote a blog post for the open source release](https://blog.janestreet.com/magic-trace/).
   - name: Yūbinkyoku
     link: http://thume.ca/ray-tracer-site/
     title: Path Tracer
@@ -8,13 +15,6 @@
     image-height: 60
     desc: |
       A path tracer capable of rendering photorealistic images. Supports a physically based BRDF, textures, area lights, glossy reflection, DOF, CSG, fractals and more.
-  - name: Magic-trace
-    link: https://github.com/janestreet/magic-trace
-    title: Intel PT tracing
-    image: magic-trace-logo.svg
-    image-height: 40
-    desc: |
-      Performance analysis tool which makes it easy to use Intel Processor Trace to visualize *every* function call made leading up to an event of interest with nanosecond precision. I designed and implemented this for Jane Street, where it's been incredibly successful internally, and [wrote a blog post for the open source release](https://blog.janestreet.com/magic-trace/).
   - name: Syntect
     link: https://github.com/trishume/syntect
     title: Syntax highlighting Library
