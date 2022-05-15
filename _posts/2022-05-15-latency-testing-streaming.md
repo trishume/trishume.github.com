@@ -8,11 +8,11 @@ assetid: mightylat
 ---
 {% include JB/setup %}
 
-Ever since I built [my light sensor based latency tester](https://thume.ca/2020/05/20/making-a-latency-tester/), I've wanted to use it to illuminate where the added latency of remote desktop / display streaming systems really comes from. In fall of 2020 I was let into the beta program of a remote browser startup I'll call Remotey (not their real name)[^1]. The idea is that you can save RAM on your machine and take advantage of powerful cloud computers with gigabit networking, but it means many interactions no longer take place on-device. I'll use various latency tests I did with their product to illustrate the challenges inherent in providing a nice remote display experience on high-resolution displays, and talk about optimizations they could make to be much snappier.
+Ever since I built [my light sensor based latency tester](https://thume.ca/2020/05/20/making-a-latency-tester/), I've wanted to use it to illuminate where the added latency of remote desktop / display streaming systems really comes from. In fall of 2021 I was let into the beta program of a remote browser startup I'll call Remotey (not their real name)[^1]. The idea is that you can save RAM on your machine and take advantage of powerful cloud computers with gigabit networking, but it means many interactions no longer take place on-device. I'll use various latency tests I did with their product to illustrate the challenges inherent in providing a nice remote display experience on high-resolution displays, and talk about optimizations they could make to be much snappier.
 
 ![Latency Tester]({{PAGE_ASSETS}}/latencytester.jpeg)
 
-[^1]: Drafts of this post mentioned who the startup was, but they reasonably asked that I not leave outdated measurements and statements about their constantly improving product tied to their name. Even if you guess who the startup is, they've likely substantially improved performance and implemented fixes since I did these measurements in September 2020. Ideally don't speculate using their real name in comments.
+[^1]: Drafts of this post mentioned who the startup was, but they reasonably asked that I not leave outdated measurements and statements about their constantly improving product tied to their name. Even if you guess who the startup is, they've likely substantially improved performance and implemented fixes since I did these measurements in September 2021. Ideally don't speculate using their real name in comments.
 
 ## Why this remote browser?
 
