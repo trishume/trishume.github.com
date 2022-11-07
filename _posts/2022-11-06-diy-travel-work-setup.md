@@ -40,6 +40,13 @@ Or combine it with a standing desk:
 
 ![Standing desk]({{PAGE_ASSETS}}/desk-work.jpeg)
 
+## Optimizing sleeping on flights
+
+My other big travel optimization has been taking overnight flights and sleeping on them, which I didn't used to be able to do without waking up constantly due to my neck hurting. I first mostly solved this using a [trtl pillow](https://trtltravel.com/), which unlike classic airplane pillows doesn't constrict my neck blood flow and actually allows me to lean my head to the side.
+
+Then my coworker recommended getting a [medical foam cervical collar](https://www.amazon.com/gp/product/B003LLY8GC/ref=ppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&psc=1), which was even better and completely eliminated my neck pain sleeping on flights. I first got one that was too short, and then found the one I linked which suggests how to measure your chin height and offers a larger size. That one is also black which looks less medical.
+
+If you don't like standard foam ear plugs, I also recommend trying [wax ear plugs](https://www.amazon.com/gp/product/B0006NXBVQ/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1) which you shape into a pancake over your ear opening. They feel weird in a different way which is less stuffy and more comfortable for me.
 
 ## More detail
 
