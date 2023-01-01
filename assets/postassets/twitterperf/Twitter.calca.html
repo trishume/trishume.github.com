@@ -1,0 +1,298 @@
+﻿<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Twitter</title>  
+  <style>
+    body { font-family: "Helvetica Neue", sans-serif; }
+    code, input { font-family: Menlo, monospace; }
+    input { font-size: 100%; }
+    pre { white-space: pre-wrap; }
+    .hidden, .hiddenh1, .hiddenh2, .hiddenh3, .hiddenh4 { color: #BCBCBC; font-weight: normal; }
+    .ans { background-color: #ECECEC; padding: 0 0.25em 0 0.25em;}
+    .err { border-bottom: 2px solid #FFB2B2; }
+    .incl { border-bottom: 2px solid #FFD700; }
+    .c { color: #A6A6A6; }
+    .n { color: #1472F0; }
+    .t { font-weight: bold; }
+    .d { font-weight: bold; }		
+    .k { color: #9400D3; }
+    .s { color: #8888E6; }
+    .u { color: #8888E6; }
+    .r { font-size: 75%; }
+    .xml { color: #8888E6; }
+    .hidden, .hiddenh1, .hiddenh2, .hiddenh3, .hiddenh4 { display: none; }
+    .c { display: none; }
+  </style>
+</head>
+<body><div class="calca">
+<h1>Tweet rates</h1>
+
+<p>First the public top-line numbers:
+
+<p><pre><code><span class="d">daily active users</span> = <span class="n">250e6</span> <span class="t">=&gt;</span> <span class="n ans">250,000,000</span>
+</code></pre><pre><code><span class="d">avg tweet rate</span> = <span class="n">500e6</span>/<span class="u">day</span> <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">5,787.037</span>/<span class="u">s</span></span>
+</code></pre>
+<p>The Decahose notebook (which ends March 2022) suggests that tweet rate averages out pretty well by the level of a full day, the peak days ever in the dataset (during the pandemic lockdown in 2020) only have about 535M tweets compared to 340M before the lockdown surge.
+
+<p><pre><code><span class="d">traffic surge ratio</span> = <span class="n">535e6</span> / <span class="n">340e6</span> <span class="t">=&gt;</span> <span class="n ans">1.5735</span>
+</code></pre><pre><code><span class="d">max sustained tweet rate</span> = avg tweet rate * traffic surge ratio  <span class="t">=&gt;</span> <span class="ans"><span class="n">9,106.073</span>/<span class="u">s</span></span>
+</code></pre>
+<p>The maximum tweet record is probably still the 2013 Japanese TV airing, Elon said only 20k/second for the recent world cup.
+
+<p><pre><code><span class="d">max tweet rate</span> = <span class="n">150,000</span>/<span class="u">second</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">150,000</span>/<span class="u">second</span></span>
+</code></pre>
+<p>Now we need to figure out how much data that is. Tweets <a href="https://qntm.org/twitcodings">can fit a maximum of 560 bytes</a> but probably almost all Tweets are shorter than that and we can either use a variable length encoding or a fixed size with an escape hatch to a larger structure for unusually large tweets. One dataset I tried suggested an average length close to 80 characters, but I that was maybe from before the tweet length expansion so let's use a larger number to be safe and allow a fixed size encoding with escape hatch.
+
+<p><pre><code><span class="d">tweet content max size</span> = <span class="n">560</span> <span class="u">byte</span>
+</code></pre><pre><code><span class="d">tweet content avg size</span> = <span class="n">140</span> <span class="u">byte</span>
+</code></pre>
+<p>Tweets also have metadata like a timestamp and also some numbers we may want to cache for display such as like/retweet/view counts. Let's guess some field counts.
+
+<p><pre><code><span class="d">metadata size</span> = <span class="n">2</span>*<span class="n">8</span> <span class="u">byte</span> + <span class="n">5</span> * <span class="n">4</span> <span class="u">byte</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">36</span> <span class="u">byte</span></span>
+</code></pre>
+<p>Now we can use this to compute some sizes for both historical storage and a hot set using fixed-size data structures in a cache:
+
+<p><pre><code><span class="d">tweet avg size</span> = tweet content avg size + metadata size <span class="t">=&gt;</span> <span class="ans"><span class="n">176</span> <span class="u">byte</span></span>
+</code></pre><pre><code><span class="d">tweet storage rate</span> = avg tweet rate * tweet avg size <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">88</span> <span class="u">GB</span>/<span class="u">day</span></span>
+</code></pre><pre><code>tweet storage rate * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">32.1413</span> <span class="u">TB</span></span>
+</code></pre>
+<p><pre><code><span class="d">tweet content fixed size</span> = <span class="n">284</span> <span class="u">byte</span>
+</code></pre><pre><code><span class="d">tweet cache rate</span> = (tweet content fixed size + metadata size) * max sustained tweet rate <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">251.7647</span> <span class="u">GB</span>/<span class="u">day</span></span>
+</code></pre>
+<p>Let's guess the hot set that almost all requests hit in is maybe 2 days of tweets. Not all tweets in people's timeline requests will be &lt;2 days old, but also many tweets aren't seen very much so won't be in the hot set.
+
+<p><pre><code><span class="d">tweet cache size</span> = tweet cache rate * <span class="n">2</span> <span class="u">day</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">503.5294</span> <span class="u">GB</span></span>
+</code></pre>
+<p>We also need to store the following graph for all users so we can retrieve from the cache. I need to completely guess a probably-overestimated average following count to do this.
+
+<p><pre><code><span class="d">avg following</span> = <span class="n">400</span>
+</code></pre><pre><code><span class="d">graph size</span> = avg following * daily active users * <span class="n">4</span> <span class="u">byte</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">400</span> <span class="u">GB</span></span>
+</code></pre>
+<h2>Timeline caching</h2>
+
+<p><pre><code><span class="d">tweet id size</span> = <span class="n">32</span> <span class="u">byte</span>
+</code></pre><pre><code><span class="d">cached timeline len</span> = <span class="n">128</span>
+</code></pre><pre><code><span class="d">timeline size</span> = tweet id size * cached timeline len <span class="t">=&gt;</span> <span class="ans"><span class="n">4,096</span> <span class="u">byte</span></span>
+</code></pre><pre><code><span class="d">all timelines</span> = daily active users * timeline size <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">1,024</span> <span class="u">GB</span></span>
+</code></pre>
+<p><pre><code><span class="d">total memory</span> = tweet storage rate * <span class="n">1</span> <span class="u">day</span> + all timelines + graph size <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">1,512</span> <span class="u">GB</span></span>
+</code></pre>
+<h2>Timeline serving bandwidth</h2>
+
+<p><a href="https://twitter.com/elonmusk/status/1598765633121898496">Elon tweeted</a> 100 billion impressions per day which probably includes a lot of scrolling past algorithmic tweets/likes that aren't part of the basic core version of Twitter, but corresponds to an average timeline delivery rate that's 2-3x the number of tweets on an average day from all the people I follow.
+
+<p><pre><code><span class="d">avg timeline rate</span> = <span class="n">400</span>/<span class="u">day</span>
+</code></pre><pre><code><span class="d">delivery rate</span> = daily active users * avg timeline rate <span class="t">=&gt;</span> <span class="ans"><span class="n">100,000,000,000</span>/<span class="u">day</span></span>
+</code></pre><pre><code>delivery rate <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">1,157,407.4074</span>/<span class="u">s</span></span>
+</code></pre><pre><code><span class="d">avg expansion</span> = delivery rate / avg tweet rate <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">200</span>
+</code></pre>
+<p><pre><code><span class="d">delivery bandwidth</span> = tweet avg size * delivery rate <span class="k">in</span> <span class="u">Gbit</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">1.6296</span> <span class="u">Gbit</span>/<span class="u">s</span></span>
+</code></pre><pre><code>delivery bandwidth <span class="k">in</span> <span class="u">TB</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">535.689</span> <span class="u">TB</span>/<span class="u">month</span></span>
+</code></pre>
+<p>But that's for the average, what if we assume that page refreshing spikes just as much as tweet rate at peak times. I don't think this is true, the tweet peak was set with tweeting synchronized on one TV event and lasted less than 30 seconds, but refreshes will be less synchronized even during busy events like the world cup. Let's calculate it anyways though!
+
+<p><pre><code><span class="d">per core</span> = <span class="n">2.5e6</span>/(thread*<span class="u">second</span>) * <span class="n">2</span> thread <span class="t">=&gt;</span> <span class="ans"><span class="n">5,000,000</span>/<span class="u">second</span></span>
+</code></pre><pre><code><span class="d">peak delivery rate</span> = max tweet rate * avg expansion <span class="t">=&gt;</span> <span class="ans"><span class="n">30,000,000</span>/<span class="u">second</span></span>
+</code></pre><pre><code><span class="d">peak cores needed</span> = peak delivery rate / per core <span class="t">=&gt;</span> <span class="n ans">6</span>
+</code></pre><pre><code><span class="d">peak bandwidth</span> = tweet avg size * peak delivery rate <span class="k">in</span> <span class="u">Gbit</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">42.24</span> <span class="u">Gbit</span>/<span class="u">s</span></span>
+</code></pre>
+<p>To estimate tweets per request, let's start by considering a Twitter without live timeline updating where a user opens the website or app a few times a day and then scrolls through their new tweets.
+
+<p><pre><code><span class="d">avg new connection rate</span> = <span class="n">3</span>/<span class="u">day</span> * daily active users <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">8,680.5556</span>/<span class="u">s</span></span>
+</code></pre><pre><code><span class="d">tweets per request</span> = delivery rate / avg new connection rate <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">133.3333</span>
+</code></pre>
+<h2>Memory bus capacity</h2>
+
+<p>From the <a href="https://www.intel.com/content/www/us/en/support/articles/000056722/processors/intel-core-processors.html">Intel page on max memory bandwidth</a> for a DDR4 server.
+
+<p><pre><code><span class="d">memory bandwidth</span> = <span class="n">128</span><span class="u">GB</span>/<span class="u">s</span>
+</code></pre><pre><code><span class="d">max fetch rate</span> = memory bandwidth / <span class="n">320</span> <span class="u">byte</span> <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">400,000,000</span>/<span class="u">s</span></span>
+</code></pre>
+<h2>Live timelines</h2>
+
+<p><pre><code><span class="d">home page rate on a small connection</span> = <span class="n">10</span><span class="u">Gbit</span>/<span class="u">s</span> / <span class="n">64</span><span class="u">KB</span> <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">19,073.4863</span>/<span class="u">s</span></span>
+</code></pre>
+<p>In order to extend our estimates to live timelines, we'll assume a model of users connecting and then leaving a session open while they scroll around for a bit.
+
+<p><pre><code><span class="d">avg session duration</span> = <span class="n">20</span> <span class="u">minutes</span>
+</code></pre><pre><code><span class="d">live connection count</span> = avg session duration * avg new connection rate <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">10,416,666.6667</span>
+</code></pre><pre><code><span class="d">poll request rate</span> = <span class="n">1</span>/<span class="u">minute</span> * live connection count <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">173,611.1111</span>/<span class="u">s</span></span>
+</code></pre><pre><code><span class="d">avg tweets per poll</span> = delivery rate / poll request rate <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">6.6667</span>
+</code></pre>
+<p><pre><code><span class="d">frenzy push rate</span> = avg expansion * max tweet rate <span class="t">=&gt;</span> <span class="ans"><span class="n">30,000,000</span>/<span class="u">second</span></span>
+</code></pre>
+<p>To estimate the memory usage to hold all the connections I'll be using numbers from <a href="https://habr.com/en/post/460847/">this websocket server</a>.
+
+<p><pre><code><span class="d">tls websocket state</span> = <span class="n">41.7</span> <span class="u">GB</span> / <span class="n">4.9e6</span> <span class="k">in</span> <span class="u">byte</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">8,510.2041</span> <span class="u">byte</span></span>
+</code></pre><pre><code>live connection count * tls websocket state <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">88.648</span> <span class="u">GB</span></span>
+</code></pre>
+<p>To implement live scrolling or cheap refreshing, we may need to cache the heap used to traverse tweets.
+
+<p><pre><code><span class="d">cached cursor size</span> = <span class="n">8</span> <span class="u">byte</span> * avg following <span class="t">=&gt;</span> <span class="ans"><span class="n">3,200</span> <span class="u">byte</span></span>
+</code></pre><pre><code>live connection count * cached cursor size <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">33.3333</span> <span class="u">GB</span></span>
+</code></pre>
+<p>https://h2o.examp1e.net/ 350k TLS requests per core-s with http2 and 70k with http1.1
+https://goroutines.com/10m 10 million connections
+
+<h2>Images</h2>
+
+<p>I can't find any good data on how many images Twitter serves, so I'll be going with wild estimates looking at the fraction and size of images in my own Twitter timeline.
+
+<p><pre><code><span class="d">served tweets with images rate</span> = <span class="n">1</span>/<span class="n">5</span>
+</code></pre><pre><code><span class="d">avg served image size</span> = <span class="n">70</span> <span class="u">KB</span>
+</code></pre><pre><code><span class="d">image bandwidth</span> = delivery rate * served tweets with images rate * avg served image size <span class="k">in</span> <span class="u">Gbit</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">132.7407</span> <span class="u">Gbit</span>/<span class="u">s</span></span>
+</code></pre>
+<p><pre><code><span class="d">total bandwidth</span> = image bandwidth + delivery bandwidth <span class="t">=&gt;</span> <span class="ans"><span class="n">134.3704</span> <span class="u">Gbit</span>/<span class="u">s</span></span>
+</code></pre><pre><code>total bandwidth * <span class="n">1</span> <span class="u">month</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">44,169.993</span> <span class="u">TB</span></span>
+</code></pre>
+<p>Tweets with images are probably more popular, so my timeline probably overestimates the fraction of tweets with images that we need to store. On the other hand <a href="https://web.archive.org/web/20220414121946/https://highscalability.com/blog/2016/4/20/how-twitter-handles-3000-images-per-second.html">this page</a> says 3000/s but that would be fully half of average tweet rate so I kinda suspect that's a peak load number or something. I'm going to guess a lower number, especially cuz lots of tweets are replies and those rarely have images, and when they do they're reaction images that can be deduplicated. On the other hand we need to store images at a larger size in case the user clicks on them to zoom in.
+
+<p><pre><code><span class="d">stored image fraction</span> = <span class="n">1</span>/<span class="n">10</span>
+</code></pre><pre><code><span class="d">avg stored image size</span> = <span class="n">150</span> <span class="u">KB</span>
+</code></pre><pre><code><span class="d">image rate</span> = avg tweet rate * stored image fraction <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">578.7037</span>/<span class="u">s</span></span>
+</code></pre><pre><code><span class="d">image storage rate</span> = image rate * avg stored image size <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">7,680</span> <span class="u">GB</span>/<span class="u">day</span></span>
+</code></pre><pre><code><span class="d">total storage rate</span> = tweet storage rate + image storage rate <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">7,768</span> <span class="u">GB</span>/<span class="u">day</span></span>
+</code></pre><pre><code>total storage rate * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">2,837.2037</span> <span class="u">TB</span></span>
+</code></pre>
+<p>That amount of image back-catalog is way to big to store on one machine. Let's fall-back to using cold-storage for old images using the cheapest cloud storage service I know.
+
+<p><pre><code><span class="d">image replication bandwidth</span> = image storage rate * $<span class="n">0.01</span>/<span class="u">GB</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">2,337.552</span>/<span class="u">month</span></span>
+</code></pre><pre><code><span class="d">backblaze b2 rate</span> = $<span class="n">0.005</span> / <span class="u">GB</span> / <span class="u">month</span>
+</code></pre><pre><code><span class="d">cost per year of images</span> = (image storage rate * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">GB</span>) * backblaze b2 rate <span class="k">in</span> <span class="u">$</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">14,025.312</span>/<span class="u">month</span></span>
+</code></pre>
+<p>Luckily Backblaze B2 also <a href="https://www.backblaze.com/b2/solutions/content-delivery.html">integrates with Cloudflare</a> for free egress.
+
+<h2>Machine Learning</h2>
+
+<p>BERT is a popular sentence embedding model and clever people have managed to <a href="https://arxiv.org/abs/1909.10351">distill it at the same performance into a tiny model</a>. Let's assume we base our ML on that:
+
+<p><pre><code><span class="d">teraflop</span> = <span class="n">1e12</span> flop
+</code></pre><pre><code><span class="d">tinybert flops</span> = <span class="n">1.2e9</span> flop <span class="k">in</span> teraflop <span class="t">=&gt;</span> <span class="ans"><span class="n">0.0012</span> teraflop</span>
+</code></pre><pre><code><span class="d">a100 flops</span> = <span class="n">312</span> teraflop/<span class="u">s</span>
+</code></pre><pre><code><span class="d">a40 flops</span> = <span class="n">150</span> teraflop/<span class="u">s</span>
+</code></pre><pre><code>avg tweet rate * tinybert flops <span class="k">in</span> teraflop/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">6.9444</span> teraflop/<span class="u">s</span></span>
+</code></pre><pre><code>delivery rate * tinybert flops / a100 flops <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">4.4516</span>
+</code></pre>
+<p>We need to do something with those BERT embeddings though, like check them against all the users. Normal BERT embeddings are a bit bigger <a href="https://www.sbert.net/examples/training/distillation/README.html#dimensionality-reduction">but we can dimensionality reduce them down</a>, or we could use a library like FAISS on the CPU to make checking the embeddings against all the users much cheaper using an acceleration structure:
+
+<p><pre><code><span class="d">embedding dim</span> = <span class="n">256</span>
+</code></pre><pre><code><span class="d">flops to check tweet against all users</span> = daily active users * embedding dim * flop <span class="k">in</span> teraflop <span class="t">=&gt;</span> <span class="ans"><span class="n">0.064</span> teraflop</span>
+</code></pre>
+<p>It's fine if the ML falls a bit behind during micro-bursts so let's use the average rate and see how much we can afford on some ML instances:
+
+<p><pre><code><span class="d">flops per tweet with p4d</span> = <span class="n">8</span> * a100 flops / avg tweet rate <span class="k">in</span> teraflop <span class="t">=&gt;</span> <span class="ans"><span class="n">0.4313</span> teraflop</span>
+</code></pre><pre><code><span class="d">flops per tweet with vultr</span> = <span class="n">4</span> * a40 flops / avg tweet rate <span class="k">in</span> teraflop <span class="t">=&gt;</span> <span class="ans"><span class="n">0.1037</span> teraflop</span>
+</code></pre>
+<h2>Search</h2>
+
+<p><pre><code><span class="d">avg words per tweet</span> = tweet content avg size / <span class="n">4</span> (<span class="u">byte</span>/word) <span class="t">=&gt;</span> <span class="ans"><span class="n">35</span> word</span>
+</code></pre><pre><code><span class="d">posting list size per tweet</span> = <span class="n">3</span> (<span class="u">byte</span>/word) * avg words per tweet + <span class="n">16</span> <span class="u">byte</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">121</span> <span class="u">byte</span></span>
+</code></pre><pre><code><span class="d">index size per year</span> = avg tweet rate * posting list size per tweet * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">22.0972</span> <span class="u">TB</span></span>
+</code></pre>
+<h2>Bandwidth cost</h2>
+
+<p>OVHCloud offers <a href="https://us.ovhcloud.com/bare-metal/high-grade/hgr-hci-2/">unmetered 10Gbit/s public bandwidth</a> as an upgrade option from the included 1Gbit/s:
+<pre><code><span class="d">bandwidth price</span> = ($<span class="n">717</span>/<span class="u">month</span>)/(<span class="n">9</span><span class="u">Gbit</span>/<span class="u">s</span>) <span class="k">in</span> <span class="u">$</span>/<span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">0.0002</span>/<span class="u">GB</span></span>
+</code></pre>My friend says a normal price a datacenter might charge for an unmetered gigabit connection is $1k/month:
+<pre><code><span class="d">friend says colo price</span> = $<span class="n">1000</span>/(<span class="u">month</span>*<span class="u">Gbit</span>/<span class="u">s</span>) <span class="k">in</span> <span class="u">$</span>/<span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">0.003</span>/<span class="u">GB</span></span>
+</code></pre>This is the cheapest tier cdn77 offers without "contact us", and they're cheaper than other CDN providers:
+<pre><code><span class="d">cdn77 price</span> = (($<span class="n">1390</span>/<span class="u">month</span>)/(<span class="n">150</span> <span class="u">TB</span> / <span class="n">1</span> <span class="u">month</span>)) <span class="k">in</span> <span class="u">$</span>/<span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">0.0093</span>/<span class="u">GB</span></span>
+</code></pre><pre><code><span class="d">vultr price</span> = $<span class="n">0.01</span>/<span class="u">GB</span>
+</code></pre><pre><code><span class="d">cloudfront 500tb price</span> = $<span class="n">0.03</span>/<span class="u">GB</span>
+</code></pre>
+<p>The total cost will thus depend quite a bit on which provider we choose:
+
+<p><pre><code><span class="d">delivery bandwidth cost</span> = bandwidth price * delivery bandwidth <span class="k">in</span> <span class="u">$</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">129.8272</span>/<span class="u">month</span></span>
+</code></pre><pre><code>delivery bandwidth cost(bandwidth price = cloudfront 500tb price) <span class="t">=&gt;</span> <span class="ans">$<span class="n">16,070.67</span>/<span class="u">month</span></span>
+</code></pre>
+<p>Things get much worse when we include image bandwidth:
+
+<p><pre><code><span class="d">total bandwidth cost</span> = bandwidth price * total bandwidth <span class="k">in</span> <span class="u">$</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">10,704.8395</span>/<span class="u">month</span></span>
+</code></pre><pre><code>total bandwidth cost(bandwidth price = cdn77 price) <span class="t">=&gt;</span> <span class="ans">$<span class="n">409,308.6018</span>/<span class="u">month</span></span>
+</code></pre>
+<p>But the best deal is actually <a href="https://www.cloudflare.com/bandwidth-alliance/">Cloudflare bandwith alliance</a>. As far as I can tell Cloudflare doesn't charge for bandwidth, and some server providers like Vultr don't charge for transfer to Cloudflare. However if you tried to serve Twitter images this way I wonder if Vultr would suddenly reconsider their free bandwidth alliance pricing as you made up lots of their aggregate Cloudflare bandwidth.
+
+<h2>Server prices</h2>
+
+<p>Basics and full tweet back catalog on one machine with bandwidth on <a href="https://us.ovhcloud.com/bare-metal/high-grade/hgr-sds-2/">OVHCloud</a>: 1TB RAM, 24 cores, 10Gbit/s public bandwidth, 360TB of nVME across 24 drives
+<pre><code>$<span class="n">7,079</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">84,948</span>/<span class="u">year</span></span>
+</code></pre>
+<p>Basics, images, ML, replication and tweet back catalog with 8 <a href="https://www.vultr.com/products/bare-metal/#pricing">CPU Vultr machines</a> with 25TB nVME, 512GB RAM, 24 cores and 25Gbp/s, plus one ML instance.
+<pre><code><span class="n">8</span> * <span class="n">2.34</span><span class="u">$</span>/<span class="u">hr</span> + $<span class="n">7.4</span>/<span class="u">hr</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">228,963.2184</span>/<span class="u">year</span></span>
+</code></pre><pre><code>cost per year of images * <span class="n">5</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">841,518.72</span>/<span class="u">year</span></span>
+</code></pre>
+<p>Basics, images and ML but not full tweet back catalog on one machine with a AWS P4D instance with 400Gbps of bandwith, 8xA100, 1TB memory, 8TB NVME:
+<pre><code>$<span class="n">20,000</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">240,000</span>/<span class="u">year</span></span>
+</code></pre><pre><code>total bandwidth cost(bandwidth price = $<span class="n">0.02</span>/<span class="u">GB</span>) <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">10,600,798.32</span>/<span class="u">year</span></span>
+</code></pre>
+<p>To do everything on one machine yourself, I specced a Dell PowerEdge R740xd with 2x16 core Xeons, 768GB RAM, 46TB nVME, 18 free drive bays for HDDs, a GPU slot, and 4x40Gbe networking:
+<pre><code><span class="d">server cost</span> = $<span class="n">75,461</span>
+</code></pre><pre><code><span class="d">nvidia a100 cost</span> = $<span class="n">10,000</span>
+</code></pre><pre><code><span class="d">hdd 360TB via 20TB cost</span> = $<span class="n">500</span> * <span class="n">18</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">9,000</span></span>
+</code></pre><pre><code><span class="d">total server cost</span> = server cost + nvidia a100 cost + hdd 360TB via 20TB cost <span class="t">=&gt;</span> <span class="ans">$<span class="n">94,461</span></span>
+</code></pre><pre><code><span class="d">colo cost</span> = $<span class="n">300</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">3,600</span>/<span class="u">year</span></span>
+</code></pre><pre><code>colo cost + total server cost/(<span class="n">3</span> <span class="u">year</span>) <span class="t">=&gt;</span> <span class="ans">$<span class="n">35,087</span>/<span class="u">year</span></span>
+</code></pre>
+<p>So you do well on the server cost but then get murdered on bandwidth unless you use a colo where you can <a href="https://www.cloudflare.com/network-interconnect/">directly connect to Cloudflare</a>:
+
+<p><pre><code>total bandwidth cost(bandwidth cost=friend says colo price) <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">128,458.0741</span>/<span class="u">year</span></span>
+</code></pre>
+<p>
+<h2>Tweet compression ratio</h2>
+
+<p>https://www.kaggle.com/datasets/kazanova/sentiment140?resource=download
+tristan@TBook4 ~/B/D/P/twitterperf (master)&gt; cat /Users/tristan/Downloads/training.1600000.processed.noemoticon.csv | xsv select 6 | wc -l
+<pre><code><span class="d">dataset tweets</span> = <span class="n">1600000</span>
+</code></pre>tristan@TBook4 ~/B/D/P/twitterperf (master)&gt; cat /Users/tristan/Downloads/training.1600000.processed.noemoticon.csv | xsv select 6 | zstd -f | wc -c
+<pre><code><span class="d">dataset compressed length</span> = <span class="n">53133828</span> <span class="u">byte</span>
+</code></pre>tristan@TBook4 ~/B/D/P/twitterperf (master)&gt; cat /Users/tristan/Downloads/training.1600000.processed.noemoticon.csv | xsv select 6 | wc -c
+<pre><code><span class="d">dataset uncompressed length</span> = <span class="n">120880454</span> <span class="u">byte</span>
+</code></pre>
+<p><pre><code>dataset uncompressed length / dataset tweets <span class="t">=&gt;</span> <span class="ans"><span class="n">75.5503</span> <span class="u">byte</span></span>
+</code></pre><pre><code><span class="d">compression ratio</span> = dataset compressed length / dataset uncompressed length <span class="t">=&gt;</span> <span class="n ans">0.4396</span>
+</code></pre>
+<p><pre><code>tweet storage rate * compression ratio * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">14.1279</span> <span class="u">TB</span></span>
+</code></pre>
+<h2>Misc</h2>
+
+<p><pre><code><span class="d">serve overhead per request</span> = <span class="n">50</span><span class="u">us</span>
+</code></pre><pre><code><span class="d">cores per server</span> = <span class="n">96</span>
+</code></pre><pre><code><span class="d">request rate per server</span> = <span class="n">1</span>/serve overhead per request * cores per server <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span><span class="t">=&gt;</span> <span class="ans"><span class="n">1,920,000</span>/<span class="u">s</span></span>
+</code></pre>
+<p><pre><code><span class="n">4</span><span class="u">KB</span> / tweet avg size <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">23.2727</span>
+</code></pre>
+<p><pre><code>daily active users * <span class="n">4</span><span class="u">KB</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">1,024</span> <span class="u">GB</span></span>
+</code></pre>
+<p><pre><code>avg tweet rate * <span class="n">360</span> <span class="u">day</span> * tweet avg size <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">31.68</span> <span class="u">TB</span></span>
+</code></pre>
+<p>
+<p><pre><code><span class="n">18</span> <span class="u">TB</span> / <span class="n">4096</span> <span class="u">byte</span> * <span class="n">4</span> <span class="u">byte</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">17.5781</span> <span class="u">GB</span></span>
+</code></pre>
+<p>https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/data-center-drives/ultrastar-dc-hc500-series/data-sheet-ultrastar-dc-hc560.pdf
+https://nascompares.com/review/wd-ultrastar-dc-hc560-20tb-hard-drive-review/
+<pre><code><span class="d">hdd bandwidth</span> = <span class="n">275</span> <span class="u">MB</span>/<span class="u">s</span>
+</code></pre><pre><code><span class="d">hdd seek latency</span> = <span class="n">4.16</span><span class="u">ms</span>
+</code></pre><pre><code><span class="d">hdd 4k read iops</span> = <span class="n">517</span>/<span class="u">s</span>
+</code></pre><pre><code><span class="d">hdd 4k write iops</span> = <span class="n">924</span>/<span class="u">s</span>
+</code></pre>
+<p><pre><code><span class="d">array size</span> = <span class="n">72</span>
+</code></pre><pre><code><span class="d">total hdd iops</span> = array size * hdd 4k read iops <span class="t">=&gt;</span> <span class="ans"><span class="n">37,224</span>/<span class="u">s</span></span>
+</code></pre>
+<p><pre><code><span class="d">image rate</span> = delivery rate * served image fraction <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">1,157,407.4074</span> served image fraction/<span class="u">s</span> <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span></span>
+</code></pre>
+<p>https://www.yansmedia.com/blog/twitter-video-marketing-statistics
+<pre><code><span class="d">video views</span> = <span class="n">2e9</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">2,000,000,000</span>/<span class="u">day</span></span>
+</code></pre>
+<p>
+<p>https://blog.twitter.com/engineering/en_us/topics/infrastructure/2017/the-infrastructure-behind-twitter-scale
+
+<p>https://mislove.org/publications/Profiles-ICWSM.pdf Twitter decahose paper
+
+<p>https://sysomos.com/inside-twitter-/ followers by popularity curve
+also https://www.key4biz.it/files/000270/00027033.pdf
+
+<p><pre><code><span class="d">card bandwidth</span> = <span class="n">10</span> <span class="u">Gbit</span>/<span class="u">s</span>
+</code></pre><pre><code><span class="d">rpc size</span> = <span class="n">4</span><span class="u">KB</span>
+</code></pre><pre><code><span class="d">rpc rate</span> = card bandwidth / rpc size <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">305,175.7813</span>/<span class="u">s</span></span>
+</code>
+</div></body></html>

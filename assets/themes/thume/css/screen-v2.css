@@ -269,32 +269,33 @@ ul.posts {
 /*
 /*****************************************************************************/
 
-#post {
+.post {
 
 }
 
   /* standard */
 
-  #post pre {
+  .post pre {
     border: 1px solid #ddd;
     background-color: #eef;
     padding: 0 .4em;
     overflow-x: auto;
   }
 
-  #post ul,
-  #post ol {
+  .post ul,
+  .post ol {
     margin-left: 1em;
   }
 
-  #post code {
+  .post code {
     border: 1px solid #ddd;
     background-color: #eef;
-    font-size: 85%;
-    /*padding: 0 .2em;*/
+    font-size: 0.9em;
+    line-height: normal;
+    padding: 0 .2em;
   }
 
-    #post pre code {
+    .post pre code {
       border: none;
     }
 
@@ -306,13 +307,13 @@ ul.posts {
 
   /* terminal */
 
-  #post pre.terminal {
+  .post pre.terminal {
     border: 1px solid black;
     background-color: #333;
     color: white;
   }
 
-  #post pre.terminal code {
+  .post pre.terminal code {
     background-color: #333;
   }
 
@@ -329,3 +330,26 @@ ul.posts {
       display: none;
     }
 }
+
+
+/* Calca */
+
+.calca { background-color: #f3faff; padding: 0.3em 0.3em;}
+.calca p:first-child { margin-top: 0px; }
+.calca code, input { font-family: Menlo, monospace; border: none; background-color: transparent; padding: 0; }
+.calca pre { white-space: normal; border: none; background-color: transparent; }
+.calca .hidden, .hiddenh1, .hiddenh2, .hiddenh3, .hiddenh4 { color: #BCBCBC; font-weight: normal; }
+.calca .ans { background-color: #ECECEC; padding: 0 0.25em 0 0.25em;}
+.calca .err { border-bottom: 2px solid #FFB2B2; }
+.calca .incl { border-bottom: 2px solid #FFD700; }
+.calca .c { color: #A6A6A6; }
+.calca .n { color: #1472F0; }
+.calca .t { font-weight: bold; }
+.calca .d { font-weight: bold; }
+.calca .k { color: #9400D3; }
+.calca .s { color: #8888E6; }
+.calca .u { color: #8888E6; }
+.calca .r { font-size: 75%; }
+.calca .xml { color: #8888E6; }
+.calca .hidden, .hiddenh1, .hiddenh2, .hiddenh3, .hiddenh4 { display: none; }
+.calca .c { display: none; }
