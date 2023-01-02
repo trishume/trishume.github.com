@@ -1,26 +1,27 @@
 ---
 layout: post
-title: "Production Twitter on One Machine: Analyzing which features could fit"
+title: "Production Twitter on One Machine: 100Gbps NICs and nVME are fast"
 description: ""
+good: true
 category: 
 tags: []
 ---
 {% include JB/setup %}
 
-In this post I'll attempt the fun stunt of designing a system that could serve the full production load of Twitter with most of the features intact on a single (very powerful) machine. I'll start by showing off a Rust prototype of the core tweet distribution structure handling full load, and then do math around how a modern high-performance storage and networking might let you serve a close-to-fully-featured Twitter on one machine.
+In this post I'll attempt the fun stunt of designing a system that could serve the full production load of Twitter with most of the features intact on a single (very powerful) machine. I'll start by showing off a Rust prototype of the core tweet distribution structure handling 35x full load, and then do math around how modern high-performance storage and networking might let you serve a close-to-fully-featured Twitter on one machine.
 
-I want to be clear this is meant as educational fun, and not as a good idea, at least going all the way to one machine. There's some things which can't fit, and this is all theory-crafting which I'll try to make convincing, but I could easily miss something which makes some feature impossible. Real Twitter shouldn't and probably couldn't do this, although maybe could incorporate some elements to save costs and complexity.
+I want to be clear this is meant as educational fun, and not as a good idea, at least going all the way to one machine. There's some things which can't fit, and this is all theory-crafting which I'll try to make convincing, but I could easily miss something which makes some feature impossible. Real Twitter shouldn't and probably couldn't do this, although I'll discuss in the middle which parts might actually be reasonable if some good open source software existed, and show how low it would bring costs and complexity.
 
-I've now spent about a week of evenings and a couple weekends doing research, math and prototypes, gradually figuring out how to fit more and more features (images?! ML?!!) than I initially thought I could fit. We'll start with the very basics of Twitter and then go through gradually more and more features, in what I hope will be a fascinating tour of an alternative world of systems design from the typical paradigm of how web apps are built. I'll also analyze the minimum cost configuration using multiple more practical machines, and talk about the practical disadvantages and advantages of such a design.
+I've now spent about a week of evenings and a 3 weekends doing research, math and prototypes, gradually figuring out how to fit more and more features (images?! ML?!!) than I initially thought I could fit. We'll start with the very basics of Twitter and then go through gradually more and more features, in what I hope will be a fascinating tour of an alternative world of systems design where web apps are built like high performance trading systems. I'll also analyze the minimum cost configuration using multiple more practical machines, and talk about the practical disadvantages and advantages of such a design.
 
 Here's an overview of the features I'll talk about and whether I think they could fit:
 
 - **Timeline and tweet distribution logic**: Based on a prototype, fits easily on a handful of cores when you pack recent tweets in RAM supplemented with nVME.
-- **HTTP(S) request serving**: HTTP fits, HTTPS may not, session resumption via HTTP/3 should let it fit.
-- **Image serving**: A close fit with rough estimates, but seems doable with multiple 100Gbit/s networking cards. Bandwidth is extremely costly.
+- **HTTP(S) request serving**: Yes. HTTP fits, HTTPS fits only because of session resumption.
+- **Image serving**: A close fit with rough estimates, but seems doable with multiple 100Gbit/s networking cards. You need effort to avoid extreme bandwidth costs.
 - **Video serving**: I have no idea how much people watch videos on Twitter so can't estimate this.
 - **Search**: Probably not? The index could fit on a few nVME drives per searchable year, but estimating CPU and IO load is hard.
-- **Historical tweet and image storage**: Tweets fit, *but images don't*, you could fit maybe 1 quarter of images with a 48x HDD storage pod.
+- **Historical tweet and image storage**: Tweets fit, *but images don't*, you could fit maybe 4 months of images with a 48x HDD storage pod.
 - **ML-based timeline**: A100 GPUs are insane and can run a decent LM against every tweet and dot-product the embeddings with every user. You could fit lots of ML on 8x A100s.
 
 Let's get this unhinged answer to a common systems design interview question started!
@@ -47,13 +48,15 @@ Through intense digging I found a researcher who left a notebook public includin
 I did all my calculations for this project using [Calca](http://calca.io/) and I'll be including all calculations as snippets from my calculation notebook.
 
 <div class="calca">
-  <pre><code><span class="d">daily active users</span> = <span class="n">250e6</span> <span class="t">=&gt;</span> <span class="n ans">250,000,000</span>
+  <p>First the public top-line numbers:
+
+  </p><p></p><pre><code><span class="d">daily active users</span> = <span class="n">250e6</span> <span class="t">=&gt;</span> <span class="n ans">250,000,000</span>
   </code></pre><pre><code><span class="d">avg tweet rate</span> = <span class="n">500e6</span>/<span class="u">day</span> <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">5,787.037</span>/<span class="u">s</span></span>
   </code></pre>
   <p>The Decahose notebook (which ends March 2022) suggests that tweet rate averages out pretty well by the level of a full day, the peak days ever in the dataset (during the pandemic lockdown in 2020) only have about 535M tweets compared to 340M before the lockdown surge.
 
-  </p><p></p><pre><code><span class="d">major world event ratio</span> = <span class="n">535e6</span> / <span class="n">340e6</span> <span class="t">=&gt;</span> <span class="n ans">1.5735</span>
-  </code></pre><pre><code><span class="d">max sustained tweet rate</span> = avg tweet rate * major world event ratio  <span class="t">=&gt;</span> <span class="ans"><span class="n">9,106.073</span>/<span class="u">s</span></span>
+  </p><p></p><pre><code><span class="d">traffic surge ratio</span> = <span class="n">535e6</span> / <span class="n">340e6</span> <span class="t">=&gt;</span> <span class="n ans">1.5735</span>
+  </code></pre><pre><code><span class="d">max sustained tweet rate</span> = avg tweet rate * traffic surge ratio  <span class="t">=&gt;</span> <span class="ans"><span class="n">9,106.073</span>/<span class="u">s</span></span>
   </code></pre>
   <p>The maximum tweet record is probably still the 2013 Japanese TV airing, Elon said only 20k/second for the recent world cup.
 
@@ -74,17 +77,17 @@ I did all my calculations for this project using [Calca](http://calca.io/) and I
   </code></pre><pre><code><span class="d">tweet storage rate</span> = avg tweet rate * tweet avg size <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">88</span> <span class="u">GB</span>/<span class="u">day</span></span>
   </code></pre><pre><code>tweet storage rate * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">32.1413</span> <span class="u">TB</span></span>
   </code></pre>
-  <p></p><pre><code><span class="d">tweet content fixed size</span> = <span class="n">300</span> <span class="u">byte</span>
-  </code></pre><pre><code><span class="d">tweet cache rate</span> = (tweet content fixed size + metadata size) * max sustained tweet rate <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">264.3529</span> <span class="u">GB</span>/<span class="u">day</span></span>
+  <p></p><pre><code><span class="d">tweet content fixed size</span> = <span class="n">284</span> <span class="u">byte</span>
+  </code></pre><pre><code><span class="d">tweet cache rate</span> = (tweet content fixed size + metadata size) * max sustained tweet rate <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">251.7647</span> <span class="u">GB</span>/<span class="u">day</span></span>
   </code></pre>
   <p>Let's guess the hot set that almost all requests hit in is maybe 2 days of tweets. Not all tweets in people's timeline requests will be &lt;2 days old, but also many tweets aren't seen very much so won't be in the hot set.
 
-  </p><p></p><pre><code><span class="d">tweet cache size</span> = tweet cache rate * <span class="n">2</span> <span class="u">day</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">528.7059</span> <span class="u">GB</span></span>
+  </p><p></p><pre><code><span class="d">tweet cache size</span> = tweet cache rate * <span class="n">2</span> <span class="u">day</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">503.5294</span> <span class="u">GB</span></span>
   </code></pre>
   <p>We also need to store the following graph for all users so we can retrieve from the cache. I need to completely guess a probably-overestimated average following count to do this.
 
-  </p><p></p><pre><code><span class="d">avg following</span> = <span class="n">300</span>
-  </code></pre><pre><code><span class="d">graph size</span> = avg following * daily active users * <span class="n">4</span> <span class="u">byte</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">300</span> <span class="u">GB</span></span>
+  </p><p></p><pre><code><span class="d">avg following</span> = <span class="n">400</span>
+  </code></pre><pre><code><span class="d">graph size</span> = avg following * daily active users * <span class="n">4</span> <span class="u">byte</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">400</span> <span class="u">GB</span></span>
   </code></pre>
 </div>
 
@@ -242,7 +245,13 @@ My prototype's performance should mainly scale based on number of tweets retriev
   <p></p><pre><code><span class="d">delivery bandwidth</span> = tweet avg size * delivery rate <span class="k">in</span> <span class="u">Gbit</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">1.6296</span> <span class="u">Gbit</span>/<span class="u">s</span></span>
   </code></pre><pre><code>delivery bandwidth <span class="k">in</span> <span class="u">TB</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">535.689</span> <span class="u">TB</span>/<span class="u">month</span></span>
   </code></pre>
+  <p>But that's for the average, what if we assume that page refreshing spikes just as much as tweet rate at peak times. I don't think this is true, the tweet peak was set with tweeting synchronized on one TV event and lasted less than 30 seconds, but refreshes will be less synchronized even during busy events like the world cup. Let's calculate it anyways though!
 
+  </p><p></p><pre><code><span class="d">per core</span> = <span class="n">2.5e6</span>/(thread*<span class="u">second</span>) * <span class="n">2</span> thread <span class="t">=&gt;</span> <span class="ans"><span class="n">5,000,000</span>/<span class="u">second</span></span>
+  </code></pre><pre><code><span class="d">peak delivery rate</span> = max tweet rate * avg expansion <span class="t">=&gt;</span> <span class="ans"><span class="n">30,000,000</span>/<span class="u">second</span></span>
+  </code></pre><pre><code><span class="d">peak cores needed</span> = peak delivery rate / per core <span class="t">=&gt;</span> <span class="n ans">6</span>
+  </code></pre><pre><code><span class="d">peak bandwidth</span> = tweet avg size * peak delivery rate <span class="k">in</span> <span class="u">Gbit</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">42.24</span> <span class="u">Gbit</span>/<span class="u">s</span></span>
+  </code></pre>
   <p>To estimate tweets per request, let's start by considering a Twitter without live timeline updating where a user opens the website or app a few times a day and then scrolls through their new tweets.
 
   </p><p></p><pre><code><span class="d">avg new connection rate</span> = <span class="n">3</span>/<span class="u">day</span> * daily active users <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">8,680.5556</span>/<span class="u">s</span></span>
@@ -256,6 +265,8 @@ There's **lots of room for this to underestimate load or overestimate performanc
 
 This perhaps 350x safety margin, plus the fact that [high-performance batched](https://github.com/erpc-io/eRPC) [kernel-bypass RPC systems](https://smfrpc.github.io/smf/rpc/) can achieve overheads low enough to do 10M requests/core-s, means **I'm confident an RPC service which acted as the core database of simplified production Twitter could fit on one big machine**. In this most limited sense of running "Twitter" on one machine, you'd still have other stateless machines to act as web servers and API frontends to the high-performance binary RPC protocol, and of course this is only the very most basic features of Twitter.
 
+To make my hedged confidence quantitative, I'm 80% sure that if I had a conversation with a (perhaps former) Twitter performance engineer they wouldn't convince me of any factors I missed about Twitter load (on a much-simplified Twitter) or what machines can do, which would change my estimates enough to convince me a centralized RPC server couldn't serve all the simplified timelines.
+
 ## Conclusion-ish: Should you actually build systems this way?
 
 If the nVME mmap-ish buffer manager plus some schema migration support existed as robust open source software it might be much simpler and easier than other approaches, but they don't so it isn't. You'd also probably want replication, but it's possible to bolt on Paxos/Raft with some replicas you stream the log to, which would need to part of the framework which isn't available.
@@ -268,23 +279,214 @@ Part of my point with this post is to gesture at the alternate universe of syste
 
 The above simplified Twitter architecture doesn't serve the whole simplified Twitter from one machine, and relies on stateless frontend machines to serve the consumer API and web pages. Can we also do that on the main machine? Let's start by imagining we'll serve up a maybe 64KB static page with a long cache timeout, and uses some minimized JS to fetch the binary tweet timeline and turn it into DOM.
 
+<div class="calca">
+  <pre><code><span class="d">home page rate on a small connection</span> = <span class="n">10</span><span class="u">Gbit</span>/<span class="u">s</span> / <span class="n">64</span><span class="u">KB</span> <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">19,073.4863</span>/<span class="u">s</span></span>
+  </code></pre>
+</div>
+
 A [benchmark for fast HTTP servers](https://www.techempower.com/benchmarks/#section=data-r21&test=plaintext) shows a single machine handling 7M simple requests per second. That's way above our average-case estimate of 15k/s from above, so there's comfortable room to handle peaks and estimation error. Browser caches and people leaving tabs open on our static main page will probably also save us bandwidth serving it too. However HTTP is practically deprecated for providing no security.
 
 I spent a bunch of time Googling for good benchmarks on HTTPS server performance. Almost everything I found was articles claiming [the performance penalty over HTTP is negligible](https://istlsfastyet.com/) by giving CPU overhead numbers in the realm of 1% which include application CPU. The symmetric encryption for established connections with [AES-ni instructions](https://calomel.org/aesni_ssl_performance.html) is actually fast at gigabytes per core-s, but it's the public key crypto to establish sessions that's worrying. When they do give out raw overhead numbers [they say numbers like 3.5ms to do session creation crypto](https://blogs.sap.com/2013/06/23/whos-afraid-of-ssl/) as if it's tiny, which it is for most people, but we're not being most people! That's only 300 sessions/core-s! I can find some [HTTPS benchmarks](https://h2o.examp1e.net/), but they usually simulate a small number of clients so don't test connection establishment.
 
-What likely saves us is [session resumption and tickets](https://hpbn.co/transport-layer-security-tls/#tls-session-resumption), where browsers cache established crypto sessions so they can be resumed in future requests. This means we may only need to handle 1 session negotiation per user-week instead of multiple per day, and thus it's probably possible for an HTTPS server to hit [100k requests/core-s](https://h2o.examp1e.net/benchmarks.html) under realistic loads (before app and bandwidth overhead). So even though I can't find any actually good high-performance HTTPS server benchmarks, I'm going to say **The machine can probably directly serve the web requests too.**.
+What likely saves us is [session resumption and tickets](https://hpbn.co/transport-layer-security-tls/#tls-session-resumption), where browsers cache established crypto sessions so they can be resumed in future requests. This means we may only need to handle 1 session negotiation per user-week instead of multiple per day, and thus it's probably possible for an HTTPS server to hit [100k requests/core-s](https://h2o.examp1e.net/benchmarks.html) under realistic loads (before app and bandwidth overhead). So even though I can't find any actually good high-performance HTTPS server benchmarks, I'm going to say **The machine can probably directly serve the web requests too.**
+
+I think there's a 25% chance conditional on an RPC backend working, that you couldn't also serve web requests, even with a custom HTTP3 stack that used [DPDK](https://www.dpdk.org/) and very optimized static cached pages for a minimalist Twitter, with most uncertainty being maybe session resumption or caches can't hit that often.
 
 ## Live updating and infinite scroll
 
 The above is all assuming that people or a JS script refreshes with the latest tweets whenever a user visits a few times a day. But real Twitter offers live updates and infinite scrolling, can we do that?
 
-## Images: Maybe!?
+<div class="calca">
+  <p>In order to extend our estimates to live timelines, we'll assume a model of users connecting and then leaving a session open while they scroll around for a bit.
+
+  </p><p></p><pre><code><span class="d">avg session duration</span> = <span class="n">20</span> <span class="u">minutes</span>
+  </code></pre><pre><code><span class="d">live connection count</span> = avg session duration * avg new connection rate <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">10,416,666.6667</span>
+  </code></pre><pre><code><span class="d">poll request rate</span> = <span class="n">1</span>/<span class="u">minute</span> * live connection count <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">173,611.1111</span>/<span class="u">s</span></span>
+  </code></pre><pre><code><span class="d">avg tweets per poll</span> = delivery rate / poll request rate <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">6.6667</span>
+  </code></pre>
+  <p></p><pre><code><span class="d">frenzy push rate</span> = avg expansion * max tweet rate <span class="t">=&gt;</span> <span class="ans"><span class="n">30,000,000</span>/<span class="u">second</span></span>
+  </code></pre>
+
+  <p>To estimate the memory usage to hold all the connections I'll be using numbers from <a href="https://habr.com/en/post/460847/">this websocket server</a>.
+
+  </p><p></p><pre><code><span class="d">tls websocket state</span> = <span class="n">41.7</span> <span class="u">GB</span> / <span class="n">4.9e6</span> <span class="k">in</span> <span class="u">byte</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">8,510.2041</span> <span class="u">byte</span></span>
+  </code></pre><pre><code>live connection count * tls websocket state <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">88.648</span> <span class="u">GB</span></span>
+  </code></pre>
+</div>
+
+The request rate is totally fine, but the main issue is the size of each poll request has gone down, which raises our fixed overhead. We probably have enough headroom that it's fine, but we can do better either by caching the heap we use for iterating timelines and updating it with new tweets or directly pushing new tweets to open connections. This would require following the tweet stream and intersecting a B-Tree set structure of live connections with sorted follower lists from new tweets, or maybe checking a bitset for live users. This can be sharded trivially across cores and the average tweet delivery rate is low enough, if peaks are too much we can just slip on live delivery.
+
+Infinite scrolling also performs better if we can cache a cursor at the end for each open connection, let's check how much each cached connection-cursor costs:
+
+<div class="calca">
+  <pre><code><span class="d">cached cursor size</span> = <span class="n">8</span> <span class="u">byte</span> * avg following <span class="t">=&gt;</span> <span class="ans"><span class="n">3,200</span> <span class="u">byte</span></span>
+  </code></pre><pre><code>live connection count * cached cursor size <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">33.3333</span> <span class="u">GB</span></span>
+  </code></pre>
+</div>
+
+We can easily fit one at the start and one at the end in RAM! Given they can be loaded with one IO op it wouldn't even really slow things down if they spilled to nVME.
+
+## Images: Kinda!?
+
+Images are something I initially thought definitely wouldn't fit, but I was on a roll so I checked! Let's start by looking at whether we can serve the images in people's timelines.
+
+<div class="calca">
+  <p>I can't find any good data on how many images Twitter serves, so I'll be going with wild estimates looking at the fraction and size of images in my own Twitter timeline.
+
+  </p><p></p><pre><code><span class="d">served tweets with images rate</span> = <span class="n">1</span>/<span class="n">5</span>
+  </code></pre><pre><code><span class="d">avg served image size</span> = <span class="n">70</span> <span class="u">KB</span>
+  </code></pre><pre><code><span class="d">image bandwidth</span> = delivery rate * served tweets with images rate * avg served image size <span class="k">in</span> <span class="u">Gbit</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">132.7407</span> <span class="u">Gbit</span>/<span class="u">s</span></span>
+  </code></pre>
+  <p></p><pre><code><span class="d">total bandwidth</span> = image bandwidth + delivery bandwidth <span class="t">=&gt;</span> <span class="ans"><span class="n">134.3704</span> <span class="u">Gbit</span>/<span class="u">s</span></span>
+  </code></pre><pre><code>total bandwidth * <span class="n">1</span> <span class="u">month</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">44,169.993</span> <span class="u">TB</span></span>
+  </code></pre>
+</div>
+
+That seems surprisingly doable! I work with machines with hundreds of gigabits/s of networking every day and [Netflix can serve static content at 800Gb/s](http://nabstreamingsummit.com/wp-content/uploads/2022/05/2022-Streaming-Summit-Netflix.pdf). This does require aggressive image compression and resizing, which is pretty CPU-intensive, but we can actually get our users to do that! We can have our clients upload both a large and a small version of each photo when they post them and then we won't touch them except maybe to validate. Then we can discard the small version once the image drops out of the hot set.
+
+However there's lots that could be wrong about this estimate, and there's less than 8x overhead from my average case to the most a single machine can serve. So traffic peaks may cause our system to have to throttle serving images. I think there's maybe a 60% chance I'd say it would need to drop images at peaks, upon much deeper investigation with Twitter internal numbers, conditional on the basics fitting.
+
+But what would it take to store all the historical large versions?
+
+<div class="calca">
+  <p>Tweets with images are probably more popular, so my timeline probably overestimates the fraction of tweets with images that we need to store. On the other hand <a href="https://web.archive.org/web/20220414121946/https://highscalability.com/blog/2016/4/20/how-twitter-handles-3000-images-per-second.html">this page</a> says 3000/s but that would be fully half of average tweet rate so I kinda suspect that's a peak load number or something. I'm going to guess a lower number, especially cuz lots of tweets are replies and those rarely have images, and when they do they're reaction images that can be deduplicated. On the other hand we need to store images at a larger size in case the user clicks on them to zoom in.
+
+  </p><p></p><pre><code><span class="d">stored image fraction</span> = <span class="n">1</span>/<span class="n">10</span>
+  </code></pre><pre><code><span class="d">avg stored image size</span> = <span class="n">150</span> <span class="u">KB</span>
+  </code></pre><pre><code><span class="d">image rate</span> = avg tweet rate * stored image fraction <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">578.7037</span>/<span class="u">s</span></span>
+  </code></pre><pre><code><span class="d">image storage rate</span> = image rate * avg stored image size <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">7,680</span> <span class="u">GB</span>/<span class="u">day</span></span>
+  </code></pre><pre><code><span class="d">total storage rate</span> = tweet storage rate + image storage rate <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">7,768</span> <span class="u">GB</span>/<span class="u">day</span></span>
+  </code></pre><pre><code>total storage rate * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">2,837.2037</span> <span class="u">TB</span></span>
+  </code></pre>
+  <p>That amount of image back-catalog is way to big to store on one machine. Let's fall-back to using cold-storage for old images using the cheapest cloud storage service I know.
+
+  </p><p></p><pre><code><span class="d">image replication bandwidth</span> = image storage rate * $<span class="n">0.01</span>/<span class="u">GB</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">2,337.552</span>/<span class="u">month</span></span>
+  </code></pre><pre><code><span class="d">backblaze b2 rate</span> = $<span class="n">0.005</span> / <span class="u">GB</span> / <span class="u">month</span>
+  </code></pre><pre><code><span class="d">cost per year of images</span> = (image storage rate * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">GB</span>) * backblaze b2 rate <span class="k">in</span> <span class="u">$</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">14,025.312</span>/<span class="u">month</span></span>
+  </code></pre>
+  <p>Luckily Backblaze B2 also <a href="https://www.backblaze.com/b2/solutions/content-delivery.html">integrates with Cloudflare</a> for free egress.
+
+  </p>
+</div>
+
+So if we wanted to stick strictly to one server we'd need to make Twitter like SnapChat where your images dissapear after a while, maybe make our cache into a fun mechanic where your tweets keep their images only as long as people keep looking at them!
 
 ## Video and Search: Probably Not
 
-## Algorithmic Timelines
+Video uses more bandwidth than images, but on the other hand modern compression is good and I think people view a lot less video on Twitter than images. I just don't have that data though and my estimates would have such wild error bars that I'm just not going to try and say we probably can't do video on a single machine.
+
+Search requires two things, a search index stored in fast storage, and the CPU to look over it. Using [Twitter's own posts about posting lists](https://blog.twitter.com/engineering/en_us/topics/infrastructure/2020/reducing-search-indexing-latency-to-one-second) to get some index size estimates:
+
+<div class="calca">
+  <pre><code><span class="d">avg words per tweet</span> = tweet content avg size / <span class="n">4</span> (<span class="u">byte</span>/word) <span class="t">=&gt;</span> <span class="ans"><span class="n">35</span> word</span>
+  </code></pre><pre><code><span class="d">posting list size per tweet</span> = <span class="n">3</span> (<span class="u">byte</span>/word) * avg words per tweet + <span class="n">16</span> <span class="u">byte</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">121</span> <span class="u">byte</span></span>
+  </code></pre><pre><code><span class="d">index size per year</span> = avg tweet rate * posting list size per tweet * <span class="n">1</span> <span class="u">year</span> <span class="k">in</span> <span class="u">TB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">22.0972</span> <span class="u">TB</span></span>
+  </code></pre>
+</div>
+
+It looks like a big nVME machine could fit a few years of search index, although it would also need to store the raw historical tweets.
+
+However I have no good idea how to estimate how much load Twitter's search system gets, and it would take more effort than I want to estimate the CPU and IOPS load of doing the searches. It might be possible but search is a pretty intensive task and I'm guessing it probably wouldn't fit, especially not on the same machine as everything else.
+
+## Algorithmic Timelines / ML
+
+Algorithmic timelines seem like the kind of thing that can't possibly fit, but one thing I know from [work at Anthropic](https://www.anthropic.com/) is that modern GPUs are absolutely ridiculous monsters at multiplying matrices.
+
+I don't know how Twitter's ML works, so I'll have to come up with my own idea for how I'd do it and then estimate that. I think the core of my approach would be having a [text embedding](https://mccormickml.com/2019/05/14/BERT-word-embeddings-tutorial/) model turn each tweet into a high-dimensional vector, and then jointly optimize it with an embedding model on features about a user's activity/preferences such that tweets the user will prefer have higher dot product, then recommend tweets that have unusually high dot product and sort the feed based on that. Something like [Collaborative Filtering](https://en.wikipedia.org/wiki/Collaborative_filtering) might work even better, but I don't know enough about that to do estimates without too much research.
+
+BERT is a popular sentence embedding model and clever people have managed to <a href="https://arxiv.org/abs/1909.10351">distill it at the same performance into a tiny model</a>. Let's assume we base our ML on those models running in bf16:
+
+<div class="calca">
+  <pre><code><span class="d">teraflop</span> = <span class="n">1e12</span> flop
+  </code></pre><pre><code><span class="d">tinybert flops</span> = <span class="n">1.2e9</span> flop <span class="k">in</span> teraflop <span class="t">=&gt;</span> <span class="ans"><span class="n">0.0012</span> teraflop</span>
+  </code></pre><pre><code><span class="d">a100 flops</span> = <span class="n">312</span> teraflop/<span class="u">s</span>
+  </code></pre><pre><code><span class="d">a40 flops</span> = <span class="n">150</span> teraflop/<span class="u">s</span>
+  </code></pre><pre><code>avg tweet rate * tinybert flops <span class="k">in</span> teraflop/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">6.9444</span> teraflop/<span class="u">s</span></span>
+  </code></pre><pre><code>delivery rate * tinybert flops / a100 flops <span class="k">in</span> <span class="n">1</span> <span class="t">=&gt;</span> <span class="n ans">4.4516</span>
+  </code></pre>
+  <p>We need to do something with those BERT embeddings though, like check them against all the users. Normal BERT embeddings are a bit bigger <a href="https://www.sbert.net/examples/training/distillation/README.html#dimensionality-reduction">but we can dimensionality reduce them down</a>, or we could use a library like FAISS on the CPU to make checking the embeddings against all the users much cheaper using an acceleration structure:
+
+  </p><p></p><pre><code><span class="d">embedding dim</span> = <span class="n">256</span>
+  </code></pre><pre><code><span class="d">flops to check tweet against all users</span> = daily active users * embedding dim * flop <span class="k">in</span> teraflop <span class="t">=&gt;</span> <span class="ans"><span class="n">0.064</span> teraflop</span>
+  </code></pre>
+  <p>It's fine if the ML falls a bit behind during micro-bursts so let's use the average rate and see how much we can afford on some ML instances:
+
+  </p><p></p><pre><code><span class="d">flops per tweet with p4d</span> = <span class="n">8</span> * a100 flops / avg tweet rate <span class="k">in</span> teraflop <span class="t">=&gt;</span> <span class="ans"><span class="n">0.4313</span> teraflop</span>
+  </code></pre><pre><code><span class="d">flops per tweet with vultr</span> = <span class="n">4</span> * a40 flops / avg tweet rate <span class="k">in</span> teraflop <span class="t">=&gt;</span> <span class="ans"><span class="n">0.1037</span> teraflop</span>
+  </code></pre>
+</div>
+
+Looks like the immense power of modern GPUs is up to the size of our task with room to spare! We can embed every tweet and check it against every user to do things like cache some dot products for sorting their timeline, or recommend tweets from people they don't follow. I'm not tied to this ML scheme being the best, but it shows we have lots of power available!
+
+One way this estimate could go wrong is by using the theoretical flops. Generally you can approach that by using really large batch sizes, fused kernels and [CUDA Graphs](https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/), but I generally work with much bigger models than this so it may not be possible! There's also a variety of things around PCIe and HBM bandwidth I didn't estimate, and maybe real Twitter uses bigger better models! Algorithmic timelines also add more load on the timeline fetching, since more tweets are candidates and the timelines need sorting, but we do have plenty of headroom there.
+
+I can't put a number on this one because I'm confident I could fit _some_ ML, but it also probably wouldn't be as good as Twitter's actual ML and I don't know how to turn that into a prediction.
+
+## Bandwidth costs: They can be super expensive or free!
+
+So far we've just checked whether the bandwidth can fit out the network cards, but it also costs money to get that bandwidth to the internet. It doesn't affect the machines it fits on, but how much does that cost?
+
+<div class="calca">
+  <p>OVHCloud offers <a href="https://us.ovhcloud.com/bare-metal/high-grade/hgr-hci-2/">unmetered 10Gbit/s public bandwidth</a> as an upgrade option from the included 1Gbit/s:
+  </p><pre><code><span class="d">bandwidth price</span> = ($<span class="n">717</span>/<span class="u">month</span>)/(<span class="n">9</span><span class="u">Gbit</span>/<span class="u">s</span>) <span class="k">in</span> <span class="u">$</span>/<span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">0.0002</span>/<span class="u">GB</span></span>
+  </code></pre>My friend says a normal price a datacenter might charge for an unmetered gigabit connection is $1k/month:
+  <pre><code><span class="d">friend says colo price</span> = $<span class="n">1000</span>/(<span class="u">month</span>*<span class="u">Gbit</span>/<span class="u">s</span>) <span class="k">in</span> <span class="u">$</span>/<span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">0.003</span>/<span class="u">GB</span></span>
+  </code></pre>This is the cheapest tier cdn77 offers without "contact us", and they're cheaper than other CDN providers:
+  <pre><code><span class="d">cdn77 price</span> = (($<span class="n">1390</span>/<span class="u">month</span>)/(<span class="n">150</span> <span class="u">TB</span> / <span class="n">1</span> <span class="u">month</span>)) <span class="k">in</span> <span class="u">$</span>/<span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">0.0093</span>/<span class="u">GB</span></span>
+  </code></pre><pre><code><span class="d">vultr price</span> = $<span class="n">0.01</span>/<span class="u">GB</span>
+  </code></pre><pre><code><span class="d">cloudfront 500tb price</span> = $<span class="n">0.03</span>/<span class="u">GB</span>
+  </code></pre>
+  <p>The total cost will thus depend quite a bit on which provider we choose:
+
+  </p><p></p><pre><code><span class="d">delivery bandwidth cost</span> = bandwidth price * delivery bandwidth <span class="k">in</span> <span class="u">$</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">129.8272</span>/<span class="u">month</span></span>
+  </code></pre><pre><code>delivery bandwidth cost(bandwidth price = cloudfront 500tb price) <span class="t">=&gt;</span> <span class="ans">$<span class="n">16,070.67</span>/<span class="u">month</span></span>
+  </code></pre>
+  <p>Things get much worse when we include image bandwidth:
+
+  </p><p></p><pre><code><span class="d">total bandwidth cost</span> = bandwidth price * total bandwidth <span class="k">in</span> <span class="u">$</span>/<span class="u">month</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">10,704.8395</span>/<span class="u">month</span></span>
+  </code></pre><pre><code>total bandwidth cost(bandwidth price = cdn77 price) <span class="t">=&gt;</span> <span class="ans">$<span class="n">409,308.6018</span>/<span class="u">month</span></span>
+  </code></pre>
+  <p>
+
+  </p>
+</div>
+
+I was surprised by the fact that typical bandwidth costs are way way more than a server capable of serving that bandwidth!
+
+But **the best deal is actually [Cloudflare Bandwith Alliance](https://www.cloudflare.com/bandwidth-alliance/)**. As far as I can tell Cloudflare doesn't charge for bandwidth, and some server providers like Vultr don't charge for transfer to Cloudflare. However if you tried to serve Twitter images this way I wonder if Vultr would suddenly reconsider their free bandwidth alliance pricing as you made up lots of their aggregate Cloudflare bandwidth.
 
 ## How cheaply could you serve Twitter: Pricing it out
 
-- 8
--  $20k/month
+Okay lets look at some concrete servers and estimate how much it would cost in total to run Twitter in some of these scenarios.
+
+<div class="calca">
+  <p>Basics and full tweet back catalog on one machine with bandwidth on <a href="https://us.ovhcloud.com/bare-metal/high-grade/hgr-sds-2/">OVHCloud</a>: 1TB RAM, 24 cores, 10Gbit/s public bandwidth, 360TB of nVME across 24 drives
+  </p><pre><code>$<span class="n">7,079</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">84,948</span>/<span class="u">year</span></span>
+  </code></pre>
+  <p>Basics, images, ML, replication and tweet back catalog with 8 <a href="https://www.vultr.com/products/bare-metal/#pricing">CPU Vultr machines</a> with 25TB nVME, 512GB RAM, 24 cores and 25Gbp/s, plus one ML instance.
+  </p><pre><code><span class="n">8</span> * <span class="n">2.34</span><span class="u">$</span>/<span class="u">hr</span> + $<span class="n">7.4</span>/<span class="u">hr</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">228,963.2184</span>/<span class="u">year</span></span>
+  </code></pre><pre><code>cost per year of images * <span class="n">5</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">841,518.72</span>/<span class="u">year</span></span>
+  </code></pre>
+  <p>Basics, images and ML but not full tweet back catalog on one machine with a AWS P4D instance with 400Gbps of bandwith, 8xA100, 1TB memory, 8TB NVME:
+  </p><pre><code>$<span class="n">20,000</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">240,000</span>/<span class="u">year</span></span>
+  </code></pre><pre><code>total bandwidth cost(bandwidth price = $<span class="n">0.02</span>/<span class="u">GB</span>) <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">10,600,798.32</span>/<span class="u">year</span></span>
+  </code></pre>
+  <p>To do everything on one machine yourself, except image storage, I specced a Dell PowerEdge R740xd with 2x16 core Xeons, 768GB RAM, 46TB nVME, 18 free drive bays for HDDs, a GPU slot, and 4x40Gbe networking:
+  </p><pre><code><span class="d">server cost</span> = $<span class="n">75,461</span>
+  </code></pre><pre><code><span class="d">nvidia a100 cost</span> = $<span class="n">10,000</span>
+  </code></pre><pre><code><span class="d">hdd 360TB via 20TB cost</span> = $<span class="n">500</span> * <span class="n">18</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">9,000</span></span>
+  </code></pre><pre><code><span class="d">total server cost</span> = server cost + nvidia a100 cost + hdd 360TB via 20TB cost <span class="t">=&gt;</span> <span class="ans">$<span class="n">94,461</span></span>
+  </code></pre><pre><code><span class="d">colo cost</span> = $<span class="n">300</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">3,600</span>/<span class="u">year</span></span>
+  </code></pre><pre><code>colo cost + total server cost/(<span class="n">3</span> <span class="u">year</span>) <span class="t">=&gt;</span> <span class="ans">$<span class="n">35,087</span>/<span class="u">year</span></span>
+  </code></pre>
+  <p>So you do well on the server cost but then get obliterated by bandwidth cost unless you use a colo where you can <a href="https://www.cloudflare.com/network-interconnect/">directly connect to Cloudflare</a>:
+
+  </p><p></p><pre><code>total bandwidth cost(bandwidth cost=friend says colo price) <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">128,458.0741</span>/<span class="u">year</span></span>
+  </code></pre>
+  <p>
+  </p>
+</div>
+
+Clearly optimizing server costs down to this level and below isn't economically rational, given the cost of engineers, but it's fun to think about.
+
+For reference in their [2021 annual report](https://s22.q4cdn.com/826641620/files/doc_financials/2021/ar/FiscalYR2021_Twitter_Annual_-Report.pdf), Twitter doesn't break down their $1.7BN cost of revenue to show what they spend on "infrastructure", but they say that their infrastructure spending increased by $166M, so they spend at least that much and presumably substantially more. But probably a lot of their "infrastructure" spending is on offline analytics/CI machines, and plausibly even office expenses are part of that category?
