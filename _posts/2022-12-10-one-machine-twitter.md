@@ -8,7 +8,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-In this post I'll attempt the fun stunt of designing a system that could serve the full production load of Twitter with most of the features intact on a single (very powerful) machine. I'll start by showing off a Rust prototype of the core tweet distribution structure handling 35x full load, and then do math around how modern high-performance storage and networking might let you serve a close-to-fully-featured Twitter on one machine.
+In this post I'll attempt the fun stunt of designing a system that could serve the full production load of Twitter with most of the features intact on a single (very powerful) machine. I'll start by showing off a Rust prototype of the core tweet distribution data structure handling 35x full load, and then do math around how modern high-performance storage and networking might let you serve a close-to-fully-featured Twitter on one machine.
 
 I want to be clear this is meant as educational fun, and not as a good idea, at least going all the way to one machine. There's some things which can't fit, and this is all theory-crafting which I'll try to make convincing, but I could easily miss something which makes some feature impossible. Real Twitter shouldn't and probably couldn't do this, although I'll discuss in the middle which parts might actually be reasonable if some good open source software existed, and show how low it would bring costs and complexity.
 
@@ -18,13 +18,13 @@ Here's an overview of the features I'll talk about and whether I think they coul
 
 - **Timeline and tweet distribution logic**: Based on a prototype, fits easily on a handful of cores when you pack recent tweets in RAM supplemented with nVME.
 - **HTTP(S) request serving**: Yes. HTTP fits, HTTPS fits only because of session resumption.
-- **Image serving**: A close fit with rough estimates, but seems doable with multiple 100Gbit/s networking cards. You need effort to avoid extreme bandwidth costs.
+- **Image serving**: A close fit with rough estimates, but maybe doable with multiple 100Gbit/s networking cards. You need effort to avoid extreme bandwidth costs.
 - **Video serving**: I have no idea how much people watch videos on Twitter so can't estimate this.
 - **Search**: Probably not? The index could fit on a few nVME drives per searchable year, but estimating CPU and IO load is hard.
-- **Historical tweet and image storage**: Tweets fit, *but images don't*, you could fit maybe 4 months of images with a 48x HDD storage pod.
-- **ML-based timeline**: A100 GPUs are insane and can run a decent LM against every tweet and dot-product the embeddings with every user. You could fit lots of ML on 8x A100s.
+- **Historical tweet and image storage**: Tweets fit on a specialized server, *but images don't*, you could fit maybe 4 months of images with a 48x HDD storage pod.
+- **ML-based timeline**: A100 GPUs are insane and can run a decent LM against every tweet and dot-product the embeddings with every user.
 
-Let's get this unhinged answer to a common systems design interview question started!
+Let's get this unhinged answer to a [common systems design interview question](https://www.geeksforgeeks.org/design-twitter-a-system-design-interview-question/) started!
 
 ## Core Tweet Distribution
 
@@ -43,9 +43,9 @@ When you're not designing your systems to scale to arbitrary levels by adding mo
 
 So, how many tweets do we need to store? [This Twitter blog post from 2013](https://blog.twitter.com/engineering/en_us/a/2013/new-tweets-per-second-record-and-how) gives figures for daily and peak rates, but those numbers are pretty old.
 
-Through intense digging I found a researcher who left a notebook public including tweet counts from many years of Twitter's [10% sampled stream API](https://developer.twitter.com/en/docs/twitter-api/enterprise/decahose-api/overview/decahose) and discovered the surprising fact that **tweet rate today is around the same as or lower than 2013**! Tweet rate peaked in 2014 and then declined before reaching new peaks in the pandemic. Elon recently [tweeted the same 500M/day](https://twitter.com/elonmusk/status/1598758363650719756) number which matches the Decahose notebook and 2013 blog post, so this seems to be true! Twitter's active users grew the whole time so I think this reflects a shift from a "posting about your life to your friends" platform to an algorithmic content-consumption platform.
+Through intense digging I found a researcher who left a notebook public including tweet counts from many years of Twitter's [10% sampled "Decahose" API](https://developer.twitter.com/en/docs/twitter-api/enterprise/decahose-api/overview/decahose) and discovered the surprising fact that **tweet rate today is around the same as or lower than 2013**! Tweet rate peaked in 2014 and then declined before reaching new peaks in the pandemic. Elon recently [tweeted the same 500M/day](https://twitter.com/elonmusk/status/1598758363650719756) number which matches the Decahose notebook and 2013 blog post, so this seems to be true! Twitter's active users grew the whole time so I think this reflects a shift from a "posting about your life to your friends" platform to an algorithmic content-consumption platform.
 
-I did all my calculations for this project using [Calca](http://calca.io/) and I'll be including all calculations as snippets from my calculation notebook.
+I did all my calculations for this project using [Calca](http://calca.io/) (which is great although buggy, laggy and unmaintained. I might switch to [Soulver](https://soulver.app/)) and I'll be including all calculations as snippets from my calculation notebook.
 
 <div class="calca">
   <p>First the public top-line numbers:
@@ -53,7 +53,7 @@ I did all my calculations for this project using [Calca](http://calca.io/) and I
   </p><p></p><pre><code><span class="d">daily active users</span> = <span class="n">250e6</span> <span class="t">=&gt;</span> <span class="n ans">250,000,000</span>
   </code></pre><pre><code><span class="d">avg tweet rate</span> = <span class="n">500e6</span>/<span class="u">day</span> <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">5,787.037</span>/<span class="u">s</span></span>
   </code></pre>
-  <p>The Decahose notebook (which ends March 2022) suggests that tweet rate averages out pretty well by the level of a full day, the peak days ever in the dataset (during the pandemic lockdown in 2020) only have about 535M tweets compared to 340M before the lockdown surge.
+  <p>The Decahose notebook (which ends March 2022) suggests that tweet rate averages out pretty well at the level of a full day, the peak days ever in the dataset (during the pandemic lockdown in 2020) only have about 535M tweets compared to 340M before the lockdown surge.
 
   </p><p></p><pre><code><span class="d">traffic surge ratio</span> = <span class="n">535e6</span> / <span class="n">340e6</span> <span class="t">=&gt;</span> <span class="n ans">1.5735</span>
   </code></pre><pre><code><span class="d">max sustained tweet rate</span> = avg tweet rate * traffic surge ratio  <span class="t">=&gt;</span> <span class="ans"><span class="n">9,106.073</span>/<span class="u">s</span></span>
@@ -80,7 +80,7 @@ I did all my calculations for this project using [Calca](http://calca.io/) and I
   <p></p><pre><code><span class="d">tweet content fixed size</span> = <span class="n">284</span> <span class="u">byte</span>
   </code></pre><pre><code><span class="d">tweet cache rate</span> = (tweet content fixed size + metadata size) * max sustained tweet rate <span class="k">in</span> <span class="u">GB</span>/<span class="u">day</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">251.7647</span> <span class="u">GB</span>/<span class="u">day</span></span>
   </code></pre>
-  <p>Let's guess the hot set that almost all requests hit in is maybe 2 days of tweets. Not all tweets in people's timeline requests will be &lt;2 days old, but also many tweets aren't seen very much so won't be in the hot set.
+  <p>Let's guess the hot set that almost all requests hit is maybe 2 days of tweets. Not all tweets in people's timeline requests will be &lt;2 days old, but also many tweets aren't seen very much so won't be in the hot set.
 
   </p><p></p><pre><code><span class="d">tweet cache size</span> = tweet cache rate * <span class="n">2</span> <span class="u">day</span> <span class="k">in</span> <span class="u">GB</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">503.5294</span> <span class="u">GB</span></span>
   </code></pre>
@@ -97,7 +97,11 @@ I think the main takeaway looking at these calculations is that many of these nu
 
 Given those numbers, I'll be using the "[your dataset fits in RAM](https://twitter.com/garybernhardt/status/600783770925420546?s=20)" paradigm of systems design. However it's a little more complicated since our dataset doesn't _actually_ fit in RAM.
 
-Storing all the historical tweets takes many terabytes of storage. But probably 99+% of tweets viewed are from the last few days. This means we can use a hybrid of RAM+nVME+HDDs attached to our machine in a tiered cache. RAM will store our hot set cache and serve almost all requests, most of our performance will only depend on the RAM cache, it's common to fit 512GB-1TB of RAM in a modern machine. Modern nVME drives can store >8TB and do [over 1 million 4KB IO operations per second per drive](https://ci.spdk.io/download/performance-reports/SPDK_nvme_bdev_gen4_perf_report_2201.pdf) with latencies near 100us, and you can attach dozens of them to a machine. That's enough to serve all tweets, but we can lower CPU overhead and add headroom by just using them for long tail tweets and probably the follower graph (since it only needs one IO op per timeline request). Some extra 20TB HDDs can store the very old very cold tweets that are basically never accessed, especially at the 2x compression I saw with [zstd](http://facebook.github.io/zstd/) on tweet text from a [Kaggle dataset](https://www.kaggle.com/datasets/kazanova/sentiment140).
+Storing all the historical tweets takes many terabytes of storage. But probably 99% of tweets viewed are from the last few days. This means we can use a hybrid of RAM+nVME+HDDs attached to our machine in a tiered cache:
+
+- RAM will store our hot set cache and serve almost all requests, so most of our performance will only depend on the RAM cache. It's common to fit 512GB-1TB of RAM in a modern machine.
+- Modern nVME drives can store >8TB and do [over 1 million 4KB IO operations per second per drive](https://ci.spdk.io/download/performance-reports/SPDK_nvme_bdev_gen4_perf_report_2201.pdf) with latencies near 100us, and you can attach dozens of them to a machine. That's enough to serve all tweets, but we can lower CPU overhead and add headroom by just using them for long tail tweets and probably the follower graph (since it only needs one IO op per timeline request).
+- Some extra 20TB HDDs can store the very old very cold tweets that are basically never accessed, especially at the 2x compression I saw with [zstd](http://facebook.github.io/zstd/) on tweet text from a [Kaggle dataset](https://www.kaggle.com/datasets/kazanova/sentiment140).
 
 However, super high performance tiering RAM+nVME buffer managers which can access the RAM-cached pages almost as fast as a normal memory access are mostly only [detailed and benchmarked in academic papers](https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf). I don't know of any good well-maintained open-source ones, [LeanStore](https://dbis1.github.io/) is the closest. You don't just need tiering logic, but also an nVME write-ahead-log and checkpointing to ensure persistence of all changes like new tweets. This is one of the areas where running Twitter on one machine is more of a theoretical possibility than a pragmatic one.
 
@@ -105,8 +109,7 @@ So I just prototyped a RAM-only implementation and I'll handwave away the diffic
 
 ## My Prototype
 
-I made [a prototype](https://github.com/trishume/twitterperf) in Rust to benchmark the in-memory performance of timeline merging and show that I could get it fast enough to serve the full load. At it's core is a minimalist pooling-and-indices style representation of Twitter's data, optimized
-to be fairly memory-efficient:
+I made a prototype ([source on Github](https://github.com/trishume/twitterperf)) in Rust to benchmark the in-memory performance of timeline merging and show that I could get it fast enough to serve the full load. At it's core is a minimalist pooling-and-indices style representation of Twitter's data, optimized to be fairly memory-efficient:
 
 ```rust
 /// Leave room for a full 280 English character plus slop for accents or emoji.
@@ -137,7 +140,7 @@ pub struct NextLink {
 pub struct AtomicChain(AtomicU64);
 
 /// Since this is most of our RAM and cache misses we make sure it's
-/// to cache lines for style points
+/// aligned to cache lines for style points
 #[repr(align(64))]
 pub struct ChainedTweet {
     pub tweet: Tweet,
@@ -167,7 +170,7 @@ impl<'a> Graph<'a> {
 
 pub struct Datastore<'a> {
     pub graph: Graph<'a>,
-    // This is a tiny custom pool I wrote which mmaps a vast amount of un-paged virtual
+    // This is a tiny custom pool which mmaps a vast amount of un-paged virtual
     // address space. It's like a Vec which never moves and lets you append concurrently
     // with only an immutable reference by using an internal append lock.
     pub tweets: SharedPool<ChainedTweet>,
@@ -228,7 +231,7 @@ Done 16748782 in 5.096817055s at 3286125.796 tweets/s. Avg timeline size 167.49 
 
 So about **3.3M tweets distributed per core-second**, when retrieved with an average timeline chunk of 167. And because it's mostly cache misses, per-core performance only goes down to 2.5M/sec when using all 16 hyperthreads, allowing me to reach 40M tweets fetched per second on my laptop. Now I'm fully aware **my benchmark is not the full data size of Twitter** nor the most realistic load I could create, but I'm just trying to get an estimate of what the full scale performance would look like and I think this gives a reasonable estimate. My test data is way larger than my laptop cache and fully random so basically every load should be a cache miss, and profiling seems to align with this. So while I think memory access is marginally slower when you have more of it, the throughput should be similar on a server that had enough RAM on one NUMA node to fit the full-sized tweet cache. More realistically non-uniform load distributions I believe would just make it more likely that the L3 cache actually made things faster.
 
-It also looks like adding tweets to the data structure shouldn't be a bottleneck, given it adds tweets at over 1M/core-sec when the highest peak Twitter had was 150k/sec. I don't know why adding tweets in the second batch is slower than the first, given it should be a constant time linked list add. I think it might be bottlenecked by some kind of paging in virtual memory, but I'm much worse at macOS profiling tools than Linux ones, regardless a Linux server with hugepages could eliminate that.
+It also looks like adding tweets to the data structure shouldn't be a bottleneck, given it adds tweets at over 1M/core-sec when the highest peak Twitter had was 150k/sec.
 
 ## Can the prototype meet the real load? Very yes!
 
@@ -261,17 +264,19 @@ My prototype's performance should mainly scale based on number of tweets retriev
 
 Looks like **my estimate of the full average tweet delivery rate of Twitter is 35x less than what my 8 core laptop can fetch**! I also had chosen the average timeline size in the benchmark based on the estimate of normal timeline request sizes. It also looks like serving all the timeline RPCs is a fairly small amount of bandwidth during average load.
 
-There's **lots of room for this to underestimate load or overestimate performance**: Peak loads could burst much higher, I could get average timeline sizes or delivery rates wrong, and a realistic implementation would have more overheads. My estimates could be wrong in lots of ways, but there's just **so much performance margin it should be fine**. My implementation even seems to scale linearly with cores, and there's another 10x left before it would start hitting memory bandwidth limitations. Right now it can only add tweets from one thread, which I only have a 20x performance margin on (from a known peak load this time), but with a little bit more effort with atomics that could be multi-core too.
+There's **lots of room for this to underestimate load or overestimate performance**: Peak loads could burst much higher, I could get average timeline sizes or delivery rates wrong, and a realistic implementation would have more overheads. My estimates could be wrong in lots of ways, but there's just **so much performance margin it should be fine**. My implementation even seems to scale linearly with cores, and there's another 10x left before it would start hitting memory bandwidth limitations. Right now it can only add tweets from one thread, which I only have a 20x performance margin on (but from a known peak load), but with a little bit more effort with atomics that could be multi-core too.
 
-This perhaps 350x safety margin, plus the fact that [high-performance batched](https://github.com/erpc-io/eRPC) [kernel-bypass RPC systems](https://smfrpc.github.io/smf/rpc/) can achieve overheads low enough to do 10M requests/core-s, means **I'm confident an RPC service which acted as the core database of simplified production Twitter could fit on one big machine**. In this most limited sense of running "Twitter" on one machine, you'd still have other stateless machines to act as web servers and API frontends to the high-performance binary RPC protocol, and of course this is only the very most basic features of Twitter.
+This perhaps 350x safety margin, plus the fact that [high-performance batched](https://github.com/erpc-io/eRPC) [kernel-bypass RPC systems](https://smfrpc.github.io/smf/rpc/) can achieve overheads low enough to do 10M requests/core-s, means **I'm confident an RPC service which acted as the core database of simplified production Twitter could fit on one big machine**. This is a very limited sense of running "Twitter" on one machine, you'd still have other stateless machines to act as web servers and API frontends to the high-performance binary RPC protocol, and of course this is only the very most basic features of Twitter.
 
-To make my hedged confidence quantitative, I'm 80% sure that if I had a conversation with a (perhaps former) Twitter performance engineer they wouldn't convince me of any factors I missed about Twitter load (on a much-simplified Twitter) or what machines can do, which would change my estimates enough to convince me a centralized RPC server couldn't serve all the simplified timelines.
+There's a bunch of other basic features of Twitter like user timelines, DMs, likes and replies to a tweet, which I'm not investigating because I'm guessing they won't be the bottlenecks. Replies do add slightly to the load when writing a tweet, because they'd need to be added to a secondary chain or something to make retrieving them fast. Some popular tweets have tons of replies, but users only can see a subset, and the same subset can be cached to serve to every user.
+
+To make my hedged confidence quantitative, I'm 80% sure that if I had a conversation with a (perhaps former) Twitter performance engineer they wouldn't convince me of any factors I missed about Twitter load (on a much-simplified Twitter) or what machines can do, which would change my estimates enough to convince me a centralized RPC server couldn't serve all the simplified timelines. I'm only 70% sure for a version that also does DMs, replies and likes, because those might be used way more than I suspect, and might pose challenges I haven't thought about.
 
 ## Conclusion-ish: Should you actually build systems this way?
 
-If the nVME mmap-ish buffer manager plus some schema migration support existed as robust open source software it might be much simpler and easier than other approaches, but they don't so it isn't. You'd also probably want replication, but it's possible to bolt on Paxos/Raft with some replicas you stream the log to, which would need to part of the framework which isn't available.
+If the nVME mmap-ish buffer manager plus some schema migration support existed as robust open source software it might be much simpler and easier than other approaches, but they don't so it isn't. You'd also probably want replication, but it's possible to bolt on Paxos/Raft with some replicas you stream the log to, which would need to part of the non-existent framework.
 
-Part of my point with this post is to gesture at the alternate universe of systems design which could exist. But there's a feedback loop where few companies in the web space scale this way, so the available open-source tooling for it is abysmal, which makes it really hard to scale this way. I think of scaling this way because I used to work for a [trading company](http://janestreet.com/), where systems scaled to handle millions of requests per second on one machine with microsecond latency kernel-bypass networking is just [the standard way to do things](https://signalsandthreads.com/multicast-and-the-markets/) and there's lots of infrastructure for it. More hardware-efficient systems are cheaper, but I think the main benefit is avoiding the classic distributed systems and asynchrony problems every attempt to split things between machines runs into (which I've [written a pseudo-manifesto on before](/2020/05/17/pipes-kill-productivity/)), which means there's potential for it to be way simpler too.
+Part of my point with this post is to gesture at the alternate universe of systems design which could exist. There's a feedback loop where few companies in the web space scale this way, so the available open-source tooling for it is abysmal, which makes it really hard to scale this way. I think of scaling this way because I used to work for a [trading company](http://janestreet.com/), where scaling systems to handle millions of requests per second on one machine with microsecond latency kernel-bypass networking is just [the standard way to do things](https://signalsandthreads.com/multicast-and-the-markets/) and there's lots of infrastructure for it. More hardware-efficient systems are cheaper, but I think the main benefit is avoiding the classic distributed systems and asynchrony problems every attempt to split things between machines runs into (which I've [written a pseudo-manifesto on before](/2020/05/17/pipes-kill-productivity/)), which means there's potential for it to be way simpler too.
 
 **That's all I originally planned for this post**, to show with reasonable confidence that you could fit the core tweet distribution of simplified Twitter on one machine using a prototype. But then it turned out I had tons of cores and bandwidth left over to tack on other things, so let's forge ahead and try to estimate which other features might fit using all the extra CPU!
 
@@ -279,18 +284,19 @@ Part of my point with this post is to gesture at the alternate universe of syste
 
 The above simplified Twitter architecture doesn't serve the whole simplified Twitter from one machine, and relies on stateless frontend machines to serve the consumer API and web pages. Can we also do that on the main machine? Let's start by imagining we'll serve up a maybe 64KB static page with a long cache timeout, and uses some minimized JS to fetch the binary tweet timeline and turn it into DOM.
 
+A [benchmark for fast HTTP servers](https://www.techempower.com/benchmarks/#section=data-r21&test=plaintext) shows a single machine handling 7M simple requests per second. That's way above our average-case estimate of 15k/s from above, so there's comfortable room to handle peaks and estimation error. Browser caches and people leaving tabs open on our static main page will probably also save us bandwidth serving it too. However HTTP is practically deprecated for providing no security.
+
 <div class="calca">
+  <p>Could we fit the bandwidth for 15k/s on a small NIC even without caching? Yes.</p>
   <pre><code><span class="d">home page rate on a small connection</span> = <span class="n">10</span><span class="u">Gbit</span>/<span class="u">s</span> / <span class="n">64</span><span class="u">KB</span> <span class="k">in</span> <span class="n">1</span>/<span class="u">s</span> <span class="t">=&gt;</span> <span class="ans"><span class="n">19,073.4863</span>/<span class="u">s</span></span>
   </code></pre>
 </div>
-
-A [benchmark for fast HTTP servers](https://www.techempower.com/benchmarks/#section=data-r21&test=plaintext) shows a single machine handling 7M simple requests per second. That's way above our average-case estimate of 15k/s from above, so there's comfortable room to handle peaks and estimation error. Browser caches and people leaving tabs open on our static main page will probably also save us bandwidth serving it too. However HTTP is practically deprecated for providing no security.
 
 I spent a bunch of time Googling for good benchmarks on HTTPS server performance. Almost everything I found was articles claiming [the performance penalty over HTTP is negligible](https://istlsfastyet.com/) by giving CPU overhead numbers in the realm of 1% which include application CPU. The symmetric encryption for established connections with [AES-ni instructions](https://calomel.org/aesni_ssl_performance.html) is actually fast at gigabytes per core-s, but it's the public key crypto to establish sessions that's worrying. When they do give out raw overhead numbers [they say numbers like 3.5ms to do session creation crypto](https://blogs.sap.com/2013/06/23/whos-afraid-of-ssl/) as if it's tiny, which it is for most people, but we're not being most people! That's only 300 sessions/core-s! I can find some [HTTPS benchmarks](https://h2o.examp1e.net/), but they usually simulate a small number of clients so don't test connection establishment.
 
 What likely saves us is [session resumption and tickets](https://hpbn.co/transport-layer-security-tls/#tls-session-resumption), where browsers cache established crypto sessions so they can be resumed in future requests. This means we may only need to handle 1 session negotiation per user-week instead of multiple per day, and thus it's probably possible for an HTTPS server to hit [100k requests/core-s](https://h2o.examp1e.net/benchmarks.html) under realistic loads (before app and bandwidth overhead). So even though I can't find any actually good high-performance HTTPS server benchmarks, I'm going to say **The machine can probably directly serve the web requests too.**
 
-I think there's a 25% chance conditional on an RPC backend working, that you couldn't also serve web requests, even with a custom HTTP3 stack that used [DPDK](https://www.dpdk.org/) and very optimized static cached pages for a minimalist Twitter, with most uncertainty being maybe session resumption or caches can't hit that often.
+I think there's a 75% chance, conditional on an RPC backend fitting, that you could also serve web requests. Especially with a custom HTTP3 stack that used [DPDK](https://www.dpdk.org/) and very optimized static cached pages for a minimalist Twitter, with most uncertainty being maybe session resumption or caches can't hit that often.
 
 ## Live updating and infinite scroll
 
@@ -344,7 +350,7 @@ Images are something I initially thought definitely wouldn't fit, but I was on a
 
 That seems surprisingly doable! I work with machines with hundreds of gigabits/s of networking every day and [Netflix can serve static content at 800Gb/s](http://nabstreamingsummit.com/wp-content/uploads/2022/05/2022-Streaming-Summit-Netflix.pdf). This does require aggressive image compression and resizing, which is pretty CPU-intensive, but we can actually get our users to do that! We can have our clients upload both a large and a small version of each photo when they post them and then we won't touch them except maybe to validate. Then we can discard the small version once the image drops out of the hot set.
 
-However there's lots that could be wrong about this estimate, and there's less than 8x overhead from my average case to the most a single machine can serve. So traffic peaks may cause our system to have to throttle serving images. I think there's maybe a 60% chance I'd say it would need to drop images at peaks, upon much deeper investigation with Twitter internal numbers, conditional on the basics fitting.
+However there's lots that could be wrong about this estimate, and there's less than 8x overhead from my average case to the most a single machine can serve. So traffic peaks may cause our system to have to throttle serving images. I think there's maybe a 40% chance I'd say it would fit without dropping images at peaks, upon much deeper investigation with Twitter internal numbers, conditional on the basics fitting.
 
 But what would it take to store all the historical large versions?
 
@@ -373,7 +379,7 @@ So if we wanted to stick strictly to one server we'd need to make Twitter like S
 
 ## Video and Search: Probably Not
 
-Video uses more bandwidth than images, but on the other hand modern compression is good and I think people view a lot less video on Twitter than images. I just don't have that data though and my estimates would have such wild error bars that I'm just not going to try and say we probably can't do video on a single machine.
+Video uses more bandwidth than images, but on the other hand video compression is good and I think people view a lot less video on Twitter than images. I just don't have that data though and my estimates would have such wild error bars that I'm just not going to try and say we probably can't do video on a single machine.
 
 Search requires two things, a search index stored in fast storage, and the CPU to look over it. Using [Twitter's own posts about posting lists](https://blog.twitter.com/engineering/en_us/topics/infrastructure/2020/reducing-search-indexing-latency-to-one-second) to get some index size estimates:
 
@@ -418,9 +424,9 @@ BERT is a popular sentence embedding model and clever people have managed to <a 
 
 Looks like the immense power of modern GPUs is up to the size of our task with room to spare! We can embed every tweet and check it against every user to do things like cache some dot products for sorting their timeline, or recommend tweets from people they don't follow. I'm not tied to this ML scheme being the best, but it shows we have lots of power available!
 
-One way this estimate could go wrong is by using the theoretical flops. Generally you can approach that by using really large batch sizes, fused kernels and [CUDA Graphs](https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/), but I generally work with much bigger models than this so it may not be possible! There's also a variety of things around PCIe and HBM bandwidth I didn't estimate, and maybe real Twitter uses bigger better models! Algorithmic timelines also add more load on the timeline fetching, since more tweets are candidates and the timelines need sorting, but we do have plenty of headroom there.
+One way this estimate could go wrong is by using the theoretical flops. Generally you can approach that (but not actually get there) by using really large batch sizes, fused kernels and [CUDA Graphs](https://pytorch.org/blog/accelerating-pytorch-with-cuda-graphs/), but I generally work with much bigger models than this so it may not be possible! There's also a variety of things around PCIe and HBM bandwidth I didn't estimate, and maybe real Twitter uses bigger better models! Algorithmic timelines also add more load on the timeline fetching, since more tweets are candidates and the timelines need sorting, but we do have plenty of headroom there.
 
-I can't put a number on this one because I'm confident I could fit _some_ ML, but it also probably wouldn't be as good as Twitter's actual ML and I don't know how to turn that into a prediction.
+I can't put a number on this one because I'm confident I could fit _some_ ML, but it also probably wouldn't be as good as Twitter's actual ML and I don't know how to turn that into a prediction. Some ML designs also place much more load on other parts of the system, for example by loading lots of tweets to consider for each tweet actually delivered in the timeline.
 
 ## Bandwidth costs: They can be super expensive or free!
 
@@ -453,7 +459,7 @@ So far we've just checked whether the bandwidth can fit out the network cards, b
 
 I was surprised by the fact that typical bandwidth costs are way way more than a server capable of serving that bandwidth!
 
-But **the best deal is actually [Cloudflare Bandwith Alliance](https://www.cloudflare.com/bandwidth-alliance/)**. As far as I can tell Cloudflare doesn't charge for bandwidth, and some server providers like Vultr don't charge for transfer to Cloudflare. However if you tried to serve Twitter images this way I wonder if Vultr would suddenly reconsider their free bandwidth alliance pricing as you made up lots of their aggregate Cloudflare bandwidth.
+But **the best deal is actually [Cloudflare Bandwith Alliance](https://www.cloudflare.com/bandwidth-alliance/)**. As far as I can tell Cloudflare doesn't charge for bandwidth, and some server providers like Vultr don't charge for transfer to Cloudflare. However if you tried to serve Twitter images this way I wonder if Vultr would suddenly reconsider their free Bandwidth Alliance pricing as you made up lots of their aggregate Cloudflare bandwidth.
 
 ## How cheaply could you serve Twitter: Pricing it out
 
@@ -490,3 +496,7 @@ Okay lets look at some concrete servers and estimate how much it would cost in t
 Clearly optimizing server costs down to this level and below isn't economically rational, given the cost of engineers, but it's fun to think about.
 
 For reference in their [2021 annual report](https://s22.q4cdn.com/826641620/files/doc_financials/2021/ar/FiscalYR2021_Twitter_Annual_-Report.pdf), Twitter doesn't break down their $1.7BN cost of revenue to show what they spend on "infrastructure", but they say that their infrastructure spending increased by $166M, so they spend at least that much and presumably substantially more. But probably a lot of their "infrastructure" spending is on offline analytics/CI machines, and plausibly even office expenses are part of that category?
+
+## Conclusion
+
+The real conclusion is kinda up in the middle, but I had a lot of fun researching this project and I hope it conveys some appreciation for what hardware is capable of. I had even more fun spending tons of time reading papers and pacing around designing how I would implement a system that let you turn a Rust/C/Zig in-memory state machine like my prototype into a distributed fault-tolerant persistent one with page swapping to nVME that could run at millions of write transactions per second and a million read transactions per second per added core. I almost certainly won't actually build this, because I have a day job and it's a lot of work, but clearly I like doing fantasy systems design.
