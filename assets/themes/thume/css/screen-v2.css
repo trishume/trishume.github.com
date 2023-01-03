@@ -331,6 +331,11 @@ ul.posts {
     }
 }
 
+.draftnotice {
+  background-color: #fff4de;
+  padding: 0.5em 0.5em;
+}
+
 
 /* Calca */
 

@@ -16,7 +16,9 @@ I'm interested in high performance systems, compilers, machine learning and all 
 
 <ul class="posts">
   {% for post in site.posts limit:10 %}
+    {% unless post.draft %}
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endunless %}
   {% endfor %}
 </ul>
 

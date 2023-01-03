@@ -22,5 +22,5 @@ Mostly I talk about programming but I also digress into power user computer tric
   Posts in <strong>bold</strong> are ones I put significant effort into and endorse as still interesting and high quality.
 </p>
 
-{% assign posts_collate = site.posts %}
+{% assign posts_collate = site.posts | where: "draft", false %}
 {% include JB/posts_collate %}

@@ -25,3 +25,8 @@
     {% capture PAGE_ASSETS %}{{ BASE_PATH }}/assets/postassets{% endcapture %}
   {% endif %}
 {% endcapture %}{% assign jbcache = nil %}
+{% if page.draft %}
+<div class="draftnotice">
+  This is a draft. Please don't share it with anyone else or post it anywhere yet.
+</div>
+{% endif %}
