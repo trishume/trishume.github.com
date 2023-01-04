@@ -5,13 +5,14 @@ description: ""
 good: true
 draft: true
 category: 
+assetid: twitterperf
 tags: []
 ---
 {% include JB/setup %}
 
 In this post I'll attempt the fun stunt of designing a system that could serve the full production load of Twitter with most of the features intact on a single (very powerful) machine. I'll start by showing off a Rust prototype of the core tweet distribution data structure handling 35x full load, and then do math around how modern high-performance storage and networking might let you serve a close-to-fully-featured Twitter on one machine.
 
-I want to be clear this is meant as educational fun, and not as a good idea, at least going all the way to one machine. There's some things which can't fit, and this is all theory-crafting which I'll try to make convincing, but I could easily miss something which makes some feature impossible. Real Twitter shouldn't and probably couldn't do this, although I'll discuss in the middle which parts might actually be reasonable if some good open source software existed, and show how low it would bring costs and complexity.
+I want to be clear this is meant as educational fun, and not as a good idea, at least going all the way to one machine. In the middle of the post I talk about all the alternate-universe infrastructure that would need to exist before doing this would be practical. There's also some features which can't fit, and others where I'm not really that confident in my estimates.
 
 I've now spent about a week of evenings and a 3 weekends doing research, math and prototypes, gradually figuring out how to fit more and more features (images?! ML?!!) than I initially thought I could fit. We'll start with the very basics of Twitter and then go through gradually more and more features, in what I hope will be a fascinating tour of an alternative world of systems design where web apps are built like high performance trading systems. I'll also analyze the minimum cost configuration using multiple more practical machines, and talk about the practical disadvantages and advantages of such a design.
 
@@ -273,11 +274,21 @@ There's a bunch of other basic features of Twitter like user timelines, DMs, lik
 
 To make my hedged confidence quantitative, I'm 80% sure that if I had a conversation with a (perhaps former) Twitter performance engineer they wouldn't convince me of any factors I missed about Twitter load (on a much-simplified Twitter) or what machines can do, which would change my estimates enough to convince me a centralized RPC server couldn't serve all the simplified timelines. I'm only 70% sure for a version that also does DMs, replies and likes, because those might be used way more than I suspect, and might pose challenges I haven't thought about.
 
-## Conclusion-ish: Should you actually build systems this way?
+## Conclusion-ish: It's not practical to build this way, but maybe it could be
 
-If the nVME mmap-ish buffer manager plus some schema migration support existed as robust open source software it might be much simpler and easier than other approaches, but they don't so it isn't. You'd also probably want replication, but it's possible to bolt on Paxos/Raft with some replicas you stream the log to, which would need to part of the non-existent framework.
+I don't actually think people should build web apps this way. Here's all the things I think would go wrong with trying to implement a Twitter-scale company on one machine, and the alternate universe system that would have to exist to avoid that problem:
 
-Part of my point with this post is to gesture at the alternate universe of systems design which could exist. There's a feedback loop where few companies in the web space scale this way, so the available open-source tooling for it is abysmal, which makes it really hard to scale this way. I think of scaling this way because I used to work for a [trading company](http://janestreet.com/), where scaling systems to handle millions of requests per second on one machine with microsecond latency kernel-bypass networking is just [the standard way to do things](https://signalsandthreads.com/multicast-and-the-markets/) and there's lots of infrastructure for it. More hardware-efficient systems are cheaper, but I think the main benefit is avoiding the classic distributed systems and asynchrony problems every attempt to split things between machines runs into (which I've [written a pseudo-manifesto on before](/2020/05/17/pipes-kill-productivity/)), which means there's potential for it to be way simpler too.
+- **RAM structures are easy but disks are tricky**: You'd need the kind of [nVME virtual memory buffer manager](https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf) I've mentioned hooked up with a transaction log so you can just write a Rust state machine like you would in RAM.
+- **Your one machine can die**: The aformentioned framework would need to integrate log replication and something like Paxos/Raft for failover, and you'd maybe use a single digit number of machines.
+- **Bad code can use up all the resources**: You'd need a bunch of enforcement infrastructure around this. Your task system would need preemption and subsystem memory/network/cpu budgets. You'd need to capture busy day production traces and replay them in pre-deploy CI.
+- **A bug in one part can bring down everything**: Normally network boundaries enforce design around failure handling and gracefully degrading. You'd need tools for in-system circuit breakers and failure handling logic, and static analysis to enforce this at the company level.
+- **Zero-downtime deploys and schema evolution are tricky**: You'd need tooling to do something like generate getters that check version tags on your data structures and dispatch. Evolveable often conflicts with structures being fixed-size, which means an extra random read for many operations, or having to do deploys via rewriting the whole database and having another system catch up to the present incrementally before cutting over.
+- **Kernel-bypass binary protocol networking is hard to debug**: It would take tons of tooling effort to catch up to the ecosystem of linux networking and text formats before debugging and observability would be as smooth.
+- **What if you want to do something that doesn't fit on the machine?**: You'd want a system which could scale to multiple machines via some kind of state machine replication, remote paging and RPCs. If you want security boundaries between the machines that adds lots of access control complexity. Databases and multicore CPUs already have this kind of technology, but it's not available outside them.
+
+It's possible to build systems this way right now, it just requires really deep knowledge and carefulness, and is setting yourself up for either disaster or _tons_ of infrastructure work as your company scales. There's a feedback loop where few companies in the web space scale this way, so the available open-source tooling for it is abysmal, which makes it really hard to scale this way. I think of scaling this way because I used to work for a [trading company](http://janestreet.com/), where scaling systems to handle millions of requests per second per machine with microsecond latency kernel-bypass networking is [a common way to do things](https://signalsandthreads.com/multicast-and-the-markets/) and there's lots of infrastructure for it. But they still use lots of machines for most things, and in many ways have a simpler problem (e.g. often no state persists between market days and there's downtime between).
+
+I do kind of yearn for this alternate-universe open source infrastructure to exist though. More hardware-efficient systems are cheaper, but I think the main benefit is avoiding the classic distributed systems and asynchrony problems every attempt to split things between machines runs into (which I've [written a pseudo-manifesto on before](/2020/05/17/pipes-kill-productivity/)), which means there's potential for it to be way simpler too. It would also enable magic powers like time-travel debugging any production request as long as you mark the state for snapshotting. But there's so much momentum behind the current paradigm, not only in terms of what code exists, but what skills readily hireable people have.
 
 **That's all I originally planned for this post**, to show with reasonable confidence that you could fit the core tweet distribution of simplified Twitter on one machine using a prototype. But then it turned out I had tons of cores and bandwidth left over to tack on other things, so let's forge ahead and try to estimate which other features might fit using all the extra CPU!
 
@@ -298,6 +309,8 @@ I spent a bunch of time Googling for good benchmarks on HTTPS server performance
 What likely saves us is [session resumption and tickets](https://hpbn.co/transport-layer-security-tls/#tls-session-resumption), where browsers cache established crypto sessions so they can be resumed in future requests. This means we may only need to handle 1 session negotiation per user-week instead of multiple per day, and thus it's probably possible for an HTTPS server to hit [100k requests/core-s](https://h2o.examp1e.net/benchmarks.html) under realistic loads (before app and bandwidth overhead). So even though I can't find any actually good high-performance HTTPS server benchmarks, I'm going to say **The machine can probably directly serve the web requests too.**
 
 I think there's a 75% chance, conditional on an RPC backend fitting, that you could also serve web requests. Especially with a custom HTTP3 stack that used [DPDK](https://www.dpdk.org/) and very optimized static cached pages for a minimalist Twitter, with most uncertainty being maybe session resumption or caches can't hit that often.
+
+*Post-prediction edit: Someone who worked at Twitter confirmed their actual request rates are lower than a fast HTTPS server could handle, but noted that crawlers mean a portion of the requests need to have the HTML generated server-side. I'm going to say crawlers are a separate feature, which I think might fit with careful page size attention and optimization, but might pose bandwidth and CPU issues.*
 
 ## Live updating and infinite scroll
 
@@ -394,6 +407,12 @@ Search requires two things, a search index stored in fast storage, and the CPU t
 It looks like a big nVME machine could fit a few years of search index, although it would also need to store the raw historical tweets.
 
 However I have no good idea how to estimate how much load Twitter's search system gets, and it would take more effort than I want to estimate the CPU and IOPS load of doing the searches. It might be possible but search is a pretty intensive task and I'm guessing it probably wouldn't fit, especially not on the same machine as everything else.
+
+## Notifications
+
+The trickiest part of notifications is that computing the historical notifications list on-the-fly might be tricky for big accounts, so it probably needs to be cached per user. This probably would need to go on nVME or HDD and be updated with a background process following the write stream, which also would send out push notifications, and could fall behind during traffic bursts. This is probably what Twitter does given old notifications load slowly and very old notifications are dropped. Estimating whether this would fit would be tricky, the storage and compute budget is already stretched.
+
+Someone who worked at Twitter noted that push notifications from celebrities and their retweets can synchronize people loading their timelines into huge bursts. Randomly delaying celebrity notifications per user might be a necessary performance feature.
 
 ## Algorithmic Timelines / ML
 
@@ -500,4 +519,9 @@ For reference in their [2021 annual report](https://s22.q4cdn.com/826641620/file
 
 ## Conclusion
 
-The real conclusion is kinda up in the middle, but I had a lot of fun researching this project and I hope it conveys some appreciation for what hardware is capable of. I had even more fun spending tons of time reading papers and pacing around designing how I would implement a system that let you turn a Rust/C/Zig in-memory state machine like my prototype into a distributed fault-tolerant persistent one with page swapping to nVME that could run at millions of write transactions per second and a million read transactions per second per added core. I almost certainly won't actually build this, because I have a day job and it's a lot of work, but clearly I like doing fantasy systems design.
+The real conclusion is kinda up in the middle, but I had a lot of fun researching this project and I hope it conveys some appreciation for what hardware is capable of. I had even more fun spending tons of time reading papers and pacing around designing how I would implement a system that let you turn a Rust/C/Zig in-memory state machine like my prototype into a distributed fault-tolerant persistent one with page swapping to nVME that could run at millions of write transactions per second and a million read transactions per second per added core.
+
+I almost certainly won't actually build any of this infrastructure, because I have a day job and it'd be too much work even if I didn't, but I clearly love doing fantasy systems design so I may well spend a lot of my free time writing notes and drawing diagrams about exactly how I'd do it:
+
+![Pipeline diagram]({{PAGE_ASSETS}}/pipeline.png)
+
