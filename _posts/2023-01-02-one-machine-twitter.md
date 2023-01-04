@@ -497,13 +497,15 @@ Okay lets look at some concrete servers and estimate how much it would cost in t
   </p><pre><code>$<span class="n">20,000</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">240,000</span>/<span class="u">year</span></span>
   </code></pre><pre><code>total bandwidth cost(bandwidth price = $<span class="n">0.02</span>/<span class="u">GB</span>) <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">10,600,798.32</span>/<span class="u">year</span></span>
   </code></pre>
-  <p>To do everything on one machine yourself, except image storage, I specced a Dell PowerEdge R740xd with 2x16 core Xeons, 768GB RAM, 46TB nVME, 18 free drive bays for HDDs, a GPU slot, and 4x40Gbe networking:
-  </p><pre><code><span class="d">server cost</span> = $<span class="n">75,461</span>
-  </code></pre><pre><code><span class="d">nvidia a100 cost</span> = $<span class="n">10,000</span>
-  </code></pre><pre><code><span class="d">hdd 360TB via 20TB cost</span> = $<span class="n">500</span> * <span class="n">18</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">9,000</span></span>
-  </code></pre><pre><code><span class="d">total server cost</span> = server cost + nvidia a100 cost + hdd 360TB via 20TB cost <span class="t">=&gt;</span> <span class="ans">$<span class="n">94,461</span></span>
+  <p>To do everything on one machine yourself, I specced a Dell PowerEdge R740xd with 2x16 core Xeons, 768GB RAM, 46TB nVME, 360TB HDD, a GPU slot, and 4x40Gbe networking:
+  </p><pre><code><span class="d">server cost</span> = $<span class="n">15,245</span>
+  </code></pre><pre><code><span class="d">ram 32GB rdimms</span> = $<span class="n">132</span> * <span class="n">24</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">3,168</span></span>
+  </code></pre><pre><code><span class="d">samsung pm1733 8tb nvme</span> = $<span class="n">1200</span> * <span class="n">6</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">7,200</span></span>
+  </code></pre><pre><code><span class="d">nvidia a100</span> = $<span class="n">10,000</span>
+  </code></pre><pre><code><span class="d">hdd 20TB</span> = $<span class="n">500</span> * <span class="n">18</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">9,000</span></span>
+  </code></pre><pre><code><span class="d">total server cost</span> = server cost + ram 32GB rdimms + samsung pm1733 8tb nvme + nvidia a100 + hdd 20TB <span class="t">=&gt;</span> <span class="ans">$<span class="n">44,613</span></span>
   </code></pre><pre><code><span class="d">colo cost</span> = $<span class="n">300</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">3,600</span>/<span class="u">year</span></span>
-  </code></pre><pre><code>colo cost + total server cost/(<span class="n">3</span> <span class="u">year</span>) <span class="t">=&gt;</span> <span class="ans">$<span class="n">35,087</span>/<span class="u">year</span></span>
+  </code></pre><pre><code>colo cost + total server cost/(<span class="n">3</span> <span class="u">year</span>) <span class="t">=&gt;</span> <span class="ans">$<span class="n">18,471</span>/<span class="u">year</span></span>
   </code></pre>
   <p>So you do well on the server cost but then get obliterated by bandwidth cost unless you use a colo where you can <a href="https://www.cloudflare.com/network-interconnect/">directly connect to Cloudflare</a>:
 
