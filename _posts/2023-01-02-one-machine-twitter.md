@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Production Twitter on One Machine: 100Gbps NICs and nVME are fast"
+title: "Production Twitter on One Machine: 100Gbps NICs and NVMe are fast"
 description: ""
 good: true
 draft: true
@@ -18,11 +18,10 @@ I've now spent about a week of evenings and a 3 weekends doing research, math an
 
 Here's an overview of the features I'll talk about and whether I think they could fit:
 
-- **Timeline and tweet distribution logic**: Based on a prototype, fits easily on a handful of cores when you pack recent tweets in RAM supplemented with nVME.
+- **Timeline and tweet distribution logic**: Based on a prototype, fits easily on a handful of cores when you pack recent tweets in RAM supplemented with NVMe.
 - **HTTP(S) request serving**: Yes. HTTP fits, HTTPS fits only because of session resumption.
 - **Image serving**: A close fit with rough estimates, but maybe doable with multiple 100Gbit/s networking cards. You need effort to avoid extreme bandwidth costs.
-- **Video serving**: I have no idea how much people watch videos on Twitter so can't estimate this.
-- **Search**: Probably not? The index could fit on a few nVME drives per searchable year, but estimating CPU and IO load is hard.
+- **Video, search, ads, notifications**: Probably these wouldn't fit, and it's really tricky to estimate whether they might.
 - **Historical tweet and image storage**: Tweets fit on a specialized server, *but images don't*, you could fit maybe 4 months of images with a 48x HDD storage pod.
 - **ML-based timeline**: A100 GPUs are insane and can run a decent LM against every tweet and dot-product the embeddings with every user.
 
@@ -95,19 +94,19 @@ I did all my calculations for this project using [Calca](http://calca.io/) (whic
 
 I think the main takeaway looking at these calculations is that many of these numbers are small numbers on the scale of modern computers!
 
-## Hot set in RAM, rest on nVME
+## Hot set in RAM, rest on NVMe
 
 Given those numbers, I'll be using the "[your dataset fits in RAM](https://twitter.com/garybernhardt/status/600783770925420546?s=20)" paradigm of systems design. However it's a little more complicated since our dataset doesn't _actually_ fit in RAM.
 
-Storing all the historical tweets takes many terabytes of storage. But probably 99% of tweets viewed are from the last few days. This means we can use a hybrid of RAM+nVME+HDDs attached to our machine in a tiered cache:
+Storing all the historical tweets takes many terabytes of storage. But probably 99% of tweets viewed are from the last few days. This means we can use a hybrid of RAM+NVMe+HDDs attached to our machine in a tiered cache:
 
 - RAM will store our hot set cache and serve almost all requests, so most of our performance will only depend on the RAM cache. It's common to fit 512GB-1TB of RAM in a modern machine.
-- Modern nVME drives can store >8TB and do [over 1 million 4KB IO operations per second per drive](https://ci.spdk.io/download/performance-reports/SPDK_nvme_bdev_gen4_perf_report_2201.pdf) with latencies near 100us, and you can attach dozens of them to a machine. That's enough to serve all tweets, but we can lower CPU overhead and add headroom by just using them for long tail tweets and probably the follower graph (since it only needs one IO op per timeline request).
+- Modern NVMe drives can store >8TB and do [over 1 million 4KB IO operations per second per drive](https://ci.spdk.io/download/performance-reports/SPDK_NVMe_bdev_gen4_perf_report_2201.pdf) with latencies near 100us, and you can attach dozens of them to a machine. That's enough to serve all tweets, but we can lower CPU overhead and add headroom by just using them for long tail tweets and probably the follower graph (since it only needs one IO op per timeline request).
 - Some extra 20TB HDDs can store the very old very cold tweets that are basically never accessed, especially at the 2x compression I saw with [zstd](http://facebook.github.io/zstd/) on tweet text from a [Kaggle dataset](https://www.kaggle.com/datasets/kazanova/sentiment140).
 
-However, super high performance tiering RAM+nVME buffer managers which can access the RAM-cached pages almost as fast as a normal memory access are mostly only [detailed and benchmarked in academic papers](https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf). I don't know of any good well-maintained open-source ones, [LeanStore](https://dbis1.github.io/) is the closest. You don't just need tiering logic, but also an nVME write-ahead-log and checkpointing to ensure persistence of all changes like new tweets. This is one of the areas where running Twitter on one machine is more of a theoretical possibility than a pragmatic one.
+However, super high performance tiering RAM+NVMe buffer managers which can access the RAM-cached pages almost as fast as a normal memory access are mostly only [detailed and benchmarked in academic papers](https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf). I don't know of any good well-maintained open-source ones, [LeanStore](https://dbis1.github.io/) is the closest. You don't just need tiering logic, but also an NVMe write-ahead-log and checkpointing to ensure persistence of all changes like new tweets. This is one of the areas where running Twitter on one machine is more of a theoretical possibility than a pragmatic one.
 
-So I just prototyped a RAM-only implementation and I'll handwave away the difficulty of the buffer manager (and things like schema migrations) by saying it isn't that relevant to whether the performance targets are possible because most requests just hit RAM and [this paper shows that you can implement what is basically mmap with _much_ more efficient page faults](https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf) for only a 10% overhead on non-faulting RAM reads.
+So I just prototyped a RAM-only implementation and I'll handwave away the difficulty of the buffer manager (and things like schema migrations) by saying it isn't that relevant to whether the performance targets are possible because most requests just hit RAM and [this paper shows that you can implement what is basically mmap with _much_ more efficient page faults](https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf) for only a 10% latency hit on non-faulting RAM reads plus some TLB misses from not being able to use hugepages. Although the real overhead is on the writes and faulting reads and from the handful of cores taken up for logging writes and managing checkpointing, cache reads and evictions.
 
 ## My Prototype
 
@@ -278,8 +277,8 @@ To make my hedged confidence quantitative, I'm 80% sure that if I had a conversa
 
 I don't actually think people should build web apps this way. Here's all the things I think would go wrong with trying to implement a Twitter-scale company on one machine, and the alternate universe system that would have to exist to avoid that problem:
 
-- **RAM structures are easy but disks are tricky**: You'd need the kind of [nVME virtual memory buffer manager](https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf) I've mentioned hooked up with a transaction log so you can just write a Rust state machine like you would in RAM.
-- **Your one machine can die**: The aformentioned framework would need to integrate log replication and something like Paxos/Raft for failover, and you'd maybe use a single digit number of machines.
+- **Your one machine can die**: Systems can have [remarkable uptime](https://twitter.com/danluu/status/1586180166631706624?s=20) when there's just one machine, but that's still risking permanent data loss and prolonged outages. You'd use at number of machines in different buildings in any real deployment. The framework could handle this semi-transparently with some extra cores and bandwidth per-machine using [state machine replication](https://signalsandthreads.com/state-machine-replication-and-why-you-should-care/) and Paxos/Raft for failover.
+- **RAM structures are easy but disks are tricky**: You'd need the kind of [NVMe virtual memory buffer manager](https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf) I've mentioned hooked up with a transaction log so you can just write a Rust state machine like you would in RAM.
 - **Bad code can use up all the resources**: You'd need a bunch of enforcement infrastructure around this. Your task system would need preemption and subsystem memory/network/cpu budgets. You'd need to capture busy day production traces and replay them in pre-deploy CI.
 - **A bug in one part can bring down everything**: Normally network boundaries enforce design around failure handling and gracefully degrading. You'd need tools for in-system circuit breakers and failure handling logic, and static analysis to enforce this at the company level.
 - **Zero-downtime deploys and schema evolution are tricky**: You'd need tooling to do something like generate getters that check version tags on your data structures and dispatch. Evolveable often conflicts with structures being fixed-size, which means an extra random read for many operations, or having to do deploys via rewriting the whole database and having another system catch up to the present incrementally before cutting over.
@@ -344,7 +343,7 @@ Infinite scrolling also performs better if we can cache a cursor at the end for 
   </code></pre>
 </div>
 
-We can easily fit one at the start and one at the end in RAM! Given they can be loaded with one IO op it wouldn't even really slow things down if they spilled to nVME.
+We can easily fit one at the start and one at the end in RAM! Given they can be loaded with one IO op it wouldn't even really slow things down if they spilled to NVMe.
 
 ## Images: Kinda!?
 
@@ -391,9 +390,13 @@ But what would it take to store all the historical large versions?
 
 So if we wanted to stick strictly to one server we'd need to make Twitter like SnapChat where your images dissapear after a while, maybe make our cache into a fun mechanic where your tweets keep their images only as long as people keep looking at them!
 
-## Video and Search: Probably Not
+## Features that probably don't fit and are hard to estimate
+
+### Video
 
 Video uses more bandwidth than images, but on the other hand video compression is good and I think people view a lot less video on Twitter than images. I just don't have that data though and my estimates would have such wild error bars that I'm just not going to try and say we probably can't do video on a single machine.
+
+### Search
 
 Search requires two things, a search index stored in fast storage, and the CPU to look over it. Using [Twitter's own posts about posting lists](https://blog.twitter.com/engineering/en_us/topics/infrastructure/2020/reducing-search-indexing-latency-to-one-second) to get some index size estimates:
 
@@ -404,15 +407,19 @@ Search requires two things, a search index stored in fast storage, and the CPU t
   </code></pre>
 </div>
 
-It looks like a big nVME machine could fit a few years of search index, although it would also need to store the raw historical tweets.
+It looks like a big NVMe machine could fit a few years of search index, although it would also need to store the raw historical tweets.
 
 However I have no good idea how to estimate how much load Twitter's search system gets, and it would take more effort than I want to estimate the CPU and IOPS load of doing the searches. It might be possible but search is a pretty intensive task and I'm guessing it probably wouldn't fit, especially not on the same machine as everything else.
 
-## Notifications
+### Notifications
 
-The trickiest part of notifications is that computing the historical notifications list on-the-fly might be tricky for big accounts, so it probably needs to be cached per user. This probably would need to go on nVME or HDD and be updated with a background process following the write stream, which also would send out push notifications, and could fall behind during traffic bursts. This is probably what Twitter does given old notifications load slowly and very old notifications are dropped. Estimating whether this would fit would be tricky, the storage and compute budget is already stretched.
+The trickiest part of notifications is that computing the historical notifications list on-the-fly might be tricky for big accounts, so it probably needs to be cached per user. This probably would need to go on NVMe or HDD and be updated with a background process following the write stream, which also would send out push notifications, and could fall behind during traffic bursts. This is probably what Twitter does given old notifications load slowly and very old notifications are dropped. Estimating whether this would fit would be tricky, the storage and compute budget is already stretched.
 
 Someone who worked at Twitter noted that push notifications from celebrities and their retweets can synchronize people loading their timelines into huge bursts. Randomly delaying celebrity notifications per user might be a necessary performance feature.
+
+### Ads
+
+An ex-Twitter engineer who read a draft mentioned that a substantial fraction of all compute is ad-related. How much compute ads cost of course depends on exactly what kind of ML or real-time auctions go into serving the ads. Very basic ads would be super easy to fit, and Twitter makes $500M/year on "data licensing and other". How much revenue you need to run a service depends on how expensive it is! You could imagine an alternate universe non-profit Twitter which just sold their public data dumps and used that for all their funding if their costs were pushed low enough.
 
 ## Algorithmic Timelines / ML
 
@@ -486,24 +493,24 @@ But **the best deal is actually [Cloudflare Bandwith Alliance](https://www.cloud
 Okay lets look at some concrete servers and estimate how much it would cost in total to run Twitter in some of these scenarios.
 
 <div class="calca">
-  <p>Basics and full tweet back catalog on one machine with bandwidth on <a href="https://us.ovhcloud.com/bare-metal/high-grade/hgr-sds-2/">OVHCloud</a>: 1TB RAM, 24 cores, 10Gbit/s public bandwidth, 360TB of nVME across 24 drives
+  <p>Basics and full tweet back catalog on one machine with bandwidth on <a href="https://us.ovhcloud.com/bare-metal/high-grade/hgr-sds-2/">OVHCloud</a>: 1TB RAM, 24 cores, 10Gbit/s public bandwidth, 360TB of NVMe across 24 drives
   </p><pre><code>$<span class="n">7,079</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">84,948</span>/<span class="u">year</span></span>
   </code></pre>
-  <p>Basics, images, ML, replication and tweet back catalog with 8 <a href="https://www.vultr.com/products/bare-metal/#pricing">CPU Vultr machines</a> with 25TB nVME, 512GB RAM, 24 cores and 25Gbp/s, plus one ML instance.
+  <p>Basics, images, ML, replication and tweet back catalog with 8 <a href="https://www.vultr.com/products/bare-metal/#pricing">CPU Vultr machines</a> with 25TB NVMe, 512GB RAM, 24 cores and 25Gbp/s, plus one ML instance.
   </p><pre><code><span class="n">8</span> * <span class="n">2.34</span><span class="u">$</span>/<span class="u">hr</span> + $<span class="n">7.4</span>/<span class="u">hr</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">228,963.2184</span>/<span class="u">year</span></span>
   </code></pre><pre><code>cost per year of images * <span class="n">5</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">841,518.72</span>/<span class="u">year</span></span>
   </code></pre>
-  <p>Basics, images and ML but not full tweet back catalog on one machine with a AWS P4D instance with 400Gbps of bandwith, 8xA100, 1TB memory, 8TB NVME:
+  <p>Basics, images and ML but not full tweet back catalog on one machine with a AWS P4D instance with 400Gbps of bandwith, 8xA100, 1TB memory, 8TB NVMe:
   </p><pre><code>$<span class="n">20,000</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">240,000</span>/<span class="u">year</span></span>
   </code></pre><pre><code>total bandwidth cost(bandwidth price = $<span class="n">0.02</span>/<span class="u">GB</span>) <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">10,600,798.32</span>/<span class="u">year</span></span>
   </code></pre>
-  <p>To do everything on one machine yourself, I specced a Dell PowerEdge R740xd with 2x16 core Xeons, 768GB RAM, 46TB nVME, 360TB HDD, a GPU slot, and 4x40Gbe networking:
+  <p>To do everything on one machine yourself, I specced a Dell PowerEdge R740xd with 2x16 core Xeons, 768GB RAM, 46TB NVMe, 360TB HDD, a GPU slot, and 4x40Gbe networking:
   </p><pre><code><span class="d">server cost</span> = $<span class="n">15,245</span>
   </code></pre><pre><code><span class="d">ram 32GB rdimms</span> = $<span class="n">132</span> * <span class="n">24</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">3,168</span></span>
-  </code></pre><pre><code><span class="d">samsung pm1733 8tb nvme</span> = $<span class="n">1200</span> * <span class="n">6</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">7,200</span></span>
+  </code></pre><pre><code><span class="d">samsung pm1733 8tb NVMe</span> = $<span class="n">1200</span> * <span class="n">6</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">7,200</span></span>
   </code></pre><pre><code><span class="d">nvidia a100</span> = $<span class="n">10,000</span>
   </code></pre><pre><code><span class="d">hdd 20TB</span> = $<span class="n">500</span> * <span class="n">18</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">9,000</span></span>
-  </code></pre><pre><code><span class="d">total server cost</span> = server cost + ram 32GB rdimms + samsung pm1733 8tb nvme + nvidia a100 + hdd 20TB <span class="t">=&gt;</span> <span class="ans">$<span class="n">44,613</span></span>
+  </code></pre><pre><code><span class="d">total server cost</span> = server cost + ram 32GB rdimms + samsung pm1733 8tb NVMe + nvidia a100 + hdd 20TB <span class="t">=&gt;</span> <span class="ans">$<span class="n">44,613</span></span>
   </code></pre><pre><code><span class="d">colo cost</span> = $<span class="n">300</span>/<span class="u">month</span> <span class="k">in</span> <span class="u">$</span>/<span class="u">year</span> <span class="t">=&gt;</span> <span class="ans">$<span class="n">3,600</span>/<span class="u">year</span></span>
   </code></pre><pre><code>colo cost + total server cost/(<span class="n">3</span> <span class="u">year</span>) <span class="t">=&gt;</span> <span class="ans">$<span class="n">18,471</span>/<span class="u">year</span></span>
   </code></pre>
@@ -521,9 +528,10 @@ For reference in their [2021 annual report](https://s22.q4cdn.com/826641620/file
 
 ## Conclusion
 
-The real conclusion is kinda up in the middle, but I had a lot of fun researching this project and I hope it conveys some appreciation for what hardware is capable of. I had even more fun spending tons of time reading papers and pacing around designing how I would implement a system that let you turn a Rust/C/Zig in-memory state machine like my prototype into a distributed fault-tolerant persistent one with page swapping to nVME that could run at millions of write transactions per second and a million read transactions per second per added core.
+The real conclusion is kinda up in the middle, but I had a lot of fun researching this project and I hope it conveys some appreciation for what hardware is capable of. I had even more fun spending tons of time reading papers and pacing around designing how I would implement a system that let you turn a Rust/C/Zig in-memory state machine like my prototype into a distributed fault-tolerant persistent one with page swapping to NVMe that could run at millions of write transactions per second and a million read transactions per second per added core.
 
 I almost certainly won't actually build any of this infrastructure, because I have a day job and it'd be too much work even if I didn't, but I clearly love doing fantasy systems design so I may well spend a lot of my free time writing notes and drawing diagrams about exactly how I'd do it:
 
 ![Pipeline diagram]({{PAGE_ASSETS}}/pipeline.png)
 
+*Thanks to the 5 ex-Twitter engineers, some of whom worked on performance, who reviewed this post before publication but after I made my predictions, and brought up interesting considerations and led me to correct and clarify a bunch of things!*
