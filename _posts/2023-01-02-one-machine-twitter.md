@@ -3,16 +3,15 @@ layout: post
 title: "Production Twitter on One Machine: 100Gbps NICs and NVMe are fast"
 description: ""
 good: true
-draft: true
 category: 
 assetid: twitterperf
 tags: []
 ---
 {% include JB/setup %}
 
-In this post I'll attempt the fun stunt of designing a system that could serve the full production load of Twitter with most of the features intact on a single (very powerful) machine. I'll start by showing off a Rust prototype of the core tweet distribution data structure handling 35x full load, and then do math around how modern high-performance storage and networking might let you serve a close-to-fully-featured Twitter on one machine.
+In this post I'll attempt the fun stunt of designing a system that could serve the full production load of Twitter with most of the features intact on a single (very powerful) machine. I'll start by showing off a Rust prototype of the core tweet distribution data structure handling 35x full load by fitting the hot set in RAM and parallelizing with atomics, and then do math around how modern high-performance storage and networking might let you serve a close-to-fully-featured Twitter on one machine.
 
-I want to be clear this is meant as educational fun, and not as a good idea, at least going all the way to one machine. In the middle of the post I talk about all the alternate-universe infrastructure that would need to exist before doing this would be practical. There's also some features which can't fit, and others where I'm not really that confident in my estimates.
+I want to be clear this is meant as educational fun, and not as a good idea, at least going all the way to one machine. In the middle of the post I talk about all the alternate-universe infrastructure that would need to exist before doing this would be practical. There's also some features which can't fit, and a lot of ways I'm not really confident in my estimates.
 
 I've now spent about a week of evenings and a 3 weekends doing research, math and prototypes, gradually figuring out how to fit more and more features (images?! ML?!!) than I initially thought I could fit. We'll start with the very basics of Twitter and then go through gradually more and more features, in what I hope will be a fascinating tour of an alternative world of systems design where web apps are built like high performance trading systems. I'll also analyze the minimum cost configuration using multiple more practical machines, and talk about the practical disadvantages and advantages of such a design.
 
@@ -522,7 +521,7 @@ Okay lets look at some concrete servers and estimate how much it would cost in t
   </p>
 </div>
 
-Clearly optimizing server costs down to this level and below isn't economically rational, given the cost of engineers, but it's fun to think about.
+Clearly optimizing server costs down to this level and below isn't economically rational, given the cost of engineers, but it's fun to think about. I also didn't try to investigate configuring an IBM mainframe, which stands a chance of being the one type of "machine" where you might be able to attach enough storage to fit historical images.
 
 For reference in their [2021 annual report](https://s22.q4cdn.com/826641620/files/doc_financials/2021/ar/FiscalYR2021_Twitter_Annual_-Report.pdf), Twitter doesn't break down their $1.7BN cost of revenue to show what they spend on "infrastructure", but they say that their infrastructure spending increased by $166M, so they spend at least that much and presumably substantially more. But probably a lot of their "infrastructure" spending is on offline analytics/CI machines, and plausibly even office expenses are part of that category?
 
@@ -534,4 +533,4 @@ I almost certainly won't actually build any of this infrastructure, because I ha
 
 ![Pipeline diagram]({{PAGE_ASSETS}}/pipeline.png)
 
-*Thanks to the 5 ex-Twitter engineers, some of whom worked on performance, who reviewed this post before publication but after I made my predictions, and brought up interesting considerations and led me to correct and clarify a bunch of things!*
+*Thanks to the 5 ex-Twitter engineers, some of whom worked on performance, who reviewed this post before publication but after I made my predictions, and brought up interesting considerations and led me to correct and clarify a bunch of things! Also to my coworker [Nelson Elhage](https://nelhage.com/) who offered good comments on a draft around reasons you wouldn't do this in practice.*
