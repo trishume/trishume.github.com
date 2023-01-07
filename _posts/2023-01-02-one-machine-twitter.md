@@ -489,6 +489,8 @@ I was surprised by the fact that typical bandwidth costs are way way more than a
 
 But **the best deal is actually [Cloudflare Bandwith Alliance](https://www.cloudflare.com/bandwidth-alliance/)**. As far as I can tell Cloudflare doesn't charge for bandwidth, and some server providers like Vultr don't charge for transfer to Cloudflare. However if you tried to serve Twitter images this way I wonder if Vultr would suddenly reconsider their free Bandwidth Alliance pricing as you made up lots of their aggregate Cloudflare bandwidth.
 
+**Edit:** My friend says his colo charges for 10Gbit/s at close to the OVH rate, and notes that bandwidth isn't fungible in that if you try to constantly peg your connections serving the entire world you may run into upstream bottlenecks and get throttled. This may be a place where CloudFlare could help you (maybe at some cost) or where you'd have to colo next to an internet exchange or something.
+
 ## How cheaply could you serve Twitter: Pricing it out
 
 Okay lets look at some concrete servers and estimate how much it would cost in total to run Twitter in some of these scenarios.
