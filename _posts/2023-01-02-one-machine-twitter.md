@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Production Twitter on One Machine: 100Gbps NICs and NVMe are fast"
+title: "Production Twitter on One Machine? 100Gbps NICs and NVMe are fast"
 description: ""
 good: true
 category: 
