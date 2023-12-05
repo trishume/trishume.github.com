@@ -11,7 +11,7 @@ good: true
 
 Ever wanted more different ways to understand what's going on in a program? Here I catalogue a huge variety of tracing methods you can use for varying types of problems. Tracing has been such a long-standing interest (and job) of mine that some of these will novel and interesting to anyone who reads this. I'll guarantee it by including 2 novel tracing tools I've made and haven't shared before (look for this: <span style="color: blue;">*Tooling drop!*</span>).
 
-What I see as the key parts of tracing are collecting data on what happened in a system, and then ideally visualizing it in a timeline UI instead of just as a text log. First I'll cover my favorite ways of really easily getting trace data into a nice timeline UI, because it's a superpower that makes all the other tracing tools more interesting. Then I'll go over ways to get that data, everything from instrumentation to binary patching to processor hardware features.
+What I see as the key parts of tracing are collecting timestamped data on what happened in a system, and then ideally visualizing it in a timeline UI instead of just as a text log. First I'll cover my favorite ways of really easily getting trace data into a nice timeline UI, because it's a superpower that makes all the other tracing tools more interesting. Then I'll go over ways to get that data, everything from instrumentation to binary patching to processor hardware features.
 
 I'll also give a real-life example of combining eBPF tracing with Perfetto visualization to diagnose tail latency issues in huge traces by using a number of neat tricks. Look for the "eBPF Example" section.
 
@@ -34,7 +34,7 @@ with open('trace.json','w') as f:
 
 This is the power of the [Chromium Event JSON Format](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview). It's a super simple JSON format that supports a bunch of different kinds of events, and is supported by a lot of different profile visualizer tools.
 
-You can view the resulting tracing files in Google's Perfetto trace viewer by going to <https://ui.perfetto.dev/>, or in the older Catapult viewer (which is nicer for some traces) by going to `chrome://tracing` in Chrome. You can play around with it by [going to Perfetto](https://ui.perfetto.dev/) and clicking "Open Chrome Example" in the sidebar. Here's a screenshot showing an event annotated with arguments and flow event arrows:
+You can view the resulting tracing files in Google's Perfetto trace viewer by going to <https://ui.perfetto.dev/>, or in the older Catapult viewer (which is nicer for some traces) by going to `chrome://tracing` in Chrome. You can play around with the UI by [going to Perfetto](https://ui.perfetto.dev/) and clicking "Open Chrome Example" in the sidebar. Here's a screenshot showing an event annotated with arguments and flow event arrows:
 
 [![Perfetto Screenshot]({{PAGE_ASSETS}}/perfetto.png)]({{PAGE_ASSETS}}/perfetto.png)
 
@@ -52,7 +52,7 @@ When I worked at Jane Street I [used this to log instrumentation events to a buf
 
 ### Advanced Format: Perfetto Protobuf
 
-Another format which is similarly compact, and also supports more features is [Perfetto's native Protobuf trace format](https://github.com/google/perfetto/blob/master/protos/perfetto/trace/perfetto_trace.proto). It's documented only in comments in the proto files and is a bit trickier to figure out, but might be a bit easier to generate if you have access to a protobuf library. It enables access to advanced Perfetto features like including callstack samples in a trace, which aren't available with other formats. It's slower to write than FTF, although Perfetto has a [ProtoZero](https://perfetto.dev/docs/design-docs/protozero) library to make it somewhat faster.
+Another format which is similarly compact, and also supports more features, is [Perfetto's native Protobuf trace format](https://github.com/google/perfetto/blob/master/protos/perfetto/trace/perfetto_trace.proto). It's documented only in comments in the proto files and is a bit trickier to figure out, but might be a bit easier to generate if you have access to a protobuf library. It enables access to advanced Perfetto features like including callstack samples in a trace, which aren't available with other formats. It's slower to write than FTF, although Perfetto has a [ProtoZero](https://perfetto.dev/docs/design-docs/protozero) library to make it somewhat faster.
 
 This can be really tricky to get right though and I had to reference the Perfetto source code to figure out error codes in the "info and stats" tab a lot. The biggest gotchas are you need to set `trusted_packet_sequence_id` on every packet, have a `TrackDescriptor` for every track, and set `sequence_flags=SEQ_INCREMENTAl_STATE_CLEARED` on the first packet.
 
@@ -66,13 +66,13 @@ Now lets go over all sorts of different neat tracing methods! I'll start with so
 
 ## Hardware breakpoints
 
-For ages, processors have supported **hardware breakpoint registers** which let you put in a small number of addresses and have the processor interrupt itself when any of them are hit.
+For ages, processors have supported **hardware breakpoint registers** which let you put in a small number of memory addresses and have the processor interrupt itself when any of them are accessed or executed.
 
 ### perf and perftrace
 
 Linux exposes this functionality through `ptrace` but also through the [`perf_event_open` syscall](https://man7.org/linux/man-pages/man2/perf_event_open.2.html) and the [`perf record` command](https://man7.org/linux/man-pages/man1/perf-record.1.html). You can record a process like `perf record -e \mem:0x1000/8:rwx my_command` and view the results with `perf script`. It costs about 3us of overhead every time a breakpoint is hit.
 
-<span style="color: blue;">*Tooling drop!*</span> I wrote [a tiny Python library called perftrace](https://github.com/trishume/perftrace) with a C stub which calls the `perf_event_open` syscall to record hardware breakpoint hits and also collect register values when the breakpoints were hit.
+<span style="color: blue;">*Tooling drop!*</span> I wrote [a tiny Python library called perftrace](https://github.com/trishume/perftrace) with a C stub which calls the `perf_event_open` syscall to record timestamps and register values when the breakpoints were hit.
 
 It currently only supports execution breakpoints but you can also breakpoint on reads or writes of any memory and it would be [easy to modify the code to do that](https://github.com/trishume/perftrace/blob/d074e65bf71e8af10335164111969f96263d283a/perftrace.c#L61). Hardware breakpoints are basically the only way to watch for accessing a specific memory address at a fine granularity which doesn't add overhead to code which doesn't touch that memory.
 
@@ -84,15 +84,13 @@ In addition to using it manually, you can automate the process of following the 
 
 ## Intel Processor Trace
 
-[Intel Processor Trace](https://easyperf.net/blog/2019/08/23/Intel-Processor-Trace) is a hardware technology on Intel chips since Skylake which allows recording a trace of *every instruction the processor executes* via recording enough info to reconstruct the control flow in a super-compact format, along with fine-grained timing info. It has extremely low overhead since it's done by hardware and writes bypass the cache so the only overhead is reducing main memory bandwidth by about 1GB/s, I see no noticeable overhead at all on most program benchmarks I've tested.
-
-
+[Intel Processor Trace](https://easyperf.net/blog/2019/08/23/Intel-Processor-Trace) is a hardware technology on Intel chips since Skylake which allows recording a trace of *every instruction the processor executes* via recording enough info to reconstruct the control flow in a super-compact format, along with fine-grained timing info. It has extremely low overhead since it's done by hardware and writes bypass the cache so the only overhead is reducing main memory bandwidth by about 1GB/s. I see no noticeable overhead at all on most program benchmarks I've tested.
 
 You can access a dump of the assembly instructions executed in a recorded region using [`perf`](https://man7.org/linux/man-pages/man1/perf-intel-pt.1.html), [`lldb`](https://lldb.llvm.org/use/intel_pt.html) and [`gdb`](https://easyperf.net/blog/2019/08/30/Intel-PT-part2).
 
 ### magic-trace
 
-However this isn't useful to most people, so when at Jane Street I created [magic-trace](https://github.com/janestreet/magic-trace) along with my intern Chris Lambert, which generates a trace file (using FTF and Perfetto as described above) which visualizes *every function call* in a program execution. Jane Street generously open-sourced it so anyone can use it! Since then it's been extended to support tracing into the kernel as well. I wrote [a blog post about how it works for the Jane Street tech blog](https://blog.janestreet.com/magic-trace/).
+However assembly traces aren't useful to most people, so when at Jane Street I created [magic-trace](https://github.com/janestreet/magic-trace) along with my intern Chris Lambert, which generates a trace file (using FTF and Perfetto as described above) which visualizes *every function call* in a program execution. Jane Street generously open-sourced it so anyone can use it! Since then it's been extended to support tracing into the kernel as well. I wrote [a blog post about how it works for the Jane Street tech blog](https://blog.janestreet.com/magic-trace/).
 
 ![magic-trace demo](https://github.com/janestreet/magic-trace/raw/master/docs/assets/stage-3.gif)
 
@@ -141,7 +139,7 @@ What most people use to get similar benefits to magic-trace traces, especially i
 
 ### Other programs
 
-There's a bunch more similar small programs that generally come with their own instrumentation library and their own WebGL profile viewer. These are generally more lightweight and can be easier ot integrate. For example [Spall](https://gravitymoth.com/spall/spall-web.html), [microprofile](https://github.com/jonasmr/microprofile), [Remotery](https://github.com/Celtoys/Remotery), [Puffin (Rust-native)](https://github.com/EmbarkStudios/puffin), [gpuviz](https://github.com/mikesart/gpuvis). I must also mention the [OCaml tracing instrumentation library I wrote for Jane Street](https://github.com/janestreet/tracing) which has overheads under 10ns/span via a compile-time macro like the C++ libraries.
+There's a bunch more similar small programs that generally come with their own instrumentation library and their own WebGL profile viewer. These are generally more lightweight and can be easier to integrate. For example [Spall](https://gravitymoth.com/spall/spall-web.html), [microprofile](https://github.com/jonasmr/microprofile), [Remotery](https://github.com/Celtoys/Remotery), [Puffin (Rust-native)](https://github.com/EmbarkStudios/puffin), [gpuviz](https://github.com/mikesart/gpuvis). I must also mention the [OCaml tracing instrumentation library I wrote for Jane Street](https://github.com/janestreet/tracing) which has overheads under 10ns/span via a compile-time macro like the C++ libraries.
 
 ## eBPF
 
@@ -155,9 +153,9 @@ There's [a whole bunch of ways to use eBPF](https://ebpf.io/applications/) and I
 
 ### BCC: Easy Python API for eBPF
 
-The [BPF Compiler Collection (BCC)](https://github.com/iovisor/bcc) is a library with really nice Python bindings for compiling eBPF programs from C source code, injecting them and getting the data back. It has a really nice feature where you can write a C struct to hold the event data you want to record, and then it will parse that and expose it so you can access the fields in Python. Check out [how simple this syscall tracing example is](https://github.com/iovisor/bcc/blob/master/examples/ringbuf/ringbuf_output.py).
+The [BPF Compiler Collection (BCC)](https://github.com/iovisor/bcc) is a library with really nice Python bindings for compiling eBPF programs from C source code, injecting them, and getting the data back. It has a really nice feature where you can write a C struct to hold the event data you want to record, and then it will parse that and expose it so you can access the fields in Python. Check out [how simple this syscall tracing example is](https://github.com/iovisor/bcc/blob/master/examples/ringbuf/ringbuf_output.py).
 
-I really like having the full power of Python to control my tracing scripts. BCC scripts often use string templating to do compile time metaprogramming of the C to compose the exact probe script you want, and then do data post-processing in Python to present things nicely.
+I really like having the full power of Python to control my tracing scripts. BCC scripts often use Python string templating to do compile time metaprogramming of the C to compose the exact probe script you want, and then do data post-processing in Python to present things nicely.
 
 ### bpftrace: terse DSL for eBPF tracing
 
@@ -186,11 +184,11 @@ For work at Anthropic I wanted to analyze tail latency of some networking code s
 
 ### Trick for tracing userspace events with low overhead in eBPF
 
-I wanted to correlate packets with userspace events from a Python program, so I used a fun trick: Find a syscall which has an early-exit error path and bindings in most languages, and then trace calls to that which have specific arguments which produce an error. I traced the `faccessat2` syscall such that in Python `os.access(event_name, -932, dir_fd=-event_type)` where `event_type` was an enum for start, stop and instant events would log spans to my Perfetto trace. This had an overhead of around 700ns/event, which is in a similar league to Perfetto's full-userspace C++ instrumentation, and a lot of that is Python call overhead.
+I wanted to correlate packets with userspace events from a Python program, so I used a fun trick: Find a syscall which has an early-exit error path and bindings in most languages, and then trace calls to that which have specific arguments which produce an error. I traced the `faccessat2` syscall such that in Python `os.access(event_name, -932, dir_fd=-event_type)` where `event_type` was an enum for start, stop and instant events would log spans to my Perfetto trace. This had an overhead of around 700ns/event, which is in a similar league to Perfetto's full-userspace C++ instrumentation, and a lot of that is Python call overhead. The `os.access` function is especially good because when the syscall errors it doesn't incur overhead by generating a Python exception like most other syscall wrappers do.
 
 ### How to process events more quickly using a C helper with BCC
 
-With 1 million packets per second I had a problem that with rare tail latency events my traces quickly got huge and lagged Perfetto. I wanted to only keep data from shortly before one of my userspace send events took too long. Normally you'd do this with a circular buffer that gets snapshotted, and it would be possible to implement that in eBPF. But I didn't want to implement my own ringbuf and the included ones don't support wraparound overwriting. So instead I used the internal `_open_ring_buffer` function to register a ctypes C function as a ringbuffer callback instead of a Python function, and wrote an efficient C callback to filter out packets near a tail latency event before passing those to Python.
+With 1 million packets per second I had a problem that with rare tail latency events, my traces quickly got huge and lagged Perfetto. I wanted to only keep data from shortly before one of my userspace send events took too long. Normally you'd do this with a circular buffer that gets snapshotted, and it would be possible to implement that in eBPF. But I didn't want to implement my own ringbuf and the included ones don't support wraparound overwriting. So instead I used the internal `_open_ring_buffer` function to register a ctypes C function as a ringbuffer callback instead of a Python function, and wrote an efficient C callback to filter out packets near a tail latency event before passing those to Python.
 
 ### Perks of Perfetto visualization
 
@@ -208,7 +206,7 @@ When you're instrumenting userspace programs in a way where the overhead of kern
 
 ### bpftime: eBPF-based binary instrumentation
 
-One easy way that's a good segue is [bpftime](https://github.com/eunomia-bpf/bpftime) which takes your existing eBPF programs with userspace probes, and runs them much faster by patching the instructions to run the BPF program inside the process.
+One easy way that's a good segue is [bpftime](https://github.com/eunomia-bpf/bpftime) which takes your existing eBPF programs with userspace probes, and runs them much faster by patching the instructions to run the BPF program inside the process rather than incurring 3us of kernel interrupt overhead every time.
 
 ### E9Patch
 
@@ -216,9 +214,9 @@ For more sophisticated binary patching on x86, look to [E9Patch](https://github.
 
 On some architectures, patching can be really easy since you just patch the instruction you want to trace with a jump to a piece of "trampoline" code which has your instrumentation, and then the original instruction and a jump back.
 
-It's much harder on x86 since instructions are variable length, so if you just patch a jump over a target instruction, occasionally that'll cause problems since some other instruction jumps to a later instruction your longer jump had to stomp over.
+It's much harder on x86 since instructions are variable length, so if you just patch a jump over a target instruction, occasionally that'll cause problems since some other instruction jumps to an instruction your longer jump had to stomp over.
 
-People have invented all kinds of clever tricks to get around these issues including "instruction punning" where you put your patch code at addresses which are also valid x86 nop or trap instructions. E9Patch implements very advanced versions of these such that the patching should basically always work.
+People have invented all kinds of clever tricks to get around these issues including "instruction punning" where you put your patch code at addresses which are also valid x86 nop or trap instructions. E9Patch implements very advanced versions of these tricks such that the patching should basically always work.
 
 It comes with an API as well as a tool called [E9Tool](https://github.com/GJDuck/e9patch/blob/master/doc/e9tool-user-guide.md) which lets you patch using a command line interface:
 
@@ -260,7 +258,7 @@ However, actually doing this is not for the faint of heart and the tooling for i
 
 ### Cannoli
 
-[Cannoli](https://github.com/MarginResearch/cannoli) is a tracing engine for qemu-user (so no kernel stuff) which patches QEMU to log execution and memory events to a high-performance ringbuffer read by a Rust extension you compile. This lets it trace with very low overhead by spreading the following load over many cores, at the cost of not being able to modify the execution.
+[Cannoli](https://github.com/MarginResearch/cannoli) is a tracing engine for qemu-user (so no kernel stuff) which patches QEMU to log execution and memory events to a high-performance ringbuffer read by a Rust extension you compile. This lets it trace with very low overhead by spreading the load of following the trace over many cores, at the cost of not being able to modify the execution.
 
 It's a bit tricky to use, you have to compile QEMU and Cannoli yourself at the moment, and it's kind of a prototype so when I've used it in the past for CTFs I've often had to add new features to it.
 
