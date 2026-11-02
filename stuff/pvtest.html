@@ -377,13 +377,15 @@ h1.yt-tierhead{display:flex;align-items:center;gap:10px;font-size:15pt;margin-bo
 .yt-ch.yt-novideo{grid-template-columns:1fr}
 .yt-text{min-width:0}
 .yt-text h2{margin-top:0;font-size:115%}
+.yt-text h2:before,.yt-text h3:before{display:none}
 .yt-text h2 a,.yt-text h3 a{color:#222;text-decoration:none}
 .yt-text h2 a:hover,.yt-text h3 a:hover{color:#6666ff;text-decoration:underline}
 .yt-note p:first-child{margin-top:.3em}
 
 .yt-thumb{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:6px;background:#eee;box-shadow:0 1px 3px rgba(0,0,0,.18)}
 .yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;max-width:none}
-.yt-vtitle{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;font-size:85%;line-height:1.3;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.78));display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.yt-vtitle{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;font-size:85%;line-height:1.3;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.78))}
+.yt-vtitle span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .yt-thumb:hover .yt-vtitle{background:linear-gradient(transparent,rgba(0,0,0,.92))}
 .yt-thumb:after{content:"";position:absolute;top:50%;left:50%;width:0;height:0;margin:-12px 0 0 -8px;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent rgba(255,255,255,.9);opacity:0;transition:opacity .15s}
 .yt-thumb:hover:after{opacity:1}
@@ -459,7 +461,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=NwhVJ7cv9B4" title="See inside insects with an electron microscope and a femtosecond laser">
     <img src="https://i.ytimg.com/vi/NwhVJ7cv9B4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">See inside insects with an electron microscope and a femtosecond laser</span>
+    <span class="yt-vtitle"><span>See inside insects with an electron microscope and a femtosecond laser</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCivA7_KLKWo43tFcCkFvydw">Applied Science</a> <span class="yt-tag">S in 2020 too</span></h2>
@@ -472,7 +474,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=XsmGHMic8vs" title="A Guilloche Dial In Sterling Silver - Cutting Traditional Guilloché On The Straight-Line Engine #3">
     <img src="https://i.ytimg.com/vi/XsmGHMic8vs/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">A Guilloche Dial In Sterling Silver - Cutting Traditional Guilloché On The Straight-Line Engine #3</span>
+    <span class="yt-vtitle"><span>A Guilloche Dial In Sterling Silver - Cutting Traditional Guilloché On The Straight-Line Engine #3</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCworsKCR-Sx6R6-BnIjS2MA">Clickspring</a> <span class="yt-tag">S in 2020 too</span></h2>
@@ -487,7 +489,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=RpslsMqPFWA" title="I made an apple peel itself">
     <img src="https://i.ytimg.com/vi/RpslsMqPFWA/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I made an apple peel itself</span>
+    <span class="yt-vtitle"><span>I made an apple peel itself</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCj1VqrHhDte54oLgPG4xpuQ">Stuff Made Here</a> <span class="yt-tag">S in 2020 too</span></h2>
@@ -504,7 +506,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=2yCjO-wRxyM" title="SNL VFX Mystery | Quick D">
     <img src="https://i.ytimg.com/vi/2yCjO-wRxyM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">SNL VFX Mystery | Quick D</span>
+    <span class="yt-vtitle"><span>SNL VFX Mystery | Quick D</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCEOXxzW2vU0P-0THehuIIeg">Captain Disillusion</a> <span class="yt-tag">S in 2020 too</span></h2>
@@ -542,7 +544,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=6gsZY_-kT3U" title="This Device Turns Anything into a Suction Cup">
     <img src="https://i.ytimg.com/vi/6gsZY_-kT3U/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">This Device Turns Anything into a Suction Cup</span>
+    <span class="yt-vtitle"><span>This Device Turns Anything into a Suction Cup</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A">Steve Mould</a> <span class="yt-tag">A in 2020 too</span></h2>
@@ -555,7 +557,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=qNBEqnFt1aU" title="No Nuclear Startup Has Ever Done This, Until Now | Valar Atomics">
     <img src="https://i.ytimg.com/vi/qNBEqnFt1aU/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">No Nuclear Startup Has Ever Done This, Until Now | Valar Atomics</span>
+    <span class="yt-vtitle"><span>No Nuclear Startup Has Ever Done This, Until Now | Valar Atomics</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC0-7PyfpOIJpNyi8WrHiyXA">S3 | Science, Startups, &amp; Stories</a> <span class="yt-tag yt-new">new</span></h2>
@@ -568,7 +570,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=PXuV_YCt8g4" title="Primitive Technology: 3 Iron Consolidation Experiments">
     <img src="https://i.ytimg.com/vi/PXuV_YCt8g4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Primitive Technology: 3 Iron Consolidation Experiments</span>
+    <span class="yt-vtitle"><span>Primitive Technology: 3 Iron Consolidation Experiments</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCAL3JXZSzSm8AlZyD3nQdBA">Primitive Technology</a> <span class="yt-tag">A in 2020 too</span></h2>
@@ -581,7 +583,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=bp2IAlU53uw" title="Why Centrifugal Fans SPEED UP When Blocked (Regular Fans Slow Down)">
     <img src="https://i.ytimg.com/vi/bp2IAlU53uw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Why Centrifugal Fans SPEED UP When Blocked (Regular Fans Slow Down)</span>
+    <span class="yt-vtitle"><span>Why Centrifugal Fans SPEED UP When Blocked (Regular Fans Slow Down)</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCQnMw9GGDS3xO6fN5oae-4w">Know Art</a> <span class="yt-tag yt-new">new</span></h2>
@@ -594,7 +596,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=GbcN0bPs-Ig" title="I made tiny robot eyes">
     <img src="https://i.ytimg.com/vi/GbcN0bPs-Ig/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I made tiny robot eyes</span>
+    <span class="yt-vtitle"><span>I made tiny robot eyes</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC06HVrkOL33D5lLnCPjr6NQ">Breaking Taps</a> <span class="yt-tag">D in 2020</span></h2>
@@ -608,7 +610,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=ID-K64Jk6JM" title="Turning air into alcohol">
     <img src="https://i.ytimg.com/vi/ID-K64Jk6JM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Turning air into alcohol</span>
+    <span class="yt-vtitle"><span>Turning air into alcohol</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCFhXFikryT4aFcLkLw2LBLA">NileRed</a> <span class="yt-tag">A in 2020 too</span></h2>
@@ -622,7 +624,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=TPyQI7bJo6Q" title="Making a Deformable Mirror">
     <img src="https://i.ytimg.com/vi/TPyQI7bJo6Q/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Making a Deformable Mirror</span>
+    <span class="yt-vtitle"><span>Making a Deformable Mirror</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC26YLK0OEbLB3TCYxGh8xVQ">Huygens Optics</a> <span class="yt-tag yt-new">new</span></h2>
@@ -635,7 +637,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=FR6z3y3d8Ag" title="Slow-motion frogs are goofier than I expected">
     <img src="https://i.ytimg.com/vi/FR6z3y3d8Ag/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Slow-motion frogs are goofier than I expected</span>
+    <span class="yt-vtitle"><span>Slow-motion frogs are goofier than I expected</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCCWeRTgd79JL0ilH0ZywSJA">AlphaPhoenix</a> <span class="yt-tag yt-new">new</span></h2>
@@ -648,7 +650,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=8zlAI32MSsQ" title="DIY Solar Concentrators, Made Better.">
     <img src="https://i.ytimg.com/vi/8zlAI32MSsQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">DIY Solar Concentrators, Made Better.</span>
+    <span class="yt-vtitle"><span>DIY Solar Concentrators, Made Better.</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCFtc3XdXgLFwhlDajMGK69w">NightHawkInLight</a> <span class="yt-tag">A in 2020 too</span></h2>
@@ -662,7 +664,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=n9-5G4bS0X4" title="How the Grumman F-14 Tomcat Works">
     <img src="https://i.ytimg.com/vi/n9-5G4bS0X4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How the Grumman F-14 Tomcat Works</span>
+    <span class="yt-vtitle"><span>How the Grumman F-14 Tomcat Works</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCnZeeKO8qVdtkrA4-uKhtTw">Animagraffs</a> <span class="yt-tag yt-new">new</span></h2>
@@ -675,7 +677,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=-qUu8kIliy8" title="Making the most pickproof lock yet">
     <img src="https://i.ytimg.com/vi/-qUu8kIliy8/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Making the most pickproof lock yet</span>
+    <span class="yt-vtitle"><span>Making the most pickproof lock yet</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC0G7e3uCtTyKQy2vZbRaKxg">Works By Design</a> <span class="yt-tag yt-new">new</span></h2>
@@ -688,7 +690,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=M1si1y5lvkk" title="No one can force me to have a secure website!!!">
     <img src="https://i.ytimg.com/vi/M1si1y5lvkk/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">No one can force me to have a secure website!!!</span>
+    <span class="yt-vtitle"><span>No one can force me to have a secure website!!!</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC3azLjQuz9s5qk76KEXaTvA">suckerpinch</a> <span class="yt-tag">B in 2020</span></h2>
@@ -701,7 +703,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=0ql20JKrscQ" title="Open Source Motion Capture for Autonomous Drones">
     <img src="https://i.ytimg.com/vi/0ql20JKrscQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Open Source Motion Capture for Autonomous Drones</span>
+    <span class="yt-vtitle"><span>Open Source Motion Capture for Autonomous Drones</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCDyZXmOevDAb6DHyUCwzVNg">Joshua Bird</a> <span class="yt-tag yt-new">new</span></h2>
@@ -714,7 +716,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=VsOQAayneUo" title="Unusual shop tips Part 2">
     <img src="https://i.ytimg.com/vi/VsOQAayneUo/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Unusual shop tips Part 2</span>
+    <span class="yt-vtitle"><span>Unusual shop tips Part 2</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCYA1VjSKXgNVh03wjw_HSRA">Dan Gelbart</a> <span class="yt-tag">A in 2020 too</span></h2>
@@ -734,7 +736,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=r1wwtGgnzg4" title="Are Beavers Actually Good at Dams?">
     <img src="https://i.ytimg.com/vi/r1wwtGgnzg4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Are Beavers Actually Good at Dams?</span>
+    <span class="yt-vtitle"><span>Are Beavers Actually Good at Dams?</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCMOqf8ab-42UUQIdVoKwjlQ">Practical Engineering</a> <span class="yt-tag">A in 2020</span></h2>
@@ -747,7 +749,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=6B96xetwrqI" title="The Plane That&#39;s 38% Nose">
     <img src="https://i.ytimg.com/vi/6B96xetwrqI/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Plane That&#39;s 38% Nose</span>
+    <span class="yt-vtitle"><span>The Plane That&#39;s 38% Nose</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCR1IuLEqb6UEA_zQ81kwXfg">Real Engineering</a> <span class="yt-tag">B in 2020 too</span></h2>
@@ -760,7 +762,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=872JcpP3FEM" title="The City.">
     <img src="https://i.ytimg.com/vi/872JcpP3FEM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The City.</span>
+    <span class="yt-vtitle"><span>The City.</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCv_vLHiWVBh_FR9vbeuiY-A">Historia Civilis</a> <span class="yt-tag yt-new">new</span></h2>
@@ -773,7 +775,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=PpwewkOCFuE" title="Building Two N-Class Rocket Motors">
     <img src="https://i.ytimg.com/vi/PpwewkOCFuE/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Building Two N-Class Rocket Motors</span>
+    <span class="yt-vtitle"><span>Building Two N-Class Rocket Motors</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCILl8ozWuxnFYXIe2svjHhg">BPS.space</a> <span class="yt-tag">D in 2020</span></h2>
@@ -786,7 +788,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=1sgsb-F8dCw" title="Building a CT Scanner to prove a Furby has no soul">
     <img src="https://i.ytimg.com/vi/1sgsb-F8dCw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Building a CT Scanner to prove a Furby has no soul</span>
+    <span class="yt-vtitle"><span>Building a CT Scanner to prove a Furby has no soul</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCV5vCi3jPJdURZwAOO_FNfQ">The Thought Emporium</a> <span class="yt-tag">A in 2020</span></h2>
@@ -800,7 +802,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=J4qFuPAVmS0" title="How to play Swordfish">
     <img src="https://i.ytimg.com/vi/J4qFuPAVmS0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How to play Swordfish</span>
+    <span class="yt-vtitle"><span>How to play Swordfish</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCHsRtomD4twRf5WVHHk-cMw">TierZoo</a> <span class="yt-tag">B in 2020 too</span></h2>
@@ -813,7 +815,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=gqVJDHK5EjM" title="Firelaser V2 part 1: Designing a New Pump">
     <img src="https://i.ytimg.com/vi/gqVJDHK5EjM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Firelaser V2 part 1: Designing a New Pump</span>
+    <span class="yt-vtitle"><span>Firelaser V2 part 1: Designing a New Pump</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCwbyKKmjVdCpWzZZY-WnajA">Excessive Overkill</a> <span class="yt-tag yt-new">new</span></h2>
@@ -826,7 +828,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=IGlZ61oCcEY" title="Why This Ugly Black Goop Is BETTER Than Ice">
     <img src="https://i.ytimg.com/vi/IGlZ61oCcEY/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Why This Ugly Black Goop Is BETTER Than Ice</span>
+    <span class="yt-vtitle"><span>Why This Ugly Black Goop Is BETTER Than Ice</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCVSHXNNBitaPd5lYz48--yg">Tech Ingredients</a> <span class="yt-tag">A in 2020</span></h2>
@@ -839,7 +841,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=HmiQFYGc6C4" title="Alarming Mistakes, Deadly Decisions: Fatal Fire at BP-Husky">
     <img src="https://i.ytimg.com/vi/HmiQFYGc6C4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Alarming Mistakes, Deadly Decisions: Fatal Fire at BP-Husky</span>
+    <span class="yt-vtitle"><span>Alarming Mistakes, Deadly Decisions: Fatal Fire at BP-Husky</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCXIkr0SRTnZO4_QpZozvCCA">USCSB</a> <span class="yt-tag yt-new">new</span></h2>
@@ -852,7 +854,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=Co57SfcT-h0" title="Supersonic Trebuchet">
     <img src="https://i.ytimg.com/vi/Co57SfcT-h0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Supersonic Trebuchet</span>
+    <span class="yt-vtitle"><span>Supersonic Trebuchet</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC67gfx2Fg7K2NSHqoENVgwA">Tom Stanton</a> <span class="yt-tag">B in 2020 too</span></h2>
@@ -865,7 +867,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=mvZ1dJuvenw" title="Wire Bonding Basics - Manual Wedge Bonding ICs">
     <img src="https://i.ytimg.com/vi/mvZ1dJuvenw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Wire Bonding Basics - Manual Wedge Bonding ICs</span>
+    <span class="yt-vtitle"><span>Wire Bonding Basics - Manual Wedge Bonding ICs</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC7E8-0Ou69hwScPW1_fQApA">Sam Zeloof</a> <span class="yt-tag">B in 2020 too</span></h2>
@@ -895,7 +897,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=370m_BRk4Ok" title="Lucid Bought My Car Back, So I Bought A Mach-E">
     <img src="https://i.ytimg.com/vi/370m_BRk4Ok/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Lucid Bought My Car Back, So I Bought A Mach-E</span>
+    <span class="yt-vtitle"><span>Lucid Bought My Car Back, So I Bought A Mach-E</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UClqhvGmHcvWL9w3R48t9QXQ">Engineering Explained</a> <span class="yt-tag yt-new">new</span></h2>
@@ -908,7 +910,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=IGyUNd7Ax0Y" title="This Project Took Me Seven Years">
     <img src="https://i.ytimg.com/vi/IGyUNd7Ax0Y/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">This Project Took Me Seven Years</span>
+    <span class="yt-vtitle"><span>This Project Took Me Seven Years</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCU5adS8d-YX7GbJcnH0x6uA">SuperfastMatt</a> <span class="yt-tag yt-new">new</span></h2>
@@ -921,7 +923,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=yAPgxUmRm-w" title="The Battle of Midway (2/2) - Sink the Japanese Carriers! - Animated">
     <img src="https://i.ytimg.com/vi/yAPgxUmRm-w/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Battle of Midway (2/2) - Sink the Japanese Carriers! - Animated</span>
+    <span class="yt-vtitle"><span>The Battle of Midway (2/2) - Sink the Japanese Carriers! - Animated</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCnZJt7yQw5IztVwe-Dscd-Q">The Operations Room</a> <span class="yt-tag yt-new">new</span></h2>
@@ -934,7 +936,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=pZtU48TjxXg" title="When I blow this whistle, a swimming pool appears.">
     <img src="https://i.ytimg.com/vi/pZtU48TjxXg/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">When I blow this whistle, a swimming pool appears.</span>
+    <span class="yt-vtitle"><span>When I blow this whistle, a swimming pool appears.</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCBa659QWEk1AI4Tg--mrJ2A">Tom Scott</a> <span class="yt-tag">B in 2020</span></h2>
@@ -947,7 +949,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=UXNcivV8JNw" title="DIY Synthetic Fuel Part I - Making Syngas And A High Pressure Compressor">
     <img src="https://i.ytimg.com/vi/UXNcivV8JNw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">DIY Synthetic Fuel Part I - Making Syngas And A High Pressure Compressor</span>
+    <span class="yt-vtitle"><span>DIY Synthetic Fuel Part I - Making Syngas And A High Pressure Compressor</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC8i-4EpLBXMzekETNXwcZjA">Hyperspace Pirate</a> <span class="yt-tag yt-new">new</span></h2>
@@ -960,7 +962,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=qLp-QJYiJCw" title="We Toured the Tesla Semi Factory. Here’s What Stood Out">
     <img src="https://i.ytimg.com/vi/qLp-QJYiJCw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">We Toured the Tesla Semi Factory. Here’s What Stood Out</span>
+    <span class="yt-vtitle"><span>We Toured the Tesla Semi Factory. Here’s What Stood Out</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCj--iMtToRO_cGG_fpmP5XQ">Munro Live</a> <span class="yt-tag yt-new">new</span></h2>
@@ -973,7 +975,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=ywB-KBzHqtI" title="How Copper Is Made — From Rock to 99.9% Pure Metal">
     <img src="https://i.ytimg.com/vi/ywB-KBzHqtI/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How Copper Is Made — From Rock to 99.9% Pure Metal</span>
+    <span class="yt-vtitle"><span>How Copper Is Made — From Rock to 99.9% Pure Metal</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCKqKiBDpq9j29bXbBx0cfOw">BuildWitt</a> <span class="yt-tag yt-new">new</span></h2>
@@ -986,7 +988,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=m7Icley8A_A" title="Introducing the Orbital Gatling Cannon">
     <img src="https://i.ytimg.com/vi/m7Icley8A_A/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Introducing the Orbital Gatling Cannon</span>
+    <span class="yt-vtitle"><span>Introducing the Orbital Gatling Cannon</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCsrxrOtjmWnH5FJhJnkTRBg">cubicmetre</a> <span class="yt-tag yt-new">new</span></h2>
@@ -999,7 +1001,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=hX21ctsGhNc" title="Why a Language Map of the World is Impossible">
     <img src="https://i.ytimg.com/vi/hX21ctsGhNc/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Why a Language Map of the World is Impossible</span>
+    <span class="yt-vtitle"><span>Why a Language Map of the World is Impossible</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCbbQalJ4OaC0oQ0AqRaOJ9g">Map Men</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1012,7 +1014,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=qgTfVQaHW5A" title="We Went PRO in BATTLEBOTS…Were We Ready?">
     <img src="https://i.ytimg.com/vi/qgTfVQaHW5A/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">We Went PRO in BATTLEBOTS…Were We Ready?</span>
+    <span class="yt-vtitle"><span>We Went PRO in BATTLEBOTS…Were We Ready?</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCjgpFI5dU-D1-kh9H1muoxQ">Hacksmith Industries</a> <span class="yt-tag">B in 2020</span></h2>
@@ -1025,7 +1027,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=FnKNOPlR2Yo" title="I Made The World&#39;s First Self-Cooling Clothes">
     <img src="https://i.ytimg.com/vi/FnKNOPlR2Yo/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I Made The World&#39;s First Self-Cooling Clothes</span>
+    <span class="yt-vtitle"><span>I Made The World&#39;s First Self-Cooling Clothes</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC1VLQPn9cYSqx8plbk9RxxQ">The Action Lab</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1038,7 +1040,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=_KWdCqpXB7A" title="Ceiling fans: the simple idea we keep screwing up">
     <img src="https://i.ytimg.com/vi/_KWdCqpXB7A/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Ceiling fans: the simple idea we keep screwing up</span>
+    <span class="yt-vtitle"><span>Ceiling fans: the simple idea we keep screwing up</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCy0tKL1T7wFoYcxCe0xjN6Q">Technology Connections</a> <span class="yt-tag">B in 2020</span></h2>
@@ -1051,7 +1053,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=q6hSUH9FKdY" title="Blindfolded and Stranded! Can I find my way home using no map, compass or main roads?">
     <img src="https://i.ytimg.com/vi/q6hSUH9FKdY/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Blindfolded and Stranded! Can I find my way home using no map, compass or main roads?</span>
+    <span class="yt-vtitle"><span>Blindfolded and Stranded! Can I find my way home using no map, compass or main roads?</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCW5OrUZ4SeUYkUg1XqcjFYA">GeoWizard</a> <span class="yt-tag">C in 2020 too</span></h2>
@@ -1064,7 +1066,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=vw63IoVD9mk" title="How The US Navy Became The Best In The World At Damage Control In WW2 (No AI)">
     <img src="https://i.ytimg.com/vi/vw63IoVD9mk/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How The US Navy Became The Best In The World At Damage Control In WW2 (No AI)</span>
+    <span class="yt-vtitle"><span>How The US Navy Became The Best In The World At Damage Control In WW2 (No AI)</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC7Ay_bxnYWSS9ZDPpqAE1RQ">The Intel Report</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1077,7 +1079,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=5rh_DswKRqM" title="Photo-ablative Micromachining (and Other Contagious Diseases)">
     <img src="https://i.ytimg.com/vi/5rh_DswKRqM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Photo-ablative Micromachining (and Other Contagious Diseases)</span>
+    <span class="yt-vtitle"><span>Photo-ablative Micromachining (and Other Contagious Diseases)</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCXh9mHdcBD-3aGCiECZMP1Q">Not An Engineer</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1090,7 +1092,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=Cu16K_AMuaY" title="What Makes Starship&#39;s Water Deluge System So Unique??">
     <img src="https://i.ytimg.com/vi/Cu16K_AMuaY/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">What Makes Starship&#39;s Water Deluge System So Unique??</span>
+    <span class="yt-vtitle"><span>What Makes Starship&#39;s Water Deluge System So Unique??</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCy6Q9UCG7Wa-N7nht2BFrHA">CSI Starbase</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1103,7 +1105,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=82PUQ3Of9JM" title="Creating Engine Simulator&#39;s Engine Editor">
     <img src="https://i.ytimg.com/vi/82PUQ3Of9JM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Creating Engine Simulator&#39;s Engine Editor</span>
+    <span class="yt-vtitle"><span>Creating Engine Simulator&#39;s Engine Editor</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCV0t1y4h_6-2SqEpXBXgwFQ">AngeTheGreat</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1116,7 +1118,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=hFMaT9oRbs4" title="Terence Tao continuing history’s cleverest cosmological measurements">
     <img src="https://i.ytimg.com/vi/hFMaT9oRbs4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Terence Tao continuing history’s cleverest cosmological measurements</span>
+    <span class="yt-vtitle"><span>Terence Tao continuing history’s cleverest cosmological measurements</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw">3Blue1Brown</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1129,7 +1131,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=0Gi5Z51KdUE" title="Reinventing the Pencil Sharpener">
     <img src="https://i.ytimg.com/vi/0Gi5Z51KdUE/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Reinventing the Pencil Sharpener</span>
+    <span class="yt-vtitle"><span>Reinventing the Pencil Sharpener</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC6DhSUKasPbBLCSdPcGBxww">Chronova Engineering</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1142,7 +1144,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=8qlFvOyyHp4" title="Testing my New Awesome Robot Arm">
     <img src="https://i.ytimg.com/vi/8qlFvOyyHp4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Testing my New Awesome Robot Arm</span>
+    <span class="yt-vtitle"><span>Testing my New Awesome Robot Arm</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCU0wOR4RQA9L7ZBOeyQI20A">Prop Department</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1155,7 +1157,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=0-OKW5CsKkU" title="INSTANT pocket Hot Dog">
     <img src="https://i.ytimg.com/vi/0-OKW5CsKkU/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">INSTANT pocket Hot Dog</span>
+    <span class="yt-vtitle"><span>INSTANT pocket Hot Dog</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCHk0IYEDJxQGQ-nbd3yP_KA">Joel Creates</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1168,7 +1170,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=dvrmcCOxM9A" title="I needed a break from Baliscissors.">
     <img src="https://i.ytimg.com/vi/dvrmcCOxM9A/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I needed a break from Baliscissors.</span>
+    <span class="yt-vtitle"><span>I needed a break from Baliscissors.</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC66lPJ8u2N1i2Bh_TMaWagg">Contraption Collection</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1181,7 +1183,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=3AScojcf2Yw" title="I Built the Drill Press I&#39;ve Always Wanted">
     <img src="https://i.ytimg.com/vi/3AScojcf2Yw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I Built the Drill Press I&#39;ve Always Wanted</span>
+    <span class="yt-vtitle"><span>I Built the Drill Press I&#39;ve Always Wanted</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCVveEFTOd6khhSXXnRhxJmg">Fireball Tool</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1194,7 +1196,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=sEUl55Oat5w" title="Making Carbon Fiber Nose Cones at Home">
     <img src="https://i.ytimg.com/vi/sEUl55Oat5w/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Making Carbon Fiber Nose Cones at Home</span>
+    <span class="yt-vtitle"><span>Making Carbon Fiber Nose Cones at Home</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCDllNYyUN4fK1r-Nwffp7og">Lafayette Systems</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1207,7 +1209,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=J2U2WLxfqFw" title="I Built A Jet Turbine Paramotor!">
     <img src="https://i.ytimg.com/vi/J2U2WLxfqFw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I Built A Jet Turbine Paramotor!</span>
+    <span class="yt-vtitle"><span>I Built A Jet Turbine Paramotor!</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCASjdyu0y8XQ9qJnqxsKHnQ">Tucker Gott</a> <span class="yt-tag">C in 2020 too</span></h2>
@@ -1220,7 +1222,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=-lkgAYe-8_s" title="Make Your Own Air Knife!">
     <img src="https://i.ytimg.com/vi/-lkgAYe-8_s/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Make Your Own Air Knife!</span>
+    <span class="yt-vtitle"><span>Make Your Own Air Knife!</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC5NO8MgTQKHAWXp6z8Xl7yQ">This Old Tony</a> <span class="yt-tag">A in 2020</span></h2>
@@ -1233,7 +1235,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=tCHk2ZteXEo" title="Medieval Siege Weapons Were More Than Just Catapults">
     <img src="https://i.ytimg.com/vi/tCHk2ZteXEo/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Medieval Siege Weapons Were More Than Just Catapults</span>
+    <span class="yt-vtitle"><span>Medieval Siege Weapons Were More Than Just Catapults</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCje6-Yak9u1msy5l7sE9pBA">Deconstructed</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1246,7 +1248,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=Pt6AofswYn0" title="I built a hammer that hits nails without touching them">
     <img src="https://i.ytimg.com/vi/Pt6AofswYn0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I built a hammer that hits nails without touching them</span>
+    <span class="yt-vtitle"><span>I built a hammer that hits nails without touching them</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCW5i5rLbDiu9RhCEXj4BAZw">Current Concept</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1259,7 +1261,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=kL9BTbIGxLg" title="i’m so bad at billiards that i ended up in the hyperbolic plane">
     <img src="https://i.ytimg.com/vi/kL9BTbIGxLg/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">i’m so bad at billiards that i ended up in the hyperbolic plane</span>
+    <span class="yt-vtitle"><span>i’m so bad at billiards that i ended up in the hyperbolic plane</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCiNLr9wX35KksK77mrQgxiw">2swap</a> <span class="yt-tag yt-new">new</span></h2>
@@ -1272,7 +1274,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=EG9ISMjM-uQ" title="LEGO Omnidirectional vehicle">
     <img src="https://i.ytimg.com/vi/EG9ISMjM-uQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">LEGO Omnidirectional vehicle</span>
+    <span class="yt-vtitle"><span>LEGO Omnidirectional vehicle</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCCJJNQIhS15ypcHqDfEPNXg">Akiyuki Brick Channel</a> <span class="yt-tag">C in 2020 too</span></h2>
@@ -1285,7 +1287,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=DhCBCudKJTs" title="I Added Realistic Physics to Minecraft -- 3D Rigid Body Physics Engine Datapack for Minecraft 1.20">
     <img src="https://i.ytimg.com/vi/DhCBCudKJTs/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I Added Realistic Physics to Minecraft -- 3D Rigid Body Physics Engine Datapack for Minecraft 1.20</span>
+    <span class="yt-vtitle"><span>I Added Realistic Physics to Minecraft -- 3D Rigid Body Physics Engine Datapack for Minecraft 1.20</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UC8aG3LDTDwNR1UQhSn9uVrw">SethBling</a> <span class="yt-tag">C in 2020 too</span></h2>
@@ -1298,7 +1300,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=1vs_WxC2Odo" title="The Worlds Cheapest Time Domain Reflectometer">
     <img src="https://i.ytimg.com/vi/1vs_WxC2Odo/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Worlds Cheapest Time Domain Reflectometer</span>
+    <span class="yt-vtitle"><span>The Worlds Cheapest Time Domain Reflectometer</span></span>
   </a>
   <div class="yt-text">
     <h2><a href="https://www.youtube.com/channel/UCG7yIWtVwcENg_ZS-nahg5g">CNLohr</a> <span class="yt-tag">B in 2020</span></h2>
@@ -1328,7 +1330,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=L1Yy-nsgBCM" title="Unveiling Our Undisclosed Truck!">
     <img src="https://i.ytimg.com/vi/L1Yy-nsgBCM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Unveiling Our Undisclosed Truck!</span>
+    <span class="yt-vtitle"><span>Unveiling Our Undisclosed Truck!</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCUEzfzqf2fx3C1vs0MlgShA">Edison Motors</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1341,7 +1343,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=eVI9Ig3lq_o" title="The Weirdest Robots to Ever Fight at NHRL">
     <img src="https://i.ytimg.com/vi/eVI9Ig3lq_o/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Weirdest Robots to Ever Fight at NHRL</span>
+    <span class="yt-vtitle"><span>The Weirdest Robots to Ever Fight at NHRL</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UChgAZxOWR0S3Q376oAodGjQ">NHRL</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1353,7 +1355,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=orrhkeQf0uo" title="Pro&#39;s wanted $20,000 so I did it myself">
     <img src="https://i.ytimg.com/vi/orrhkeQf0uo/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Pro&#39;s wanted $20,000 so I did it myself</span>
+    <span class="yt-vtitle"><span>Pro&#39;s wanted $20,000 so I did it myself</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCbguawtJlHjxXzdAskubQVg">William Osman 2</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1365,7 +1367,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=eIcr2moY92I" title="ATFC: Statue Of Liberty In TFC (Episode 50)">
     <img src="https://i.ytimg.com/vi/eIcr2moY92I/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">ATFC: Statue Of Liberty In TFC (Episode 50)</span>
+    <span class="yt-vtitle"><span>ATFC: Statue Of Liberty In TFC (Episode 50)</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCHSI8erNrN6hs3sUK6oONLA">ilmango</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1378,7 +1380,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=vPOUfcpOSDg" title="Boom Supersonic&#39;s SuperPower Jet Engine Is Real!">
     <img src="https://i.ytimg.com/vi/vPOUfcpOSDg/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Boom Supersonic&#39;s SuperPower Jet Engine Is Real!</span>
+    <span class="yt-vtitle"><span>Boom Supersonic&#39;s SuperPower Jet Engine Is Real!</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCxzC4EngIsMrPmbm6Nxvb-A">Scott Manley</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1390,7 +1392,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=aOBztZqGC5A" title="I Tried to Make a Flywheel Flipper - Here&#39;s What Went Wrong">
     <img src="https://i.ytimg.com/vi/aOBztZqGC5A/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I Tried to Make a Flywheel Flipper - Here&#39;s What Went Wrong</span>
+    <span class="yt-vtitle"><span>I Tried to Make a Flywheel Flipper - Here&#39;s What Went Wrong</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCsoZN2VwWJbJ30y2e2sfmnw">Team Just &#39;Cuz Robotics</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1402,7 +1404,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=huZRMhoT-YE" title="Cut just about anything in your shop - The Mini Monster">
     <img src="https://i.ytimg.com/vi/huZRMhoT-YE/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Cut just about anything in your shop - The Mini Monster</span>
+    <span class="yt-vtitle"><span>Cut just about anything in your shop - The Mini Monster</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCPOTPYuDsKnXP9I-ph4yMgg">Robert Cowan</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1414,7 +1416,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=AGglJehON5g" title="The Perfect Battery Material Is Dangerous">
     <img src="https://i.ytimg.com/vi/AGglJehON5g/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Perfect Battery Material Is Dangerous</span>
+    <span class="yt-vtitle"><span>The Perfect Battery Material Is Dangerous</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA">Veritasium</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1426,7 +1428,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=K-siFcoduFU" title="Maximizer v  Pramheda - December World Champs NHRL">
     <img src="https://i.ytimg.com/vi/K-siFcoduFU/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Maximizer v  Pramheda - December World Champs NHRL</span>
+    <span class="yt-vtitle"><span>Maximizer v  Pramheda - December World Champs NHRL</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC7m77muv30W3jWvmIrx68Gg">Jake Hoffmann</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1438,7 +1440,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=df1mDyIoQnI" title="Testing the DarkAero 1 Engine Mount">
     <img src="https://i.ytimg.com/vi/df1mDyIoQnI/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Testing the DarkAero 1 Engine Mount</span>
+    <span class="yt-vtitle"><span>Testing the DarkAero 1 Engine Mount</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCPUZCBNrduwUsw_MTW-sDxw">DarkAero, Inc</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1450,7 +1452,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=BUYSikP8Dyw" title="How Hard is it to Beat NULLIUS — The Eternal Starter Base">
     <img src="https://i.ytimg.com/vi/BUYSikP8Dyw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How Hard is it to Beat NULLIUS — The Eternal Starter Base</span>
+    <span class="yt-vtitle"><span>How Hard is it to Beat NULLIUS — The Eternal Starter Base</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCo0-VCHchPIG3JtJlIQnFew">DoshDoshington</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1463,7 +1465,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=pG9VjHY6I84" title="Two Overpowered Robots Fight in South Australia - Loft Part 10, Derive S Part 7">
     <img src="https://i.ytimg.com/vi/pG9VjHY6I84/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Two Overpowered Robots Fight in South Australia - Loft Part 10, Derive S Part 7</span>
+    <span class="yt-vtitle"><span>Two Overpowered Robots Fight in South Australia - Loft Part 10, Derive S Part 7</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCRSebxPEtpK5UpVCsJLq4mg">Broken Link Robotics</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1475,7 +1477,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=h0EGCnBjTVk" title="I Outsmarted Pro Car Thieves">
     <img src="https://i.ytimg.com/vi/h0EGCnBjTVk/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I Outsmarted Pro Car Thieves</span>
+    <span class="yt-vtitle"><span>I Outsmarted Pro Car Thieves</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCY1kMZp36IQSyNx_9h4mpCg">Mark Rober</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1488,7 +1490,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=SwYDxh3PQJ0" title="The Little Ceiling Robots Inside a Semiconductor Fab">
     <img src="https://i.ytimg.com/vi/SwYDxh3PQJ0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Little Ceiling Robots Inside a Semiconductor Fab</span>
+    <span class="yt-vtitle"><span>The Little Ceiling Robots Inside a Semiconductor Fab</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC1LpsuAUaKoMzzJSEt5WImw">Asianometry</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1500,7 +1502,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=UvV2CH5il3Q" title="Micro-Fabrication with a Fiber Tip – A Low-Cost 3D Micro Printing Method">
     <img src="https://i.ytimg.com/vi/UvV2CH5il3Q/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Micro-Fabrication with a Fiber Tip – A Low-Cost 3D Micro Printing Method</span>
+    <span class="yt-vtitle"><span>Micro-Fabrication with a Fiber Tip – A Low-Cost 3D Micro Printing Method</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCune493q6fu9nLH_JkwOUhw">Diffraction Limited</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1512,7 +1514,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=GNmL6tFsrvc" title="A new way to switch songs on the Marble Machine">
     <img src="https://i.ytimg.com/vi/GNmL6tFsrvc/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">A new way to switch songs on the Marble Machine</span>
+    <span class="yt-vtitle"><span>A new way to switch songs on the Marble Machine</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCcXhhVwCT6_WqjkEniejRJQ">Wintergatan</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1524,7 +1526,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=-Ft5BrmUg1I" title="I made a fully automatic hammer">
     <img src="https://i.ytimg.com/vi/-Ft5BrmUg1I/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I made a fully automatic hammer</span>
+    <span class="yt-vtitle"><span>I made a fully automatic hammer</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCJLZe_NoiG0hT7QCX_9vmqw">I did a thing</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1537,7 +1539,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=vRa2pYS3Tds" title="Defeat Drone Jammer Without Using Fiber Optic Cable PART II 33">
     <img src="https://i.ytimg.com/vi/vRa2pYS3Tds/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Defeat Drone Jammer Without Using Fiber Optic Cable PART II 33</span>
+    <span class="yt-vtitle"><span>Defeat Drone Jammer Without Using Fiber Optic Cable PART II 33</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCr1eXiD5uhg1HzOjV9AX-ew">Failed EW Engineer</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1550,7 +1552,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=alkJ7xScBiw" title="What if you set off a nuke in the Mariana Trench?">
     <img src="https://i.ytimg.com/vi/alkJ7xScBiw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">What if you set off a nuke in the Mariana Trench?</span>
+    <span class="yt-vtitle"><span>What if you set off a nuke in the Mariana Trench?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC6IxnFzHofFJ5X2PycSMsww">xkcd&#39;s What If?</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1562,7 +1564,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=A2Djq-90hzw" title="Why Is SpaceX&#39;s Starship Losing Heat Tiles?">
     <img src="https://i.ytimg.com/vi/A2Djq-90hzw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Why Is SpaceX&#39;s Starship Losing Heat Tiles?</span>
+    <span class="yt-vtitle"><span>Why Is SpaceX&#39;s Starship Losing Heat Tiles?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC1XvxnHFtWruS9egyFasP1Q">What about it!?</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1574,7 +1576,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=FJVQ1dvbWBs" title="I’m Not Happy…What Should I Do To The Morrvair?">
     <img src="https://i.ytimg.com/vi/FJVQ1dvbWBs/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I’m Not Happy…What Should I Do To The Morrvair?</span>
+    <span class="yt-vtitle"><span>I’m Not Happy…What Should I Do To The Morrvair?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCwdVOry0oNF9WIe_3uCfz9Q">Matt&#39;s Off Road Recovery</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1587,7 +1589,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=7OxNZ-N_3vE" title="The Underdogs Taking On SpaceX [Stoke Space 2025]">
     <img src="https://i.ytimg.com/vi/7OxNZ-N_3vE/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Underdogs Taking On SpaceX [Stoke Space 2025]</span>
+    <span class="yt-vtitle"><span>The Underdogs Taking On SpaceX [Stoke Space 2025]</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC6uKrU_WqJ1R2HMTY3LIx5Q">Everyday Astronaut</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1599,7 +1601,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=CePYyjvjcd4" title="My Dream Power Hammer Restoration! Part 11">
     <img src="https://i.ytimg.com/vi/CePYyjvjcd4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">My Dream Power Hammer Restoration! Part 11</span>
+    <span class="yt-vtitle"><span>My Dream Power Hammer Restoration! Part 11</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCWizIdwZdmr43zfxlCktmNw">Alec Steele</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1612,7 +1614,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=vS6HEes8daw" title="The PROBLEM with Capitalism - Smarter Every Day 316">
     <img src="https://i.ytimg.com/vi/vS6HEes8daw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The PROBLEM with Capitalism - Smarter Every Day 316</span>
+    <span class="yt-vtitle"><span>The PROBLEM with Capitalism - Smarter Every Day 316</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC6107grRI4m0o2-emgoDnAA">SmarterEveryDay</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1625,7 +1627,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=bGwnChxO6II" title="[1629] Coolest Lock Tool Ever?">
     <img src="https://i.ytimg.com/vi/bGwnChxO6II/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">[1629] Coolest Lock Tool Ever?</span>
+    <span class="yt-vtitle"><span>[1629] Coolest Lock Tool Ever?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCm9K6rby98W8JigLoZOh6FQ">LockPickingLawyer</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1637,7 +1639,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=WFxnsU1hu9k" title="Why Does the World’s Biggest Ship Exist?">
     <img src="https://i.ytimg.com/vi/WFxnsU1hu9k/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Why Does the World’s Biggest Ship Exist?</span>
+    <span class="yt-vtitle"><span>Why Does the World’s Biggest Ship Exist?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCuCkxoKLYO_EQ2GeFtbM_bw">Half as Interesting</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1649,7 +1651,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=nqTtKK7YXZw" title="The Keyboard Is Dead. Now What?">
     <img src="https://i.ytimg.com/vi/nqTtKK7YXZw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Keyboard Is Dead. Now What?</span>
+    <span class="yt-vtitle"><span>The Keyboard Is Dead. Now What?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC4NNPgQ9sOkBjw6GlkgCylg">Ben Vallack</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1661,7 +1663,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=KNnA05QYKB0" title="This Resin 3D Printer Changed My Mind!">
     <img src="https://i.ytimg.com/vi/KNnA05QYKB0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">This Resin 3D Printer Changed My Mind!</span>
+    <span class="yt-vtitle"><span>This Resin 3D Printer Changed My Mind!</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCiczXOhGpvoQGhOL16EZiTg">CNC Kitchen</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1673,7 +1675,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=XGQdIdzxBf0" title="Drone Motors on a Hydrofoil Surfboard">
     <img src="https://i.ytimg.com/vi/XGQdIdzxBf0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Drone Motors on a Hydrofoil Surfboard</span>
+    <span class="yt-vtitle"><span>Drone Motors on a Hydrofoil Surfboard</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCq2rNse2XX4Rjzmldv9GqrQ">rctestflight</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1685,7 +1687,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=xQjeGxWyaUY" title="Making SuperBeer™">
     <img src="https://i.ytimg.com/vi/xQjeGxWyaUY/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Making SuperBeer™</span>
+    <span class="yt-vtitle"><span>Making SuperBeer™</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC1D3yD4wlPMico0dss264XA">NileBlue</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1697,7 +1699,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=3wT9uNRk3AM" title="Liquid Marbles are the Coolest Scientific Breakthrough I&#39;ve Made (So Far)">
     <img src="https://i.ytimg.com/vi/3wT9uNRk3AM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Liquid Marbles are the Coolest Scientific Breakthrough I&#39;ve Made (So Far)</span>
+    <span class="yt-vtitle"><span>Liquid Marbles are the Coolest Scientific Breakthrough I&#39;ve Made (So Far)</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCdJ9oJ2GUF8Vmb-G63ldGWg">Reactions</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1709,7 +1711,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=xIMePuuFC7I" title="I Built a Shockwave Cannon">
     <img src="https://i.ytimg.com/vi/xIMePuuFC7I/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I Built a Shockwave Cannon</span>
+    <span class="yt-vtitle"><span>I Built a Shockwave Cannon</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC6ktP3PLU5sAJxN9Rb0TALg">Mike Shake</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1721,7 +1723,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=LddjTiXl6hQ" title="Putting Ancient Drills to the Test! #shorts">
     <img src="https://i.ytimg.com/vi/LddjTiXl6hQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Putting Ancient Drills to the Test! #shorts</span>
+    <span class="yt-vtitle"><span>Putting Ancient Drills to the Test! #shorts</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCfIqCzQJXvYj9ssCoHq327g">How To Make Everything</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1734,7 +1736,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=3ZAgiviVee0" title="Real Omnitrix Turns Me Into a Superhero! (Ben 10)">
     <img src="https://i.ytimg.com/vi/3ZAgiviVee0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Real Omnitrix Turns Me Into a Superhero! (Ben 10)</span>
+    <span class="yt-vtitle"><span>Real Omnitrix Turns Me Into a Superhero! (Ben 10)</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC89AgkG34oooZubVt23wzFw">JLaservideo</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1746,7 +1748,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=YNoZGpc607c" title="How Ships Remove OIL From Dirty Water">
     <img src="https://i.ytimg.com/vi/YNoZGpc607c/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How Ships Remove OIL From Dirty Water</span>
+    <span class="yt-vtitle"><span>How Ships Remove OIL From Dirty Water</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC5_HIscbiDZM0dMX-nCksuA">Casual Navigation</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1758,7 +1760,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=qMR3IXF2sWw" title="Home made GPU escalated quickly">
     <img src="https://i.ytimg.com/vi/qMR3IXF2sWw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Home made GPU escalated quickly</span>
+    <span class="yt-vtitle"><span>Home made GPU escalated quickly</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCp_5PO66faM4dBFbFFBdPSQ">bitluni</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1771,7 +1773,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=1F2MkVSviB8" title="4 Days in the World&#39;s Tiniest Airplane* (Flying from Los Angeles to OSHKOSH!)">
     <img src="https://i.ytimg.com/vi/1F2MkVSviB8/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">4 Days in the World&#39;s Tiniest Airplane* (Flying from Los Angeles to OSHKOSH!)</span>
+    <span class="yt-vtitle"><span>4 Days in the World&#39;s Tiniest Airplane* (Flying from Los Angeles to OSHKOSH!)</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCEn3fRj2e0mpqYsijxnzayg">Xyla Foxlin</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1783,7 +1785,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=5RtwFbSeV5Y" title="When a MiG-25 fought an F-15">
     <img src="https://i.ytimg.com/vi/5RtwFbSeV5Y/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">When a MiG-25 fought an F-15</span>
+    <span class="yt-vtitle"><span>When a MiG-25 fought an F-15</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC1ZBQ-F-yktYD4m5AzM6pww">Mustard</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1795,7 +1797,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=stc_mAbYoZw" title="This 3D Printer Has No Motors! The Engineering Behind the LightMake L4">
     <img src="https://i.ytimg.com/vi/stc_mAbYoZw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">This 3D Printer Has No Motors! The Engineering Behind the LightMake L4</span>
+    <span class="yt-vtitle"><span>This 3D Printer Has No Motors! The Engineering Behind the LightMake L4</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCO8DQrSp5yEP937qNqTooOw">Strange Parts</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1808,7 +1810,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=W6y97zggg24" title="What If A 3D Printer Printed Tubes Instead?">
     <img src="https://i.ytimg.com/vi/W6y97zggg24/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">What If A 3D Printer Printed Tubes Instead?</span>
+    <span class="yt-vtitle"><span>What If A 3D Printer Printed Tubes Instead?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCRPUV6ArQ7AuQtK4123wNCw">Roetz 4.0</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1820,7 +1822,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=kxs3yNjlzkg" title="The Magnet Suspension Bike">
     <img src="https://i.ytimg.com/vi/kxs3yNjlzkg/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Magnet Suspension Bike</span>
+    <span class="yt-vtitle"><span>The Magnet Suspension Bike</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCp68_FLety0O-n9QU6phsgw">colinfurze</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1833,7 +1835,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=tlsU_YT9n_g" title="We Could&#39;ve Had the Industrial Revolution 2,000 Years Early">
     <img src="https://i.ytimg.com/vi/tlsU_YT9n_g/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">We Could&#39;ve Had the Industrial Revolution 2,000 Years Early</span>
+    <span class="yt-vtitle"><span>We Could&#39;ve Had the Industrial Revolution 2,000 Years Early</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC2C_jShtL725hvbm1arSV9w">CGP Grey</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1845,7 +1847,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=4u-u11n9img" title="Factorio &quot;Expert&quot; plays Sandustry">
     <img src="https://i.ytimg.com/vi/4u-u11n9img/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Factorio &quot;Expert&quot; plays Sandustry</span>
+    <span class="yt-vtitle"><span>Factorio &quot;Expert&quot; plays Sandustry</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCMWvGsHgzWtgyJvoKEQl-Bw">DocJade</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1857,7 +1859,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=woiTedSKPrk" title="Green Lasers: What Can Certain mW Do?">
     <img src="https://i.ytimg.com/vi/woiTedSKPrk/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Green Lasers: What Can Certain mW Do?</span>
+    <span class="yt-vtitle"><span>Green Lasers: What Can Certain mW Do?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCJYJgj7rzsn0vdR7fkgjuIA">styropyro</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1869,7 +1871,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=0rXpncpkLcw" title="This plant will die if I&#39;m on my phone too much">
     <img src="https://i.ytimg.com/vi/0rXpncpkLcw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">This plant will die if I&#39;m on my phone too much</span>
+    <span class="yt-vtitle"><span>This plant will die if I&#39;m on my phone too much</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC3KEoMzNz8eYnwBC34RaKCQ">Simone Giertz</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1882,7 +1884,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=K3FMVmAte3g" title="Marble Clock Seconds Teleporter">
     <img src="https://i.ytimg.com/vi/K3FMVmAte3g/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Marble Clock Seconds Teleporter</span>
+    <span class="yt-vtitle"><span>Marble Clock Seconds Teleporter</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCF3cDM_hQMtIEJvEW1BZugg">Ivan Miranda</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1894,7 +1896,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=d9o09BHEOh8" title="How To Lose a 1,000,000 dollar competition (DARPA lift Challenge)">
     <img src="https://i.ytimg.com/vi/d9o09BHEOh8/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How To Lose a 1,000,000 dollar competition (DARPA lift Challenge)</span>
+    <span class="yt-vtitle"><span>How To Lose a 1,000,000 dollar competition (DARPA lift Challenge)</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC7yF9tV4xWEMZkel7q8La_w">PeterSripol</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -1907,7 +1909,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=AazmxNs5kmE" title="AIRS: The MX Peacekeeper&#39;s Perfect Blind Navigator">
     <img src="https://i.ytimg.com/vi/AazmxNs5kmE/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">AIRS: The MX Peacekeeper&#39;s Perfect Blind Navigator</span>
+    <span class="yt-vtitle"><span>AIRS: The MX Peacekeeper&#39;s Perfect Blind Navigator</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC9XjwCMWhes6R3jtOzZx50A">Alexander the ok</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1919,7 +1921,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=qT5XLkATzSI" title="How Do You Purify the Most Reactive Metal on Earth?">
     <img src="https://i.ytimg.com/vi/qT5XLkATzSI/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How Do You Purify the Most Reactive Metal on Earth?</span>
+    <span class="yt-vtitle"><span>How Do You Purify the Most Reactive Metal on Earth?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC2M2T4FSz1kSqNhhL-n9R9A">Advanced Tinkering</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1931,7 +1933,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=1JqUHO4qpl0" title="How to cheaply solder to graphite by freezing metal, open sourced">
     <img src="https://i.ytimg.com/vi/1JqUHO4qpl0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How to cheaply solder to graphite by freezing metal, open sourced</span>
+    <span class="yt-vtitle"><span>How to cheaply solder to graphite by freezing metal, open sourced</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCKLQPOyfOBf6SQQcPzSVMkg">Rowow</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1944,7 +1946,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=JSm7Tp8iv3o" title="Could you Survive a Blast from the Worlds Biggest Vortex Cannon?">
     <img src="https://i.ytimg.com/vi/JSm7Tp8iv3o/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Could you Survive a Blast from the Worlds Biggest Vortex Cannon?</span>
+    <span class="yt-vtitle"><span>Could you Survive a Blast from the Worlds Biggest Vortex Cannon?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC06E4Y_-ybJgBUMtXx8uNNw">TheBackyardScientist</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1956,7 +1958,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=-zFgunAseb0" title="A look at the winning drones from the DARPA Lift Challenge">
     <img src="https://i.ytimg.com/vi/-zFgunAseb0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">A look at the winning drones from the DARPA Lift Challenge</span>
+    <span class="yt-vtitle"><span>A look at the winning drones from the DARPA Lift Challenge</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCu6vuGXK_WSVNf6Yg-OYfzw">Hoarder Sam</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1969,7 +1971,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=uvxDJ61e9xE" title="Atomic resolution interferometric surface roughness metrology in the dining room">
     <img src="https://i.ytimg.com/vi/uvxDJ61e9xE/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Atomic resolution interferometric surface roughness metrology in the dining room</span>
+    <span class="yt-vtitle"><span>Atomic resolution interferometric surface roughness metrology in the dining room</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCiygJF7wFHDeWGVvXkztUSA">Cylo&#39;s Garage</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1982,7 +1984,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=4YvnVJRlQQs" title="The Wavy Window Paradox">
     <img src="https://i.ytimg.com/vi/4YvnVJRlQQs/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Wavy Window Paradox</span>
+    <span class="yt-vtitle"><span>The Wavy Window Paradox</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCUHW94eEFW7hkUMVaZz4eDg">minutephysics</a> <span class="yt-tag yt-new">new</span></h3>
@@ -1994,7 +1996,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=kXqXWcw-hSI" title="How I Won $750,000 With this Drone">
     <img src="https://i.ytimg.com/vi/kXqXWcw-hSI/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">How I Won $750,000 With this Drone</span>
+    <span class="yt-vtitle"><span>How I Won $750,000 With this Drone</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCHJ-02TEGNS2GeD2wYetHSQ">Luke Maximo Bell</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2007,7 +2009,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=Dtl9vZOoQfE" title="Monster Chopper First Drive!">
     <img src="https://i.ytimg.com/vi/Dtl9vZOoQfE/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Monster Chopper First Drive!</span>
+    <span class="yt-vtitle"><span>Monster Chopper First Drive!</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCivi_f1nniBzEOfKhRoN12Q">Grind Hard Plumbing Co</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2019,7 +2021,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=rqCt61ZbU10" title="Building an LED SUPERNOVA!">
     <img src="https://i.ytimg.com/vi/rqCt61ZbU10/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Building an LED SUPERNOVA!</span>
+    <span class="yt-vtitle"><span>Building an LED SUPERNOVA!</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCUQo7nzH1sXVpzL92VesANw">DIY Perks</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -2032,7 +2034,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=XzB5E36xczM" title="Everything you know about Lightning is wrong">
     <img src="https://i.ytimg.com/vi/XzB5E36xczM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Everything you know about Lightning is wrong</span>
+    <span class="yt-vtitle"><span>Everything you know about Lightning is wrong</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCVS89U86PwqzNkK2qYNbk5A">Allen Pan</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -2045,7 +2047,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=bvFIUGuEIk4" title="Piano tech traumatized from opening my piano">
     <img src="https://i.ytimg.com/vi/bvFIUGuEIk4/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Piano tech traumatized from opening my piano</span>
+    <span class="yt-vtitle"><span>Piano tech traumatized from opening my piano</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCEgm-3RvRn4nCR-fGGVsfdQ">Mattias Krantz</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2057,7 +2059,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=kk4AV3d4v3E" title="What if sailing had no rules?">
     <img src="https://i.ytimg.com/vi/kk4AV3d4v3E/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">What if sailing had no rules?</span>
+    <span class="yt-vtitle"><span>What if sailing had no rules?</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCbCq5Y0WPGimG2jNXhoQxGw">Atomic Frontier</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2069,7 +2071,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=IH_uv4h2xYM" title="This Slug Should Be Impossible">
     <img src="https://i.ytimg.com/vi/IH_uv4h2xYM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">This Slug Should Be Impossible</span>
+    <span class="yt-vtitle"><span>This Slug Should Be Impossible</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC176GAQozKKjhz62H8u9vQQ">Real Science</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2081,7 +2083,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=MIUZRcEWng0" title="Using a Battleship As An Icebreaker">
     <img src="https://i.ytimg.com/vi/MIUZRcEWng0/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Using a Battleship As An Icebreaker</span>
+    <span class="yt-vtitle"><span>Using a Battleship As An Icebreaker</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC_Ftxa2jwg8R4IWDw48uyBw">Battleship New Jersey</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2093,7 +2095,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=nfna15r4EXM" title="World&#39;s First SCREW-BIKE">
     <img src="https://i.ytimg.com/vi/nfna15r4EXM/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">World&#39;s First SCREW-BIKE</span>
+    <span class="yt-vtitle"><span>World&#39;s First SCREW-BIKE</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCUbDcUPed50Y_7KmfCXKohA">James Bruton</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -2106,7 +2108,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=XFHMhNjtPmQ" title="The Super Mario 64 120 star TAS Explained - Star 1">
     <img src="https://i.ytimg.com/vi/XFHMhNjtPmQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">The Super Mario 64 120 star TAS Explained - Star 1</span>
+    <span class="yt-vtitle"><span>The Super Mario 64 120 star TAS Explained - Star 1</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCQ9STd0zeHrrQGJQEuvhuTw">Bismuth</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2118,7 +2120,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=udI2dWmwMUE" title="I built a FLAP ENGINE (New Rotary Design)">
     <img src="https://i.ytimg.com/vi/udI2dWmwMUE/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I built a FLAP ENGINE (New Rotary Design)</span>
+    <span class="yt-vtitle"><span>I built a FLAP ENGINE (New Rotary Design)</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UC2avWDLN1EI3r1RZ_dlSxCw">Integza</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2130,7 +2132,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=u0KPa34PoZA" title="good boyfriend">
     <img src="https://i.ytimg.com/vi/u0KPa34PoZA/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">good boyfriend</span>
+    <span class="yt-vtitle"><span>good boyfriend</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCtHaxi4GTYDpJgMSGy7AeSw">Michael Reeves</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -2143,7 +2145,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=Jjg6-xT6rJg" title="Building a Mini Vegas-Sphere">
     <img src="https://i.ytimg.com/vi/Jjg6-xT6rJg/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Building a Mini Vegas-Sphere</span>
+    <span class="yt-vtitle"><span>Building a Mini Vegas-Sphere</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCdxTCCRnQgfi2vr2fZupYIQ">Carl Bugeja</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2155,7 +2157,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=TTP4UgaNOGw" title="I Accidentally Built a Semi-Autonomous Electric Airboat">
     <img src="https://i.ytimg.com/vi/TTP4UgaNOGw/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">I Accidentally Built a Semi-Autonomous Electric Airboat</span>
+    <span class="yt-vtitle"><span>I Accidentally Built a Semi-Autonomous Electric Airboat</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCMZkAT1Vf7CPSNcTzZkK_qQ">Think Flight</a> <span class="yt-tag yt-new">new</span></h3>
@@ -2167,7 +2169,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=7wnR5tIPyHs" title="Crispy Hashbrowns - You Suck at Cooking (episode 161)">
     <img src="https://i.ytimg.com/vi/7wnR5tIPyHs/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Crispy Hashbrowns - You Suck at Cooking (episode 161)</span>
+    <span class="yt-vtitle"><span>Crispy Hashbrowns - You Suck at Cooking (episode 161)</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCekQr9znsk2vWxBo3YiLq2w">You Suck At Cooking</a> <span class="yt-tag">B in 2020</span></h3>
@@ -2180,7 +2182,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=LPdMNsL5MgI" title="Compiler Q&amp;A, September 2024">
     <img src="https://i.ytimg.com/vi/LPdMNsL5MgI/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Compiler Q&amp;A, September 2024</span>
+    <span class="yt-vtitle"><span>Compiler Q&amp;A, September 2024</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCCuoqzrsHlwv1YyPKLuMDUQ">Jonathan Blow</a> <span class="yt-tag">C in 2020</span></h3>
@@ -2193,7 +2195,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=Py1I96F_R4Q" title="Blender 5.0 Is Here - A Revolution…For Free!">
     <img src="https://i.ytimg.com/vi/Py1I96F_R4Q/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Blender 5.0 Is Here - A Revolution…For Free!</span>
+    <span class="yt-vtitle"><span>Blender 5.0 Is Here - A Revolution…For Free!</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg">Two Minute Papers</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -2206,7 +2208,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=pcupjiD2xVk" title="Building 10 Motorized Lego Doors">
     <img src="https://i.ytimg.com/vi/pcupjiD2xVk/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Building 10 Motorized Lego Doors</span>
+    <span class="yt-vtitle"><span>Building 10 Motorized Lego Doors</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UClsFdM0HzTdF1JYoraQ0aUw">Brick Experiment Channel</a> <span class="yt-tag">D in 2020 too</span></h3>
@@ -2219,7 +2221,7 @@ html,body{background:#fff;color:#000}
 <article class="yt-ch yt-auto">
   <a class="yt-thumb" href="https://www.youtube.com/watch?v=QKdkqLVq04k" title="Why Mercury Cant Be Absorbed With A Cloth">
     <img src="https://i.ytimg.com/vi/QKdkqLVq04k/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
-    <span class="yt-vtitle">Why Mercury Cant Be Absorbed With A Cloth</span>
+    <span class="yt-vtitle"><span>Why Mercury Cant Be Absorbed With A Cloth</span></span>
   </a>
   <div class="yt-text">
     <h3><a href="https://www.youtube.com/channel/UCu6mSoMNzHQiBIOCkHUa2Aw">Cody&#39;sLab</a> <span class="yt-tag">D in 2020 too</span></h3>
