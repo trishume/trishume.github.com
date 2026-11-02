@@ -8,7 +8,6 @@
      "name": "Applied Science",
      "url": "https://www.youtube.com/channel/UCivA7_KLKWo43tFcCkFvydw",
      "old": "S",
-     "videos": 18,
      "note": "",
      "note2020": "Ben Krasnow's channel Applied Science has been the flagship channel of engineering and science YouTube for many years. In every video he explains some new and interesting piece of science and engineering he's replicated in his shop. He's made aerogel, a water jet cutter, a plasma sputtering chamber, an EDM drill, air bearings, an electroluminescent display, an LCD, and the source of his earliest publicity: a scanning electron microscope. He's a truly prolific and incredible engineer who works with all kinds of electronics, machining, chemistry, physics and software. Every video leaves me in awe of him. Often he'll be the first non-professional to try recreating something based on a procedure from papers and have to do dozens of failed experiments before making a video documenting the process and all the extra considerations. His videos and skill are incredible and I've learned a lot about the process of scientific lab work from watching them.",
      "video": {
@@ -21,7 +20,6 @@
      "name": "Clickspring",
      "url": "https://www.youtube.com/channel/UCworsKCR-Sx6R6-BnIjS2MA",
      "old": "S",
-     "videos": 15,
      "note": "",
      "note2020": "Clickspring is a channel about clockmaking, and watching it is wireheading on pure craftsmanship. I've never done any machining and don't plan on ever making a clock, but his videos along with everything he makes in them are gorgeous examples of making everything with care and a commitment to excellence. This shows through in everything he does, from making custom screws with stunning blue oxide finish and hand-rounded interior ends that aren't even visible when assembled to doing original research and building some authentic ancient tools for his reconstruction of the Antikythera mechanism. He puts the same care into his videos as the work itself: the camera shots and lighting are beautiful, the machining operations are seamlessly sped up at the right times to fit in the video but show the key moments, and he often includes nice composited overlays of the CAD model on top of the raw stock so you can understand what he's doing, and the narration, music and sounds of the machining are excellently done to give the videos a relaxing feel. Every Clickspring video is just a delightful experience to watch.\n\nHe also does videos without narration that just beatifully show all the machining and other work that goes into making something, this video being the most impressive example. He has a second channel called Clickspring Clips where he posts 2-4 minute non-narrated videos showing the making of one interesting part of his larger projects. His Patreon also has many exclusive videos once you watch all the public ones.",
      "video": {
@@ -34,7 +32,6 @@
      "name": "Stuff Made Here",
      "url": "https://www.youtube.com/channel/UCj1VqrHhDte54oLgPG4xpuQ",
      "old": "S",
-     "videos": 11,
      "note": "",
      "note2020": "Stuff Made Here is the newest channel to enter S tier. When YouTube first recommended one of his videos to me 4 months ago the channel had just started with a few videos and I thought \"huh how is this brand new channel getting hundreds of thousands of views\", then I watched the video and thought \"okay wow, apparently if you make really excellent stuff from the start it can become popular on YouTube super fast\". He just makes really interesting and impressive videos where he uses his skill in many different disciplines of engineering to make cool stuff and then gives interesting descriptions of all the considerations, testing, engineering, fabrication and failures that went into making it.\n\nFor his most popular video he makes a basketball backboard that always directs the ball into the hoop. He designs and builds a custom mechanism to move the backboard to any distance and angle using rods that minimize the weight on the board so it can move quickly, describing the kinematic principles and how he constructed it using CNC plasma cut and spot welded sheet metal with 3D printed joints. Then he describes the clever custom algorithm for filtering out the basketball from other moving objects in the depth camera by fitting a ballistic curve to all possible object trajectories, as well as the software for extrapolating and calculating the required backboard position. The way he did everything is quite impressive and, like all his projects, he did it in only a few weeks while also having a day job.\n\nWhat sets him apart from other YouTube makers is not only the skill in so many different areas that his projects display, but also the detailed explanations of the entire engineering process including the considerations, math, algorithms and failures rather than just the fabrication. If this sounds good to you, you should watch every single one of his videos including the ones that might not look that interesting. There's not that many yet, but there might be soon since he somehow has also been managing to post more frequently than anyone else in my S tier (have I mentioned he also has a day job!?).",
      "video": {
@@ -47,7 +44,6 @@
      "name": "Captain Disillusion",
      "url": "https://www.youtube.com/channel/UCEOXxzW2vU0P-0THehuIIeg",
      "old": "S",
-     "videos": 9,
      "note": "",
      "note2020": "Captain Disillusion has been on YouTube for 12 years now, originally in obscurity but gradually growing to millions of viewers. He goes over trick and hoax viral videos and explains the visual effects used to make them. The thing that's incredible is the production value: Costumes, makeup, well-written scripts, and a ridiculous density of impressive visual effects. Captain Disillusion is what happens when an incredibly talented and driven visual effects artist puts an entire month of full time work into every single 5 minute video. He's done streams and time-lapses before of him spending dozens of hours on a 3 second visual effect for a throwaway gag.\n\nA typical video consists of a well-written and edited intro of him introducing a faked video, doing a detailed breakdown of all the components of the effect but quickly thanks to amazing visual aid footage, then him just one-upping the original video by doing the effect so much better than anyone else has ever done it, without the tells he went over. Here's some other, good ones but really every single one is excellent.",
      "video": {
@@ -60,7 +56,6 @@
      "name": "Kiwami Japan",
      "url": "https://www.youtube.com/channel/UCg3qsVzHeUt5_cPpcRtoaJQ",
      "old": "S",
-     "videos": 0,
      "note": "",
      "note2020": "This is a weird and wonderful channel that to me really exemplifies what's great about YouTube. Most videos are of the form \"sharpest X kitchen knife in the world\" with a thumbnail of a hand holding a weird knife in the same pose. Some examples of X are \"Fungi\", \"Paper\", \"milk\", \"Pasta\", \"Underwear\", and \"smoke\". I originally ignored suggested videos from this channel because I assumed they were some weird click-bait that didn't really make a knife from those materials, and that was tragic because he really does and it's amazing.\n\nEvery video has no talking or words except for occasional subtitles, and follows the process starting from the raw material, demonstrating all the processing steps required to make a hard substance out of it, casting a knife blank, sharpening it, and testing it. At some point early in the channel's history someone must have commented that the videos were like ASMR videos because after that he got a high quality microphone and puts a lot of emphasis on the sounds.\n\nThe coolest part is he's clearly really good at materials science and every video has amazing steps all done in his apartment. Lets take the \"sharpest Seawater kitchen knife in the world\" video as an example: It starts with a shot of him getting huge jugs of seawater from the ocean and collecting shells on the beach. At home he boils the seawater into salt and a solution he labels \"magnesium chloride\". Then he puts a seashell on top of a charcoal briquette and puts it in an insulating firebrick box in his home microwave-oven-thing and cuts to it coming out totally calcified (apparently you can do that without a furnace??). He grinds it up with the subtitle \"quicklime\", puts it in water and uses a thermal camera to show the exothermic reaction to get slaked lime. Cut to him combining a concentrated sea brine with the lime water to get \"magnesium hydroxide + salt\". He adds water to dissolve the salt and filters out the magnesium hydroxide, combines it with the magnesium chloride from earlier, dries it, uses his handy durometer to show it fails a hardness test. He pops the magnesium hydroxide in his charcoal microwave furnace to get \"magnesium oxide\" and shows that this time when combined and dried it yields a very hard rock-like substance. Cut to him pouring a bunch of it in a rectangular plastic box, drying it and sawing out a knife shape. Then his famous sharpening sequence with increasingly fine knife stones, followed by the ever-present cucumber chopping test (complete with weird cucumber reveal out of godzilla-themed rubber gloves). He finishes by showing that the \"magnesium cement\" (Wiki link) doesn't immediately dissolve in watera and that it can also be combined with dirt to make bricks.\n\nI can't see anything remotely like this every being green-lit as a TV series, but every video is brilliant and relaxing, they all get millions of views with zero advertising spend, because everyone likes them and recommends them to friends and algorithmic recommendations respond to that in a way that human TV producers wouldn't have the guts to. People complain about the \"YouTube algorithm\", but at this kind of thing it truly shines.",
      "video": null
@@ -75,7 +70,6 @@
      "name": "Steve Mould",
      "url": "https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A",
      "old": "A",
-     "videos": 93,
      "note": "",
      "note2020": "Interesting science concept explanation videos with demonstrations. I was waffling between A and B tier but this phenomenally cool recent video on optical rotation blew me away and secured his spot in A tier.",
      "video": {
@@ -88,7 +82,6 @@
      "name": "S3 | Science, Startups, & Stories",
      "url": "https://www.youtube.com/channel/UC0-7PyfpOIJpNyi8WrHiyXA",
      "old": null,
-     "videos": 53,
      "note": "Really well produced videos about interesting startups building cool things, great curation.",
      "note2020": "",
      "video": {
@@ -101,7 +94,6 @@
      "name": "Primitive Technology",
      "url": "https://www.youtube.com/channel/UCAL3JXZSzSm8AlZyD3nQdBA",
      "old": "A",
-     "videos": 34,
      "note": "",
      "note2020": "Guy goes out into the woods in Australia and makes pottery, metal, shelter, tools and materials starting with no tools at all. This video about making a kiln to smelt iron is really good.",
      "video": {
@@ -114,7 +106,6 @@
      "name": "Know Art",
      "url": "https://www.youtube.com/channel/UCQnMw9GGDS3xO6fN5oae-4w",
      "old": null,
-     "videos": 31,
      "note": "Well animated videos explaining interesting mechanisms, with interesting explanations and choice of topics",
      "note2020": "",
      "video": {
@@ -127,7 +118,6 @@
      "name": "Breaking Taps",
      "url": "https://www.youtube.com/channel/UC06HVrkOL33D5lLnCPjr6NQ",
      "old": "D",
-     "videos": 31,
      "note": "Really interesting projects mixing science, hardware and software. Kind of like Applied Science, which is a big compliment.",
      "note2020": "CNC milling, making molds. Well produced, good at explaining the challenges and design process.",
      "video": {
@@ -140,7 +130,6 @@
      "name": "NileRed",
      "url": "https://www.youtube.com/channel/UCFhXFikryT4aFcLkLw2LBLA",
      "old": "A",
-     "videos": 30,
      "note": "Famously excellent chemistry channel, tries to synthesize cool things like alcohol from air and chronicles the failures along the way",
      "note2020": "Beautiful and interesting videos about chemistry accessible to someone who knows very little about chemistry. This recent video about making superconductors is particularly good.",
      "video": {
@@ -153,7 +142,6 @@
      "name": "Huygens Optics",
      "url": "https://www.youtube.com/channel/UC26YLK0OEbLB3TCYxGh8xVQ",
      "old": null,
-     "videos": 25,
      "note": "Combination of animated wave physics explainers of optical phenomena, and hands-on videos about building optical equipment and fabricating lenses. Got me interested in optics.",
      "note2020": "",
      "video": {
@@ -166,7 +154,6 @@
      "name": "AlphaPhoenix",
      "url": "https://www.youtube.com/channel/UCCWeRTgd79JL0ilH0ZywSJA",
      "old": null,
-     "videos": 21,
      "note": "Makes his own experimental apparatus to demonstrate interesting scientific concepts and effects and explains them really well. For example taking \"video\" of a laser propagating through a room.",
      "note2020": "",
      "video": {
@@ -179,7 +166,6 @@
      "name": "NightHawkInLight",
      "url": "https://www.youtube.com/channel/UCFtc3XdXgLFwhlDajMGK69w",
      "old": "A",
-     "videos": 21,
      "note": "Does original experiments on how to bring different cutting edge science into a home-accessible form. I've learned about a lot of really cool things from this channel, like novel cheap ion-exchange membranes for metal refining, and materials that achieve colder than ambient temperatures by radiating away heat in parts of the spectrum where the atmosphere is more transparent.",
      "note2020": "Videos of small interesting projects beautifully filmed and explained. I particularly liked this one about making a carbon filament light bulb.",
      "video": {
@@ -192,7 +178,6 @@
      "name": "Animagraffs",
      "url": "https://www.youtube.com/channel/UCnZeeKO8qVdtkrA4-uKhtTw",
      "old": null,
-     "videos": 11,
      "note": "Spends ages making detailed 3D models of various interesting things like galleons, the hoover damn and airplanes, then makes hour long videos explaining every detail of how the thing works. Long but extremely worth it.",
      "note2020": "",
      "video": {
@@ -205,7 +190,6 @@
      "name": "Works By Design",
      "url": "https://www.youtube.com/channel/UC0G7e3uCtTyKQy2vZbRaKxg",
      "old": null,
-     "videos": 8,
      "note": "Attempts challenging projects like a pickproof lock, and makes really excellent videos explaining the engineering process, with great animations. Kinda like Stuff Made Here, which is a big compliment.",
      "note2020": "",
      "video": {
@@ -218,7 +202,6 @@
      "name": "suckerpinch",
      "url": "https://www.youtube.com/channel/UC3azLjQuz9s5qk76KEXaTvA",
      "old": "B",
-     "videos": 7,
      "note": "The best computer science elaborate joke videos. Super impressive programming projects done in the name of elaborate performance comedic art.",
      "note2020": "",
      "video": {
@@ -231,7 +214,6 @@
      "name": "Joshua Bird",
      "url": "https://www.youtube.com/channel/UCDyZXmOevDAb6DHyUCwzVNg",
      "old": null,
-     "videos": 6,
      "note": "College student who's only done a few videos but all of them are great. He has exactly my project aesthetic: mechanical+software projects where he combines a bit of mechanical novelty with a bunch of software cleverness in order to get something simple to achieve great results.",
      "note2020": "",
      "video": {
@@ -244,7 +226,6 @@
      "name": "Dan Gelbart",
      "url": "https://www.youtube.com/channel/UCYA1VjSKXgNVh03wjw_HSRA",
      "old": "A",
-     "videos": 4,
      "note": "",
      "note2020": "Dan is an incredible engineer who made a fortune selling companies and now has an amazing machine shop, with lots of tools he's built or modified himself. He doesn't post videos very often but the main draw of his channel is the 7 year old 19-part series on tools and techniques for building prototypes. It's a masterpiece of incredible knowledge, impressive designs and great tips. I recently rewatched the whole series.",
      "video": {
@@ -263,7 +244,6 @@
      "name": "Practical Engineering",
      "url": "https://www.youtube.com/channel/UCMOqf8ab-42UUQIdVoKwjlQ",
      "old": "A",
-     "videos": 54,
      "note": "",
      "note2020": "Explains interesting things from civil engineering often with cool models and demonstrations. I found this one on hydraulic ram pumps really cool.",
      "video": {
@@ -276,7 +256,6 @@
      "name": "Real Engineering",
      "url": "https://www.youtube.com/channel/UCR1IuLEqb6UEA_zQ81kwXfg",
      "old": "B",
-     "videos": 52,
      "note": "",
      "note2020": "Well-produced and interesting explanation videos on various engineering topics. From the engineering of fighter planes to flood control systems in The Netherlands.",
      "video": {
@@ -289,7 +268,6 @@
      "name": "Historia Civilis",
      "url": "https://www.youtube.com/channel/UCv_vLHiWVBh_FR9vbeuiY-A",
      "old": null,
-     "videos": 52,
      "note": "Excellent animated historical video series on Roman history.",
      "note2020": "",
      "video": {
@@ -302,7 +280,6 @@
      "name": "BPS.space",
      "url": "https://www.youtube.com/channel/UCILl8ozWuxnFYXIe2svjHhg",
      "old": "D",
-     "videos": 35,
      "note": "",
      "note2020": "Very fancy model rockets with cool control systems, like Falcon propulsive landing.",
      "video": {
@@ -315,7 +292,6 @@
      "name": "The Thought Emporium",
      "url": "https://www.youtube.com/channel/UCV5vCi3jPJdURZwAOO_FNfQ",
      "old": "A",
-     "videos": 25,
      "note": "Very wide-ranging science channel. Often has interesting biology experiments. Not as consistently great but has some top hits like doing his own DIY gene therapy for lactose intolerance.",
      "note2020": "Lots of different types of DIY science projects including DIY genetic engineering. In his craziest video he engineers a benign virus to put lactase genes in his intestines to cure his lactose intolerance for months (most of the video is explaining why what he did was reasonably safe). More recently he's been uploading long live streams but look back a bit for the shorter science project videos.",
      "video": {
@@ -328,7 +304,6 @@
      "name": "TierZoo",
      "url": "https://www.youtube.com/channel/UCHsRtomD4twRf5WVHHk-cMw",
      "old": "B",
-     "videos": 23,
      "note": "",
      "note2020": "A biologist explains interesting animal facts as funny parodies of video game commentary and tier lists (I am partial to the tier list format as evidenced by this very tier list). This one on turtles is pretty good.",
      "video": {
@@ -341,7 +316,6 @@
      "name": "Excessive Overkill",
      "url": "https://www.youtube.com/channel/UCwbyKKmjVdCpWzZZY-WnajA",
      "old": null,
-     "videos": 18,
      "note": "Mechatronics projects with very impressive engineering like custom FPGA reverse engineered industrial robot controllers and auto-aim airsoft gun.",
      "note2020": "",
      "video": {
@@ -354,7 +328,6 @@
      "name": "Tech Ingredients",
      "url": "https://www.youtube.com/channel/UCVSHXNNBitaPd5lYz48--yg",
      "old": "A",
-     "videos": 15,
      "note": "",
      "note2020": "Long and detailed technical videos of interesting projects demonstrating cool science and engineering concepts. They build really high quality demonstration pieces for each video and lots of the concepts they look into are little known ones like magnetohydrodynamics, how helium is an incredibly good sound suppressor and plasma physics. The main presenter is super knowledgeable and every video has some really interesting things. It's a bit slow paced but I fix that by always watching on 2x speed. They also just posted a Best Of clips compilation video.",
      "video": {
@@ -367,7 +340,6 @@
      "name": "USCSB",
      "url": "https://www.youtube.com/channel/UCXIkr0SRTnZO4_QpZozvCCA",
      "old": null,
-     "videos": 13,
      "note": "Animated videos of industrial disasters. These are way better than they sound. They teach you a lot both about how things can go wrong even in industries that try hard on safety, and in each video you learn about a sample of American industry and what work is like there.",
      "note2020": "",
      "video": {
@@ -380,7 +352,6 @@
      "name": "Tom Stanton",
      "url": "https://www.youtube.com/channel/UC67gfx2Fg7K2NSHqoENVgwA",
      "old": "B",
-     "videos": 13,
      "note": "",
      "note2020": "Implements really creative and cool engineering ideas mostly using a lot of 3D printing. Some of his coolest videos are building drones using weird things like gas thrusters, reaction wheels, the Coanda effect and a single rotor with no swashplate.",
      "video": {
@@ -393,7 +364,6 @@
      "name": "Sam Zeloof",
      "url": "https://www.youtube.com/channel/UC7E8-0Ou69hwScPW1_fQApA",
      "old": "B",
-     "videos": 1,
      "note": "",
      "note2020": "One of the only people to successfully produce a silicon integrated circuit at home, and when he was in high school. This year he started putting out high-effort videos on cool equipment used in the process.",
      "video": {
@@ -406,7 +376,6 @@
      "name": "Demoscene High-Quality Videos",
      "url": "https://www.youtube.com/channel/UC96JVq-z0-0iHAkIkKp1_6w",
      "old": "B",
-     "videos": 0,
      "note": "",
      "note2020": "64k intros, where people write programs that produce beautiful visuals and audio using an executable less than 64 kilobytes, are perhaps my favorite art form accross all art forms. They often use very non-standard rendering techniques that lead to unique visuals, have good electronic background tracks, and the whole time I marvel at the technical wizardry of the tiny size. Not all the best videos are on this channel and not all the ones on this channel are good but it has many good ones. My favorite intro group is Logicoma, even before I found out they use Rust. My favorites of their stuff: Engage, Dope On Wax, Trash Panda and Elysian. Favorites by other groups include on, Zetsubo (4k!), delight, Offscreen Colonies and the timeless.",
      "video": null
@@ -421,7 +390,6 @@
      "name": "Engineering Explained",
      "url": "https://www.youtube.com/channel/UClqhvGmHcvWL9w3R48t9QXQ",
      "old": null,
-     "videos": 74,
      "note": "This channel got me interested in cars and engines, which I wasn't before. It explains things like valve timing and how high end cars work from an engineering perspective on a whiteboard.",
      "note2020": "",
      "video": {
@@ -434,7 +402,6 @@
      "name": "SuperfastMatt",
      "url": "https://www.youtube.com/channel/UCU5adS8d-YX7GbJcnH0x6uA",
      "old": null,
-     "videos": 72,
      "note": "Fun custom car projects, shows different interesting making techniques.",
      "note2020": "",
      "video": {
@@ -447,7 +414,6 @@
      "name": "The Operations Room",
      "url": "https://www.youtube.com/channel/UCnZJt7yQw5IztVwe-Dscd-Q",
      "old": null,
-     "videos": 65,
      "note": "Animated major battles, especially naval. Interesting to learn the history.",
      "note2020": "",
      "video": {
@@ -460,7 +426,6 @@
      "name": "Tom Scott",
      "url": "https://www.youtube.com/channel/UCBa659QWEk1AI4Tg--mrJ2A",
      "old": "B",
-     "videos": 54,
      "note": "",
      "note2020": "Popular channel mostly focusing on talking about random interesting places with neat stories around the world.",
      "video": {
@@ -473,7 +438,6 @@
      "name": "Hyperspace Pirate",
      "url": "https://www.youtube.com/channel/UC8i-4EpLBXMzekETNXwcZjA",
      "old": null,
-     "videos": 47,
      "note": "Funny guy makes various cryogenic refrigerators and chemical synthesis chains in his garage. I learned a lot about refrigeration cycles. Cool how much he can do with janky components.",
      "note2020": "",
      "video": {
@@ -486,7 +450,6 @@
      "name": "Munro Live",
      "url": "https://www.youtube.com/channel/UCj--iMtToRO_cGG_fpmP5XQ",
      "old": null,
-     "videos": 44,
      "note": "Teardowns of cars and robots, explaining the manufacturing and cost tradeoffs involved in them.",
      "note2020": "",
      "video": {
@@ -499,7 +462,6 @@
      "name": "BuildWitt",
      "url": "https://www.youtube.com/channel/UCKqKiBDpq9j29bXbBx0cfOw",
      "old": null,
-     "videos": 40,
      "note": "Tours of mines and industrial sites, really cool to see the processes and giant machines.",
      "note2020": "",
      "video": {
@@ -512,7 +474,6 @@
      "name": "cubicmetre",
      "url": "https://www.youtube.com/channel/UCsrxrOtjmWnH5FJhJnkTRBg",
      "old": null,
-     "videos": 36,
      "note": "Crazy technical Minecraft designer of the Minecraft equivalent of rods from God. I love seeing how various weird game behaviors get reverse engineered and used for technology through careful science and engineering, it's directly analogous to the physics->R&D->engineering pipeline for real world technology.",
      "note2020": "",
      "video": {
@@ -525,7 +486,6 @@
      "name": "Map Men",
      "url": "https://www.youtube.com/channel/UCbbQalJ4OaC0oQ0AqRaOJ9g",
      "old": null,
-     "videos": 30,
      "note": "Fun and interesting videos about geography.",
      "note2020": "",
      "video": {
@@ -538,7 +498,6 @@
      "name": "Hacksmith Industries",
      "url": "https://www.youtube.com/channel/UCjgpFI5dU-D1-kh9H1muoxQ",
      "old": "B",
-     "videos": 30,
      "note": "",
      "note2020": "Skilled engineers with a substantial budget and machine shop try to make real life versions of gadgets from fiction. Their main audience is kids and non-technical people and it shows, but many of their videos have pretty cool engineering, and their build montages are neat.",
      "video": {
@@ -551,7 +510,6 @@
      "name": "The Action Lab",
      "url": "https://www.youtube.com/channel/UC1VLQPn9cYSqx8plbk9RxxQ",
      "old": null,
-     "videos": 29,
      "note": "Interesting science demo videos, kinda like NightHawkInLight or Steve Mould but not quite as good.",
      "note2020": "",
      "video": {
@@ -564,7 +522,6 @@
      "name": "Technology Connections",
      "url": "https://www.youtube.com/channel/UCy0tKL1T7wFoYcxCe0xjN6Q",
      "old": "B",
-     "videos": 28,
      "note": "",
      "note2020": "Guy explains interesting bits of technological history and science behind everyday gadgets. Like this video on how rice cookers use some neat physics tricks.",
      "video": {
@@ -577,7 +534,6 @@
      "name": "GeoWizard",
      "url": "https://www.youtube.com/channel/UCW5OrUZ4SeUYkUg1XqcjFYA",
      "old": "C",
-     "videos": 20,
      "note": "",
      "note2020": "Guy who is really good at GeoGuessr, that is super knowledgeable about geography and all sorts of tricks to figure out where you are when plopped randomly on Street View. This guy is allegedly better but IMO less entertaining.",
      "video": {
@@ -590,7 +546,6 @@
      "name": "The Intel Report",
      "url": "https://www.youtube.com/channel/UC7Ay_bxnYWSS9ZDPpqAE1RQ",
      "old": null,
-     "videos": 20,
      "note": "Military history analysis videos by the creators of the Operations Room channel.",
      "note2020": "",
      "video": {
@@ -603,7 +558,6 @@
      "name": "Not An Engineer",
      "url": "https://www.youtube.com/channel/UCXh9mHdcBD-3aGCiECZMP1Q",
      "old": null,
-     "videos": 19,
      "note": "Australian guy makes funny videos about his home machine shop projects.",
      "note2020": "",
      "video": {
@@ -616,7 +570,6 @@
      "name": "CSI Starbase",
      "url": "https://www.youtube.com/channel/UCy6Q9UCG7Wa-N7nht2BFrHA",
      "old": null,
-     "videos": 17,
      "note": "Really interesting animated deep dives into what's going on at Starbase TX and how parts of the Starship program work. Including going into failures and how they're manufacturing things.",
      "note2020": "",
      "video": {
@@ -629,7 +582,6 @@
      "name": "AngeTheGreat",
      "url": "https://www.youtube.com/channel/UCV0t1y4h_6-2SqEpXBXgwFQ",
      "old": null,
-     "videos": 16,
      "note": "Videos about his realistic engine physics simulator that are really interesting.",
      "note2020": "",
      "video": {
@@ -642,7 +594,6 @@
      "name": "3Blue1Brown",
      "url": "https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw",
      "old": null,
-     "videos": 15,
      "note": "Very pretty animated math videos.",
      "note2020": "",
      "video": {
@@ -655,7 +606,6 @@
      "name": "Chronova Engineering",
      "url": "https://www.youtube.com/channel/UC6DhSUKasPbBLCSdPcGBxww",
      "old": null,
-     "videos": 14,
      "note": "Beautiful machining videos for interesting small machines.",
      "note2020": "",
      "video": {
@@ -668,7 +618,6 @@
      "name": "Prop Department",
      "url": "https://www.youtube.com/channel/UCU0wOR4RQA9L7ZBOeyQI20A",
      "old": null,
-     "videos": 12,
      "note": "Large scale vehicle fabrication expert makes cool stuff.",
      "note2020": "",
      "video": {
@@ -681,7 +630,6 @@
      "name": "Joel Creates",
      "url": "https://www.youtube.com/channel/UCHk0IYEDJxQGQ-nbd3yP_KA",
      "old": null,
-     "videos": 12,
      "note": "Small fun engineering videos. A bit like Tom Stanton.",
      "note2020": "",
      "video": {
@@ -694,7 +642,6 @@
      "name": "Contraption Collection",
      "url": "https://www.youtube.com/channel/UC66lPJ8u2N1i2Bh_TMaWagg",
      "old": null,
-     "videos": 11,
      "note": "Retired channel with an excellent machining series on making Balisong-style (flippy butterfly knife) scissors and all the challenges.",
      "note2020": "",
      "video": {
@@ -707,7 +654,6 @@
      "name": "Fireball Tool",
      "url": "https://www.youtube.com/channel/UCVveEFTOd6khhSXXnRhxJmg",
      "old": null,
-     "videos": 10,
      "note": "Really interesting tool making and machining channel. Often kinda selling their own tools, but in a really interesting way with real tests.",
      "note2020": "",
      "video": {
@@ -720,7 +666,6 @@
      "name": "Lafayette Systems",
      "url": "https://www.youtube.com/channel/UCDllNYyUN4fK1r-Nwffp7og",
      "old": null,
-     "videos": 10,
      "note": "Amateur rocketry with active controls, kinda like BPS.space.",
      "note2020": "",
      "video": {
@@ -733,7 +678,6 @@
      "name": "Tucker Gott",
      "url": "https://www.youtube.com/channel/UCASjdyu0y8XQ9qJnqxsKHnQ",
      "old": "C",
-     "videos": 10,
      "note": "",
      "note2020": "Paramotor pilot. I have no plans on ever paramotoring but it's cool to watch and his \"Reacting To Crash Videos\" series is really interesting, seeing him break down what kind of safety considerations come into play and how things can go wrong.",
      "video": {
@@ -746,7 +690,6 @@
      "name": "This Old Tony",
      "url": "https://www.youtube.com/channel/UC5NO8MgTQKHAWXp6z8Xl7yQ",
      "old": "A",
-     "videos": 9,
      "note": "",
      "note2020": "Really well-produced entertaining and funny machine shop and engine videos that usually use some small machining project to explain a concept or technique.",
      "video": {
@@ -759,7 +702,6 @@
      "name": "Deconstructed",
      "url": "https://www.youtube.com/channel/UCje6-Yak9u1msy5l7sE9pBA",
      "old": null,
-     "videos": 9,
      "note": "Like Animagraffs in that they make interesting 3D model deconstruction videos, although not quite as cool ones",
      "note2020": "",
      "video": {
@@ -772,7 +714,6 @@
      "name": "Current Concept",
      "url": "https://www.youtube.com/channel/UCW5i5rLbDiu9RhCEXj4BAZw",
      "old": null,
-     "videos": 6,
      "note": "Very funny maker projects",
      "note2020": "",
      "video": {
@@ -785,7 +726,6 @@
      "name": "2swap",
      "url": "https://www.youtube.com/channel/UCiNLr9wX35KksK77mrQgxiw",
      "old": null,
-     "videos": 6,
      "note": "Like 3Blue1Brown: animated math explainers. Except I maybe find the average video even more beautiful and interesting, except there's fewer videos.",
      "note2020": "",
      "video": {
@@ -798,7 +738,6 @@
      "name": "Akiyuki Brick Channel",
      "url": "https://www.youtube.com/channel/UCCJJNQIhS15ypcHqDfEPNXg",
      "old": "C",
-     "videos": 3,
      "note": "",
      "note2020": "Incredibly cool and complex Lego mechanical contraptions. This is a great combination of many of his designs and this recent video is aesthetically fun.",
      "video": {
@@ -811,7 +750,6 @@
      "name": "SethBling",
      "url": "https://www.youtube.com/channel/UC8aG3LDTDwNR1UQhSn9uVrw",
      "old": "C",
-     "videos": 2,
      "note": "",
      "note2020": "Does Super Mario World speedruns involving code injection via carefully placed shells and a glitch to warp directly to the credits, as well as various other technical video game trickery.",
      "video": {
@@ -824,7 +762,6 @@
      "name": "CNLohr",
      "url": "https://www.youtube.com/channel/UCG7yIWtVwcENg_ZS-nahg5g",
      "old": "B",
-     "videos": 2,
      "note": "",
      "note2020": "Really interesting and cool electronics projects. Examples include reverse engineering the HTC Vive and making a custom Linux C SDK for it, running a custom Minecraft server on a microcontroller and pretty LEDs.",
      "video": {
@@ -837,7 +774,6 @@
      "name": "Pannen",
      "url": "https://www.youtube.com/channel/UC5miyvhPsWWyfTulnJ43koQ",
      "old": "C",
-     "videos": 0,
      "note": "",
      "note2020": "Details various glitches used for an automated Super Mario 64 speedrun where he tries to minimize use of the A (jump) button. Really interesting just seeing how insane the tricks can be. Best and most famous video is this commentated one from his other channel about paralell universes.",
      "video": null
@@ -852,7 +788,6 @@
      "name": "Edison Motors",
      "url": "https://www.youtube.com/channel/UCUEzfzqf2fx3C1vs0MlgShA",
      "old": null,
-     "videos": 95,
      "note": "Canadian loggers make an electric hybrid truck company",
      "note2020": "",
      "video": {
@@ -865,7 +800,6 @@
      "name": "NHRL",
      "url": "https://www.youtube.com/channel/UChgAZxOWR0S3Q376oAodGjQ",
      "old": null,
-     "videos": 68,
      "note": "",
      "note2020": "",
      "video": {
@@ -878,7 +812,6 @@
      "name": "William Osman 2",
      "url": "https://www.youtube.com/channel/UCbguawtJlHjxXzdAskubQVg",
      "old": null,
-     "videos": 56,
      "note": "",
      "note2020": "",
      "video": {
@@ -891,7 +824,6 @@
      "name": "ilmango",
      "url": "https://www.youtube.com/channel/UCHSI8erNrN6hs3sUK6oONLA",
      "old": "D",
-     "videos": 51,
      "note": "",
      "note2020": "Another impressive technical Minecraft player.",
      "video": {
@@ -904,7 +836,6 @@
      "name": "Scott Manley",
      "url": "https://www.youtube.com/channel/UCxzC4EngIsMrPmbm6Nxvb-A",
      "old": null,
-     "videos": 43,
      "note": "",
      "note2020": "",
      "video": {
@@ -917,7 +848,6 @@
      "name": "Team Just 'Cuz Robotics",
      "url": "https://www.youtube.com/channel/UCsoZN2VwWJbJ30y2e2sfmnw",
      "old": null,
-     "videos": 40,
      "note": "",
      "note2020": "",
      "video": {
@@ -930,7 +860,6 @@
      "name": "Robert Cowan",
      "url": "https://www.youtube.com/channel/UCPOTPYuDsKnXP9I-ph4yMgg",
      "old": null,
-     "videos": 39,
      "note": "",
      "note2020": "",
      "video": {
@@ -943,7 +872,6 @@
      "name": "Veritasium",
      "url": "https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA",
      "old": null,
-     "videos": 31,
      "note": "",
      "note2020": "",
      "video": {
@@ -956,7 +884,6 @@
      "name": "Jake Hoffmann",
      "url": "https://www.youtube.com/channel/UC7m77muv30W3jWvmIrx68Gg",
      "old": null,
-     "videos": 31,
      "note": "",
      "note2020": "",
      "video": {
@@ -969,7 +896,6 @@
      "name": "DarkAero, Inc",
      "url": "https://www.youtube.com/channel/UCPUZCBNrduwUsw_MTW-sDxw",
      "old": null,
-     "videos": 28,
      "note": "",
      "note2020": "",
      "video": {
@@ -982,7 +908,6 @@
      "name": "DoshDoshington",
      "url": "https://www.youtube.com/channel/UCo0-VCHchPIG3JtJlIQnFew",
      "old": null,
-     "videos": 27,
      "note": "Amazing technical factorio player who does very funny difficult challenges.",
      "note2020": "",
      "video": {
@@ -995,7 +920,6 @@
      "name": "Broken Link Robotics",
      "url": "https://www.youtube.com/channel/UCRSebxPEtpK5UpVCsJLq4mg",
      "old": null,
-     "videos": 26,
      "note": "",
      "note2020": "",
      "video": {
@@ -1008,7 +932,6 @@
      "name": "Mark Rober",
      "url": "https://www.youtube.com/channel/UCY1kMZp36IQSyNx_9h4mpCg",
      "old": "D",
-     "videos": 25,
      "note": "Very cool engineering projects, but popularized a bit too much for my liking.",
      "note2020": "",
      "video": {
@@ -1021,7 +944,6 @@
      "name": "Asianometry",
      "url": "https://www.youtube.com/channel/UC1LpsuAUaKoMzzJSEt5WImw",
      "old": null,
-     "videos": 23,
      "note": "",
      "note2020": "",
      "video": {
@@ -1034,7 +956,6 @@
      "name": "Diffraction Limited",
      "url": "https://www.youtube.com/channel/UCune493q6fu9nLH_JkwOUhw",
      "old": null,
-     "videos": 22,
      "note": "",
      "note2020": "",
      "video": {
@@ -1047,7 +968,6 @@
      "name": "Wintergatan",
      "url": "https://www.youtube.com/channel/UCcXhhVwCT6_WqjkEniejRJQ",
      "old": null,
-     "videos": 22,
      "note": "",
      "note2020": "",
      "video": {
@@ -1060,7 +980,6 @@
      "name": "I did a thing",
      "url": "https://www.youtube.com/channel/UCJLZe_NoiG0hT7QCX_9vmqw",
      "old": "D",
-     "videos": 22,
      "note": "",
      "note2020": "Comedy DIY videos like \"Can I make a spoon using only a spoon\".",
      "video": {
@@ -1073,7 +992,6 @@
      "name": "Failed EW Engineer",
      "url": "https://www.youtube.com/channel/UCr1eXiD5uhg1HzOjV9AX-ew",
      "old": null,
-     "videos": 20,
      "note": "Interesting RF and missile radar jamming videos. Not a subject I knew I wanted to learn about until I found this.",
      "note2020": "",
      "video": {
@@ -1086,7 +1004,6 @@
      "name": "xkcd's What If?",
      "url": "https://www.youtube.com/channel/UC6IxnFzHofFJ5X2PycSMsww",
      "old": null,
-     "videos": 19,
      "note": "",
      "note2020": "",
      "video": {
@@ -1099,7 +1016,6 @@
      "name": "What about it!?",
      "url": "https://www.youtube.com/channel/UC1XvxnHFtWruS9egyFasP1Q",
      "old": null,
-     "videos": 19,
      "note": "",
      "note2020": "",
      "video": {
@@ -1112,7 +1028,6 @@
      "name": "Matt's Off Road Recovery",
      "url": "https://www.youtube.com/channel/UCwdVOry0oNF9WIe_3uCfz9Q",
      "old": null,
-     "videos": 18,
      "note": "Combo of recovering cars from offroad crashes, interesting expertise at work, and doing welding and fabrication to build custom offroad tow trucks.",
      "note2020": "",
      "video": {
@@ -1125,7 +1040,6 @@
      "name": "Everyday Astronaut",
      "url": "https://www.youtube.com/channel/UC6uKrU_WqJ1R2HMTY3LIx5Q",
      "old": null,
-     "videos": 18,
      "note": "",
      "note2020": "",
      "video": {
@@ -1138,7 +1052,6 @@
      "name": "Alec Steele",
      "url": "https://www.youtube.com/channel/UCWizIdwZdmr43zfxlCktmNw",
      "old": null,
-     "videos": 18,
      "note": "Blacksmithing channel, very chill watch.",
      "note2020": "",
      "video": {
@@ -1151,7 +1064,6 @@
      "name": "SmarterEveryDay",
      "url": "https://www.youtube.com/channel/UC6107grRI4m0o2-emgoDnAA",
      "old": "D",
-     "videos": 17,
      "note": "",
      "note2020": "Very popular science and engineering videos.",
      "video": {
@@ -1164,7 +1076,6 @@
      "name": "LockPickingLawyer",
      "url": "https://www.youtube.com/channel/UCm9K6rby98W8JigLoZOh6FQ",
      "old": null,
-     "videos": 17,
      "note": "",
      "note2020": "",
      "video": {
@@ -1177,7 +1088,6 @@
      "name": "Half as Interesting",
      "url": "https://www.youtube.com/channel/UCuCkxoKLYO_EQ2GeFtbM_bw",
      "old": null,
-     "videos": 16,
      "note": "",
      "note2020": "",
      "video": {
@@ -1190,7 +1100,6 @@
      "name": "Ben Vallack",
      "url": "https://www.youtube.com/channel/UC4NNPgQ9sOkBjw6GlkgCylg",
      "old": null,
-     "videos": 15,
      "note": "",
      "note2020": "",
      "video": {
@@ -1203,7 +1112,6 @@
      "name": "CNC Kitchen",
      "url": "https://www.youtube.com/channel/UCiczXOhGpvoQGhOL16EZiTg",
      "old": null,
-     "videos": 15,
      "note": "",
      "note2020": "",
      "video": {
@@ -1216,7 +1124,6 @@
      "name": "rctestflight",
      "url": "https://www.youtube.com/channel/UCq2rNse2XX4Rjzmldv9GqrQ",
      "old": null,
-     "videos": 13,
      "note": "",
      "note2020": "",
      "video": {
@@ -1229,7 +1136,6 @@
      "name": "NileBlue",
      "url": "https://www.youtube.com/channel/UC1D3yD4wlPMico0dss264XA",
      "old": null,
-     "videos": 13,
      "note": "",
      "note2020": "",
      "video": {
@@ -1242,7 +1148,6 @@
      "name": "Reactions",
      "url": "https://www.youtube.com/channel/UCdJ9oJ2GUF8Vmb-G63ldGWg",
      "old": null,
-     "videos": 13,
      "note": "",
      "note2020": "",
      "video": {
@@ -1255,7 +1160,6 @@
      "name": "Mike Shake",
      "url": "https://www.youtube.com/channel/UC6ktP3PLU5sAJxN9Rb0TALg",
      "old": null,
-     "videos": 11,
      "note": "",
      "note2020": "",
      "video": {
@@ -1268,7 +1172,6 @@
      "name": "How To Make Everything",
      "url": "https://www.youtube.com/channel/UCfIqCzQJXvYj9ssCoHq327g",
      "old": "D",
-     "videos": 11,
      "note": "",
      "note2020": "Makes things like lenses, chocolate, clothing and food from scratch harvesting and processing all his own materials.",
      "video": {
@@ -1281,7 +1184,6 @@
      "name": "JLaservideo",
      "url": "https://www.youtube.com/channel/UC89AgkG34oooZubVt23wzFw",
      "old": null,
-     "videos": 10,
      "note": "",
      "note2020": "",
      "video": {
@@ -1294,7 +1196,6 @@
      "name": "Casual Navigation",
      "url": "https://www.youtube.com/channel/UC5_HIscbiDZM0dMX-nCksuA",
      "old": null,
-     "videos": 10,
      "note": "",
      "note2020": "",
      "video": {
@@ -1307,7 +1208,6 @@
      "name": "bitluni",
      "url": "https://www.youtube.com/channel/UCp_5PO66faM4dBFbFFBdPSQ",
      "old": "D",
-     "videos": 10,
      "note": "",
      "note2020": "PCBs and neat huge LED walls.",
      "video": {
@@ -1320,7 +1220,6 @@
      "name": "Xyla Foxlin",
      "url": "https://www.youtube.com/channel/UCEn3fRj2e0mpqYsijxnzayg",
      "old": null,
-     "videos": 10,
      "note": "",
      "note2020": "",
      "video": {
@@ -1333,7 +1232,6 @@
      "name": "Mustard",
      "url": "https://www.youtube.com/channel/UC1ZBQ-F-yktYD4m5AzM6pww",
      "old": null,
-     "videos": 10,
      "note": "",
      "note2020": "",
      "video": {
@@ -1346,7 +1244,6 @@
      "name": "Strange Parts",
      "url": "https://www.youtube.com/channel/UCO8DQrSp5yEP937qNqTooOw",
      "old": "D",
-     "videos": 10,
      "note": "",
      "note2020": "Tours of cool Chinese factories.",
      "video": {
@@ -1359,7 +1256,6 @@
      "name": "Roetz 4.0",
      "url": "https://www.youtube.com/channel/UCRPUV6ArQ7AuQtK4123wNCw",
      "old": null,
-     "videos": 10,
      "note": "",
      "note2020": "",
      "video": {
@@ -1372,7 +1268,6 @@
      "name": "colinfurze",
      "url": "https://www.youtube.com/channel/UCp68_FLety0O-n9QU6phsgw",
      "old": "D",
-     "videos": 10,
      "note": "",
      "note2020": "Wild engineering projects often involving making dangerous but impressive vehicles.",
      "video": {
@@ -1385,7 +1280,6 @@
      "name": "CGP Grey",
      "url": "https://www.youtube.com/channel/UC2C_jShtL725hvbm1arSV9w",
      "old": null,
-     "videos": 9,
      "note": "",
      "note2020": "",
      "video": {
@@ -1398,7 +1292,6 @@
      "name": "DocJade",
      "url": "https://www.youtube.com/channel/UCMWvGsHgzWtgyJvoKEQl-Bw",
      "old": null,
-     "videos": 9,
      "note": "",
      "note2020": "",
      "video": {
@@ -1411,7 +1304,6 @@
      "name": "styropyro",
      "url": "https://www.youtube.com/channel/UCJYJgj7rzsn0vdR7fkgjuIA",
      "old": null,
-     "videos": 9,
      "note": "",
      "note2020": "",
      "video": {
@@ -1424,7 +1316,6 @@
      "name": "Simone Giertz",
      "url": "https://www.youtube.com/channel/UC3KEoMzNz8eYnwBC34RaKCQ",
      "old": "D",
-     "videos": 9,
      "note": "",
      "note2020": "Originally made shitty robots, now makes miscellaneous cool artsy objects.",
      "video": {
@@ -1437,7 +1328,6 @@
      "name": "Ivan Miranda",
      "url": "https://www.youtube.com/channel/UCF3cDM_hQMtIEJvEW1BZugg",
      "old": null,
-     "videos": 9,
      "note": "",
      "note2020": "",
      "video": {
@@ -1450,7 +1340,6 @@
      "name": "PeterSripol",
      "url": "https://www.youtube.com/channel/UC7yF9tV4xWEMZkel7q8La_w",
      "old": "D",
-     "videos": 9,
      "note": "",
      "note2020": "Makes his own small and model airplanes.",
      "video": {
@@ -1463,7 +1352,6 @@
      "name": "Alexander the ok",
      "url": "https://www.youtube.com/channel/UC9XjwCMWhes6R3jtOzZx50A",
      "old": null,
-     "videos": 9,
      "note": "",
      "note2020": "",
      "video": {
@@ -1476,7 +1364,6 @@
      "name": "Advanced Tinkering",
      "url": "https://www.youtube.com/channel/UC2M2T4FSz1kSqNhhL-n9R9A",
      "old": null,
-     "videos": 9,
      "note": "",
      "note2020": "",
      "video": {
@@ -1489,7 +1376,6 @@
      "name": "Rowow",
      "url": "https://www.youtube.com/channel/UCKLQPOyfOBf6SQQcPzSVMkg",
      "old": null,
-     "videos": 8,
      "note": "Cool guy developing mining technology using a low cost ion exchange membrane technology he designed.",
      "note2020": "",
      "video": {
@@ -1502,7 +1388,6 @@
      "name": "TheBackyardScientist",
      "url": "https://www.youtube.com/channel/UC06E4Y_-ybJgBUMtXx8uNNw",
      "old": null,
-     "videos": 8,
      "note": "",
      "note2020": "",
      "video": {
@@ -1515,7 +1400,6 @@
      "name": "Hoarder Sam",
      "url": "https://www.youtube.com/channel/UCu6vuGXK_WSVNf6Yg-OYfzw",
      "old": null,
-     "videos": 8,
      "note": "DARPA heavy lift challenge videos.",
      "note2020": "",
      "video": {
@@ -1528,7 +1412,6 @@
      "name": "Cylo's Garage",
      "url": "https://www.youtube.com/channel/UCiygJF7wFHDeWGVvXkztUSA",
      "old": null,
-     "videos": 8,
      "note": "Super high precision machinery.",
      "note2020": "",
      "video": {
@@ -1541,7 +1424,6 @@
      "name": "minutephysics",
      "url": "https://www.youtube.com/channel/UCUHW94eEFW7hkUMVaZz4eDg",
      "old": null,
-     "videos": 7,
      "note": "",
      "note2020": "",
      "video": {
@@ -1554,7 +1436,6 @@
      "name": "Luke Maximo Bell",
      "url": "https://www.youtube.com/channel/UCHJ-02TEGNS2GeD2wYetHSQ",
      "old": null,
-     "videos": 7,
      "note": "World's fastest drones.",
      "note2020": "",
      "video": {
@@ -1567,7 +1448,6 @@
      "name": "Grind Hard Plumbing Co",
      "url": "https://www.youtube.com/channel/UCivi_f1nniBzEOfKhRoN12Q",
      "old": null,
-     "videos": 7,
      "note": "",
      "note2020": "",
      "video": {
@@ -1580,7 +1460,6 @@
      "name": "DIY Perks",
      "url": "https://www.youtube.com/channel/UCUQo7nzH1sXVpzL92VesANw",
      "old": "D",
-     "videos": 7,
      "note": "",
      "note2020": "Well-made DIY projects mostly building custom lighting and weird computer equipment.",
      "video": {
@@ -1593,7 +1472,6 @@
      "name": "Allen Pan",
      "url": "https://www.youtube.com/channel/UCVS89U86PwqzNkK2qYNbk5A",
      "old": "D",
-     "videos": 7,
      "note": "",
      "note2020": "Cool engineering projects kind of in the style of The Hacksmith.",
      "video": {
@@ -1606,7 +1484,6 @@
      "name": "Mattias Krantz",
      "url": "https://www.youtube.com/channel/UCEgm-3RvRn4nCR-fGGVsfdQ",
      "old": null,
-     "videos": 7,
      "note": "",
      "note2020": "",
      "video": {
@@ -1619,7 +1496,6 @@
      "name": "Atomic Frontier",
      "url": "https://www.youtube.com/channel/UCbCq5Y0WPGimG2jNXhoQxGw",
      "old": null,
-     "videos": 7,
      "note": "",
      "note2020": "",
      "video": {
@@ -1632,7 +1508,6 @@
      "name": "Real Science",
      "url": "https://www.youtube.com/channel/UC176GAQozKKjhz62H8u9vQQ",
      "old": null,
-     "videos": 7,
      "note": "",
      "note2020": "",
      "video": {
@@ -1645,7 +1520,6 @@
      "name": "Battleship New Jersey",
      "url": "https://www.youtube.com/channel/UC_Ftxa2jwg8R4IWDw48uyBw",
      "old": null,
-     "videos": 6,
      "note": "",
      "note2020": "",
      "video": {
@@ -1658,7 +1532,6 @@
      "name": "James Bruton",
      "url": "https://www.youtube.com/channel/UCUbDcUPed50Y_7KmfCXKohA",
      "old": "D",
-     "videos": 6,
      "note": "",
      "note2020": "3D printed cool robots.",
      "video": {
@@ -1671,7 +1544,6 @@
      "name": "Bismuth",
      "url": "https://www.youtube.com/channel/UCQ9STd0zeHrrQGJQEuvhuTw",
      "old": null,
-     "videos": 6,
      "note": "",
      "note2020": "",
      "video": {
@@ -1684,7 +1556,6 @@
      "name": "Integza",
      "url": "https://www.youtube.com/channel/UC2avWDLN1EI3r1RZ_dlSxCw",
      "old": null,
-     "videos": 6,
      "note": "",
      "note2020": "",
      "video": {
@@ -1697,7 +1568,6 @@
      "name": "Michael Reeves",
      "url": "https://www.youtube.com/channel/UCtHaxi4GTYDpJgMSGy7AeSw",
      "old": "D",
-     "videos": 6,
      "note": "",
      "note2020": "Comedy robot videos.",
      "video": {
@@ -1710,7 +1580,6 @@
      "name": "Carl Bugeja",
      "url": "https://www.youtube.com/channel/UCdxTCCRnQgfi2vr2fZupYIQ",
      "old": null,
-     "videos": 6,
      "note": "",
      "note2020": "",
      "video": {
@@ -1723,7 +1592,6 @@
      "name": "Think Flight",
      "url": "https://www.youtube.com/channel/UCMZkAT1Vf7CPSNcTzZkK_qQ",
      "old": null,
-     "videos": 6,
      "note": "",
      "note2020": "",
      "video": {
@@ -1736,7 +1604,6 @@
      "name": "You Suck At Cooking",
      "url": "https://www.youtube.com/channel/UCekQr9znsk2vWxBo3YiLq2w",
      "old": "B",
-     "videos": 4,
      "note": "",
      "note2020": "Funny comedy cooking videos that are actual recipes. Videos vary on how much they focus on being funny vs teaching good recipes. This one and this one are pretty good.",
      "video": {
@@ -1749,7 +1616,6 @@
      "name": "Jonathan Blow",
      "url": "https://www.youtube.com/channel/UCCuoqzrsHlwv1YyPKLuMDUQ",
      "old": "C",
-     "videos": 4,
      "note": "",
      "note2020": "Recorded live streams of programming and demoing his game and new programming language/compiler. Clearly very skilled, also overly brash at times, but his ideas and perspective is interesting and his videos are the only ones I watch of live programming.",
      "video": {
@@ -1762,7 +1628,6 @@
      "name": "Two Minute Papers",
      "url": "https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg",
      "old": "D",
-     "videos": 3,
      "note": "",
      "note2020": "Short explanations of interesting machine learning and computer graphics papers.",
      "video": {
@@ -1775,7 +1640,6 @@
      "name": "Brick Experiment Channel",
      "url": "https://www.youtube.com/channel/UClsFdM0HzTdF1JYoraQ0aUw",
      "old": "D",
-     "videos": 2,
      "note": "",
      "note2020": "Interesting engineering using Lego, like making submarines.",
      "video": {
@@ -1788,7 +1652,6 @@
      "name": "Cody'sLab",
      "url": "https://www.youtube.com/channel/UCu6mSoMNzHQiBIOCkHUa2Aw",
      "old": "D",
-     "videos": 2,
      "note": "",
      "note2020": "Miscellaneous geology, farming and engineering.",
      "video": {
@@ -1801,7 +1664,6 @@
      "name": "Matthias Wandel",
      "url": "https://www.youtube.com/channel/UCckETVOT59aYw80B36aP9vw",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Impressive woodworking and wooden contraptions.",
      "video": null
@@ -1810,7 +1672,6 @@
      "name": "Makercise",
      "url": "https://www.youtube.com/channel/UCZnQYVCCnNnwqiJRIYQuYdA",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Making a Gingery lathe and shaper from scratch by aluminum casting.",
      "video": null
@@ -1819,7 +1680,6 @@
      "name": "Strange Loop",
      "url": "https://www.youtube.com/channel/UC_QIfHvN9auy2CoOdSfMWDw",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Another good programming conference with lots of talks I've liked.",
      "video": null
@@ -1828,7 +1688,6 @@
      "name": "Bruce Yeany",
      "url": "https://www.youtube.com/channel/UCNk3CeLpCA0qIZsuzGl09cw",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Science teacher who makes cool demonstrations.",
      "video": null
@@ -1837,7 +1696,6 @@
      "name": "The Brick Wall",
      "url": "https://www.youtube.com/channel/UCkJh-DoB5TKX7qIV2cUGHcQ",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Sophisticated and impressive working Lego farm equipment and factories.",
      "video": null
@@ -1846,7 +1704,6 @@
      "name": "AvE",
      "url": "https://www.youtube.com/channel/UChWv6Pn_zP0rI6lgGt3MyfA",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Crass guy with an idiosyncratic style of speaking has a cool series called \"Bored Of Lame Tool Review?\" where he takes tools apart, explains how they work, critiques their design and guesses how they'll fail.",
      "video": null
@@ -1855,7 +1712,6 @@
      "name": "Keystone Science",
      "url": "https://www.youtube.com/channel/UC6vImVkvofpMUOlYt6LiRXA",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Some cool science videos.",
      "video": null
@@ -1864,7 +1720,6 @@
      "name": "Ferris",
      "url": "https://www.youtube.com/c/ferrisstreamsstuff/videos",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Really good programmer, part of my favorite demo group Logicoma, interesting streams.",
      "video": null
@@ -1873,7 +1728,6 @@
      "name": "The Taste Emporium",
      "url": "https://www.youtube.com/channel/UCnr29dxZB1vsbiHLBL7kfAQ",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Cooking channel by the same guy as The Thought Emporium about making very fancy recipes.",
      "video": null
@@ -1882,7 +1736,6 @@
      "name": "EvanAndKatelyn",
      "url": "https://www.youtube.com/channel/UCUuMYw2l2UeWyTGYixYfRCA",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Miscellaneous home crafts and art.",
      "video": null
@@ -1891,7 +1744,6 @@
      "name": "JAIRUS OF ALL",
      "url": "https://www.youtube.com/channel/UCturmG-MSMEpG3zAo4H6Spw",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Some cool projects.",
      "video": null
@@ -1900,7 +1752,6 @@
      "name": "Inigo Quilez",
      "url": "https://www.youtube.com/channel/UCdmAhiG8HQDlz8uyekw4ENw",
      "old": "B",
-     "videos": 0,
      "note": "",
      "note2020": "Inigo is famous for his excellent website with lots of computer graphics tips especially around signed distance fields. More recently he's been uploading high effort explanations, live coding and pretty fractals to his YouTube channel.",
      "video": null
@@ -1909,7 +1760,6 @@
      "name": "Daniel Schiffer",
      "url": "https://www.youtube.com/channel/UCwjZLzqHYImv4oCJQcZ8Hig",
      "old": "C",
-     "videos": 0,
      "note": "",
      "note2020": "Videographer who goes into how he shoots and edits commercials, and he's really good at it so his videos are great.",
      "video": null
@@ -1918,7 +1768,6 @@
      "name": "Makin' Stuff Look Good",
      "url": "https://www.youtube.com/channel/UCEklP9iLcpExB8vp_fWQseg",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Tutorials on how various cool shader effects work.",
      "video": null
@@ -1927,7 +1776,6 @@
      "name": "JL2579",
      "url": "https://www.youtube.com/channel/UCWf3wmxbUr5TGmCjHaXV4bQ",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Technical Minecraft player. I don't play Minecraft anymore but still love seeing what kind of weird behaviors they find and exploit to build useful Minecraft contraptions.",
      "video": null
@@ -1936,7 +1784,6 @@
      "name": "Roger Kilmanjaro",
      "url": "https://www.youtube.com/channel/UCDbxvz-8MrderjIOyQi14Uw",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Really beautiful minimalist CG looping animations that are very much my aesthetic.",
      "video": null
@@ -1945,7 +1792,6 @@
      "name": "Blender Guru",
      "url": "https://www.youtube.com/user/AndrewPPrice",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Really good Blender 3D modeling tutorials. I learned a lot about what goes into photorealism that I applied when choosing features for my path tracer.",
      "video": null
@@ -1954,7 +1800,6 @@
      "name": "I Like To Make Stuff",
      "url": "https://www.youtube.com/channel/UC6x7GwJxuoABSosgVXDYtTw",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Miscellaneous crafts.",
      "video": null
@@ -1963,7 +1808,6 @@
      "name": "Joseph's Machines",
      "url": "https://www.youtube.com/channel/UCbNvfx3rYYxEopnRGxfu53Q",
      "old": "D",
-     "videos": 0,
      "note": "",
      "note2020": "Really amazing Rube Goldberg machines.",
      "video": null
