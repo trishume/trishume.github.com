@@ -59,8 +59,8 @@
      "note": "",
      "note2020": "This is a weird and wonderful channel that to me really exemplifies what's great about YouTube. Most videos are of the form \"sharpest X kitchen knife in the world\" with a thumbnail of a hand holding a weird knife in the same pose. Some examples of X are \"Fungi\", \"Paper\", \"milk\", \"Pasta\", \"Underwear\", and \"smoke\". I originally ignored suggested videos from this channel because I assumed they were some weird click-bait that didn't really make a knife from those materials, and that was tragic because he really does and it's amazing.\n\nEvery video has no talking or words except for occasional subtitles, and follows the process starting from the raw material, demonstrating all the processing steps required to make a hard substance out of it, casting a knife blank, sharpening it, and testing it. At some point early in the channel's history someone must have commented that the videos were like ASMR videos because after that he got a high quality microphone and puts a lot of emphasis on the sounds.\n\nThe coolest part is he's clearly really good at materials science and every video has amazing steps all done in his apartment. Lets take the \"sharpest Seawater kitchen knife in the world\" video as an example: It starts with a shot of him getting huge jugs of seawater from the ocean and collecting shells on the beach. At home he boils the seawater into salt and a solution he labels \"magnesium chloride\". Then he puts a seashell on top of a charcoal briquette and puts it in an insulating firebrick box in his home microwave-oven-thing and cuts to it coming out totally calcified (apparently you can do that without a furnace??). He grinds it up with the subtitle \"quicklime\", puts it in water and uses a thermal camera to show the exothermic reaction to get slaked lime. Cut to him combining a concentrated sea brine with the lime water to get \"magnesium hydroxide + salt\". He adds water to dissolve the salt and filters out the magnesium hydroxide, combines it with the magnesium chloride from earlier, dries it, uses his handy durometer to show it fails a hardness test. He pops the magnesium hydroxide in his charcoal microwave furnace to get \"magnesium oxide\" and shows that this time when combined and dried it yields a very hard rock-like substance. Cut to him pouring a bunch of it in a rectangular plastic box, drying it and sawing out a knife shape. Then his famous sharpening sequence with increasingly fine knife stones, followed by the ever-present cucumber chopping test (complete with weird cucumber reveal out of godzilla-themed rubber gloves). He finishes by showing that the \"magnesium cement\" (Wiki link) doesn't immediately dissolve in watera and that it can also be combined with dirt to make bricks.\n\nI can't see anything remotely like this every being green-lit as a TV series, but every video is brilliant and relaxing, they all get millions of views with zero advertising spend, because everyone likes them and recommends them to friends and algorithmic recommendations respond to that in a way that human TV producers wouldn't have the guts to. People complain about the \"YouTube algorithm\", but at this kind of thing it truly shines.",
      "video": {
-      "id": "Q1VWUL0G0uU",
-      "title": "sharpest meat kitchen knife in the world",
+      "id": "pFG-nXUw6Ts",
+      "title": "sharpest Seawater kitchen knife in the world",
       "auto": false
      }
     }
@@ -251,9 +251,9 @@
      "note": "",
      "note2020": "Explains interesting things from civil engineering often with cool models and demonstrations. I found this one on hydraulic ram pumps really cool.",
      "video": {
-      "id": "r1wwtGgnzg4",
-      "title": "Are Beavers Actually Good at Dams?",
-      "auto": true
+      "id": "Ku_ockR2t44",
+      "title": "The Mind-Blowing Flaw That Flooded New Orleans",
+      "auto": false
      }
     },
     {
@@ -263,9 +263,9 @@
      "note": "",
      "note2020": "Well-produced and interesting explanation videos on various engineering topics. From the engineering of fighter planes to flood control systems in The Netherlands.",
      "video": {
-      "id": "6B96xetwrqI",
-      "title": "The Plane That's 38% Nose",
-      "auto": true
+      "id": "iGZsPFJuxc0",
+      "title": "How We Could Reach Proxima Centauri B in 20 Years",
+      "auto": false
      }
     },
     {
@@ -275,9 +275,9 @@
      "note": "Excellent animated historical video series on Roman history.",
      "note2020": "",
      "video": {
-      "id": "872JcpP3FEM",
-      "title": "The City.",
-      "auto": true
+      "id": "R0wwuj0sTyY",
+      "title": "The Year Without a Summer (1816 to 1824)",
+      "auto": false
      }
     },
     {
@@ -287,9 +287,9 @@
      "note": "",
      "note2020": "Very fancy model rockets with cool control systems, like Falcon propulsive landing.",
      "video": {
-      "id": "PpwewkOCFuE",
-      "title": "Building Two N-Class Rocket Motors",
-      "auto": true
+      "id": "G61T-5d9jiA",
+      "title": "Designing a Selfie Camera to Eject at Apogee",
+      "auto": false
      }
     },
     {
@@ -301,7 +301,7 @@
      "video": {
       "id": "1sgsb-F8dCw",
       "title": "Building a CT Scanner to prove a Furby has no soul",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -311,9 +311,9 @@
      "note": "",
      "note2020": "A biologist explains interesting animal facts as funny parodies of video game commentary and tier lists (I am partial to the tier list format as evidenced by this very tier list). This one on turtles is pretty good.",
      "video": {
-      "id": "J4qFuPAVmS0",
-      "title": "How to play Swordfish",
-      "auto": true
+      "id": "xtnfcm-fxm4",
+      "title": "The Reptile Tier List",
+      "auto": false
      }
     },
     {
@@ -325,7 +325,7 @@
      "video": {
       "id": "gqVJDHK5EjM",
       "title": "Firelaser V2 part 1: Designing a New Pump",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -335,9 +335,9 @@
      "note": "",
      "note2020": "Long and detailed technical videos of interesting projects demonstrating cool science and engineering concepts. They build really high quality demonstration pieces for each video and lots of the concepts they look into are little known ones like magnetohydrodynamics, how helium is an incredibly good sound suppressor and plasma physics. The main presenter is super knowledgeable and every video has some really interesting things. It's a bit slow paced but I fix that by always watching on 2x speed. They also just posted a Best Of clips compilation video.",
      "video": {
-      "id": "IGlZ61oCcEY",
-      "title": "Why This Ugly Black Goop Is BETTER Than Ice",
-      "auto": true
+      "id": "G1Syjh319VU",
+      "title": "We turned a household freezer into a high-speed blast chiller!",
+      "auto": false
      }
     },
     {
@@ -349,7 +349,7 @@
      "video": {
       "id": "HmiQFYGc6C4",
       "title": "Alarming Mistakes, Deadly Decisions: Fatal Fire at BP-Husky",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -361,7 +361,7 @@
      "video": {
       "id": "Co57SfcT-h0",
       "title": "Supersonic Trebuchet",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -373,7 +373,7 @@
      "video": {
       "id": "mvZ1dJuvenw",
       "title": "Wire Bonding Basics - Manual Wedge Bonding ICs",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -397,9 +397,9 @@
      "note": "This channel got me interested in cars and engines, which I wasn't before. It explains things like valve timing and how high end cars work from an engineering perspective on a whiteboard.",
      "note2020": "",
      "video": {
-      "id": "370m_BRk4Ok",
-      "title": "Lucid Bought My Car Back, So I Bought A Mach-E",
-      "auto": true
+      "id": "0mU7p4_CbBA",
+      "title": "Ducati V4 Engines Are Different From Everything Else – Here’s Why",
+      "auto": false
      }
     },
     {
@@ -411,7 +411,7 @@
      "video": {
       "id": "IGyUNd7Ax0Y",
       "title": "This Project Took Me Seven Years",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -421,9 +421,9 @@
      "note": "Animated major battles, especially naval. Interesting to learn the history.",
      "note2020": "",
      "video": {
-      "id": "yAPgxUmRm-w",
-      "title": "The Battle of Midway (2/2) - Sink the Japanese Carriers! - Animated",
-      "auto": true
+      "id": "cxh4II6zN4s",
+      "title": "The Battle of Midway (1/2) - The Turning Point of the Pacific War - Animated",
+      "auto": false
      }
     },
     {
@@ -433,9 +433,9 @@
      "note": "",
      "note2020": "Popular channel mostly focusing on talking about random interesting places with neat stories around the world.",
      "video": {
-      "id": "pZtU48TjxXg",
-      "title": "When I blow this whistle, a swimming pool appears.",
-      "auto": true
+      "id": "TumxO2glmPQ",
+      "title": "Why robots still can't pick strawberries",
+      "auto": false
      }
     },
     {
@@ -447,7 +447,7 @@
      "video": {
       "id": "UXNcivV8JNw",
       "title": "DIY Synthetic Fuel Part I - Making Syngas And A High Pressure Compressor",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -457,9 +457,9 @@
      "note": "Teardowns of cars and robots, explaining the manufacturing and cost tradeoffs involved in them.",
      "note2020": "",
      "video": {
-      "id": "qLp-QJYiJCw",
-      "title": "We Toured the Tesla Semi Factory. Here’s What Stood Out",
-      "auto": true
+      "id": "CSJydnLzBAo",
+      "title": "Unitree G1 Actuator Teardown: How This Humanoid Robot Moves",
+      "auto": false
      }
     },
     {
@@ -471,7 +471,7 @@
      "video": {
       "id": "ywB-KBzHqtI",
       "title": "How Copper Is Made — From Rock to 99.9% Pure Metal",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -483,7 +483,7 @@
      "video": {
       "id": "m7Icley8A_A",
       "title": "Introducing the Orbital Gatling Cannon",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -495,7 +495,7 @@
      "video": {
       "id": "hX21ctsGhNc",
       "title": "Why a Language Map of the World is Impossible",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -507,7 +507,7 @@
      "video": {
       "id": "qgTfVQaHW5A",
       "title": "We Went PRO in BATTLEBOTS…Were We Ready?",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -517,9 +517,9 @@
      "note": "Interesting science demo videos, kinda like NightHawkInLight or Steve Mould but not quite as good.",
      "note2020": "",
      "video": {
-      "id": "FnKNOPlR2Yo",
-      "title": "I Made The World's First Self-Cooling Clothes",
-      "auto": true
+      "id": "G6pTelud5-E",
+      "title": "I Broke The Angle of Repose",
+      "auto": false
      }
     },
     {
@@ -529,9 +529,9 @@
      "note": "",
      "note2020": "Guy explains interesting bits of technological history and science behind everyday gadgets. Like this video on how rice cookers use some neat physics tricks.",
      "video": {
-      "id": "_KWdCqpXB7A",
-      "title": "Ceiling fans: the simple idea we keep screwing up",
-      "auto": true
+      "id": "JzClLWL-Eys",
+      "title": "Desiccant dehumidifiers are fascinating... but not for everyone",
+      "auto": false
      }
     },
     {
@@ -543,7 +543,7 @@
      "video": {
       "id": "q6hSUH9FKdY",
       "title": "Blindfolded and Stranded! Can I find my way home using no map, compass or main roads?",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -555,7 +555,7 @@
      "video": {
       "id": "vw63IoVD9mk",
       "title": "How The US Navy Became The Best In The World At Damage Control In WW2 (No AI)",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -565,9 +565,9 @@
      "note": "Australian guy makes funny videos about his home machine shop projects.",
      "note2020": "",
      "video": {
-      "id": "5rh_DswKRqM",
-      "title": "Photo-ablative Micromachining (and Other Contagious Diseases)",
-      "auto": true
+      "id": "BMCxCuTc1MA",
+      "title": "What if angles were metric?",
+      "auto": false
      }
     },
     {
@@ -579,7 +579,7 @@
      "video": {
       "id": "Cu16K_AMuaY",
       "title": "What Makes Starship's Water Deluge System So Unique??",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -589,9 +589,9 @@
      "note": "Videos about his realistic engine physics simulator that are really interesting.",
      "note2020": "",
      "video": {
-      "id": "82PUQ3Of9JM",
-      "title": "Creating Engine Simulator's Engine Editor",
-      "auto": true
+      "id": "sUdnJTC2w9I",
+      "title": "Improving My Engine Sound Simulator With Real Data",
+      "auto": false
      }
     },
     {
@@ -601,9 +601,9 @@
      "note": "Very pretty animated math videos.",
      "note2020": "",
      "video": {
-      "id": "hFMaT9oRbs4",
-      "title": "Terence Tao continuing history’s cleverest cosmological measurements",
-      "auto": true
+      "id": "d_qvLDhkg00",
+      "title": "A pretty reason why Gaussian + Gaussian = Gaussian",
+      "auto": false
      }
     },
     {
@@ -615,7 +615,7 @@
      "video": {
       "id": "0Gi5Z51KdUE",
       "title": "Reinventing the Pencil Sharpener",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -625,9 +625,9 @@
      "note": "Large scale vehicle fabrication expert makes cool stuff.",
      "note2020": "",
      "video": {
-      "id": "8qlFvOyyHp4",
-      "title": "Testing my New Awesome Robot Arm",
-      "auto": true
+      "id": "ID062k6AqMw",
+      "title": "Testing my Tesla Powered Jetboat at 50% Power",
+      "auto": false
      }
     },
     {
@@ -637,9 +637,9 @@
      "note": "Small fun engineering videos. A bit like Tom Stanton.",
      "note2020": "",
      "video": {
-      "id": "0-OKW5CsKkU",
-      "title": "INSTANT pocket Hot Dog",
-      "auto": true
+      "id": "LDr5hlG1GBU",
+      "title": "I regret inventing Tank Boots",
+      "auto": false
      }
     },
     {
@@ -649,9 +649,9 @@
      "note": "Retired channel with an excellent machining series on making Balisong-style (flippy butterfly knife) scissors and all the challenges.",
      "note2020": "",
      "video": {
-      "id": "dvrmcCOxM9A",
-      "title": "I needed a break from Baliscissors.",
-      "auto": true
+      "id": "M88jllt4klM",
+      "title": "My most complex fixture yet, but does it work? Baliscissors: Ep 33",
+      "auto": false
      }
     },
     {
@@ -663,7 +663,7 @@
      "video": {
       "id": "3AScojcf2Yw",
       "title": "I Built the Drill Press I've Always Wanted",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -673,9 +673,9 @@
      "note": "Amateur rocketry with active controls, kinda like BPS.space.",
      "note2020": "",
      "video": {
-      "id": "sEUl55Oat5w",
-      "title": "Making Carbon Fiber Nose Cones at Home",
-      "auto": true
+      "id": "8wmpQ9hiQ1g",
+      "title": "Resin Printing a Supersonic Rocket Control System -- Form 4",
+      "auto": false
      }
     },
     {
@@ -685,9 +685,9 @@
      "note": "",
      "note2020": "Paramotor pilot. I have no plans on ever paramotoring but it's cool to watch and his \"Reacting To Crash Videos\" series is really interesting, seeing him break down what kind of safety considerations come into play and how things can go wrong.",
      "video": {
-      "id": "J2U2WLxfqFw",
-      "title": "I Built A Jet Turbine Paramotor!",
-      "auto": true
+      "id": "Ui7DCKI_upA",
+      "title": "No Way He Walked Away From This!!!",
+      "auto": false
      }
     },
     {
@@ -697,9 +697,9 @@
      "note": "",
      "note2020": "Really well-produced entertaining and funny machine shop and engine videos that usually use some small machining project to explain a concept or technique.",
      "video": {
-      "id": "-lkgAYe-8_s",
-      "title": "Make Your Own Air Knife!",
-      "auto": true
+      "id": "Ia3Iieejyg8",
+      "title": "Over Center Mechanisms But Were Afraid To Ask!",
+      "auto": false
      }
     },
     {
@@ -711,7 +711,7 @@
      "video": {
       "id": "tCHk2ZteXEo",
       "title": "Medieval Siege Weapons Were More Than Just Catapults",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -721,9 +721,9 @@
      "note": "Very funny maker projects",
      "note2020": "",
      "video": {
-      "id": "Pt6AofswYn0",
-      "title": "I built a hammer that hits nails without touching them",
-      "auto": true
+      "id": "tkO7tsHPu10",
+      "title": "My robot is better than you at knife throwing",
+      "auto": false
      }
     },
     {
@@ -735,7 +735,7 @@
      "video": {
       "id": "kL9BTbIGxLg",
       "title": "i’m so bad at billiards that i ended up in the hyperbolic plane",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -747,7 +747,7 @@
      "video": {
       "id": "EG9ISMjM-uQ",
       "title": "LEGO Omnidirectional vehicle",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -757,9 +757,9 @@
      "note": "",
      "note2020": "Does Super Mario World speedruns involving code injection via carefully placed shells and a glitch to warp directly to the credits, as well as various other technical video game trickery.",
      "video": {
-      "id": "DhCBCudKJTs",
-      "title": "I Added Realistic Physics to Minecraft -- 3D Rigid Body Physics Engine Datapack for Minecraft 1.20",
-      "auto": true
+      "id": "mq7T5_xH24M",
+      "title": "1fps Atari 2600 Emulator in Vanilla Minecraft 1.13",
+      "auto": false
      }
     },
     {
@@ -769,9 +769,9 @@
      "note": "",
      "note2020": "Really interesting and cool electronics projects. Examples include reverse engineering the HTC Vive and making a custom Linux C SDK for it, running a custom Minecraft server on a microcontroller and pretty LEDs.",
      "video": {
-      "id": "1vs_WxC2Odo",
-      "title": "The Worlds Cheapest Time Domain Reflectometer",
-      "auto": true
+      "id": "eIdHBDSQHyw",
+      "title": "How far can I broadcast LoRa packets WITHOUT a radio? - LoLRa",
+      "auto": false
      }
     },
     {
@@ -801,7 +801,7 @@
      "video": {
       "id": "L1Yy-nsgBCM",
       "title": "Unveiling Our Undisclosed Truck!",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -861,7 +861,7 @@
      "video": {
       "id": "aOBztZqGC5A",
       "title": "I Tried to Make a Flywheel Flipper - Here's What Went Wrong",
-      "auto": true
+      "auto": false
      }
     },
     {
