@@ -11,9 +11,9 @@
      "note": "",
      "note2020": "Ben Krasnow's channel Applied Science has been the flagship channel of engineering and science YouTube for many years. In every video he explains some new and interesting piece of science and engineering he's replicated in his shop. He's made aerogel, a water jet cutter, a plasma sputtering chamber, an EDM drill, air bearings, an electroluminescent display, an LCD, and the source of his earliest publicity: a scanning electron microscope. He's a truly prolific and incredible engineer who works with all kinds of electronics, machining, chemistry, physics and software. Every video leaves me in awe of him. Often he'll be the first non-professional to try recreating something based on a procedure from papers and have to do dozens of failed experiments before making a video documenting the process and all the extra considerations. His videos and skill are incredible and I've learned a lot about the process of scientific lab work from watching them.",
      "video": {
-      "id": "doZ5e4YVdEs",
-      "title": "3D-printed, alcohol-powered, Einstein-Szilard absorption refrigerator",
-      "auto": true
+      "id": "NwhVJ7cv9B4",
+      "title": "See inside insects with an electron microscope and a femtosecond laser",
+      "auto": false
      }
     },
     {
@@ -25,7 +25,7 @@
      "video": {
       "id": "XsmGHMic8vs",
       "title": "A Guilloche Dial In Sterling Silver - Cutting Traditional Guilloché On The Straight-Line Engine #3",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -37,7 +37,7 @@
      "video": {
       "id": "RpslsMqPFWA",
       "title": "I made an apple peel itself",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -47,9 +47,9 @@
      "note": "",
      "note2020": "Captain Disillusion has been on YouTube for 12 years now, originally in obscurity but gradually growing to millions of viewers. He goes over trick and hoax viral videos and explains the visual effects used to make them. The thing that's incredible is the production value: Costumes, makeup, well-written scripts, and a ridiculous density of impressive visual effects. Captain Disillusion is what happens when an incredibly talented and driven visual effects artist puts an entire month of full time work into every single 5 minute video. He's done streams and time-lapses before of him spending dozens of hours on a 3 second visual effect for a throwaway gag.\n\nA typical video consists of a well-written and edited intro of him introducing a faked video, doing a detailed breakdown of all the components of the effect but quickly thanks to amazing visual aid footage, then him just one-upping the original video by doing the effect so much better than anyone else has ever done it, without the tells he went over. Here's some other, good ones but really every single one is excellent.",
      "video": {
-      "id": "xDLxFGXuPEc",
-      "title": "CD / Blur",
-      "auto": true
+      "id": "2yCjO-wRxyM",
+      "title": "SNL VFX Mystery | Quick D",
+      "auto": false
      }
     },
     {
@@ -75,7 +75,7 @@
      "video": {
       "id": "6gsZY_-kT3U",
       "title": "This Device Turns Anything into a Suction Cup",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -85,9 +85,9 @@
      "note": "Really well produced videos about interesting startups building cool things, great curation.",
      "note2020": "",
      "video": {
-      "id": "2WRUX61aTy4",
-      "title": "The Startup Betting Speed Beats Stealth | Hermeus",
-      "auto": true
+      "id": "qNBEqnFt1aU",
+      "title": "No Nuclear Startup Has Ever Done This, Until Now | Valar Atomics",
+      "auto": false
      }
     },
     {
@@ -99,7 +99,7 @@
      "video": {
       "id": "PXuV_YCt8g4",
       "title": "Primitive Technology: 3 Iron Consolidation Experiments",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -109,9 +109,9 @@
      "note": "Well animated videos explaining interesting mechanisms, with interesting explanations and choice of topics",
      "note2020": "",
      "video": {
-      "id": "PaCOHydbssM",
-      "title": "Grilling The Hacksmith about his Design Choices on The Smithblade",
-      "auto": true
+      "id": "bp2IAlU53uw",
+      "title": "Why Centrifugal Fans SPEED UP When Blocked (Regular Fans Slow Down)",
+      "auto": false
      }
     },
     {
@@ -123,7 +123,7 @@
      "video": {
       "id": "GbcN0bPs-Ig",
       "title": "I made tiny robot eyes",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -135,7 +135,7 @@
      "video": {
       "id": "ID-K64Jk6JM",
       "title": "Turning air into alcohol",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -145,9 +145,9 @@
      "note": "Combination of animated wave physics explainers of optical phenomena, and hands-on videos about building optical equipment and fabricating lenses. Got me interested in optics.",
      "note2020": "",
      "video": {
-      "id": "xrAGA8u9b2E",
-      "title": "Doing Compton Scattering & Photon Coincidence Experiments with the Radiacode 110",
-      "auto": true
+      "id": "TPyQI7bJo6Q",
+      "title": "Making a Deformable Mirror",
+      "auto": false
      }
     },
     {
