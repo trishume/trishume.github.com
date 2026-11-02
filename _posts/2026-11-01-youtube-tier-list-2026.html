@@ -1,0 +1,72 @@
+---
+layout: post
+title: "My YouTube tier list, six years later"
+description: ""
+category:
+tags: [nontech]
+assetid: youtube2026
+headContent: <link rel="stylesheet" href="/assets/postassets/youtube2026/tiers.css" type="text/css"/>
+---
+{% include JB/setup %}
+{% assign yt = site.data.youtube2026 %}
+
+<p>In 2020 I wrote <a href="/2020/07/19/my-youtube-tier-list/">a tier list of my favorite interesting YouTube channels</a>. Since then I've found a bunch of new awesome channels and updated my opinions on some of them. I still find the best YouTube channels to be some of the most awesome content on the internet for learning interesting things.</p>
+
+<nav class="yt-toc">
+{% for t in yt.tiers %}{% if t.channels.size > 0 %}<a href="#tier-{{ t.tier | downcase }}"><b class="yt-t{{ t.tier }}">{{ t.tier }}</b>{{ t.channels.size }}</a>{% endif %}{% endfor %}
+</nav>
+
+{% for t in yt.tiers %}{% if t.channels.size > 0 %}
+<section class="yt-tier yt-tier-{{ t.tier }}">
+<h1 id="tier-{{ t.tier | downcase }}" class="yt-tierhead"><b class="yt-t{{ t.tier }}">{{ t.tier }}</b> {{ t.name }}</h1>
+{% if t.tier == "D" %}<div class="yt-grid">{% endif %}
+{% for c in t.channels %}
+<article class="yt-ch{% unless c.video %} yt-novideo{% endunless %}{% if c.video.auto %} yt-auto{% endif %}">
+  {% if c.video %}<a class="yt-thumb" href="https://www.youtube.com/watch?v={{ c.video.id }}" title="{{ c.video.title | escape }}">
+    <img src="https://i.ytimg.com/vi/{{ c.video.id }}/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
+    {% if c.video.title != "" %}<span class="yt-vtitle"><span>{{ c.video.title | escape }}</span></span>{% endif %}
+  </a>{% endif %}
+  <div class="yt-text">
+    {% if t.tier == "D" %}<h3>{% else %}<h2>{% endif %}<a href="{{ c.url }}">{{ c.name | escape }}</a>{% if c.old == nil %} <span class="yt-tag yt-new">new</span>{% elsif c.old == t.tier %} <span class="yt-tag">{{ c.old }} in 2020 too</span>{% else %} <span class="yt-tag">{{ c.old }} in 2020</span>{% endif %}{% if t.tier == "D" %}</h3>{% else %}</h2>{% endif %}
+    {% if c.note != "" %}<div class="yt-note">{{ c.note | markdownify }}</div>{% endif %}
+    {% if c.note2020 != "" %}<div class="yt-2020"><div class="yt-2020-body">{{ c.note2020 | markdownify }}</div><button type="button" class="yt-more" aria-expanded="false" hidden>more</button></div>{% endif %}
+  </div>
+</article>
+{% endfor %}
+{% if t.tier == "D" %}</div>{% endif %}
+</section>
+{% endif %}{% endfor %}
+
+{% if yt.dropped.size > 0 %}
+<h1 id="dropped">Dropped since 2020</h1>
+<p class="yt-dropped">{% for c in yt.dropped %}{{ c.name | escape }} <span class="yt-tag">{{ c.old }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+{% endif %}
+
+<script>
+// Fade the 2020 text out where it would run past the thumbnail, with a toggle to show all of it.
+(function(){
+  var blocks=document.querySelectorAll('.yt-2020');
+  function fit(){
+    for(var i=0;i<blocks.length;i++){
+      var b=blocks[i], body=b.querySelector('.yt-2020-body'), btn=b.querySelector('.yt-more');
+      if(b.classList.contains('yt-open')) continue;
+      b.classList.remove('yt-clamped'); body.style.maxHeight='';
+      var lh=parseFloat(getComputedStyle(body).lineHeight)||18;
+      var th=b.closest('.yt-ch').querySelector('.yt-thumb'), top=body.getBoundingClientRect().top;
+      var avail=lh*4;
+      if(th){ var r=th.getBoundingClientRect(); if(r.bottom>top+lh) avail=r.bottom-top-lh*1.3; }
+      avail=Math.max(avail,lh*2.5);
+      if(body.scrollHeight>avail+lh*0.6){ b.classList.add('yt-clamped'); body.style.maxHeight=avail+'px'; btn.hidden=false; }
+      else btn.hidden=true;
+    }
+  }
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest&&e.target.closest('.yt-more'); if(!btn) return;
+    var b=btn.parentNode, open=!b.classList.contains('yt-open');
+    b.classList.toggle('yt-open',open); btn.textContent=open?'less':'more'; btn.setAttribute('aria-expanded',open);
+    if(!open) fit();
+  });
+  var t; window.addEventListener('resize',function(){clearTimeout(t); t=setTimeout(fit,100);});
+  window.addEventListener('load',fit); fit();
+})();
+</script>

@@ -1,0 +1,55 @@
+/* YouTube tier list 2026. Sits on top of screen-v2.css: 45em column, Helvetica, small type. */
+.yt-tS{background:#ff7f7f}.yt-tA{background:#ffbf7f}.yt-tB{background:#ffdf7f}.yt-tC{background:#ffff7f}.yt-tD{background:#bfff7f}
+.yt-toc{display:flex;gap:6px;flex-wrap:wrap;margin:1em 0 1.5em}
+.yt-toc a{display:inline-flex;align-items:center;gap:6px;padding:2px 8px 2px 2px;border:1px solid #ddd;border-radius:4px;color:#555;text-decoration:none;font-size:90%}
+.yt-toc a:hover{border-color:#999;color:#000}
+.yt-toc b,.yt-tierhead b{display:inline-block;text-align:center;color:#222;font-weight:bold}
+.yt-toc b{width:22px;line-height:22px;border-radius:3px}
+
+.yt-tier{margin-top:2.5em}
+h1.yt-tierhead{display:flex;align-items:center;gap:10px;font-size:15pt;margin-bottom:1em}
+.yt-tierhead b{width:40px;line-height:40px;font-size:20pt;border-radius:4px}
+
+.yt-ch{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;margin:0 0 1.6em}
+.yt-tier-S .yt-ch,.yt-tier-A .yt-ch{grid-template-columns:260px 1fr}
+.yt-ch.yt-novideo{grid-template-columns:1fr}
+.yt-text{min-width:0}
+.yt-text h2{margin-top:0;font-size:115%}
+.yt-text h2:before,.yt-text h3:before{display:none}
+.yt-text h2 a,.yt-text h3 a{color:#222;text-decoration:none}
+.yt-text h2 a:hover,.yt-text h3 a:hover{color:#6666ff;text-decoration:underline}
+.yt-note p:first-child{margin-top:.3em}
+
+.yt-thumb{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:6px;background:#eee;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.yt-vtitle{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;font-size:85%;line-height:1.3;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.78))}
+.yt-vtitle span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.yt-thumb:hover .yt-vtitle{background:linear-gradient(transparent,rgba(0,0,0,.92))}
+.yt-thumb:after{content:"";position:absolute;top:50%;left:50%;width:0;height:0;margin:-12px 0 0 -8px;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent rgba(255,255,255,.9);opacity:0;transition:opacity .15s}
+.yt-thumb:hover:after{opacity:1}
+
+.yt-tag{font-size:75%;font-weight:normal;color:#777;border:1px solid #ddd;border-radius:3px;padding:0 4px;margin-left:4px;white-space:nowrap;vertical-align:1px}
+.yt-tag.yt-new{color:#2a7a2a;border-color:#a8d8a8}
+
+.yt-2020{margin:.4em 0 0;color:#888}
+.yt-2020 p{margin:.5em 0}
+.yt-2020-body>p:first-child{margin-top:0}
+.yt-2020-body>p:first-child:before{content:"2020: ";font-weight:bold;color:#aaa}
+.yt-clamped .yt-2020-body{overflow:hidden;-webkit-mask-image:linear-gradient(#000 calc(100% - 2.2em),transparent);mask-image:linear-gradient(#000 calc(100% - 2.2em),transparent)}
+.yt-open .yt-2020-body{max-height:none!important;-webkit-mask-image:none;mask-image:none}
+.yt-more{border:0;background:none;padding:0;margin:0;font:inherit;font-size:90%;color:#888;cursor:pointer}
+.yt-more:hover{color:#000;text-decoration:underline}
+.yt-more:after{content:" \25BE"}
+.yt-open .yt-more:after{content:" \25B4"}
+
+/* D tier: compact three-column grid */
+.yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 16px}
+.yt-grid .yt-ch{display:block;margin:0}
+.yt-grid .yt-thumb{margin-bottom:6px;border-radius:4px}
+.yt-grid .yt-vtitle{font-size:75%;padding:12px 6px 4px}
+.yt-grid h3{margin:0;font-size:100%}
+.yt-grid .yt-note,.yt-grid .yt-2020{font-size:90%;line-height:1.4}
+.yt-grid .yt-note p{margin:.25em 0}
+
+.yt-dropped{color:#666}
+
