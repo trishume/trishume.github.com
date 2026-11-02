@@ -1,0 +1,11 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>thumb sheet</title>
+<style>html,body{margin:0;background:#000}#g{display:grid;grid-template-columns:repeat(6,320px);grid-auto-rows:180px;width:1920px}#g img{width:320px;height:180px;display:block;object-fit:cover}</style>
+<div id="g"></div>
+<script>
+// Contact sheet for the 2026 tier list draft: video ids come in the URL hash, comma separated.
+var ids=location.hash.slice(1).split(',').filter(function(x){return /^[\w-]{11}$/.test(x);});
+var g=document.getElementById('g');
+ids.forEach(function(v){var i=document.createElement('img');i.src='https://i.ytimg.com/vi/'+v+'/mqdefault.jpg';g.appendChild(i);});
+</script>
