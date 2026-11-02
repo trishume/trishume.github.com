@@ -10,9 +10,7 @@ headContent: <link rel="stylesheet" href="/assets/postassets/youtube2026/tiers.c
 {% include JB/setup %}
 {% assign yt = site.data.youtube2026 %}
 
-<p class="yt-draft">Draft prototype. The intro is yours to write; everything below is generated from <code>_data/youtube2026.json</code>, which comes from the tier list page.</p>
-
-<p>Six years ago I wrote <a href="/2020/07/19/my-youtube-tier-list/">a tier list of my favorite interesting YouTube channels</a>. This is the updated version. Each channel links one of its videos; click the thumbnail to watch it.</p>
+<p>In 2020 I wrote <a href="/2020/07/19/my-youtube-tier-list/">a tier list of my favorite interesting YouTube channels</a>. Since then I've found a bunch of new awesome channels and updated my opinions on some of them. I still find the best YouTube channels to be some of the most awesome content on the internet for learning interesting things.</p>
 
 <nav class="yt-toc">
 {% for t in yt.tiers %}{% if t.channels.size > 0 %}<a href="#tier-{{ t.tier | downcase }}"><b class="yt-t{{ t.tier }}">{{ t.tier }}</b>{{ t.channels.size }}</a>{% endif %}{% endfor %}

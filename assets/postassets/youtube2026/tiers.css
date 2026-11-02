@@ -53,6 +53,5 @@ h1.yt-tierhead{display:flex;align-items:center;gap:10px;font-size:15pt;margin-bo
 
 .yt-dropped{color:#666}
 
-/* Draft-only markers: delete this block before publishing */
-.yt-draft{background:#fff8d6;border:1px solid #ecd98a;padding:6px 10px;border-radius:4px;font-size:90%}
+/* Draft-only marker for auto-picked videos: delete before publishing */
 .yt-auto .yt-thumb{outline:2px dashed #e0a000;outline-offset:2px}
