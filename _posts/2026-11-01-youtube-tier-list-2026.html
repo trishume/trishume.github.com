@@ -1,0 +1,45 @@
+---
+layout: post
+title: "My YouTube tier list, six years later"
+description: ""
+category:
+tags: [nontech]
+assetid: youtube2026
+headContent: <link rel="stylesheet" href="/assets/postassets/youtube2026/tiers.css" type="text/css"/>
+---
+{% include JB/setup %}
+{% assign yt = site.data.youtube2026 %}
+
+<p class="yt-draft">Draft prototype. The intro is yours to write; everything below is generated from <code>_data/youtube2026.json</code>, which comes from the tier list page.</p>
+
+<p>Six years ago I wrote <a href="/2020/07/19/my-youtube-tier-list/">a tier list of my favorite interesting YouTube channels</a>. This is the updated version. Each channel links one of its videos; click the thumbnail to watch it.</p>
+
+<nav class="yt-toc">
+{% for t in yt.tiers %}{% if t.channels.size > 0 %}<a href="#tier-{{ t.tier | downcase }}"><b class="yt-t{{ t.tier }}">{{ t.tier }}</b>{{ t.channels.size }}</a>{% endif %}{% endfor %}
+</nav>
+
+{% for t in yt.tiers %}{% if t.channels.size > 0 %}
+<section class="yt-tier yt-tier-{{ t.tier }}">
+<h1 id="tier-{{ t.tier | downcase }}" class="yt-tierhead"><b class="yt-t{{ t.tier }}">{{ t.tier }}</b> {{ t.name }}</h1>
+{% if t.tier == "D" %}<div class="yt-grid">{% endif %}
+{% for c in t.channels %}
+<article class="yt-ch{% unless c.video %} yt-novideo{% endunless %}{% if c.video.auto %} yt-auto{% endif %}">
+  {% if c.video %}<a class="yt-thumb" href="https://www.youtube.com/watch?v={{ c.video.id }}" title="{{ c.video.title | escape }}">
+    <img src="https://i.ytimg.com/vi/{{ c.video.id }}/hqdefault.jpg" alt="" loading="lazy" width="480" height="270"/>
+    {% if c.video.title != "" %}<span class="yt-vtitle">{{ c.video.title | escape }}</span>{% endif %}
+  </a>{% endif %}
+  <div class="yt-text">
+    {% if t.tier == "D" %}<h3>{% else %}<h2>{% endif %}<a href="{{ c.url }}">{{ c.name | escape }}</a>{% if c.old == nil %} <span class="yt-tag yt-new">new</span>{% elsif c.old == t.tier %} <span class="yt-tag">{{ c.old }} in 2020 too</span>{% else %} <span class="yt-tag">{{ c.old }} in 2020</span>{% endif %}{% if t.tier == "D" %}</h3>{% else %}</h2>{% endif %}
+    {% if c.note != "" %}<div class="yt-note">{{ c.note | markdownify }}</div>{% endif %}
+    {% if c.note2020 != "" %}<details class="yt-2020"><summary>What I wrote in 2020</summary>{{ c.note2020 | markdownify }}</details>{% endif %}
+  </div>
+</article>
+{% endfor %}
+{% if t.tier == "D" %}</div>{% endif %}
+</section>
+{% endif %}{% endfor %}
+
+{% if yt.dropped.size > 0 %}
+<h1 id="dropped">Dropped since 2020</h1>
+<p class="yt-dropped">{% for c in yt.dropped %}{{ c.name | escape }} <span class="yt-tag">{{ c.old }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+{% endif %}
