@@ -58,7 +58,11 @@
      "old": "S",
      "note": "",
      "note2020": "This is a weird and wonderful channel that to me really exemplifies what's great about YouTube. Most videos are of the form \"sharpest X kitchen knife in the world\" with a thumbnail of a hand holding a weird knife in the same pose. Some examples of X are \"Fungi\", \"Paper\", \"milk\", \"Pasta\", \"Underwear\", and \"smoke\". I originally ignored suggested videos from this channel because I assumed they were some weird click-bait that didn't really make a knife from those materials, and that was tragic because he really does and it's amazing.\n\nEvery video has no talking or words except for occasional subtitles, and follows the process starting from the raw material, demonstrating all the processing steps required to make a hard substance out of it, casting a knife blank, sharpening it, and testing it. At some point early in the channel's history someone must have commented that the videos were like ASMR videos because after that he got a high quality microphone and puts a lot of emphasis on the sounds.\n\nThe coolest part is he's clearly really good at materials science and every video has amazing steps all done in his apartment. Lets take the \"sharpest Seawater kitchen knife in the world\" video as an example: It starts with a shot of him getting huge jugs of seawater from the ocean and collecting shells on the beach. At home he boils the seawater into salt and a solution he labels \"magnesium chloride\". Then he puts a seashell on top of a charcoal briquette and puts it in an insulating firebrick box in his home microwave-oven-thing and cuts to it coming out totally calcified (apparently you can do that without a furnace??). He grinds it up with the subtitle \"quicklime\", puts it in water and uses a thermal camera to show the exothermic reaction to get slaked lime. Cut to him combining a concentrated sea brine with the lime water to get \"magnesium hydroxide + salt\". He adds water to dissolve the salt and filters out the magnesium hydroxide, combines it with the magnesium chloride from earlier, dries it, uses his handy durometer to show it fails a hardness test. He pops the magnesium hydroxide in his charcoal microwave furnace to get \"magnesium oxide\" and shows that this time when combined and dried it yields a very hard rock-like substance. Cut to him pouring a bunch of it in a rectangular plastic box, drying it and sawing out a knife shape. Then his famous sharpening sequence with increasingly fine knife stones, followed by the ever-present cucumber chopping test (complete with weird cucumber reveal out of godzilla-themed rubber gloves). He finishes by showing that the \"magnesium cement\" (Wiki link) doesn't immediately dissolve in watera and that it can also be combined with dirt to make bricks.\n\nI can't see anything remotely like this every being green-lit as a TV series, but every video is brilliant and relaxing, they all get millions of views with zero advertising spend, because everyone likes them and recommends them to friends and algorithmic recommendations respond to that in a way that human TV producers wouldn't have the guts to. People complain about the \"YouTube algorithm\", but at this kind of thing it truly shines.",
-     "video": null
+     "video": {
+      "id": "Q1VWUL0G0uU",
+      "title": "sharpest meat kitchen knife in the world",
+      "auto": false
+     }
     }
    ]
   },
@@ -157,9 +161,9 @@
      "note": "Makes his own experimental apparatus to demonstrate interesting scientific concepts and effects and explains them really well. For example taking \"video\" of a laser propagating through a room.",
      "note2020": "",
      "video": {
-      "id": "FR6z3y3d8Ag",
-      "title": "Slow-motion frogs are goofier than I expected",
-      "auto": true
+      "id": "o4TdHrMi6do",
+      "title": "A laser pointer at 2 billion fps makes the speed of light look... kinda weird",
+      "auto": false
      }
     },
     {
@@ -169,9 +173,9 @@
      "note": "Does original experiments on how to bring different cutting edge science into a home-accessible form. I've learned about a lot of really cool things from this channel, like novel cheap ion-exchange membranes for metal refining, and materials that achieve colder than ambient temperatures by radiating away heat in parts of the spectrum where the atmosphere is more transparent.",
      "note2020": "Videos of small interesting projects beautifully filmed and explained. I particularly liked this one about making a carbon filament light bulb.",
      "video": {
-      "id": "8zlAI32MSsQ",
-      "title": "DIY Solar Concentrators, Made Better.",
-      "auto": true
+      "id": "z4_GxPHwqkA",
+      "title": "Perfect Aircrete, Kitchen Ingredients.",
+      "auto": false
      }
     },
     {
@@ -181,9 +185,9 @@
      "note": "Spends ages making detailed 3D models of various interesting things like galleons, the hoover damn and airplanes, then makes hour long videos explaining every detail of how the thing works. Long but extremely worth it.",
      "note2020": "",
      "video": {
-      "id": "n9-5G4bS0X4",
-      "title": "How the Grumman F-14 Tomcat Works",
-      "auto": true
+      "id": "tBN2o4rAt5A",
+      "title": "How a Trans-Atlantic Steam Ship Worked",
+      "auto": false
      }
     },
     {
@@ -195,7 +199,7 @@
      "video": {
       "id": "-qUu8kIliy8",
       "title": "Making the most pickproof lock yet",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -207,7 +211,7 @@
      "video": {
       "id": "M1si1y5lvkk",
       "title": "No one can force me to have a secure website!!!",
-      "auto": true
+      "auto": false
      }
     },
     {
@@ -217,9 +221,9 @@
      "note": "College student who's only done a few videos but all of them are great. He has exactly my project aesthetic: mechanical+software projects where he combines a bit of mechanical novelty with a bunch of software cleverness in order to get something simple to achieve great results.",
      "note2020": "",
      "video": {
-      "id": "0ql20JKrscQ",
-      "title": "Open Source Motion Capture for Autonomous Drones",
-      "auto": true
+      "id": "Ndftcft6XhU",
+      "title": "I Built a Drone With Only One Motor",
+      "auto": false
      }
     },
     {
@@ -229,9 +233,9 @@
      "note": "",
      "note2020": "Dan is an incredible engineer who made a fortune selling companies and now has an amazing machine shop, with lots of tools he's built or modified himself. He doesn't post videos very often but the main draw of his channel is the 7 year old 19-part series on tools and techniques for building prototypes. It's a masterpiece of incredible knowledge, impressive designs and great tips. I recently rewatched the whole series.",
      "video": {
-      "id": "VsOQAayneUo",
-      "title": "Unusual shop tips Part 2",
-      "auto": true
+      "id": "OuZjjActWmQ",
+      "title": "Unusual Shop Tips",
+      "auto": false
      }
     }
    ]
@@ -776,7 +780,11 @@
      "old": "C",
      "note": "",
      "note2020": "Details various glitches used for an automated Super Mario 64 speedrun where he tries to minimize use of the A (jump) button. Really interesting just seeing how insane the tricks can be. Best and most famous video is this commentated one from his other channel about paralell universes.",
-     "video": null
+     "video": {
+      "id": "t14ENrqlmuY",
+      "title": "SM64 1 Key TAS But You Can See Lakitu Filming It",
+      "auto": false
+     }
     }
    ]
   },
